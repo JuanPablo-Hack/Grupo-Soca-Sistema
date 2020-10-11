@@ -69,28 +69,51 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Servicios</span>
+              <span>Ordenes de Servicios</span>
               </a>
             <ul class="sub">
               <li><a href="crear_orden.html">Crear Orden</a></li>
-              <li><a href="listar_orden.html">Lista de Ordenes</a></li>
-              <li><a href="crear_reporte.html">Crear Reporte</a></li>
-              <li><a href="listar_reportes.html">Listar Reportes</a></li>
-              <li><a href="calendar.html">Calendario</a></li>
+              <li><a href="listar_orden.html">Bitacora</a></li>
+              <li><a href="listar_orden.html">Calendario</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Cortes</span>
+              </a>
+            <ul class="sub">
+              <li><a href="blank.html">Programar Corte</a></li>
+              <li><a href="login.html">Bitacora de Corte</a></li>
+              
               
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
-              <span>Formatos</span>
+              <span>Manifiestos</span>
               </a>
             <ul class="sub">
-              <li><a href="blank.html">Bitacora</a></li>
-              <li><a href="login.html">Facturas</a></li>
-              <li><a href="lock_screen.html">Acuse</a></li>
-              
+              <li><a href="blank.html">Crear Manifiesto</a></li>
+              <li><a href="login.html">Bitacora de Corte</a></li>
             </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Acuses</span>
+              </a>
+            <ul class="sub">
+              <li><a href="blank.html">Crear Acuses</a></li>
+              <li><a href="login.html">Bitacora de Acuses</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Reporte Imades</span>
+              </a>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
@@ -100,6 +123,8 @@
             <ul class="sub">
               <li><a href="alta_unidad.html">Dar de alta</a></li>
               <li><a href="listar_unidades.html">Mis Unidades</a></li>
+              <li><a href="listar_unidades.html">Bitacora de mantenimiento</a></li>
+              <li><a href="listar_unidades.html">Bitacora de combustible</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -138,32 +163,68 @@
               <div class=" form">
                 <form class="cmxform form-horizontal style-form" id="commentForm" method="get" action="">
                   <div class="form-group ">
-                    <label for="cname" class="control-label col-lg-2">Name (required)</label>
+                    <label for="cname" class="control-label col-lg-2">Modelo</label>
                     <div class="col-lg-10">
                       <input class=" form-control" id="cname" name="name" minlength="2" type="text" required />
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="cemail" class="control-label col-lg-2">E-Mail (required)</label>
+                    <label for="cemail" class="control-label col-lg-2">Año</label>
                     <div class="col-lg-10">
                       <input class="form-control " id="cemail" type="email" name="email" required />
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="curl" class="control-label col-lg-2">URL (optional)</label>
+                    <label for="curl" class="control-label col-lg-2">Color</label>
                     <div class="col-lg-10">
                       <input class="form-control " id="curl" type="url" name="url" />
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="ccomment" class="control-label col-lg-2">Your Comment (required)</label>
+                    <label for="curl" class="control-label col-lg-2">Placas</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="url" name="url" />
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">No. economico</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="url" name="url" />
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">Capacidad de Carga</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="url" name="url" />
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">Tipo de unidad</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="url" name="url" />
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">Tipo de Combustible</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="url" name="url" />
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">No. de serie</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="url" name="url" />
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="ccomment" class="control-label col-lg-2">Descripción</label>
                     <div class="col-lg-10">
                       <textarea class="form-control " id="ccomment" name="comment" required></textarea>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                      <button class="btn btn-theme" type="submit">Guardar</button>
+                      <button class="btn btn-theme" type="submit">Enviar</button>
                       <button class="btn btn-theme04" type="button">Cancelar</button>
                     </div>
                   </div>

@@ -72,36 +72,72 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Servicios</span>
+              <span>Ordenes de Servicios</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_orden.html">Pedir Orden</a></li>
-              <li><a href="listar_orden.html">Mis Ordenes</a></li>
+              <li><a href="crear_orden.html">Crear Orden</a></li>
+              <li><a href="listar_orden.html">Bitacora</a></li>
+              <li><a href="listar_orden.html">Calendario</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Cortes</span>
+              </a>
+            <ul class="sub">
+              <li><a href="blank.html">Programar Corte</a></li>
+              <li><a href="login.html">Bitacora de Corte</a></li>
               
-              <li><a href="calendar.html">Calendario</a></li>
               
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
-              <span>Formatos</span>
+              <span>Manifiestos</span>
               </a>
             <ul class="sub">
-              <li><a href="blank.html">Bitacora</a></li>
-              <li><a href="login.html">Facturas</a></li>
-              <li><a href="lock_screen.html">Acuse</a></li>
-              
+              <li><a href="blank.html">Crear Manifiesto</a></li>
+              <li><a href="login.html">Bitacora de Corte</a></li>
             </ul>
           </li>
-          
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Acuses</span>
+              </a>
+            <ul class="sub">
+              <li><a href="blank.html">Crear Acuses</a></li>
+              <li><a href="login.html">Bitacora de Acuses</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Reporte Imades</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-car"></i>
+              <span>Unidades</span>
+              </a>
+            <ul class="sub">
+              <li><a href="alta_unidad.html">Dar de alta</a></li>
+              <li><a href="listar_unidades.html">Mis Unidades</a></li>
+              <li><a href="listar_unidades.html">Bitacora de mantenimiento</a></li>
+              <li><a href="listar_unidades.html">Bitacora de combustible</a></li>
+            </ul>
+          </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-group"></i>
               <span>Usuarios</span>
               </a>
             <ul class="sub">
-             
+              <li><a href="">Administrar Usuarios</a></li>
+              <li><a href="alta_usuarios.html">Crear Usuarios</a></li>
               <li><a href="profile.html">Mi perfil</a></li>
               
             </ul>
@@ -118,7 +154,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Listar Orden</h3>
+        <h3><i class="fa fa-angle-right"></i> Bitacora Orden</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -126,11 +162,11 @@
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th class="hidden-phone">Platform(s)</th>
-                    <th class="hidden-phone">Engine version</th>
-                    <th class="hidden-phone">CSS grade</th>
+                    <th>Folio</th>
+                    <th>Nombre del cliente</th>
+                    <th class="hidden-phone">Fecha</th>
+                    <th class="hidden-phone">Tipo de Servicio</th>
+                    <th class="hidden-phone">Estado</th>
                   </tr>
                 </thead>
                 <tbody>

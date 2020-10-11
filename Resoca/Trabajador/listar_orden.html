@@ -62,7 +62,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Admin</h5>
+          <h5 class="centered">Trabajador</h5>
           <li class="mt">
             <a class="active" href="index.html">
               <i class="fa fa-dashboard"></i>
@@ -72,37 +72,23 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Servicios</span>
+              <span>Ordenes de Servicios</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_orden.html">Crear Orden</a></li>
-              <li><a href="listar_orden.html">Lista de Ordenes</a></li>
-              <li><a href="crear_reporte.html">Crear Reporte</a></li>
-              <li><a href="listar_reportes.html">Listar Reportes</a></li>
+              <li><a href="calendar.html">Lista de ordenes</a></li>
               <li><a href="calendar.html">Calendario</a></li>
               
             </ul>
           </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Formatos</span>
-              </a>
-            <ul class="sub">
-              <li><a href="blank.html">Bitacora</a></li>
-              <li><a href="login.html">Facturas</a></li>
-              <li><a href="lock_screen.html">Acuse</a></li>
-              
-            </ul>
-          </li>
+         
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-car"></i>
               <span>Unidades</span>
               </a>
             <ul class="sub">
-              <li><a href="alta_unidad.html">Dar de alta</a></li>
-              <li><a href="listar_unidades.html">Mis Unidades</a></li>
+              <li><a href="alta_unidad.html">Bitacora de combustible</a></li>
+              
             </ul>
           </li>
           <li class="sub-menu">
@@ -111,8 +97,7 @@
               <span>Usuarios</span>
               </a>
             <ul class="sub">
-              <li><a href="">Administrar Usuarios</a></li>
-              <li><a href="alta_usuarios.html">Crear Usuarios</a></li>
+              
               <li><a href="profile.html">Mi perfil</a></li>
               
             </ul>
@@ -137,11 +122,13 @@
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th class="hidden-phone">Platform(s)</th>
-                    <th class="hidden-phone">Engine version</th>
-                    <th class="hidden-phone">CSS grade</th>
+                    <tr>
+                      <th>Folio</th>
+                      <th>Nombre del cliente</th>
+                      <th class="hidden-phone">Fecha</th>
+                      <th class="hidden-phone">Tipo de Servicio</th>
+                      <th class="hidden-phone">Estado</th>
+                    </tr>
                   </tr>
                 </thead>
                 <tbody>

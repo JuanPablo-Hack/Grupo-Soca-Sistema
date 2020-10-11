@@ -7,16 +7,21 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>GrupoSoca</title>
+  <title>GrupoSOCA</title>
 
   <!-- Favicons -->
   <link href="img/favicon.ico" rel="icon">
-  <link href="img/apple-touch-icon.ico" rel="apple-touch-icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-fileupload/bootstrap-fileupload.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datepicker/css/datepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-daterangepicker/daterangepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-timepicker/compiled/timepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datertimepicker.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
@@ -151,108 +156,103 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Alta de Usuarios</h3>
-        <!-- BASIC FORM VALIDATION -->
-        
-        <!-- /row -->
-        <!-- FORM VALIDATION -->
-        
-        <!-- /row -->
+        <h3><i class="fa fa-angle-right"></i> Crear Manifiesto</h3>
         <div class="row mt">
+          <!--  DATE PICKERS -->
           <div class="col-lg-12">
-            
             <div class="form-panel">
-              <div class="form">
-                <form class="cmxform form-horizontal style-form" id="signupForm" method="get" action="">
-                  <h3>Datos generales</h3>
-                  <hr>
-                  <div class="form-group ">
-                    <label for="firstname" class="control-label col-lg-2">Nombre Completo</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="firstname" name="firstname" type="text" />
-                    </div>
+              <h3>Datos del Generador</h3>
+              <hr>
+              <form action="#" class="form-horizontal style-form">
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre del cliente</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
                   </div>
-                  <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">No. NRA</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="username" name="username" type="text" />
-                    </div>
+                </div>
+                <h5>Contenedor</h5>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Capacidad</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
                   </div>
-                  
-                  <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Telefono</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="username" name="username" type="text" />
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
                   </div>
-                  <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Email</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="username" name="username" type="text" />
-                    </div>
+                </div>
+                <h5>Cantidad</h5>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Total de residuo</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
                   </div>
-                  <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Area</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="username" name="username" type="text" />
-                    </div>
+                </div>
+                <h5>Unidad</h5>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Vol/Peso</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
                   </div>
-                  
-                  
-                  <h3>Datos Fiscales</h3>
-                  <hr>
-                  <div class="form-group ">
-                    <label for="lastname" class="control-label col-lg-2">RFC</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="lastname" name="lastname" type="text" />
+                </div>
+                <h3>Datos del Transporte</h3>
+                <hr>
+                <div class="form-group">
+                  <label class="control-label col-md-3">Fecha de programación</label>
+                  <div class="col-md-3 col-xs-11">
+                    <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
+                      <input type="text" readonly="" value="01-01-2014" size="16" class="form-control">
+                      <span class="input-group-btn add-on">
+                        <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
+                        </span>
                     </div>
+                    <span class="help-block">Select date</span>
                   </div>
-                  <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Dirección</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="username" name="username" type="text" />
-                    </div>
+                </div>
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad de Vehicular</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
                   </div>
-                  <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">C.P</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="username" name="username" type="text" />
-                    </div>
+                </div>
+                <h3>Destinatario</h3>
+                <hr>
+                
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre de quien recibe</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
                   </div>
-                  <h3>Datos de Usuario</h3>
-                  <hr>
-                  <div class="form-group ">
-                    <label for="lastname" class="control-label col-lg-2">Usuario</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="lastname" name="lastname" type="text" />
-                    </div>
-                  </div>
-                  <div class="form-group ">
-                    <label for="password" class="control-label col-lg-2">Contraseña</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="password" name="password" type="password" />
-                    </div>
-                  </div>
-                  <div class="form-group ">
-                    <label for="confirm_password" class="control-label col-lg-2">Confirmar Contraseña</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="confirm_password" name="confirm_password" type="password" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
-                      <button class="btn btn-theme" type="submit">Save</button>
-                      <button class="btn btn-theme04" type="button">Cancel</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
+                </div>
+                
+               
+                
+                
+               
+              </form>
             </div>
+            
+          <!-- col-lg-12-->
+        </div>
             <!-- /form-panel -->
           </div>
           <!-- /col-lg-12 -->
         </div>
         <!-- /row -->
+        <!-- DATE TIME PICKERS -->
+       
+            <!-- /form-panel -->
+          </div>
+          <!-- /col-lg-12 -->
+        </div>
+        <!-- row -->
       </section>
       <!-- /wrapper -->
     </section>
@@ -273,7 +273,7 @@
           -->
           Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
         </div>
-        <a href="form_validation.html#" class="go-top">
+        <a href="advanced_form_components.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
           </a>
       </div>
@@ -289,7 +289,15 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
-  <script src="lib/form-validation-script.js"></script>
+  <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/date.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/moment.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+  <script src="lib/advanced-form-components.js"></script>
 
 </body>
 

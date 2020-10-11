@@ -74,28 +74,51 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Servicios</span>
+              <span>Ordenes de Servicios</span>
               </a>
             <ul class="sub">
               <li><a href="crear_orden.html">Crear Orden</a></li>
-              <li><a href="listar_orden.html">Lista de Ordenes</a></li>
-              <li><a href="crear_reporte.html">Crear Reporte</a></li>
-              <li><a href="listar_reportes.html">Listar Reportes</a></li>
-              <li><a href="calendar.html">Calendario</a></li>
+              <li><a href="listar_orden.html">Bitacora</a></li>
+              <li><a href="listar_orden.html">Calendario</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Cortes</span>
+              </a>
+            <ul class="sub">
+              <li><a href="blank.html">Programar Corte</a></li>
+              <li><a href="login.html">Bitacora de Corte</a></li>
+              
               
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
-              <span>Formatos</span>
+              <span>Manifiestos</span>
               </a>
             <ul class="sub">
-              <li><a href="blank.html">Bitacora</a></li>
-              <li><a href="login.html">Facturas</a></li>
-              <li><a href="lock_screen.html">Acuse</a></li>
-              
+              <li><a href="blank.html">Crear Manifiesto</a></li>
+              <li><a href="login.html">Bitacora de Corte</a></li>
             </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Acuses</span>
+              </a>
+            <ul class="sub">
+              <li><a href="blank.html">Crear Acuses</a></li>
+              <li><a href="login.html">Bitacora de Acuses</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Reporte Imades</span>
+              </a>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
@@ -105,6 +128,8 @@
             <ul class="sub">
               <li><a href="alta_unidad.html">Dar de alta</a></li>
               <li><a href="listar_unidades.html">Mis Unidades</a></li>
+              <li><a href="listar_unidades.html">Bitacora de mantenimiento</a></li>
+              <li><a href="listar_unidades.html">Bitacora de combustible</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -137,27 +162,36 @@
           <div class="col-lg-12">
             <div class="form-panel">
               <form action="#" class="form-horizontal style-form">
+                <h3>Datos del Servicio</h3>
+                <hr>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Default</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre del  cliente</label>
                   <div class="col-sm-4">
                     <input type="text" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Default</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Encargado</label>
                   <div class="col-sm-4">
                     <input type="text" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3">Default Datepicker</label>
-                  <div class="col-md-3 col-xs-11">
-                    <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text" value="">
-                    <span class="help-block">Select date</span>
+                  <label class="col-sm-2 col-sm-2 control-label">Cargo</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3">Start with years viewMode</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo de Servicio</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+               
+                
+                <div class="form-group">
+                  <label class="control-label col-md-3">Fecha de programación</label>
                   <div class="col-md-3 col-xs-11">
                     <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
                       <input type="text" readonly="" value="01-01-2014" size="16" class="form-control">
@@ -168,68 +202,65 @@
                     <span class="help-block">Select date</span>
                   </div>
                 </div>
-                
+                <div class="row mt"></div>
+                <h3>Datos del Residuo</h3>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Cantidad</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Concepto</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Manifiesto</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Factura</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="row mt"></div>
+                <h3>Datos de la unidad de servicio</h3>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Vehiculo</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Modelo</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Placas</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
                
               </form>
             </div>
-             <div class="row mt">
-          <div class="col-lg-12">
-            <div class="form-panel">
-              
-              <form class="form-horizontal style-form" method="get">
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Default</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Help text</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control">
-                    <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Rounder</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control round-form">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Input focus</label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="focusedInput" type="text" value="This is focused...">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Disabled</label>
-                  <div class="col-sm-10">
-                    <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Placeholder</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="placeholder">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Password</label>
-                  <div class="col-sm-10">
-                    <input type="password" class="form-control" placeholder="">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-lg-2 col-sm-2 control-label">Static control</label>
-                  <div class="col-lg-10">
-                    <p class="form-control-static">email@example.com</p>
-                  </div>
-                </div>
-                <button type="button" class="btn btn-primary btn-lg btn-block">Enviar</button>
-              </form>
-            </div>
-          </div>
+             
+          
           <!-- col-lg-12-->
         </div>
             <!-- /form-panel -->
