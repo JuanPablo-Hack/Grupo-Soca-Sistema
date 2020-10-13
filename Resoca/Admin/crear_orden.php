@@ -166,7 +166,7 @@
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="#" class="form-horizontal style-form">
+              <form action="php/crear_orden.php" class="form-horizontal style-form" method='POST'>
                 <h3>Datos del Servicio</h3>
                 <hr>
                 <div class="form-group">
@@ -249,6 +249,12 @@
                     <input type="text" name='unidad' class="form-control">
                   </div>
                 </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit">Guardar</button>
+                      <button class="btn btn-theme04" type="button">Cancelar</button>
+                    </div>
+                  </div>
                 
                
               </form>
