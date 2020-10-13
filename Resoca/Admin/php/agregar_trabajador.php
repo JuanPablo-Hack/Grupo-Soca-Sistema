@@ -21,15 +21,15 @@ if ($conexion ->connect_error) {
         $sql="INSERT INTO trabajador(nombre,curp,rfc,nss,cargo,user,pwd) VALUES ('$nombre','$curp','$rfc','$nss','$cargo','$user','$contra')";
         $resultado = $conexion->query($sql);
         if($resultado){
-            echo 'Trabajador subido con exito';
+            header("Refresh:0; url=../registro_exitoso.html");
         }else{
-            echo '<script type="text/javascript">'; echo 'alert("Error en la consulta, intentalo de nuevo!")'; echo '</script>';
-            header("Refresh:0; url=../alta_usuarios.html");
+           
+            header("Refresh:0; url=../error_registro.html");
         }
 
     }else{
-        echo '<script type="text/javascript">'; echo 'alert("Las contraseñas no coinciden")'; echo '</script>';
-        header("Refresh:0; url=../alta_usuarios.html");
+        
+        header("Refresh:0; url=../error_contras.html");
     }
   
 

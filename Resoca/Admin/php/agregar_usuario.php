@@ -24,15 +24,13 @@ if ($conexion ->connect_error) {
         $sql="INSERT INTO clientes(nombre,nra,telefono,email,area,rfc,dir,cp,user,pwd) VALUES ('$nombre','$nra','$tel','$email','$area','$rfc','$dir','$cp','$user','$contra')";
         $resultado = $conexion->query($sql);
         if($resultado){
-            echo 'Cliente subido con exito';
+            header("Refresh:0; url=../registro_exitoso.html");
         }else{
-            echo '<script type="text/javascript">'; echo 'alert("Error en la consulta, intentalo de nuevo!")'; echo '</script>';
-            header("Refresh:0; url=../alta_usuarios.html");
+            header("Refresh:0; url=../error_registro.html");
         }
 
     }else{
-        echo '<script type="text/javascript">'; echo 'alert("Las contraseñas no coinciden")'; echo '</script>';
-        header("Refresh:0; url=../alta_usuarios.html");
+        header("Refresh:0; url=../error_contras.html");
     }
   
 

@@ -9,6 +9,7 @@ $placas=$_POST['placas'];
 $no_economico=$_POST['no_economico'];
 $capacidad=$_POST['capacidad'];
 $tipo_unidad=$_POST['tipo_unidad'];
+$tipo_combustible=$_POST['tipo_combustible'];
 $serie=$_POST['serie'];
 $descripcion=$_POST['descripcion'];
 
@@ -18,32 +19,20 @@ $descripcion=$_POST['descripcion'];
 if ($conexion ->connect_error) {
     die("Conexion Fallida: " . $conn ->connect_error);
 }else{
-    echo $modelo."\n";
-    echo $ano."\n";
-    echo $color."\n";
-    echo $placas."\n";
-    echo $no_economico."\n";
-    echo $capacidad."\n";
-    echo $tipo_unidad."\n";
-    echo $serie."\n";
-    echo $descripcion."\n";
-    /*if($contra==$recontra){
-        $sql="INSERT INTO trabajador(nombre,curp,rfc,nss,cargo,user,pwd) VALUES ('$nombre','$curp','$rfc','$nss','$cargo','$user','$contra')";
+   
+        
+        $sql="INSERT INTO unidades(modelo,ano,color,placas,noeconomico,capacidad,tipounidad,tipocombustible,serie,descripcion) VALUES ('$modelo','$ano','$color','$placas','$no_economico','$capacidad','$tipo_unidad','$tipo_combustible','$serie','$descripcion')";
         $resultado = $conexion->query($sql);
         if($resultado){
-            echo 'Trabajador subido con exito';
+            header("Refresh:0; url=../registro_exitoso.html");
         }else{
-            echo '<script type="text/javascript">'; echo 'alert("Error en la consulta, intentalo de nuevo!")'; echo '</script>';
-            header("Refresh:0; url=../alta_usuarios.html");
+            header("Refresh:0; url=../error_registro.html");
         }
 
-    }else{
-        echo '<script type="text/javascript">'; echo 'alert("Las contraseñas no coinciden")'; echo '</script>';
-        header("Refresh:0; url=../alta_usuarios.html");
-    }*/
+    }
   
 
-}
+
 
 
 ?>

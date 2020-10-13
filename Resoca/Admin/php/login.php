@@ -22,12 +22,11 @@ if ($conexion ->connect_error) {
 	        header("HTTP/1.1 302 Moved Temporarily"); 
             header("Location: ../index.html");
         }else{
-            echo '<script type="text/javascript">'; echo 'alert("Contrseña o email incorrectos intente de nuevo")'; echo '</script>';
-            header("Refresh:0; url=../login.html");
+            
+            header("Refresh:0; url=../error_login.html");
         }
    }else{
-        echo '<script type="text/javascript">'; echo 'alert("El usuario no existe")'; echo '</script>';
-        header("Refresh:0; url=../login.html");
+     header("Refresh:0; url=../error_login.html");
    }
 }
 

@@ -167,25 +167,25 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Nombre del  cliente</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" name='nombre_cliente' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Encargado</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" name='encargado' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Cargo</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" name='cargo' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Tipo de Servicio</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" name='tipo_servicio' class="form-control">
                   </div>
                 </div>
                
@@ -194,7 +194,7 @@
                   <label class="control-label col-md-3">Fecha de programación</label>
                   <div class="col-md-3 col-xs-11">
                     <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
-                      <input type="text" readonly="" value="01-01-2014" size="16" class="form-control">
+                      <input type="text" readonly="" value="01-01-2014" size="16" name='fecha' class="form-control">
                       <span class="input-group-btn add-on">
                         <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
                         </span>
@@ -208,54 +208,43 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Cantidad</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" name='cantidad' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" name='unidad_residuo' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Concepto</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" name='concepto' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Manifiesto</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" name='manifiesto' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Factura</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" name='factura' class="form-control">
                   </div>
                 </div>
                 <div class="row mt"></div>
                 <h3>Datos de la unidad de servicio</h3>
                 <hr>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Vehiculo</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad Asignada</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" name='unidad' class="form-control">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Modelo</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Placas</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
+                
                
               </form>
             </div>
