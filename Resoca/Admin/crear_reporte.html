@@ -80,6 +80,8 @@
               <li><a href="crear_orden.php">Crear Orden</a></li>
               <li><a href="listar_orden.html">Bitacora</a></li>
               <li><a href="calendar.html">Calendario</a></li>
+              <li><a href="crear_servicio.html">Crear Servicio</a></li>
+              <li><a href="listar_servicios.php">Lista de Servicios</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -127,7 +129,7 @@
               </a>
             <ul class="sub">
               <li><a href="alta_unidad.html">Dar de alta</a></li>
-              <li><a href="listar_unidades.html">Mis Unidades</a></li>
+              <li><a href="listar_unidades.php">Mis Unidades</a></li>
               <li><a href="bitacora_combustible.html">Registrar Mantenimiento</a></li>
               <li><a href="bitacora_combustible.html">Registrar combustible</a></li>
               <li><a href="listar_mantenimientos.html">Listar Mantenimientos</a></li>
@@ -142,9 +144,9 @@
               </a>
             <ul class="sub">
               <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
-              <li><a href="listar_trabajador.html">Listar Trabajadores</a></li>
+              <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
               <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-              <li><a href="listar_clientes.html">Listar Clientes</a></li>
+              <li><a href="listar_clientes.php">Listar Clientes</a></li>
               
               
             </ul>

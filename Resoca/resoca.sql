@@ -116,3 +116,17 @@ create table acuses(
     manifiesto VARCHAR(10) NOT NULL,
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+create table registros_combustible(
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    unidad VARCHAR(50) NOT NULL,
+    fecha VARCHAR(10) NOT NULL,
+    kminicial VARCHAR(25) NOT NULL,
+    kmfinal VARCHAR(25) NOT NULL,
+    tiposervicio VARCHAR(50) NOT NULL,
+    litros VARCHAR(3) NOT NULL,
+    rendimiento VARCHAR(20) NOT NULL,
+    factura VARCHAR(30) NOT NULL,
+    operador VARCHAR(50) NOT NULL,
+    importe VARCHAR(10) NOT NULL,
+    creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
