@@ -168,29 +168,29 @@
             <div class="form-panel">
               <h3>Datos del Servicio</h3>
               <hr>
-              <form action="#" class="form-horizontal style-form">
+              <form action="php/crear_corte.php" class="form-horizontal style-form" method="POST">
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">No. de Folio</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="folio">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">No. de ticket</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="ticket">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">%</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="porcentaje">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">KG</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="kilos">
                   </div>
                 </div>
                 <h3>Datos de Facturación</h3>
@@ -199,35 +199,40 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Cantidad total</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="cantidad">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="unidad">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Descripción</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="descripcion">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Precio Unitario</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="precio">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Importe</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="importe">
                   </div>
                 </div>
                 
-                
+                <div class="form-group">
+                  <div class="col-lg-offset-2 col-lg-10">
+                    <button class="btn btn-theme" type="submit">Crear</button>
+                    <button class="btn btn-theme04" type="button">Cancelar</button>
+                  </div>
+                </div>
                 
                
               </form>

@@ -1,3 +1,11 @@
+<?php
+  $nombreServidor = "localhost";
+  $nombreUsuario = "root";
+  $passwordBaseDeDatos = "";
+  $nombreBaseDeDatos = "resoca";
+  
+  $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,21 +15,19 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>GrupoSOCA</title>
+  <title>GrupoSoca</title>
 
   <!-- Favicons -->
   <link href="img/favicon.ico" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="img/apple-touch-icon.ico" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-fileupload/bootstrap-fileupload.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datepicker/css/datepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-daterangepicker/daterangepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-timepicker/compiled/timepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datertimepicker.css" />
+  <link href="lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+  <link href="lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+  <link rel="stylesheet" href="lib/advanced-datatable/css/DT_bootstrap.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
@@ -161,108 +167,55 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Manifiesto</h3>
+        
+          
         <div class="row mt">
-          <!--  DATE PICKERS -->
-          <div class="col-lg-12">
-            <div class="form-panel">
-              <h3>Datos del Generador</h3>
-              <hr>
-              <form action="php/crear_manifiesto.php" class="form-horizontal style-form" method="POST">
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre del cliente</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="cliente">
-                  </div>
-                </div>
-                <h5>Contenedor</h5>
+          <div class="col-md-12">
+            <div class="content-panel">
+              <table class="table table-striped table-advance table-hover">
+                <h4><i class="fa fa-angle-right"></i> Lista de Trabajadores</h4>
                 <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Capacidad</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="capacidad">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tipo</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="tipo">
-                  </div>
-                </div>
-                <h5>Cantidad</h5>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Total de residuo</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="total_residuo">
-                  </div>
-                </div>
-                <h5>Unidad</h5>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Vol/Peso</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="vol_peso">
-                  </div>
-                </div>
-                <h3>Datos del Transporte</h3>
-                <hr>
-                <div class="form-group">
-                  <label class="control-label col-md-3">Fecha de programación</label>
-                  <div class="col-md-3 col-xs-11">
-                    <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
-                      <input type="text" readonly="" value="01-01-2014" size="16" class="form-control" name="fecha">
-                      <span class="input-group-btn add-on">
-                        <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
-                        </span>
-                    </div>
-                    <span class="help-block">Select date</span>
-                  </div>
-                </div>
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Unidad de Vehicular</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="unidad">
-                  </div>
-                </div>
-                <h3>Destinatario</h3>
-                <hr>
-                
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre de quien recibe</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="nombre_recibe"> 
-                  </div>
-                </div>
-                
-                <div class="form-group">
-                  <div class="col-lg-offset-2 col-lg-10">
-                    <button class="btn btn-theme" type="submit">Crear</button>
-                    <button class="btn btn-theme04" type="button">Cancelar</button>
-                  </div>
-                </div>
-                
-                
-               
-              </form>
+                <thead>
+                  <tr>
+                    <th> ID</th>
+                    <th> Nombre</th>
+                    <th class="hidden-phone"> Curp</th>
+                    <th> RFC</th>
+                    <th> Cargo</th>
+                    <th> NSS</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                    $sql="SELECT * FROM trabajador";
+                    $resultado = $conexion->query($sql);
+                    while ($mostrar=mysqli_fetch_array($resultado)) {  
+                  ?>
+                  <tr>
+                    <td><?php echo $mostrar['id'] ?></td>
+                    <td><?php echo $mostrar['nombre'] ?></td>
+                    <td><?php echo $mostrar['curp'] ?></td>
+                    <td><?php echo $mostrar['rfc'] ?></td>
+                    <td><?php echo $mostrar['nss'] ?></td>
+                    <td><?php echo $mostrar['cargo'] ?></td>
+                    <td>
+                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                    </td>
+                  </tr>
+                 <?php
+                    }                 
+                 ?>
+                </tbody>
+              </table>
             </div>
-            
-          <!-- col-lg-12-->
-        </div>
-            <!-- /form-panel -->
+            <!-- /content-panel -->
           </div>
-          <!-- /col-lg-12 -->
+          <!-- /col-md-12 -->
         </div>
         <!-- /row -->
-        <!-- DATE TIME PICKERS -->
-       
-            <!-- /form-panel -->
-          </div>
-          <!-- /col-lg-12 -->
-        </div>
-        <!-- row -->
       </section>
       <!-- /wrapper -->
     </section>
@@ -292,23 +245,77 @@
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="lib/jquery.scrollTo.min.js"></script>
   <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
-  <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/date.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/daterangepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/moment.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-  <script src="lib/advanced-form-components.js"></script>
+  <script type="text/javascript">
+    /* Formating function for row details */
+    function fnFormatDetails(oTable, nTr) {
+      var aData = oTable.fnGetData(nTr);
+      var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+      sOut += '<tr><td>Rendering engine:</td><td>' + aData[1] + ' ' + aData[4] + '</td></tr>';
+      sOut += '<tr><td>Link to source:</td><td>Could provide a link here</td></tr>';
+      sOut += '<tr><td>Extra info:</td><td>And any further details here (images etc)</td></tr>';
+      sOut += '</table>';
 
+      return sOut;
+    }
+
+    $(document).ready(function() {
+      /*
+       * Insert a 'details' column to the table
+       */
+      var nCloneTh = document.createElement('th');
+      var nCloneTd = document.createElement('td');
+      nCloneTd.innerHTML = '<img src="lib/advanced-datatable/images/details_open.png">';
+      nCloneTd.className = "center";
+
+      $('#hidden-table-info thead tr').each(function() {
+        this.insertBefore(nCloneTh, this.childNodes[0]);
+      });
+
+      $('#hidden-table-info tbody tr').each(function() {
+        this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
+      });
+
+      /*
+       * Initialse DataTables, with no sorting on the 'details' column
+       */
+      var oTable = $('#hidden-table-info').dataTable({
+        "aoColumnDefs": [{
+          "bSortable": false,
+          "aTargets": [0]
+        }],
+        "aaSorting": [
+          [1, 'asc']
+        ]
+      });
+
+      /* Add event listener for opening and closing details
+       * Note that the indicator for showing which row is open is not controlled by DataTables,
+       * rather it is done here
+       */
+      $('#hidden-table-info tbody td img').live('click', function() {
+        var nTr = $(this).parents('tr')[0];
+        if (oTable.fnIsOpen(nTr)) {
+          /* This row is already open - close it */
+          this.src = "lib/advanced-datatable/media/images/details_open.png";
+          oTable.fnClose(nTr);
+        } else {
+          /* Open this row */
+          this.src = "lib/advanced-datatable/images/details_close.png";
+          oTable.fnOpen(nTr, fnFormatDetails(oTable, nTr), 'details');
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

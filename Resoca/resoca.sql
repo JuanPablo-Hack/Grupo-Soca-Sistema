@@ -65,3 +65,54 @@ create table ordenes(
     unidadasig VARCHAR(25) NOT NULL,
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+create table servicios(
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(10) NOT NULL,
+    tipo VARCHAR(20) NOT NULL,
+    descripcion VARCHAR(150) NOT NULL,
+    supervisor VARCHAR(50) NOT NULL,
+    operador VARCHAR(50) NOT NULL,
+    auxiliar VARCHAR(50) NOT NULL,
+    modelo VARCHAR(50) NOT NULL,
+    placas VARCHAR(10) NOT NULL,
+    destinofinal VARCHAR(50) NOT NULL,
+    ubicacion VARCHAR(50) NOT NULL,
+    material VARCHAR(150) NOT NULL,
+    equipo VARCHAR(150) NOT NULL,
+    creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+create table cortes(
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    folio VARCHAR(5) NOT NULL,
+    ticket VARCHAR(5) NOT NULL,
+    % VARCHAR(3) NOT NULL,
+    kg VARCHAR(5) NOT NULL,
+    cantidad VARCHAR(5) NOT NULL,
+    unidad VARCHAR(5) NOT NULL,
+    descripcion VARCHAR(5) NOT NULL,
+    precio VARCHAR(5) NOT NULL,
+    importe VARCHAR(5) NOT NULL,
+    creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+create table manifiestos(
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    capacidad VARCHAR(10) NOT NULL,
+    tipo VARCHAR(50) NOT NULL
+    totalresiduo VARCHAR(7) NOT NULL,
+    volpeso VARCHAR(7) NOT NULL,
+    fecha VARCHAR(20) NOT NULL,
+    unidad VARCHAR(20) NOT NULL,
+    nombrerecibe VARCHAR(50) NOT NULL,
+    creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+create table acuses(
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    cliente VARCHAR(50) NOT NULL,
+    encargado VARCHAR(50) NOT NULL,
+    puesto VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(150) NOT NULL,
+    manifiesto VARCHAR(10) NOT NULL,
+    creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

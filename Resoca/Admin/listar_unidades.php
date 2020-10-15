@@ -1,3 +1,11 @@
+<?php
+  $nombreServidor = "localhost";
+  $nombreUsuario = "root";
+  $passwordBaseDeDatos = "";
+  $nombreBaseDeDatos = "resoca";
+  
+  $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,24 +15,20 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>GrupoSOCA</title>
+  <title>GrupoSoca</title>
 
   <!-- Favicons -->
   <link href="img/favicon.ico" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="img/apple-touch-icon.ico" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-fileupload/bootstrap-fileupload.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datepicker/css/datepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-daterangepicker/daterangepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-timepicker/compiled/timepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datertimepicker.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
+  <link href="css/table-responsive.css" rel="stylesheet">
 
   <!-- =======================================================
     Template Name: Dashio
@@ -161,108 +165,65 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Manifiesto</h3>
+        <h3><i class="fa fa-angle-right"></i> Listado de Unidades</h3>
         <div class="row mt">
-          <!--  DATE PICKERS -->
           <div class="col-lg-12">
-            <div class="form-panel">
-              <h3>Datos del Generador</h3>
-              <hr>
-              <form action="php/crear_manifiesto.php" class="form-horizontal style-form" method="POST">
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre del cliente</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="cliente">
-                  </div>
-                </div>
-                <h5>Contenedor</h5>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Capacidad</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="capacidad">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tipo</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="tipo">
-                  </div>
-                </div>
-                <h5>Cantidad</h5>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Total de residuo</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="total_residuo">
-                  </div>
-                </div>
-                <h5>Unidad</h5>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Vol/Peso</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="vol_peso">
-                  </div>
-                </div>
-                <h3>Datos del Transporte</h3>
-                <hr>
-                <div class="form-group">
-                  <label class="control-label col-md-3">Fecha de programación</label>
-                  <div class="col-md-3 col-xs-11">
-                    <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
-                      <input type="text" readonly="" value="01-01-2014" size="16" class="form-control" name="fecha">
-                      <span class="input-group-btn add-on">
-                        <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
-                        </span>
-                    </div>
-                    <span class="help-block">Select date</span>
-                  </div>
-                </div>
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Unidad de Vehicular</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="unidad">
-                  </div>
-                </div>
-                <h3>Destinatario</h3>
-                <hr>
-                
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre de quien recibe</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="nombre_recibe"> 
-                  </div>
-                </div>
-                
-                <div class="form-group">
-                  <div class="col-lg-offset-2 col-lg-10">
-                    <button class="btn btn-theme" type="submit">Crear</button>
-                    <button class="btn btn-theme04" type="button">Cancelar</button>
-                  </div>
-                </div>
-                
-                
-               
-              </form>
+            <div class="content-panel">
+              
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Modelo</th>
+                      <th class="numeric">Año</th>
+                      <th class="numeric">Color</th>
+                      <th class="numeric">Placas</th>
+                      <th class="numeric">No. Economíco</th>
+                      <th class="numeric">Capacidad</th>
+                      <th class="numeric">Tipo de Unidada</th>
+                      <th class="numeric">Tipo de Combustible</th>
+                      <th class="numeric">Serie</th>
+                      <th class="numeric">Descripcion</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                    $sql="SELECT * FROM unidades";
+                    $resultado = $conexion->query($sql);
+                    while ($mostrar=mysqli_fetch_array($resultado)) {  
+                  ?>
+                  <tr>
+                    <td><?php echo $mostrar['id'] ?></td>
+                    <td><?php echo $mostrar['modelo'] ?></td>
+                    <td><?php echo $mostrar['ano'] ?></td>
+                    <td><?php echo $mostrar['color'] ?></td>
+                    <td><?php echo $mostrar['placas'] ?></td>
+                    <td><?php echo $mostrar['noeconomico'] ?></td>
+                    <td><?php echo $mostrar['capacidad'] ?></td>
+                    <td><?php echo $mostrar['tipounidad'] ?></td>
+                    <td><?php echo $mostrar['tipocombustible']?></td>
+                    <td><?php echo $mostrar['serie']?></td>
+                    <td><?php echo $mostrar['descripcion']?></td>
+                  </tr>
+                 <?php
+                    }                 
+                 ?>
+                  </tbody>
+                </table>
+              </section>
             </div>
-            
-          <!-- col-lg-12-->
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
         </div>
-            <!-- /form-panel -->
+        <!-- /row -->
+       
+            <!-- /content-panel -->
           </div>
           <!-- /col-lg-12 -->
         </div>
         <!-- /row -->
-        <!-- DATE TIME PICKERS -->
-       
-            <!-- /form-panel -->
-          </div>
-          <!-- /col-lg-12 -->
-        </div>
-        <!-- row -->
       </section>
       <!-- /wrapper -->
     </section>
@@ -299,16 +260,6 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
-  <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/date.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/daterangepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/moment.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-  <script src="lib/advanced-form-components.js"></script>
-
 </body>
 
 </html>
