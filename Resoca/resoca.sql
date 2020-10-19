@@ -130,3 +130,13 @@ create table registros_combustible(
     importe VARCHAR(10) NOT NULL,
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+create table registros_mantenimiento(
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    unidad VARCHAR(50) NOT NULL,
+    taller VARCHAR(50) NOT NULL,
+    nofactura VARCHAR(50) NOT NULL UNIQUE key,
+    descripcion VARCHAR(150) NOT NULL,
+    fecha VARCHAR(10) NOT NULL,
+    km VARCHAR(15) NOT NULL,
+    creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

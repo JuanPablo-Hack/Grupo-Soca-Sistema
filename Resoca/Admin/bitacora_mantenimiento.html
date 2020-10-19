@@ -78,7 +78,7 @@
               </a>
             <ul class="sub">
               <li><a href="crear_orden.php">Crear Orden</a></li>
-              <li><a href="listar_orden.html">Bitacora</a></li>
+              <li><a href="listar_orden.php">Bitacora</a></li>
               <li><a href="calendar.html">Calendario</a></li>
               <li><a href="crear_servicio.html">Crear Servicio</a></li>
               <li><a href="listar_servicios.php">Lista de Servicios</a></li>
@@ -91,7 +91,7 @@
               </a>
             <ul class="sub">
               <li><a href="crear_reporte.html">Programar Corte</a></li>
-              <li><a href="listar_reportes.html">Bitacora de Corte</a></li>
+              <li><a href="listar_reportes.php">Bitacora de Corte</a></li>
               
               
             </ul>
@@ -103,7 +103,7 @@
               </a>
             <ul class="sub">
               <li><a href="crear_manifiesto.html">Crear Manifiesto</a></li>
-              <li><a href="listar_manifiesto.html">Bitacora de Corte</a></li>
+              <li><a href="listar_manifiesto.php">Bitacora de Corte</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -113,7 +113,7 @@
               </a>
             <ul class="sub">
               <li><a href="crear_acuse.html">Crear Acuses</a></li>
-              <li><a href="listar_acuses.html">Bitacora de Acuses</a></li>
+              <li><a href="listar_acuses.php">Bitacora de Acuses</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -132,8 +132,8 @@
               <li><a href="listar_unidades.php">Mis Unidades</a></li>
               <li><a href="bitacora_combustible.html">Registrar Mantenimiento</a></li>
               <li><a href="bitacora_combustible.html">Registrar combustible</a></li>
-              <li><a href="listar_mantenimientos.html">Listar Mantenimientos</a></li>
-              <li><a href="listar_combustible.html">Listar combustibles</a></li>
+              <li><a href="listar_mantenimientos.php">Listar Mantenimientos</a></li>
+              <li><a href="listar_combustible.php">Listar combustibles</a></li>
 
             </ul>
           </li>
@@ -168,30 +168,30 @@
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="#" class="form-horizontal style-form">
+              <form action="php/registro_mantenimiento.php" class="form-horizontal style-form" method="POST">
                 
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="unidad">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Nombre de Taller</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="taller">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">No. de Factura</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="factura">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Descripción</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="descripcion">
                   </div>
                 </div>
                
@@ -200,7 +200,7 @@
                   <label class="control-label col-md-3">Fecha de Proximo Servicio</label>
                   <div class="col-md-3 col-xs-11">
                     <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
-                      <input type="text" readonly="" value="01-01-2014" size="16" class="form-control">
+                      <input type="text" readonly="" value="01-01-2014" size="16" class="form-control" name="fecha">
                       <span class="input-group-btn add-on">
                         <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
                         </span>
@@ -212,11 +212,16 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Kilometraje</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="km">
                   </div>
                 </div>
                 
-                
+                <div class="form-group">
+                  <div class="col-lg-offset-2 col-lg-10">
+                    <button class="btn btn-theme" type="submit">Crear</button>
+                    <button class="btn btn-theme04" type="button">Cancelar</button>
+                  </div>
+                </div>
                
               </form>
             </div>
