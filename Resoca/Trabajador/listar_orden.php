@@ -1,3 +1,11 @@
+<?php
+  $nombreServidor = "localhost";
+  $nombreUsuario = "root";
+  $passwordBaseDeDatos = "";
+  $nombreBaseDeDatos = "resoca";
+  
+  $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +25,9 @@
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+  <link href="lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+  <link rel="stylesheet" href="lib/advanced-datatable/css/DT_bootstrap.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
@@ -59,7 +70,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Admin</h5>
+          <h5 class="centered">Trabajador</h5>
           <li class="mt">
             <a class="active" href="index.html">
               <i class="fa fa-dashboard"></i>
@@ -69,51 +80,32 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Servicios</span>
+              <span>Ordenes de Servicios</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_orden.html">Crear Orden</a></li>
-              <li><a href="listar_orden.html">Lista de Ordenes</a></li>
-              <li><a href="crear_reporte.html">Crear Reporte</a></li>
-              <li><a href="listar_reportes.html">Listar Reportes</a></li>
+              
+              <li><a href="listar_orden.php">Bitacora</a></li>
               <li><a href="calendar.html">Calendario</a></li>
               
             </ul>
           </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Formatos</span>
-              </a>
-            <ul class="sub">
-              <li><a href="blank.html">Bitacora</a></li>
-              <li><a href="login.html">Facturas</a></li>
-              <li><a href="lock_screen.html">Acuse</a></li>
-              
-            </ul>
-          </li>
+          
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-car"></i>
               <span>Unidades</span>
               </a>
             <ul class="sub">
-              <li><a href="alta_unidad.html">Dar de alta</a></li>
-              <li><a href="listar_unidades.html">Mis Unidades</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-group"></i>
-              <span>Usuarios</span>
-              </a>
-            <ul class="sub">
-              <li><a href="">Administrar Usuarios</a></li>
-              <li><a href="alta_usuarios.html">Crear Usuarios</a></li>
-              <li><a href="profile.html">Mi perfil</a></li>
+             
+
               
+              <li><a href="bitacora_combustible.html">Registrar combustible</a></li>
+              
+              <li><a href="listar_combustible.php">Listar combustibles</a></li>
+
             </ul>
           </li>
+          
          
         </ul>
         <!-- sidebar menu end-->
@@ -126,79 +118,50 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Alta de Usuarios</h3>
-        <!-- BASIC FORM VALIDATION -->
-        
-        <!-- /row -->
-        <!-- FORM VALIDATION -->
-        
-        <!-- /row -->
-        <div class="row mt">
-          <div class="col-lg-12">
-            
-            <div class="form-panel">
-              <div class="form">
-                <form class="cmxform form-horizontal style-form" id="signupForm" method="get" action="">
-                  <div class="form-group ">
-                    <label for="firstname" class="control-label col-lg-2">Firstname</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="firstname" name="firstname" type="text" />
-                    </div>
-                  </div>
-                  <div class="form-group ">
-                    <label for="lastname" class="control-label col-lg-2">Lastname</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="lastname" name="lastname" type="text" />
-                    </div>
-                  </div>
-                  <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Username</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="username" name="username" type="text" />
-                    </div>
-                  </div>
-                  <div class="form-group ">
-                    <label for="password" class="control-label col-lg-2">Password</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="password" name="password" type="password" />
-                    </div>
-                  </div>
-                  <div class="form-group ">
-                    <label for="confirm_password" class="control-label col-lg-2">Confirm Password</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="confirm_password" name="confirm_password" type="password" />
-                    </div>
-                  </div>
-                  <div class="form-group ">
-                    <label for="email" class="control-label col-lg-2">Email</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="email" name="email" type="email" />
-                    </div>
-                  </div>
-                  <div class="form-group ">
-                    <label for="agree" class="control-label col-lg-2 col-sm-3">Agree to Our Policy</label>
-                    <div class="col-lg-10 col-sm-9">
-                      <input type="checkbox" style="width: 20px" class="checkbox form-control" id="agree" name="agree" />
-                    </div>
-                  </div>
-                  <div class="form-group ">
-                    <label for="newsletter" class="control-label col-lg-2 col-sm-3">Receive the Newsletter</label>
-                    <div class="col-lg-10 col-sm-9">
-                      <input type="checkbox" style="width: 20px" class="checkbox form-control" id="newsletter" name="newsletter" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
-                      <button class="btn btn-theme" type="submit">Save</button>
-                      <button class="btn btn-theme04" type="button">Cancel</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
+        <h3><i class="fa fa-angle-right"></i> Bitacora Orden</h3>
+        <div class="row mb">
+          <!-- page start-->
+          <div class="content-panel">
+            <div class="adv-table">
+              <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                <thead>
+                  <tr>
+                    <th>Detalles</th>
+                    <th>Folio</th>
+                    <th>Nombre del cliente</th>
+                    <th class="hidden-phone">Fecha</th>
+                    <th class="hidden-phone">Tipo de Servicio</th>
+                    <th class="hidden-phone">Estado</th>
+                    <th class="hidden-phone">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <?php
+                    $sql="SELECT * FROM ordenes";
+                    $resultado = $conexion->query($sql);
+                    while ($mostrar=mysqli_fetch_array($resultado)) {  
+                  ?>
+                  <tr >
+                    <td><img src="lib/advanced-datatable/images/details_open.png"></td>
+                    <td><?php echo $mostrar['id'] ?></td>
+                    <td><?php echo $mostrar['cliente'] ?></td>
+                    <td><?php echo $mostrar['fecha'] ?></td>
+                    <td><?php echo $mostrar['servicio'] ?></td>
+                    <td><?php echo $mostrar['estado'] ?></td>
+                    <td>
+                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                    </td>
+                  </tr>
+                  <?php
+                    }                 
+                 ?>
+                </tbody>
+              </table>
             </div>
-            <!-- /form-panel -->
           </div>
-          <!-- /col-lg-12 -->
+          <!-- page end-->
         </div>
         <!-- /row -->
       </section>
@@ -210,7 +173,7 @@
     <footer class="site-footer">
       <div class="text-center">
         <p>
-          &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
+          &copy; Copyrights <strong>GrupoSOCA</strong>. Todos los derechos reservados
         </p>
         <div class="credits">
           <!--
@@ -219,9 +182,9 @@
             Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
             Licensing information: https://templatemag.com/license/
           -->
-          Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
+          Creado y Diseñado por Jupiter.org
         </div>
-        <a href="form_validation.html#" class="go-top">
+        <a href="index.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
           </a>
       </div>
@@ -230,15 +193,17 @@
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="lib/jquery.scrollTo.min.js"></script>
   <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
-  <script src="lib/form-validation-script.js"></script>
-
+ 
 </body>
 
 </html>
