@@ -7,6 +7,7 @@ $nra=$_POST['nra'];
 $tel=$_POST['telefono'];
 $email=$_POST['email'];
 $area=$_POST['area'];
+$fecha_corte=$_POST['fecha'];
 $rfc=$_POST['rfc'];
 $dir=$_POST['direccion'];
 $cp=$_POST['cp'];
@@ -21,7 +22,7 @@ if ($conexion ->connect_error) {
     die("Conexion Fallida: " . $conn ->connect_error);
 }else{
     if($contra==$recontra){
-        $sql="INSERT INTO clientes(nombre,nra,telefono,email,area,rfc,dir,cp,user,pwd) VALUES ('$nombre','$nra','$tel','$email','$area','$rfc','$dir','$cp','$user','$contra')";
+        $sql="INSERT INTO clientes(nombre,nra,telefono,email,area,fecha_corte,rfc,dir,cp,user,pwd) VALUES ('$nombre','$nra','$tel','$email','$area','$fecha_corte','$rfc','$dir','$cp','$user','$contra')";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");
