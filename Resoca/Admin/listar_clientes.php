@@ -207,9 +207,10 @@
                     <td><?php echo $mostrar['dir'].",".$mostrar['cp'] ?></td>
                     <td>
                    
-                    <a href='./editar_usuarios.php?id=1' class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
+                    <a href='./editar_usuarios.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
+                    <a href='./eliminar_cliente.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"> <i class="fa fa-trash-o "></i></a>
+
                     
-                    <a href=""  class="btn btn-danger btn-xs"> <i class="fa fa-trash-o "></i></a>
                     
                     </td>
                   </tr>

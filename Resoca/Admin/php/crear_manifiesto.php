@@ -19,7 +19,7 @@ if ($conexion ->connect_error) {
 }else{
    
          
-        $sql="INSERT INTO manifiestos (nombre,capacidad,tipo,totalresiduo,volpeso,fecha,unidad,nombrerecibe) VALUES ('$cliente', '$capacidad', '$tipo', '$total_residuo', '$vol_peso', '$fecha', '$unidad', '$nombre_recibe');";
+        $sql="INSERT INTO manifiestos (nombre,capacidad,tipo,totalresiduo,volpeso,fecha,unidad,nombrerecibe,estado) VALUES ('$cliente', '$capacidad', '$tipo', '$total_residuo', '$vol_peso', '$fecha', '$unidad', '$nombre_recibe','Activo');";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");

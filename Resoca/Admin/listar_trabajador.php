@@ -202,9 +202,11 @@
                     <td><?php echo $mostrar['nss'] ?></td>
                     <td><?php echo $mostrar['cargo'] ?></td>
                     <td>
-                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                    
+                      <a href='./editar_trabajador.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href='./eliminar_trabajador.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+
+                      
                     </td>
                   </tr>
                  <?php

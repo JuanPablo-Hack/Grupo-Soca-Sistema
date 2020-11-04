@@ -177,7 +177,7 @@
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    <th>Detalles</th>
+                    
                     <th>Folio</th>
                     <th>Nombre del cliente</th>
                     <th class="hidden-phone">Fecha</th>
@@ -193,16 +193,20 @@
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
                   <tr >
-                    <td><img src="lib/advanced-datatable/images/details_open.png"></td>
+                    
                     <td><?php echo $mostrar['id'] ?></td>
                     <td><?php echo $mostrar['cliente'] ?></td>
                     <td><?php echo $mostrar['fecha'] ?></td>
                     <td><?php echo $mostrar['servicio'] ?></td>
                     <td><?php echo $mostrar['estado'] ?></td>
                     <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                     
+                      
+                      <a href='./orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+
+                      <a href='./editar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href='./eliminar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      
                     </td>
                   </tr>
                   <?php

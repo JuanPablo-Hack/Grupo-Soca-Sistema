@@ -23,7 +23,7 @@ if ($conexion ->connect_error) {
 }else{
    
          
-        $sql="INSERT INTO ordenes(cliente,encargado,cargo,servicio,fecha,cantidad,unidad,concepto,manifiesto,factura,unidadasig) VALUES ('$cliente', '$encargado', '$cargo', '$servicio', '$fecha', '$cantidad', '$unidad_residuo', '$concepto', '$manifiesto', '$factura', '$unidad');";
+        $sql="INSERT INTO ordenes(cliente,encargado,cargo,servicio,fecha,cantidad,unidad,concepto,manifiesto,factura,unidadasig,estado) VALUES ('$cliente', '$encargado', '$cargo', '$servicio', '$fecha', '$cantidad', '$unidad_residuo', '$concepto', '$manifiesto', '$factura', '$unidad','Activo');";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");

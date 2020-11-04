@@ -1,10 +1,25 @@
 <?php
+  $id=$_GET['id'];
   $nombreServidor = "localhost";
   $nombreUsuario = "root";
   $passwordBaseDeDatos = "";
   $nombreBaseDeDatos = "resoca";
   
   $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
+  $sql="SELECT * FROM acuses WHERE id='".$id."'";
+  $result = mysqli_query($conexion,$sql);
+  if ($Row = mysqli_fetch_array($result))
+  {
+    $nombre= $Row['cliente'];
+    
+    $encargado=$Row['encargado'];
+    $puesto=$Row['puesto'];
+    $descripcion=$Row['descripcion'];
+    $manifiesto=$Row['manifiesto'];
+    $estado=$Row['estado'];
+    
+  }
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +30,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Grupo SOCA</title>
+  <title>GrupoSOCA</title>
 
   <!-- Favicons -->
   <link href="img/favicon.ico" rel="icon">
@@ -25,9 +40,11 @@
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link href="lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
-  <link href="lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
-  <link rel="stylesheet" href="lib/advanced-datatable/css/DT_bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-fileupload/bootstrap-fileupload.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datepicker/css/datepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-daterangepicker/daterangepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-timepicker/compiled/timepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datertimepicker.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
@@ -169,53 +186,81 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Programación de Cortes</h3>
-        <div class="row mb">
-          <!-- page start-->
-          <div class="content-panel">
-            <div class="adv-table">
-              <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
-                <thead>
-                  <tr>
-                    <th>No. de Folio</th>
-                    <th>No. de ticket</th>
-                    <th class="hidden-phone">Cantidad total</th>
-                    <th class="hidden-phone">Unidad</th>
-                    <th class="hidden-phone">Fecha</th>
-                    <th class="hidden-phone">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <?php
-                    $sql="SELECT * FROM cortes";
-                    $resultado = $conexion->query($sql);
-                    while ($mostrar=mysqli_fetch_array($resultado)) {  
-                  ?>
-                  <tr >
-                    <td><?php echo $mostrar['folio'] ?></td>
-                    <td><?php echo $mostrar['ticket'] ?></td>
-                    <td><?php echo $mostrar['cantidad'] ?></td>
-                    <td><?php echo $mostrar['unidad'] ?></td>
-                    <td><?php echo $mostrar['creado'] ?></td>
-                    <td>
-                      
-                      <a href='./corte.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
-
-                      <a href='./editar_reporte.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                      <a href='./eliminar_corte.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
-                      
-                    </td>
-                  </tr>
-                  <?php
-                    }                 
-                 ?>
-                </tbody>
-              </table>
+        <h3><i class="fa fa-angle-right"></i> Editar Acuse</h3>
+        <div class="row mt">
+          <!--  DATE PICKERS -->
+          <div class="col-lg-12">
+            <div class="form-panel">
+              
+              
+              <form action="php/crear_acuse.php" class="form-horizontal style-form" method="POST">
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre del cliente</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="cliente" placeholder="<?php echo $nombre; ?>">
+                  </div>
+                </div>
+               
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Encargado</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="encargado" placeholder="<?php echo $encargado; ?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Puesto</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="puesto" placeholder="<?php echo $puesto; ?>">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Descripción</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="descripcion" placeholder="<?php echo $descripcion; ?>">
+                  </div>
+                </div>
+               
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Manifiestos relacionados</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="manifiesto" placeholder="<?php echo $manifiesto; ?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Estado</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="manifiesto" placeholder="<?php echo $estado; ?>">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <div class="col-lg-offset-2 col-lg-10">
+                    <button class="btn btn-theme" type="submit">Guardar</button>
+                    <button class="btn btn-theme04" type="button">Cancelar</button>
+                  </div>
+                </div>
+               
+                
+                
+               
+              </form>
             </div>
+            
+          <!-- col-lg-12-->
+        </div>
+            <!-- /form-panel -->
           </div>
-          <!-- page end-->
+          <!-- /col-lg-12 -->
         </div>
         <!-- /row -->
+        <!-- DATE TIME PICKERS -->
+       
+            <!-- /form-panel -->
+          </div>
+          <!-- /col-lg-12 -->
+        </div>
+        <!-- row -->
       </section>
       <!-- /wrapper -->
     </section>
@@ -245,17 +290,23 @@
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="lib/jquery/jquery.min.js"></script>
-  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="lib/jquery.scrollTo.min.js"></script>
   <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
-  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.dataTables.js"></script>
-  <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
-  
+  <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/date.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/moment.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+  <script src="lib/advanced-form-components.js"></script>
+
 </body>
 
 </html>
