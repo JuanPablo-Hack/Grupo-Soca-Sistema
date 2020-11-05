@@ -196,7 +196,13 @@
             <div class="form-panel">
               <h3>Datos del Generador</h3>
               <hr>
-              <form action="php/crear_manifiesto.php" class="form-horizontal style-form" method="POST">
+              <form action="php/editar_manifiesto.php" class="form-horizontal style-form" method="POST">
+              <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Indentificador</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="identificador" value="<?php echo $id; ?>" readonly>
+                  </div>
+                </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Nombre del cliente</label>
                   <div class="col-sm-4">
@@ -250,7 +256,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Estado</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="vol_peso" placeholder="<?php echo $estado; ?>">
+                    <input type="text" class="form-control" name="estado" placeholder="<?php echo $estado; ?>">
                   </div>
                 </div>
                 <div class="form-group">

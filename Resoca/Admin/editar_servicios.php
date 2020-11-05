@@ -197,7 +197,13 @@
             <div class="form-panel">
               <h3>Datos del Servicio</h3>
               <hr>
-              <form action="php/crear_servicio.php" class="form-horizontal style-form" method="POST">
+              <form action="php/editar_servicio.php" class="form-horizontal style-form" method="POST">
+              <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Indentificador</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="identificador" value="<?php echo $id; ?>" readonly>
+                  </div>
+                </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Nombre</label>
                   <div class="col-sm-4">

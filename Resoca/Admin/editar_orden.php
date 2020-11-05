@@ -195,9 +195,15 @@
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="php/crear_orden.php" class="form-horizontal style-form" method='POST'>
+              <form action="php/editar_orden.php" class="form-horizontal style-form" method='POST'>
                 <h3>Datos del Servicio</h3>
                 <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Indentificador</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="identificador" value="<?php echo $id; ?>" readonly>
+                  </div>
+                </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Nombre del  cliente</label>
                   <div class="col-sm-4">

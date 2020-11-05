@@ -198,9 +198,15 @@
             
             <div class="form-panel">
               <div class="form">
-                <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/agregar_usuario.php">
+                <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/editar_usuario.php">
                   <h3>Datos generales</h3>
                   <hr>
+                  <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Indentificador</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="identificador" value="<?php echo $id; ?>" readonly>
+                  </div>
+                </div>
                   <div class="form-group ">
                     <label for="firstname" class="control-label col-lg-2">Nombre Completo</label>
                     <div class="col-lg-10">
