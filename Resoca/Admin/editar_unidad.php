@@ -1,31 +1,3 @@
-<?php
-  $id=$_GET['id'];
-  $nombreServidor = "localhost";
-  $nombreUsuario = "root";
-  $passwordBaseDeDatos = "";
-  $nombreBaseDeDatos = "resoca";
-  
-  /*$conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
-  $sql="SELECT * FROM clientes WHERE id='".$id."'";
-  $result = mysqli_query($conexion,$sql);
-  if ($Row = mysqli_fetch_array($result))
-  {
-    $nombre= $Row['nombre'];
-    
-    $nra=$Row['nra'];
-    $telefono=$Row['telefono'];
-    $email=$Row['email'];
-    $area=$Row['area'];
-    $fecha=$Row['fecha_corte'];
-    $rfc=$Row['rfc'];
-    $dir=$Row['dir'];
-    $cp=$Row['cp'];
-    $user=$Row['user'];
-    $pwd=$Row['pwd'];
-  }*/
-  
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -186,108 +158,80 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i>Editar Usuarios</h3>
+        <h3><i class="fa fa-angle-right"></i> Alta de Unidad</h3>
         <!-- BASIC FORM VALIDATION -->
-        
+      
         <!-- /row -->
         <!-- FORM VALIDATION -->
-        
-        <!-- /row -->
         <div class="row mt">
           <div class="col-lg-12">
-            
+           
             <div class="form-panel">
-              <div class="form">
-                <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/agregar_usuario.php">
-                  <h3>Datos generales</h3>
-                  <hr>
+              <div class=" form">
+                <form class="cmxform form-horizontal style-form" id="commentForm" method="POST" action="./php/agregar_unidad.php">
                   <div class="form-group ">
-                    <label for="firstname" class="control-label col-lg-2">Nombre Completo</label>
+                    <label for="cname" class="control-label col-lg-2">Modelo</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="firstname" name="nombre" type="text" placeholder="<?php echo $nombre; ?>" />
+                      <input class=" form-control" id="cname" name="modelo" minlength="2" type="text" required />
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">No. NRA</label>
+                    <label for="cname" class="control-label col-lg-2">Año</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="nra" type="text" placeholder="<?php echo $nra; ?>" />
-                    </div>
-                  </div>
-                  
-                  <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Telefono</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="username" name="telefono" type="text" placeholder="<?php echo $telefono; ?>"/>
+                      <input class=" form-control" id="cname" name="ano" minlength="2" type="text" required />
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Email</label>
+                    <label for="curl" class="control-label col-lg-2">Color</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="email" type="text" placeholder="<?php echo $email; ?>" />
+                      <input class="form-control " id="curl" type="text" name="color" required />
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Area</label>
+                    <label for="curl" class="control-label col-lg-2">Placas</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="area" type="text" placeholder="<?php echo $area; ?>" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-md-3">Fecha de Programación de corte</label>
-                    <div class="col-md-3 col-xs-11">
-                      <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
-                        <input type="text" readonly="" value="<?php echo $fecha; ?>" size="16" name='fecha' class="form-control">
-                        <span class="input-group-btn add-on">
-                          <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
-                          </span>
-                      </div>
-                      <span class="help-block">Select date</span>
-                    </div>
-                  </div>
-                  
-                  <h3>Datos Fiscales</h3>
-                  <hr>
-                  <div class="form-group ">
-                    <label for="lastname" class="control-label col-lg-2">RFC</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="lastname" name="rfc" type="text"  placeholder="<?php echo $rfc; ?>"/>
+                      <input class="form-control " id="curl" type="text" name="placas" required />
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Dirección</label>
+                    <label for="curl" class="control-label col-lg-2">No. economico</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="direccion" type="text" placeholder="<?php echo $dir; ?>" />
+                      <input class="form-control " id="curl" type="text" name="no_economico" required />
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">C.P</label>
+                    <label for="curl" class="control-label col-lg-2">Capacidad de Carga</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="cp" type="text" placeholder="<?php echo $cp; ?>" />
-                    </div>
-                  </div>
-                  <h3>Datos de Usuario</h3>
-                  <hr>
-                  <div class="form-group ">
-                    <label for="lastname" class="control-label col-lg-2">Usuario</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="lastname" name="user" type="text" placeholder="<?php echo $user; ?>" />
+                      <input class="form-control " id="curl" type="text" name="capacidad" />
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="password" class="control-label col-lg-2">Contraseña</label>
+                    <label for="curl" class="control-label col-lg-2">Tipo de unidad</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="password" name="contra" type="password" value="<?php echo $pwd; ?>"/>
+                      <input class="form-control " id="curl" type="text" name="tipo_unidad" />
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="confirm_password" class="control-label col-lg-2">Confirmar Contraseña</label>
+                    <label for="curl" class="control-label col-lg-2">Tipo de Combustible</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="confirm_password" name="recontra" type="password" value="<?php echo $pwd; ?>" />
+                      <input class="form-control " id="curl" type="text" name="tipo_combustible" required />
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">No. de serie</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="text" name="serie" required/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="ccomment" class="control-label col-lg-2">Descripción</label>
+                    <div class="col-lg-10">
+                      <textarea class="form-control " id="ccomment" name="descripcion" required></textarea>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                      <button class="btn btn-theme" type="submit">Guardar</button>
+                      <button class="btn btn-theme" type="submit">Enviar</button>
                       <button class="btn btn-theme04" type="button">Cancelar</button>
                     </div>
                   </div>
@@ -296,6 +240,10 @@
             </div>
             <!-- /form-panel -->
           </div>
+          <!-- /col-lg-12 -->
+        </div>
+        <!-- /row -->
+       
           <!-- /col-lg-12 -->
         </div>
         <!-- /row -->

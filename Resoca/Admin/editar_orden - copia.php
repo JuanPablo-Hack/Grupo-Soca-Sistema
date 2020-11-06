@@ -5,27 +5,26 @@
   $passwordBaseDeDatos = "";
   $nombreBaseDeDatos = "resoca";
   
-  /*$conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
-  $sql="SELECT * FROM clientes WHERE id='".$id."'";
+  $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
+  $sql="SELECT * FROM ordenes WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   if ($Row = mysqli_fetch_array($result))
   {
-    $nombre= $Row['nombre'];
+    $nombre= $Row['cliente'];
     
-    $nra=$Row['nra'];
-    $telefono=$Row['telefono'];
-    $email=$Row['email'];
-    $area=$Row['area'];
-    $fecha=$Row['fecha_corte'];
-    $rfc=$Row['rfc'];
-    $dir=$Row['dir'];
-    $cp=$Row['cp'];
-    $user=$Row['user'];
-    $pwd=$Row['pwd'];
-  }*/
+    $encargado=$Row['encargado'];
+    $cargo=$Row['cargo'];
+    $servicio=$Row['servicio'];
+    $fecha=$Row['fecha'];
+    $cantidad=$Row['cantidad'];
+    $concepto=$Row['concepto'];
+    $manifiesto=$Row['manifiesto'];
+    $factura=$Row['factura'];
+    $unidadasig=$Row['unidadasig'];
+    $estado=$Row['estado'];
+  }
   
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,6 +44,11 @@
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-fileupload/bootstrap-fileupload.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datepicker/css/datepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-daterangepicker/daterangepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-timepicker/compiled/timepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datertimepicker.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
@@ -186,119 +190,125 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i>Editar Usuarios</h3>
-        <!-- BASIC FORM VALIDATION -->
-        
-        <!-- /row -->
-        <!-- FORM VALIDATION -->
-        
-        <!-- /row -->
+        <h3><i class="fa fa-angle-right"></i> Editar Orden</h3>
         <div class="row mt">
+          <!--  DATE PICKERS -->
           <div class="col-lg-12">
-            
             <div class="form-panel">
-              <div class="form">
-                <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/agregar_usuario.php">
-                  <h3>Datos generales</h3>
-                  <hr>
-                  <div class="form-group ">
-                    <label for="firstname" class="control-label col-lg-2">Nombre Completo</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="firstname" name="nombre" type="text" placeholder="<?php echo $nombre; ?>" />
-                    </div>
+              <form action="php/crear_orden.php" class="form-horizontal style-form" method='POST'>
+                <h3>Datos del Servicio</h3>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre del  cliente</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='nombre_cliente' class="form-control" placeholder="<?php echo $nombre; ?>">
                   </div>
-                  <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">No. NRA</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="username" name="nra" type="text" placeholder="<?php echo $nra; ?>" />
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Encargado</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='encargado' class="form-control" placeholder="<?php echo $encargado; ?>">
                   </div>
-                  
-                  <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Telefono</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="username" name="telefono" type="text" placeholder="<?php echo $telefono; ?>"/>
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Cargo</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='cargo' class="form-control" placeholder="<?php echo $cargo; ?>">
                   </div>
-                  <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Email</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="username" name="email" type="text" placeholder="<?php echo $email; ?>" />
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo de Servicio</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='tipo_servicio' class="form-control" placeholder="<?php echo $servicio; ?>">
                   </div>
-                  <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Area</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="username" name="area" type="text" placeholder="<?php echo $area; ?>" />
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Estado de la Orden</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='estado' class="form-control" placeholder="<?php echo $estado; ?>">
                   </div>
-                  <div class="form-group">
-                    <label class="control-label col-md-3">Fecha de Programación de corte</label>
-                    <div class="col-md-3 col-xs-11">
-                      <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
-                        <input type="text" readonly="" value="<?php echo $fecha; ?>" size="16" name='fecha' class="form-control">
-                        <span class="input-group-btn add-on">
-                          <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
-                          </span>
-                      </div>
-                      <span class="help-block">Select date</span>
+                </div>
+                
+                <div class="form-group">
+                  <label class="control-label col-md-3">Fecha de programación</label>
+                  <div class="col-md-3 col-xs-11">
+                    <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
+                      <input type="text" readonly="" value="<?php echo $fecha; ?> size="16" name='fecha' class="form-control">
+                      <span class="input-group-btn add-on">
+                        <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
+                        </span>
                     </div>
+                    <span class="help-block">Select date</span>
                   </div>
-                  
-                  <h3>Datos Fiscales</h3>
-                  <hr>
-                  <div class="form-group ">
-                    <label for="lastname" class="control-label col-lg-2">RFC</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="lastname" name="rfc" type="text"  placeholder="<?php echo $rfc; ?>"/>
-                    </div>
+                </div>
+                <div class="row mt"></div>
+                <h3>Datos del Residuo</h3>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Cantidad</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='cantidad' class="form-control" placeholder="<?php echo $cantidad; ?>">
                   </div>
-                  <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Dirección</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="username" name="direccion" type="text" placeholder="<?php echo $dir; ?>" />
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='unidad_residuo' class="form-control" placeholder="<?php echo $unidadasig; ?>">
                   </div>
-                  <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">C.P</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="username" name="cp" type="text" placeholder="<?php echo $cp; ?>" />
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Concepto</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='concepto' class="form-control" placeholder="<?php echo $concepto; ?>">
                   </div>
-                  <h3>Datos de Usuario</h3>
-                  <hr>
-                  <div class="form-group ">
-                    <label for="lastname" class="control-label col-lg-2">Usuario</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="lastname" name="user" type="text" placeholder="<?php echo $user; ?>" />
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Manifiesto</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='manifiesto' class="form-control" placeholder="<?php echo $manifiesto; ?>">
                   </div>
-                  <div class="form-group ">
-                    <label for="password" class="control-label col-lg-2">Contraseña</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="password" name="contra" type="password" value="<?php echo $pwd; ?>"/>
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Factura</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='factura' class="form-control" placeholder="<?php echo $factura; ?>">
                   </div>
-                  <div class="form-group ">
-                    <label for="confirm_password" class="control-label col-lg-2">Confirmar Contraseña</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="confirm_password" name="recontra" type="password" value="<?php echo $pwd; ?>" />
-                    </div>
+                </div>
+                <div class="row mt"></div>
+                <h3>Datos de la unidad de servicio</h3>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad Asignada</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='unidad' class="form-control" placeholder="<?php echo $unidadasig; ?>">
                   </div>
-                  <div class="form-group">
+                </div>
+                <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
                       <button class="btn btn-theme" type="submit">Guardar</button>
                       <button class="btn btn-theme04" type="button">Cancelar</button>
                     </div>
                   </div>
-                </form>
-              </div>
+                
+               
+              </form>
             </div>
+             
+          
+          <!-- col-lg-12-->
+        </div>
             <!-- /form-panel -->
           </div>
           <!-- /col-lg-12 -->
         </div>
         <!-- /row -->
+        <!-- DATE TIME PICKERS -->
+       
+            <!-- /form-panel -->
+          </div>
+          <!-- /col-lg-12 -->
+        </div>
+        <!-- row -->
       </section>
       <!-- /wrapper -->
     </section>
@@ -335,7 +345,15 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
-  <script src="lib/form-validation-script.js"></script>
+  <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/date.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/moment.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+  <script src="lib/advanced-form-components.js"></script>
 
 </body>
 
