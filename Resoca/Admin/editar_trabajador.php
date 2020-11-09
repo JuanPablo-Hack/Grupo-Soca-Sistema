@@ -5,24 +5,20 @@
   $passwordBaseDeDatos = "";
   $nombreBaseDeDatos = "resoca";
   
-  /*$conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
-  $sql="SELECT * FROM clientes WHERE id='".$id."'";
+  $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
+  $sql="SELECT * FROM trabajador WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   if ($Row = mysqli_fetch_array($result))
   {
     $nombre= $Row['nombre'];
     
-    $nra=$Row['nra'];
-    $telefono=$Row['telefono'];
-    $email=$Row['email'];
-    $area=$Row['area'];
-    $fecha=$Row['fecha_corte'];
+    $curp=$Row['curp'];
     $rfc=$Row['rfc'];
-    $dir=$Row['dir'];
-    $cp=$Row['cp'];
+    $nss=$Row['nss'];
+    $cargo=$Row['cargo'];
     $user=$Row['user'];
     $pwd=$Row['pwd'];
-  }*/
+  }
   
 ?>
 
@@ -186,7 +182,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i>Editar Usuarios</h3>
+        <h3><i class="fa fa-angle-right"></i>Editar Trabajador</h3>
         <!-- BASIC FORM VALIDATION -->
         
         <!-- /row -->
@@ -198,79 +194,47 @@
             
             <div class="form-panel">
               <div class="form">
-                <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/agregar_usuario.php">
-                  <h3>Datos generales</h3>
-                  <hr>
+              <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/agregar_trabajador.php">
+              <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Indentificador</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="identificador" value="<?php echo $id; ?>" readonly>
+                  </div>
+                </div>
                   <div class="form-group ">
                     <label for="firstname" class="control-label col-lg-2">Nombre Completo</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="firstname" name="nombre" type="text" placeholder="<?php echo $nombre; ?>" />
+                      <input class=" form-control" id="firstname" name="nombre" type="text"  value="<?php echo $nombre; ?>"/>
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">No. NRA</label>
+                    <label for="lastname" class="control-label col-lg-2">CURP</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="nra" type="text" placeholder="<?php echo $nra; ?>" />
-                    </div>
-                  </div>
-                  
-                  <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Telefono</label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="username" name="telefono" type="text" placeholder="<?php echo $telefono; ?>"/>
+                      <input class=" form-control" id="lastname" name="curp" type="text" value="<?php echo $curp; ?>"/>
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Email</label>
+                    <label for="username" class="control-label col-lg-2">RFC</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="email" type="text" placeholder="<?php echo $email; ?>" />
+                      <input class="form-control " id="username" name="rfc" type="text" value="<?php echo $rfc; ?>"/>
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Area</label>
+                    <label for="username" class="control-label col-lg-2">NSS</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="area" type="text" placeholder="<?php echo $area; ?>" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-md-3">Fecha de Programación de corte</label>
-                    <div class="col-md-3 col-xs-11">
-                      <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
-                        <input type="text" readonly="" value="<?php echo $fecha; ?>" size="16" name='fecha' class="form-control">
-                        <span class="input-group-btn add-on">
-                          <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
-                          </span>
-                      </div>
-                      <span class="help-block">Select date</span>
-                    </div>
-                  </div>
-                  
-                  <h3>Datos Fiscales</h3>
-                  <hr>
-                  <div class="form-group ">
-                    <label for="lastname" class="control-label col-lg-2">RFC</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="lastname" name="rfc" type="text"  placeholder="<?php echo $rfc; ?>"/>
+                      <input class="form-control " id="username" name="nss" type="text" value="<?php echo $nss; ?>"/>
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">Dirección</label>
+                    <label for="username" class="control-label col-lg-2">Cargo</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="direccion" type="text" placeholder="<?php echo $dir; ?>" />
+                      <input class="form-control " id="username" name="cargo" type="text" value="<?php echo $cargo; ?>" />
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2">C.P</label>
+                    <label for="username" class="control-label col-lg-2">Usuario</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="cp" type="text" placeholder="<?php echo $cp; ?>" />
-                    </div>
-                  </div>
-                  <h3>Datos de Usuario</h3>
-                  <hr>
-                  <div class="form-group ">
-                    <label for="lastname" class="control-label col-lg-2">Usuario</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="lastname" name="user" type="text" placeholder="<?php echo $user; ?>" />
+                      <input class="form-control " id="username" name="user" type="text" value="<?php echo $user; ?>"/>
                     </div>
                   </div>
                   <div class="form-group ">
@@ -282,9 +246,10 @@
                   <div class="form-group ">
                     <label for="confirm_password" class="control-label col-lg-2">Confirmar Contraseña</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="confirm_password" name="recontra" type="password" value="<?php echo $pwd; ?>" />
+                      <input class="form-control " id="confirm_password" name="recontra" type="password" value="<?php echo $pwd; ?>"/>
                     </div>
                   </div>
+                  
                   <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
                       <button class="btn btn-theme" type="submit">Guardar</button>

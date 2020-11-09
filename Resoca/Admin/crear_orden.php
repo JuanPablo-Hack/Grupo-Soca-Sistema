@@ -1,3 +1,12 @@
+<?php
+  include 'php/conexion.php';
+  $sql="SELECT * FROM clientes";
+  $result = mysqli_query($conexion,$sql);
+  $sql1="SELECT * FROM servicios";
+  $result1 = mysqli_query($conexion,$sql1);
+  $sql2="SELECT * FROM unidades";
+  $result2 = mysqli_query($conexion,$sql2);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -172,11 +181,21 @@
                 <h3>Datos del Servicio</h3>
                 <hr>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre del  cliente</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Cliente</label>
                   <div class="col-sm-4">
-                    <input type="text" name='nombre_cliente' class="form-control">
+                  <select class="form-control" name='nombre_cliente'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
+                
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Encargado</label>
                   <div class="col-sm-4">
@@ -192,7 +211,16 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Tipo de Servicio</label>
                   <div class="col-sm-4">
-                    <input type="text" name='tipo_servicio' class="form-control">
+                  <select class="form-control" name='tipo_servicio'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result1)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                
@@ -248,7 +276,16 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Unidad Asignada</label>
                   <div class="col-sm-4">
-                    <input type="text" name='unidad' class="form-control">
+                  <select class="form-control" name='unidad'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result2)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 <div class="form-group">

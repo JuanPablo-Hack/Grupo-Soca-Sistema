@@ -6,24 +6,42 @@
   $nombreBaseDeDatos = "resoca";
   
   $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
-  $sql="SELECT * FROM cortes WHERE id='".$id."'";
+  $sql="SELECT * FROM acuses WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   if ($Row = mysqli_fetch_array($result))
   {
-    $folio= $Row['folio'];
+    $folio= $Row['id'];
+    $nombre= $Row['cliente'];
     
-    $ticket=$Row['ticket'];
-    $porcentaje=$Row['porcentaje'];
-    $kg=$Row['kg'];
-    $cantidad=$Row['cantidad'];
-    $unidad=$Row['unidad'];
+    $encargado=$Row['encargado'];
+    $cargo=$Row['puesto'];
     $descripcion=$Row['descripcion'];
-    $precio=$Row['precio'];
-    $importe=$Row['importe'];
-    $creado=$Row['creado'];
+    
+    $manifiesto=$Row['manifiesto'];
+   
+    
   }
-  $iva=floatval($importe)*.16;
-  $total=floatval($importe)*1.16;
+  $sql2="SELECT * FROM clientes WHERE id='$nombre'";
+  $result2 = mysqli_query($conexion,$sql2);
+  if ($Row = mysqli_fetch_array($result2))
+  {
+    
+    $nombre2= $Row['nombre'];
+    
+    $nra=$Row['nra'];
+    $telefono=$Row['telefono'];
+    $email=$Row['email'];
+    
+    
+    $rfc=$Row['rfc'];
+    $dir=$Row['dir'];
+    $cp=$Row['cp'];
+    
+    
+    
+  }
+  
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,12 +71,7 @@
 </head>
 
 <body>
-  <section id="container">
-    <!-- **********************************************************************************************************************************************************
-        TOP BAR CONTENT & NOTIFICATIONS
-        *********************************************************************************************************************************************************** -->
-    <!--header start-->
-    
+  
     <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
@@ -74,52 +87,46 @@
                  
                   <img src="img/resoca.png" alt="" style="height: 150px; width: 250px;">
                   <address>
+                <br>
                 <strong>Resoca del Pacífico.</strong><br>
                 Dolores Hidalgo 63-73, 16 de Septiembre<br>
                  28239 Manzanillo, Col.<br>
                 <abbr title="Phone">P:</abbr> +52 314 688 2963
               </address>
-              
                 </div>
-                
                 <!-- /pull-left -->
-               
+                
                 <!-- /pull-right -->
                 <div class="clearfix"></div>
-                <br>
-                <br>
-                <br>
-                <div class="row">
                 
+                <div class="row">
                   <div class="col-md-9">
-                    <h3>Datos Generales</h3>
-                    
+                  
+                    <h4><?php echo $nombre2; ?></h4>
                     <address>
-                  <strong>Fecha de Expedición: <?php echo $creado; ?></strong><br>
-                  %: <?php echo $porcentaje; ?><br>
-                  KG: <?php echo $kg; ?><br>
-                  Descripción: <?php echo $descripcion; ?>
+                    Domicilio: <?php echo $dir; ?><br>
+                  C.P: <?php echo $cp; ?> <br>
+                  <strong>Encargado:<?php echo $encargado; ?></strong><br>
+                  
+                  Puesto: <?php echo $cargo; ?><br>
+                
                 </address>
                   </div>
                   <!-- /col-md-9 -->
                   <div class="col-md-3">
                     <br>
-                    <div>
-                      <div class="pull-left"> NO FOLIO : </div>
-                      <div class="pull-right"> <?php echo $folio; ?> </div>
-                      <div class="clearfix"></div>
-                    </div>
+                   
                     <div>
                       <!-- /col-md-3 -->
-                      <div class="pull-left"> NO DE TICKET : </div>
-                      <div class="pull-right"> <?php echo $ticket; ?> </div>
+                      <div class="pull-left"> Manifiesto : </div>
+                      <div class="pull-right"> <?php echo $manifiesto; ?> </div>
                       <div class="clearfix"></div>
                     </div>
                     <!-- /row -->
                     <br>
                     <div class="well well-small green">
-                      <div class="pull-left"> Total a pagar : </div>
-                      <div class="pull-right"> <?php echo $total; ?> </div>
+                      <div class="pull-left"> Folio : </div>
+                      <div class="pull-right"><?php echo $folio; ?> </div>
                       <div class="clearfix"></div>
                     </div>
                   </div>
@@ -129,46 +136,28 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th style="width:60px" class="text-center">Cantidad</th>
-                      <th class="text-left">Unidad</th>
+                     
                       <th class="text-left">Descripción</th>
-                      <th style="width:140px" class="text-right">Precio Unitario</th>
-                      <th style="width:90px" class="text-right">TOTAL</th>
+                      
+                      
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="text-center"><?php echo $cantidad; ?></td>
-                      <td><?php echo $unidad; ?></td>
+                     
                       <td><?php echo $descripcion; ?></td>
-                      <td class="text-right">$<?php echo $precio; ?>.00</td>
-                      <td class="text-right">$<?php echo $importe; ?>.00</td>
+                      
+                      
                     </tr>
                    
-                    <tr>
-                      <td colspan="2" rowspan="4">
-                        <h4>Terms and Conditions</h4>
-                        <p> Gracias por su negocio. Esperamos el pago dentro de los 21 días, así que procese esta factura dentro de ese tiempo. Habrá un cargo de interés del 1.5% por mes en facturas atrasadas. </p>         <td> </td>               <td class="text-right"><strong>Subtotal</strong></td>
-                        <td class="text-right">$<?php echo $importe; ?>.00</td>
-                    </tr>
                    
-                    <tr>
-                      <td> </td>
-                      <td class="text-right no-border"><strong>IVA </strong></td>
-                      <td class="text-right">$<?php echo $iva; ?></td>
-                    </tr>
-                    <tr>
-                      <td> </td>
-                      <td class="text-right no-border">
-                        <div class="well well-small green"><strong>Total</strong></div>
-                      </td>
-                      <td class="text-right"><strong>$<?php echo $total; ?>.00</strong></td>
-                    </tr>
+                    
+                    
+                    
                   </tbody>
                 </table>
-                <br>
-                <br>
-              </div>
+                
+                
               <!--/col-lg-12 mt -->
       </section>
       <!-- /wrapper -->
@@ -176,7 +165,7 @@
     <!-- /MAIN CONTENT -->
     <!--main content end-->
     <!--footer start-->
-   
+    
     <!--footer end-->
   </section>
   <!-- js placed at the end of the document so the pages load faster -->

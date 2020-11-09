@@ -203,24 +203,19 @@
                     <input type="text" class="form-control" name="identificador" value="<?php echo $id; ?>" readonly>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre del cliente</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="cliente" placeholder="<?php echo $nombre; ?>">
-                  </div>
-                </div>
+                
                 <h5>Contenedor</h5>
                 <hr>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Capacidad</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="capacidad" placeholder="<?php echo $capacidad; ?>">
+                    <input type="text" class="form-control" name="capacidad" value="<?php echo $capacidad; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Tipo</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="tipo" placeholder="<?php echo $tipo; ?>">
+                    <input type="text" class="form-control" name="tipo" value="<?php echo $tipo; ?>">
                   </div>
                 </div>
                 <h5>Cantidad</h5>
@@ -228,7 +223,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Total de residuo</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="total_residuo" placeholder="<?php echo $totalresiduo; ?>">
+                    <input type="text" class="form-control" name="total_residuo" value="<?php echo $totalresiduo; ?>">
                   </div>
                 </div>
                 <h5>Unidad</h5>
@@ -236,7 +231,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Vol/Peso</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="vol_peso" placeholder="<?php echo $volpeso; ?>">
+                    <input type="text" class="form-control" name="vol_peso" value="<?php echo $volpeso; ?>">
                   </div>
                 </div>
                 <h3>Datos del Transporte</h3>
@@ -256,13 +251,13 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Estado</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="estado" placeholder="<?php echo $estado; ?>">
+                    <input type="text" class="form-control" name="estado" value="<?php echo $estado; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Unidad de Vehicular</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="unidad" placeholder="<?php echo $unidad; ?>">
+                    <input type="text" class="form-control" name="unidad" value="<?php echo $unidad; ?>">
                   </div>
                 </div>
                 <h3>Destinatario</h3>
@@ -272,7 +267,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Nombre de quien recibe</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="nombre_recibe" placeholder="<?php echo $nombrerecibe; ?>"> 
+                    <input type="text" class="form-control" name="nombre_recibe" value="<?php echo $nombrerecibe; ?>"> 
                   </div>
                 </div>
                 

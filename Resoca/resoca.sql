@@ -140,3 +140,7 @@ create table registros_mantenimiento(
     km VARCHAR(15) NOT NULL,
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+create table estados(
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    estado VARCHAR(40) NOT NULL
+);

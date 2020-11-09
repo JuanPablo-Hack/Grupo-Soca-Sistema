@@ -17,6 +17,7 @@
     $servicio=$Row['servicio'];
     $fecha=$Row['fecha'];
     $cantidad=$Row['cantidad'];
+    $unidad=$Row['unidad'];
     $concepto=$Row['concepto'];
     $manifiesto=$Row['manifiesto'];
     $factura=$Row['factura'];
@@ -204,34 +205,24 @@
                     <input type="text" class="form-control" name="identificador" value="<?php echo $id; ?>" readonly>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre del  cliente</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='nombre_cliente' class="form-control" placeholder="<?php echo $nombre; ?>">
-                  </div>
-                </div>
+                
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Encargado</label>
                   <div class="col-sm-4">
-                    <input type="text" name='encargado' class="form-control" placeholder="<?php echo $encargado; ?>">
+                    <input type="text" name='encargado' class="form-control" value="<?php echo $encargado; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Cargo</label>
                   <div class="col-sm-4">
-                    <input type="text" name='cargo' class="form-control" placeholder="<?php echo $cargo; ?>">
+                    <input type="text" name='cargo' class="form-control" value="<?php echo $cargo; ?>">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tipo de Servicio</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='tipo_servicio' class="form-control" placeholder="<?php echo $servicio; ?>">
-                  </div>
-                </div>
+               
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Estado de la Orden</label>
                   <div class="col-sm-4">
-                    <input type="text" name='estado' class="form-control" placeholder="<?php echo $estado; ?>">
+                    <input type="text" name='estado' class="form-control" value="<?php echo $estado; ?>">
                   </div>
                 </div>
                 
@@ -253,42 +244,35 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Cantidad</label>
                   <div class="col-sm-4">
-                    <input type="text" name='cantidad' class="form-control" placeholder="<?php echo $cantidad; ?>">
+                    <input type="text" name='cantidad' class="form-control" value="<?php echo $cantidad; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
                   <div class="col-sm-4">
-                    <input type="text" name='unidad_residuo' class="form-control" placeholder="<?php echo $unidadasig; ?>">
+                    <input type="text" name='unidad_residuo' class="form-control" value="<?php echo $unidad; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Concepto</label>
                   <div class="col-sm-4">
-                    <input type="text" name='concepto' class="form-control" placeholder="<?php echo $concepto; ?>">
+                    <input type="text" name='concepto' class="form-control" value="<?php echo $concepto; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Manifiesto</label>
                   <div class="col-sm-4">
-                    <input type="text" name='manifiesto' class="form-control" placeholder="<?php echo $manifiesto; ?>">
+                    <input type="text" name='manifiesto' class="form-control" value="<?php echo $manifiesto; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Factura</label>
                   <div class="col-sm-4">
-                    <input type="text" name='factura' class="form-control" placeholder="<?php echo $factura; ?>">
+                    <input type="text" name='factura' class="form-control" value="<?php echo $factura; ?>">
                   </div>
                 </div>
                 <div class="row mt"></div>
-                <h3>Datos de la unidad de servicio</h3>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Unidad Asignada</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='unidad' class="form-control" placeholder="<?php echo $unidadasig; ?>">
-                  </div>
-                </div>
+                
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
                       <button class="btn btn-theme" type="submit">Guardar</button>

@@ -193,13 +193,23 @@
                   ?>
                   <tr >
                     <td><?php echo $mostrar['id'] ?></td>
-                    <td><?php echo $mostrar['cliente'] ?></td>
+                    <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM clientes WHERE id='".$mostrar['cliente']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
                     <td><?php echo $mostrar['manifiesto'] ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
                     <td><?php echo $mostrar['estado'] ?></td>
                    
                     <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></button>
+                    <a href='./acuse.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
                       <a href='./editar_acuse.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                       <a href='./eliminar_acuse.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
 

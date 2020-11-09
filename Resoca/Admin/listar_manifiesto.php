@@ -193,7 +193,17 @@
                   ?>
                   <tr >
                     <td><?php echo $mostrar['id'] ?></td>
-                    <td><?php echo $mostrar['nombre'] ?></td>
+                    <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM clientes WHERE id='".$mostrar['nombre']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
                     <td><?php echo $mostrar['capacidad'] ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
                     <td><?php echo $mostrar['estado'] ?></td>

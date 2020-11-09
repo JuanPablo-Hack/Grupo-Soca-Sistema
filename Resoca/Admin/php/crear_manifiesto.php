@@ -4,7 +4,7 @@ include 'conexion.php';
 
 
 
-$cliente=$_POST['cliente'];
+$cliente=$_POST['nombre_cliente'];
 $capacidad=$_POST['capacidad'];
 $tipo=$_POST['tipo'];
 $total_residuo=$_POST['total_residuo'];

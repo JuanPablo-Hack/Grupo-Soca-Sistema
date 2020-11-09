@@ -207,22 +207,17 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Nombre</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="nombre" placeholder="<?php echo $nombre; ?>">
+                    <input type="text" class="form-control" name="nombre" value="<?php echo $nombre; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Tipo de Servicio</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="tipo" placeholder="<?php echo $tipo; ?>">
+                    <input type="text" class="form-control" name="tipo" value="<?php echo $tipo; ?>">
                   </div>
                 </div>
                 
-                <div class="form-group ">
-                  <label for="ccomment" class="control-label col-lg-2">Descripción</label>
-                  <div class="col-sm-4">
-                    <textarea class="form-control " id="ccomment" name="descripcion" placeholder="<?php echo $descrip; ?>" required></textarea>
-                  </div>
-                </div>
+               
                 
                 <h3>Datos de Personal</h3>
               <hr>
@@ -230,19 +225,19 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Supervisor</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="supervisor" placeholder="<?php echo $supervisor; ?>">
+                    <input type="text" class="form-control" name="supervisor" value="<?php echo $supervisor; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Operador</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="operador" placeholder="<?php echo $operador; ?>">
+                    <input type="text" class="form-control" name="operador" value="<?php echo $operador; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Auxiliar</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="auxiliar" placeholder="<?php echo $auxiliar; ?>">
+                    <input type="text" class="form-control" name="auxiliar" value="<?php echo $auxiliar; ?>">
                   </div>
                 </div>
                 <h3>Datos del vehículo del servicio</h3>
@@ -250,13 +245,13 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Modelo</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="modelo" placeholder="<?php echo $modelo; ?>">
+                    <input type="text" class="form-control" name="modelo" value="<?php echo $modelo; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Placas</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="placas" placeholder="<?php echo $placas; ?>">
+                    <input type="text" class="form-control" name="placas" value="<?php echo $placas; ?>">
                   </div>
                 </div>
                 <h3>Datos del destino final</h3>
@@ -264,33 +259,16 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Nombre</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="nombre_destino" placeholder="<?php echo $destinofinal; ?>">
+                    <input type="text" class="form-control" name="nombre_destino" value="<?php echo $destinofinal; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Ubicacion</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="ubicacion" placeholder="<?php echo $ubicacion; ?>">
+                    <input type="text" class="form-control" name="ubicacion" value="<?php echo $ubicacion; ?>">
                   </div>
                 </div>
-                <h3>Herramientas a utilizar</h3>
-                <hr>
-                <div class="form-group ">
-                  <label for="ccomment" class="control-label col-lg-2">Descripción de Material
-                  </label>
-                  <div class="col-sm-4">
-                    <textarea class="form-control " id="ccomment" name="descripcion_material" placeholder="<?php echo $material; ?>" required></textarea>
-                  </div>
-                </div>
-                <h3>Equipo de Seguridad Necesario</h3>
-                <hr>
-                <div class="form-group ">
-                  <label for="ccomment" class="control-label col-lg-2">Descripción de Equipo
-                  </label>
-                  <div class="col-sm-4">
-                    <textarea class="form-control " id="ccomment" name="descripcion_equipo" placeholder="<?php echo $equipo; ?>" required></textarea>
-                  </div>
-                </div>
+                
                 <div class="form-group">
                   <div class="col-lg-offset-2 col-lg-10">
                     <button class="btn btn-theme" type="submit">Enviar</button>

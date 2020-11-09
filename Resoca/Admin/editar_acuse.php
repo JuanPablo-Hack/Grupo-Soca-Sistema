@@ -201,43 +201,38 @@
                     <input type="text" class="form-control" name="identificador" value="<?php echo $id; ?>" readonly>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre del cliente</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="cliente" placeholder="<?php echo $nombre; ?>">
-                  </div>
-                </div>
+                
                
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Encargado</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="encargado" placeholder="<?php echo $encargado; ?>">
+                    <input type="text" class="form-control" name="encargado" value="<?php echo $encargado; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Puesto</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="puesto" placeholder="<?php echo $puesto; ?>">
+                    <input type="text" class="form-control" name="puesto" value="<?php echo $puesto; ?>">
                   </div>
                 </div>
                 
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Descripción</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="descripcion" placeholder="<?php echo $descripcion; ?>">
+                    <input type="text" class="form-control" name="descripcion" value="<?php echo $descripcion; ?>">
                   </div>
                 </div>
                
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Manifiestos relacionados</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="manifiesto" placeholder="<?php echo $manifiesto; ?>">
+                    <input type="text" class="form-control" name="manifiesto" value="<?php echo $manifiesto; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Estado</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="estado" placeholder="<?php echo $estado; ?>">
+                    <input type="text" class="form-control" name="estado" value="<?php echo $estado; ?>">
                   </div>
                 </div>
                 

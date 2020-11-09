@@ -1,3 +1,9 @@
+<?php
+  include 'php/conexion.php';
+  $sql="SELECT * FROM clientes";
+  $result = mysqli_query($conexion,$sql);
+  
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -163,48 +169,90 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Acuse</h3>
+        <h3><i class="fa fa-angle-right"></i> Crear Manifiesto</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              
-              
-              <form action="php/crear_acuse.php" class="form-horizontal style-form" method="POST">
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre del cliente</label>
+              <h3>Datos del Generador</h3>
+              <hr>
+              <form action="php/crear_manifiesto.php" class="form-horizontal style-form" method="POST">
+              <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Cliente</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="cliente">
+                  <select class="form-control" name='nombre_cliente'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
-               
+                <h5>Contenedor</h5>
+                <hr>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Encargado</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Capacidad</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="encargado">
+                    <input type="text" class="form-control" name="capacidad">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Puesto</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="puesto">
+                    <input type="text" class="form-control" name="tipo">
+                  </div>
+                </div>
+                <h5>Cantidad</h5>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Total de residuo</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="total_residuo">
+                  </div>
+                </div>
+                <h5>Unidad</h5>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Vol/Peso</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="vol_peso">
+                  </div>
+                </div>
+                <h3>Datos del Transporte</h3>
+                <hr>
+                <div class="form-group">
+                  <label class="control-label col-md-3">Fecha de programación</label>
+                  <div class="col-md-3 col-xs-11">
+                    <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
+                      <input type="text" readonly="" value="01-01-2014" size="16" class="form-control" name="fecha">
+                      <span class="input-group-btn add-on">
+                        <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
+                        </span>
+                    </div>
+                    <span class="help-block">Select date</span>
                   </div>
                 </div>
                 
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Descripción</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad de Vehicular</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="descripcion">
+                    <input type="text" class="form-control" name="unidad">
                   </div>
                 </div>
-               
+                <h3>Destinatario</h3>
+                <hr>
+                
+                
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Manifiestos relacionados</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre de quien recibe</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="manifiesto">
+                    <input type="text" class="form-control" name="nombre_recibe"> 
                   </div>
                 </div>
-               
                 
                 <div class="form-group">
                   <div class="col-lg-offset-2 col-lg-10">
@@ -212,7 +260,6 @@
                     <button class="btn btn-theme04" type="button">Cancelar</button>
                   </div>
                 </div>
-               
                 
                 
                

@@ -25,6 +25,57 @@
     $unidadasig=$Row['unidadasig'];
     
   }
+  $sql2="SELECT * FROM clientes WHERE id='$nombre'";
+  $result2 = mysqli_query($conexion,$sql2);
+  if ($Row = mysqli_fetch_array($result2))
+  {
+    
+    $nombre2= $Row['nombre'];
+    
+    $nra=$Row['nra'];
+    $telefono=$Row['telefono'];
+    $email=$Row['email'];
+    
+    
+    $rfc=$Row['rfc'];
+    $dir=$Row['dir'];
+    $cp=$Row['cp'];
+    
+    
+    
+  }
+  $sql3="SELECT * FROM servicios WHERE id='$servicio'";
+  $result3 = mysqli_query($conexion,$sql3);
+  if ($Row = mysqli_fetch_array($result3))
+  {
+    
+    $nombre3= $Row['nombre'];
+    
+    $tipo=$Row['tipo'];
+    $descrip=$Row['descripcion'];
+    $supervisor=$Row['supervisor'];
+    $operador=$Row['operador'];
+    $auxiliar=$Row['auxiliar'];
+    $destinofinal=$Row['destinofinal'];
+    $ubicacion=$Row['ubicacion'];
+    $material=$Row['material'];
+    $equipo=$Row['equipo'];
+    
+    
+    
+  }
+  $sql4="SELECT * FROM unidades WHERE id='$unidadasig'";
+  $result4 = mysqli_query($conexion,$sql4);
+  if ($Row = mysqli_fetch_array($result4))
+  {
+    
+    $modelo=$Row['modelo'];
+    $ano=$Row['ano'];
+    $color=$Row['color'];
+    $placas=$Row['placas'];
+    
+  }
+
   
 ?>
 <!DOCTYPE html>
@@ -85,13 +136,14 @@
                 
                 <div class="row">
                   <div class="col-md-9">
-                    <h1>Datos del Servicio</h1>
-                    <h4>Cliente: <?php echo $nombre; ?></h4>
+                    <h2>Datos Cliente</h2>
+                    <h4><?php echo $nombre2; ?></h4>
                     <address>
                   <strong>Encargado:<?php echo $encargado; ?></strong><br>
+                  
                   Cargo: <?php echo $cargo; ?><br>
-                  Tipo de Servicio: <?php echo $servicio; ?><br>
-                  Unidada Asignada: <?php echo $unidadasig; ?>
+                  Domicilio: <?php echo $dir; ?><br>
+                  C.P: <?php echo $cp; ?>
                 </address>
                   </div>
                   <!-- /col-md-9 -->
@@ -136,19 +188,68 @@
                       
                     </tr>
                    
-                    <tr>
-                      <td colspan="2" rowspan="4">
-                        <h4>Terms and Conditions</h4>
-                        <p> Gracias por su negocio. Esperamos el pago dentro de los 21 días, así que procese esta factura dentro de ese tiempo. Habrá un cargo de interés del 1.5% por mes en facturas atrasadas. </p>                        
-                    </tr>
+                   
                     
                     
                     
                   </tbody>
                 </table>
-                <br>
-                <br>
-              </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th style="width:60px" class="text-center">Servicio</th>
+                      <th class="text-left">Supervisor</th>
+                      <th class="text-left">Operador</th>
+                      <th class="text-left">Auxiliar</th>
+                      <th class="text-left">Destino Final</th>
+                      <th class="text-left">Ubicación</th>
+                      <th style="width:140px" class="text-right">Equipo Necesario</th>
+                      <th style="width:140px" class="text-right">Material Necesario</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center"><?php echo $nombre3; ?></td>
+                      <td><?php echo $supervisor; ?></td>
+                      <td><?php echo $operador; ?></td>
+                      <td><?php echo $auxiliar; ?></td>
+                      <td><?php echo $destinofinal; ?></td>
+                      <td><?php echo $ubicacion; ?></td>
+                      <td class="text-right"><?php echo $equipo; ?></td>
+                      <td class="text-right"><?php echo $auxiliar; ?></td>
+                    </tr>
+                   
+                   
+                    
+                    
+                    
+                  </tbody>
+                </table>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th style="width:60px" class="text-center">Modelo</th>
+                      <th class="text-left">Placas</th>
+                      <th class="text-left">Color</th>
+                      <th class="text-left">Placas</th>
+                     
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center"><?php echo $modelo; ?></td>
+                      <td><?php echo $ano; ?></td>
+                      <td><?php echo $color; ?></td>
+                      <td><?php echo $placas; ?></td>
+                     
+                    </tr>
+                   
+                   
+                    
+                    
+                    
+                  </tbody>
+                </table>
               <!--/col-lg-12 mt -->
       </section>
       <!-- /wrapper -->

@@ -195,9 +195,29 @@
                   <tr >
                     
                     <td><?php echo $mostrar['id'] ?></td>
-                    <td><?php echo $mostrar['cliente'] ?></td>
+                    <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM clientes WHERE id='".$mostrar['cliente']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
                     <td><?php echo $mostrar['fecha'] ?></td>
-                    <td><?php echo $mostrar['servicio'] ?></td>
+                    <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM servicios WHERE id='".$mostrar['servicio']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
                     <td><?php echo $mostrar['estado'] ?></td>
                     <td>
                      

@@ -210,32 +210,32 @@
                   <div class="form-group ">
                     <label for="firstname" class="control-label col-lg-2">Nombre Completo</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="firstname" name="nombre" type="text" placeholder="<?php echo $nombre; ?>" />
+                      <input class=" form-control" id="firstname" name="nombre" type="text" value="<?php echo $nombre; ?>" />
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="username" class="control-label col-lg-2">No. NRA</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="nra" type="text" placeholder="<?php echo $nra; ?>" />
+                      <input class="form-control " id="username" name="nra" type="text" value="<?php echo $nra; ?>" />
                     </div>
                   </div>
                   
                   <div class="form-group ">
                     <label for="username" class="control-label col-lg-2">Telefono</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="telefono" type="text" placeholder="<?php echo $telefono; ?>"/>
+                      <input class="form-control " id="username" name="telefono" type="text" value="<?php echo $telefono; ?>"/>
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="username" class="control-label col-lg-2">Email</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="email" type="text" placeholder="<?php echo $email; ?>" />
+                      <input class="form-control " id="username" name="email" type="text" value="<?php echo $email; ?>" />
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="username" class="control-label col-lg-2">Area</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="area" type="text" placeholder="<?php echo $area; ?>" />
+                      <input class="form-control " id="username" name="area" type="text" value="<?php echo $area; ?>" />
                     </div>
                   </div>
                   <div class="form-group">
@@ -256,19 +256,19 @@
                   <div class="form-group ">
                     <label for="lastname" class="control-label col-lg-2">RFC</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="lastname" name="rfc" type="text"  placeholder="<?php echo $rfc; ?>"/>
+                      <input class=" form-control" id="lastname" name="rfc" type="text"  value="<?php echo $rfc; ?>"/>
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="username" class="control-label col-lg-2">Dirección</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="direccion" type="text" placeholder="<?php echo $dir; ?>" />
+                      <input class="form-control " id="username" name="direccion" type="text" value="<?php echo $dir; ?>" />
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="username" class="control-label col-lg-2">C.P</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="cp" type="text" placeholder="<?php echo $cp; ?>" />
+                      <input class="form-control " id="username" name="cp" type="text" value="<?php echo $cp; ?>" />
                     </div>
                   </div>
                   <h3>Datos de Usuario</h3>
@@ -276,7 +276,7 @@
                   <div class="form-group ">
                     <label for="lastname" class="control-label col-lg-2">Usuario</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="lastname" name="user" type="text" placeholder="<?php echo $user; ?>" />
+                      <input class=" form-control" id="lastname" name="user" type="text" value="<?php echo $user; ?>" />
                     </div>
                   </div>
                   <div class="form-group ">

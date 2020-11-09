@@ -6,11 +6,11 @@ $folio=$_POST['folio'];
 $ticket=$_POST['ticket'];
 $porcentaje=$_POST['porcentaje'];
 $kilos=$_POST['kilos'];
-$cantidad=$_POST['cantidad'];
+$cantidad=intval($_POST['cantidad']);
 $unidad=$_POST['unidad'];
 $descripcion=$_POST['descripcion'];
-$precio=$_POST['precio'];
-$importe=$_POST['importe'];
+$precio=intval($_POST['precio']);
+$importe=strval($cantidad*$precio);
 
 if ($conexion ->connect_error) {
     die("Conexion Fallida: " . $conn ->connect_error);
