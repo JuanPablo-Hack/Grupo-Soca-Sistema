@@ -136,7 +136,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT * FROM ordenes";
+                    $sql="SELECT * FROM ordenes WHERE estado='Activo'";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
