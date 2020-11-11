@@ -85,7 +85,7 @@
               <span>Cortes</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_reporte.html">Programar Corte</a></li>
+              <li><a href="crear_reporte.php">Programar Corte</a></li>
               <li><a href="listar_reportes.php">Bitacora de Corte</a></li>
               
               
@@ -97,7 +97,7 @@
               <span>Manifiestos</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_manifiesto.html">Crear Manifiesto</a></li>
+              <li><a href="crear_manifiesto.php">Crear Manifiesto</a></li>
               <li><a href="listar_manifiesto.php">Bitacora de Corte</a></li>
             </ul>
           </li>
@@ -107,7 +107,7 @@
               <span>Acuses</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_acuse.html">Crear Acuses</a></li>
+              <li><a href="crear_acuse.php">Crear Acuses</a></li>
               <li><a href="listar_acuses.php">Bitacora de Acuses</a></li>
             </ul>
           </li>
@@ -125,10 +125,10 @@
             <ul class="sub">
               <li><a href="alta_unidad.html">Dar de alta</a></li>
               <li><a href="listar_unidades.php">Mis Unidades</a></li>
-              <li><a href="bitacora_combustible.html">Registrar Mantenimiento</a></li>
-              <li><a href="bitacora_combustible.html">Registrar combustible</a></li>
+              <li><a href="bitacora_mantenimiento.html">Registrar Mantenimiento</a></li>
+              <li><a href="bitacora_combustible.html">Registrar Combustible</a></li>
               <li><a href="listar_mantenimientos.php">Listar Mantenimientos</a></li>
-              <li><a href="listar_combustible.php">Listar combustibles</a></li>
+              <li><a href="listar_combustible.php">Listar Combustibles</a></li>
 
             </ul>
           </li>

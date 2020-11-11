@@ -80,6 +80,8 @@
             <ul class="sub">
               <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
+              <li><a href="alta_mina.html">Registrar Mina</a></li>
+              <li><a href="listar_minas.php">Minas Registradas</a></li>
              
             </ul>
           </li>
@@ -156,6 +158,7 @@
                     <th>Unidad</th>
                     <th class="hidden-phone">Placas</th>
                     <th class="hidden-phone">Operador</th>
+                    <th class="hidden-phone">No. Guía</th>
                     <th class="hidden-phone">Autoriza</th>
                     <th class="hidden-phone">Hora de Salida</th>
                     <th class="hidden-phone">Acciones</th>
@@ -203,6 +206,7 @@
                       }
                       echo $nombre;
                     ?></td>
+                    <td><?php echo $mostrar['no_guia'] ?></td>
                     <td><?php echo $mostrar['autoriza'] ?></td>
                     <td><?php echo $mostrar['hora_salida'] ?></td>
                     <td>

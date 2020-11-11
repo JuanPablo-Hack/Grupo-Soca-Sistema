@@ -80,6 +80,8 @@
             <ul class="sub">
               <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
+              <li><a href="alta_mina.html">Registrar Mina</a></li>
+              <li><a href="listar_minas.php">Minas Registradas</a></li>
              
             </ul>
           </li>
@@ -156,6 +158,7 @@
                     <th>Unidad</th>
                     <th class="hidden-phone">Placas</th>
                     <th class="hidden-phone">Operador</th>
+                    <th class="hidden-phone">No. Guia</th>
                     <th class="hidden-phone">Autoriza</th>
                     <th class="hidden-phone">Hora de Salida</th>
                     <th class="hidden-phone">Acciones</th>
@@ -169,7 +172,17 @@
                   ?>
                   <tr >
                     
-                    <td><?php echo $mostrar['nombre_mina'] ?></td>
+                  <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM minas WHERE id='".$mostrar['nombre_mina']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
                     <td><?php 
                     
                      
@@ -203,6 +216,7 @@
                       }
                       echo $nombre;
                     ?></td>
+                    <td><?php echo $mostrar['no_guia'] ?></td>
                     <td><?php echo $mostrar['autoriza'] ?></td>
                     <td><?php echo $mostrar['hora_salida'] ?></td>
                     <td>

@@ -86,6 +86,8 @@
             <ul class="sub">
               <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
+              <li><a href="alta_mina.html">Registrar Mina</a></li>
+              <li><a href="listar_minas.php">Minas Registradas</a></li>
              
             </ul>
           </li>
@@ -197,7 +199,12 @@
                 </div>
                
                 
-                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Guía</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_guia' class="form-control">
+                  </div>
+                </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
                   <div class="col-sm-4">

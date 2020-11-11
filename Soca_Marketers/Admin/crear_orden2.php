@@ -4,6 +4,8 @@
   $result = mysqli_query($conexion,$sql);
   $sql2="SELECT * FROM unidades";
   $result2 = mysqli_query($conexion,$sql2);
+  $sql3="SELECT * FROM minas";
+  $result3 = mysqli_query($conexion,$sql3);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,6 +88,8 @@
             <ul class="sub">
               <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
+              <li><a href="alta_mina.html">Registrar Mina</a></li>
+              <li><a href="listar_minas.php">Minas Registradas</a></li>
              
             </ul>
           </li>
@@ -156,10 +160,19 @@
             <div class="form-panel">
               <form action="php/crear_orden2.php" class="form-horizontal style-form" method='POST'>
                 
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Mina de Origen</label>
+              <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre de la mina</label>
                   <div class="col-sm-4">
-                    <input type="text" name='mina' class="form-control">
+                  <select class="form-control" name='mina'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result3)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 <div class="form-group">
@@ -196,7 +209,12 @@
                   </div>
                 </div>
                
-                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Guía</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_guia' class="form-control">
+                  </div>
+                </div> 
                 
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
