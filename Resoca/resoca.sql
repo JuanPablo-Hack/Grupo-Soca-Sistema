@@ -130,14 +130,25 @@ create table registros_combustible(
     importe VARCHAR(10) NOT NULL,
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-create table registros_mantenimiento(
+create table  mercancia(
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    unidad VARCHAR(50) NOT NULL,
-    taller VARCHAR(50) NOT NULL,
-    nofactura VARCHAR(50) NOT NULL UNIQUE key,
-    descripcion VARCHAR(150) NOT NULL,
+    no_formato VARCHAR(50) NOT NULL,
+    no_contenedor VARCHAR(50) NOT NULL,
+    naviera VARCHAR(50) NOT NULL,
+    tipo_contenedor VARCHAR(150) NOT NULL,
     fecha VARCHAR(10) NOT NULL,
-    km VARCHAR(15) NOT NULL,
+    booking VARCHAR(40) NOT NULL,
+    referencia VARCHAR(40) NOT NULL,
+    agencia_aduanal VARCHAR(40) NOT NULL,
+    cliente VARCHAR(50) NOT NULL,
+    transportista VARCHAR(40) NOT NULL,
+    unidad INT) NOT NULL,
+    observaciones VARCHAR(150) NOT NULL,
+    hora_comienzo VARCHAR(10) NOT NULL,
+    peso VARCHAR(20) NOT NULL,
+    hora_final VARCHAR(10) NOT NULL,
+    no_vgm VARCHAR(30) NOT NULL,
+    embalaje VARCHAR(30) NOT NULL,
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 create table estados(

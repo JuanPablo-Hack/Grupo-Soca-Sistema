@@ -2,14 +2,25 @@
 
 include 'conexion.php';
 
-$mina=$_POST['mina'];
+$no_formato=$_POST['no_formato'];
+$no_contenedor=$_POST['no_contenedor'];
+$naviera=$_POST['naviera'];
+$tipo_contenedor=$_POST['tipo_contenedor'];
+$fecha=$_POST['fecha'];
+$booking=$_POST['booking'];
+$referencia=$_POST['referencia'];
+$agencia_aduanal=$_POST['agencia_aduanal'];
+$cliente=$_POST['cliente'];
+$transportista=$_POST['transportista'];
 $unidad=$_POST['unidad'];
 $operador=$_POST['operador'];
-$p_tara=$_POST['p_tara'];
-$p_burto=$_POST['p_burto'];
-$p_neto=$_POST['p_neto'];
-$autoriza=$_POST['autoriza'];
-$hora=$_POST['hora_salida'];
+$observaciones=$_POST['observaciones'];
+$hora_comienzo=$_POST['hora_comienzo'];
+$peso=$_POST['peso'];
+$hora_final=$_POST['hora_final'];
+$no_vgm=$_POST['no_vgm'];
+$embalaje=$_POST['embalaje'];
+
 
 
 
@@ -20,7 +31,7 @@ if ($conexion ->connect_error) {
 }else{
    
          
-        $sql="INSERT INTO patio_acopio(mina_origen,unidad,operador,p_tara,p_bruto,p_neto,autoriza,hora_ingreso) VALUES ('$mina','$unidad','$operador','$p_tara','$p_burto','$p_neto','$autoriza','$hora');";
+        $sql="INSERT INTO mercancia(no_formato,no_contenedor,naviera,tipo_contenedor,fecha,booking,referencia,agencia_aduanal,cliente,transportista,unidad,operador,observa,hora_comienzo,peso,hora_final,no_vgm,embalaje) VALUES ('$no_formato','$no_contenedor','$naviera','$tipo_contenedor','$fecha','$booking','$referencia','$agencia_aduanal','$cliente','$transportista','$unidad','$operador','$observaciones','$hora_comienzo','$peso','$hora_final','$no_vgm','$embalaje');";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");

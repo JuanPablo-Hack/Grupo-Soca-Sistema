@@ -144,24 +144,26 @@
                   <tr>
                     
                     <th>Fecha</th>
-                    <th>Hora</th>
+                    <th>Hora Comienzo</th>
+                    <th class="hidden-phone">Hora Final</th>
+                    <th class="hidden-phone">No. Formato</th>
                     <th class="hidden-phone">Unidad</th>
-                    <th class="hidden-phone">Placas</th>
-                    <th class="hidden-phone">Operador</th>
-                    <th class="hidden-phone">No. Viaje</th>
+                    <th class="hidden-phone">Conductor</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT * FROM viajes";
+                    $sql="SELECT * FROM mercancia";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
                   <tr >
                     
                     <td><?php echo $mostrar['fecha'] ?></td>
-                    <td><?php echo $mostrar['hora'] ?></td>
+                    <td><?php echo $mostrar['hora_comienzo'] ?></td>
+                    <td><?php echo $mostrar['hora_final'] ?></td>
+                    <td><?php echo $mostrar['no_formato'] ?></td>
                     <td><?php 
                     
                      
@@ -173,17 +175,7 @@
                       }
                       echo $nombre;
                     ?></td>
-                    <td><?php 
                     
-                     
-                    $sql1="SELECT * FROM unidades WHERE id='".$mostrar['unidad']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['placas'];  
-                      }
-                      echo $nombre;
-                    ?></td>
                     <td><?php 
                     
                      
@@ -195,7 +187,7 @@
                       }
                       echo $nombre;
                     ?></td>
-                    <td><?php echo $mostrar['no_viaje'] ?></td>
+                   
                     
                     <td>
                      

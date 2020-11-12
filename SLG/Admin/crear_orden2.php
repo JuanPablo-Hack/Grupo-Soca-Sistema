@@ -92,7 +92,7 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Entradas y Salidas</span>
+              <span>Registro de Entradas y Salidas</span>
               </a>
             <ul class="sub">
               <li><a href="crear_orden2.php">Crear Registro</a></li>
@@ -145,9 +145,32 @@
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="php/crear_orden.php" class="form-horizontal style-form" method='POST'>
-                
+              <form action="php/crear_orden2.php" class="form-horizontal style-form" method='POST'>
               <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Formato</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_formato' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Contenedor</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_contenedor' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Línea Naviera</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='naviera' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo de Contenedor</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='tipo_contenedor' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="control-label col-md-3">Fecha de llegada</label>
                   <div class="col-md-3 col-xs-11">
                     <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
@@ -160,11 +183,37 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Hora de llegada</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Booking</label>
                   <div class="col-sm-4">
-                    <input type="text" name='mina' class="form-control">
+                    <input type="text" name='booking' class="form-control">
                   </div>
                 </div>
+             
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Referencia</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='referencia' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Agencia Aduanal</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='agencia_aduanal' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Cliente</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='cliente' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Transportista</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='transportista' class="form-control">
+                  </div>
+                </div>
+               
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
                   <div class="col-sm-4">
@@ -202,21 +251,39 @@
                 
                 
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. Viaje</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Observaciones</label>
                   <div class="col-sm-4">
-                    <input type="text" name='p_tara' class="form-control">
+                    <input type="text" name='observaciones' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Peso</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Hora de Comienzo</label>
                   <div class="col-sm-4">
-                    <input type="text" name='p_burto' class="form-control">
+                    <input type="text" name='hora_comienzo' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Línea Transportista </label>
+                  <label class="col-sm-2 col-sm-2 control-label">Peso </label>
                   <div class="col-sm-4">
-                    <input type="text" name='p_neto' class="form-control">
+                    <input type="text" name='peso' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Hora finalización </label>
+                  <div class="col-sm-4">
+                    <input type="text" name='hora_final' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. VGM </label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_vgm' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Embalaje </label>
+                  <div class="col-sm-4">
+                    <input type="text" name='embalaje' class="form-control">
                   </div>
                 </div>
                 
