@@ -1,3 +1,12 @@
+<?php
+  include 'php/conexion.php';
+  $sql="SELECT * FROM trabajador";
+  $result = mysqli_query($conexion,$sql);
+  $sql2="SELECT * FROM unidades";
+  $result2 = mysqli_query($conexion,$sql2);
+  $sql3="SELECT * FROM minas";
+  $result3 = mysqli_query($conexion,$sql3);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,12 +68,12 @@
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
-    < <aside>
+    <aside>
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Trabajador</h5>
+          <h5 class="centered">Admin</h5>
           <li class="mt">
             <a class="active" href="index.html">
               <i class="fa fa-dashboard"></i>
@@ -74,36 +83,39 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Ordenes de Servicios</span>
+              <span>Producción de Mina</span>
               </a>
             <ul class="sub">
-              <li><a href="calendar.html">Lista de ordenes</a></li>
-              <li><a href="calendar.html">Calendario</a></li>
+              <li><a href="crear_orden.php">Crear Registro</a></li>
+              <li><a href="listar_orden.php">Bitacora</a></li>
               
+             
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Ingresos de Patio de Acopio</span>
+              </a>
+            <ul class="sub">
+              <li><a href="crear_orden2.php">Crear Registro</a></li>
+              <li><a href="listar_orden2.php">Bitacora</a></li>
+              
+              
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Salida de Patio de Acopio</span>
+              </a>
+            <ul class="sub">
+              <li><a href="crear_orden3.php">Crear Registro</a></li>
+              <li><a href="listar_orden3.php">Bitacora</a></li>
             </ul>
           </li>
          
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-car"></i>
-              <span>Unidades</span>
-              </a>
-            <ul class="sub">
-              <li><a href="alta_unidad.html">Bitacora de combustible</a></li>
-              
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-group"></i>
-              <span>Usuarios</span>
-              </a>
-            <ul class="sub">
-              
-              <li><a href="profile.html">Mi perfil</a></li>
-              
-            </ul>
-          </li>
+          
          
         </ul>
         <!-- sidebar menu end-->
@@ -116,52 +128,107 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Inicio de Servicio</h3>
+        <h3><i class="fa fa-angle-right"></i> Crear Registro de Ingreso de Patio de Acopio</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="#" class="form-horizontal style-form">
-                <h3>Datos generales</h3>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre</label>
+              <form action="php/crear_orden2.php" class="form-horizontal style-form" method='POST'>
+                
+              <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre de la mina</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                  <select class="form-control" name='mina'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result3)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='unidad'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result2)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Cargo</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
+               
                 
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Peso</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Operador</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-                <h3>Evidencias</h3>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Litros de Carga</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-                <h3>Confirmación</h3>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Litros de Carga</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control">
+                  <select class="form-control" name='operador'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Guía</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_guia' class="form-control">
+                  </div>
+                </div> 
                 
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_tara' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_burto' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P. Neto</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_neto' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Autoriza</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='autoriza' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Hora de Ingreso</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='hora_salida' class="form-control">
+                  </div>
+                </div>
+                
+                 
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit">Guardar</button>
+                      <button class="btn btn-theme04" type="button">Cancelar</button>
+                    </div>
+                  </div>
                 
                
               </form>
@@ -191,7 +258,7 @@
     <footer class="site-footer">
       <div class="text-center">
         <p>
-          &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
+          &copy; Copyrights <strong>GrupoSOCA</strong>. Todos los derechos reservados
         </p>
         <div class="credits">
           <!--
@@ -200,9 +267,9 @@
             Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
             Licensing information: https://templatemag.com/license/
           -->
-          Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
+          Creado y Diseñado por Jupiter.org
         </div>
-        <a href="advanced_form_components.html#" class="go-top">
+        <a href="index.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
           </a>
       </div>

@@ -24,12 +24,7 @@
   <link href="css/style-responsive.css" rel="stylesheet">
   <script src="lib/chart-master/Chart.js"></script>
 
-  <!-- =======================================================
-    Template Name: Dashio
-    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
-    Author: TemplateMag.com
-    License: https://templatemag.com/license/
-  ======================================================= -->
+ 
 </head>
 
 <body>
@@ -62,7 +57,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Trabajador</h5>
+          <h5 class="centered">Admin</h5>
           <li class="mt">
             <a class="active" href="index.html">
               <i class="fa fa-dashboard"></i>
@@ -72,31 +67,38 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Ordenes de Servicios</span>
+              <span>Producción de Mina</span>
               </a>
             <ul class="sub">
-              
+              <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
-              <li><a href="calendar.html">Calendario</a></li>
               
+             
             </ul>
           </li>
-          
           <li class="sub-menu">
             <a href="javascript:;">
-              <i class="fa fa-car"></i>
-              <span>Unidades</span>
+              <i class="fa fa-book"></i>
+              <span>Ingresos de Patio de Acopio</span>
               </a>
             <ul class="sub">
-             
-
+              <li><a href="crear_orden2.php">Crear Registro</a></li>
+              <li><a href="listar_orden2.php">Bitacora</a></li>
               
-              <li><a href="bitacora_combustible.html">Registrar combustible</a></li>
               
-              <li><a href="listar_combustible.php">Listar combustibles</a></li>
-
             </ul>
           </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Salida de Patio de Acopio</span>
+              </a>
+            <ul class="sub">
+              <li><a href="crear_orden3.php">Crear Registro</a></li>
+              <li><a href="listar_orden3.php">Bitacora</a></li>
+            </ul>
+          </li>
+         
           
          
         </ul>
@@ -110,6 +112,50 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
+        <div class="row">
+          <div class="col-lg-9 main-chart">
+            <!--CUSTOM CHART START -->
+            <div class="border-head">
+              <h3>Servicios Realizados</h3>
+            </div>
+            <div class="custom-bar-chart">
+              <ul class="y-axis">
+                <li><span>10.000</span></li>
+                <li><span>8.000</span></li>
+                <li><span>6.000</span></li>
+                <li><span>4.000</span></li>
+                <li><span>2.000</span></li>
+                <li><span>0</span></li>
+              </ul>
+              <div class="bar">
+                <div class="title">ENE</div>
+                <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">85%</div>
+              </div>
+              <div class="bar ">
+                <div class="title">FEB</div>
+                <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
+              </div>
+              <div class="bar ">
+                <div class="title">MAR</div>
+                <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">60%</div>
+              </div>
+              <div class="bar ">
+                <div class="title">ABR</div>
+                <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">45%</div>
+              </div>
+              <div class="bar">
+                <div class="title">MAY</div>
+                <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top">32%</div>
+              </div>
+              <div class="bar ">
+                <div class="title">JUN</div>
+                <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top">62%</div>
+              </div>
+              <div class="bar">
+                <div class="title">JUL</div>
+                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
+              </div>
+            </div>
             <!--custom chart end-->
             <div class="row mt">
               <!-- SERVER STATUS PANELS -->
@@ -185,7 +231,7 @@
           <!-- **********************************************************************************************************************************************************
               RIGHT SIDEBAR CONTENT
               *********************************************************************************************************************************************************** -->
-          <div class="col-lg-12 ds">
+          <div class="col-lg-3 ds">
             <!--COMPLETED ACTIONS DONUTS CHART-->
             <div class="donut-main">
               <h4>COMPLETED ACTIONS & PROGRESS</h4>
@@ -372,7 +418,7 @@
     $(document).ready(function() {
       var unique_id = $.gritter.add({
         // (string | mandatory) the heading of the notification
-        title: 'Bienvenido Trabajador',
+        title: 'Bienvenido Administrador',
         // (string | mandatory) the text inside the notification
         text: 'Recuerda de revisar todos tus pendientes para la semana, éxito!.',
         // (string | optional) the image to display on the left

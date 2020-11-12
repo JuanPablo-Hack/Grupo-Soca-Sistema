@@ -1,3 +1,10 @@
+<?php
+  include 'php/conexion.php';
+  $sql="SELECT * FROM trabajador";
+  $result = mysqli_query($conexion,$sql);
+  $sql2="SELECT * FROM unidades";
+  $result2 = mysqli_query($conexion,$sql2);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,11 +14,11 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Dashio - Bootstrap Admin Template</title>
+  <title>GrupoSoca</title>
 
   <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="img/favicon.ico" rel="icon">
+  <link href="img/apple-touch-icon.ico" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -64,7 +71,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Trabajador</h5>
+          <h5 class="centered">Admin</h5>
           <li class="mt">
             <a class="active" href="index.html">
               <i class="fa fa-dashboard"></i>
@@ -74,31 +81,38 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Ordenes de Servicios</span>
+              <span>Producción de Mina</span>
               </a>
             <ul class="sub">
-              
+              <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
-              <li><a href="calendar.html">Calendario</a></li>
               
+             
             </ul>
           </li>
-          
           <li class="sub-menu">
             <a href="javascript:;">
-              <i class="fa fa-car"></i>
-              <span>Unidades</span>
+              <i class="fa fa-book"></i>
+              <span>Ingresos de Patio de Acopio</span>
               </a>
             <ul class="sub">
-             
-
+              <li><a href="crear_orden2.php">Crear Registro</a></li>
+              <li><a href="listar_orden2.php">Bitacora</a></li>
               
-              <li><a href="bitacora_combustible.html">Registrar combustible</a></li>
               
-              <li><a href="listar_combustible.php">Listar combustibles</a></li>
-
             </ul>
           </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Salida de Patio de Acopio</span>
+              </a>
+            <ul class="sub">
+              <li><a href="crear_orden3.php">Crear Registro</a></li>
+              <li><a href="listar_orden3.php">Bitacora</a></li>
+            </ul>
+          </li>
+         
           
          
         </ul>
@@ -112,70 +126,113 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Registro de Evidencias de Servicio</h3>
+        <h3><i class="fa fa-angle-right"></i> Crear Registro de Salida de Patio de Acopio</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="#" class="form-horizontal style-form">
+              <form action="php/crear_orden3.php" class="form-horizontal style-form" method='POST'>
+                
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tiempo transcurrido</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Patio Destino</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="identificador" value="01:20:25" readonly>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Folio Relacionado</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="identificador" value="B154" readonly>
+                    <input type="text" name='mina' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Cantidad de Residuo Recolectado</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="identificador"  required>
-                  </div>
-                </div>
-                <div class="form-group ">
-                  <label for="ccomment" class="col-sm-2 col-sm-2 control-label">Comentarios</label>
-                  <div class="col-sm-4">
-                    <textarea class="form-control " id="ccomment" name="comment" required></textarea>
-                  </div>
-                </div>
-                <div class="form-group last">
-                  <label class="control-label col-md-3">Subir Imágenes</label>
-                  <div class="col-md-9">
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
-                      </div>
-                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                      <div>
-                        <span class="btn btn-theme02 btn-file">
-                        <span class="fileupload-new"><i class="fa fa-paperclip"></i> Seleccionar Imagen</span>
-                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                        <input type="file" class="default" />
-                        </span>
-                        <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
-                      </div>
-                    </div>
-                    <span class="label label-info">NOTA!</span>
-                    <span>
-                     No se te olvide adjuntar todas las fotos de las evidencias del servicio.
-                      </span>
+                  <select class="form-control" name='unidad'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result2)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 
+               
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Operador</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='operador'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
+                  </div>
                 </div>
+               
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Guía</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_guia' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_tara' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_burto' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P. Neto</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_neto' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Autoriza</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='autoriza' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Hora de Salida</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='hora_salida' class="form-control">
+                  </div>
+                </div>
+                
+                 
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit">Guardar</button>
+                      <button class="btn btn-theme04" type="button">Cancelar</button>
+                    </div>
+                  </div>
+                
+               
               </form>
             </div>
+             
+          
+          <!-- col-lg-12-->
+        </div>
             <!-- /form-panel -->
           </div>
           <!-- /col-lg-12 -->
         </div>
         <!-- /row -->
         <!-- DATE TIME PICKERS -->
-        
+       
             <!-- /form-panel -->
           </div>
           <!-- /col-lg-12 -->

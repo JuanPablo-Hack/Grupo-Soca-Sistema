@@ -2,12 +2,12 @@
   $id=$_GET['id'];
   include 'php/conexion.php';
 
-  $sql="SELECT * FROM produccion_mina WHERE id='".$id."'";
+  $sql="SELECT * FROM patio_acopio_salida WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   if ($Row = mysqli_fetch_array($result))
   {
     $folio=$Row['id'];
-    $nombre= $Row['nombre_mina'];
+    $nombre= $Row['patio_destino'];
     $unidad=$Row['unidad'];
     $encargado=$Row['operador'];
     $p_tara=$Row['p_tara'];
@@ -105,7 +105,7 @@
                 <div class="row">
                   <div class="col-md-9">
                    
-                    <h4>Nombre de la Mina: <?php echo $nombre; ?></h4>
+                    <h4>Patio Destino: <?php echo $nombre; ?></h4>
                     <address>
                   <strong>Autoriza:<?php echo $autoriza; ?></strong><br>
                   Unidad: <?php echo $nombre2; ?><br>

@@ -1,3 +1,31 @@
+<?php
+  $id=$_GET['id'];
+  $nombreServidor = "localhost";
+  $nombreUsuario = "root";
+  $passwordBaseDeDatos = "";
+  $nombreBaseDeDatos = "resoca";
+  
+  $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
+  $sql="SELECT * FROM ordenes WHERE id='".$id."'";
+  $result = mysqli_query($conexion,$sql);
+  if ($Row = mysqli_fetch_array($result))
+  {
+    $nombre= $Row['cliente'];
+    
+    $encargado=$Row['encargado'];
+    $cargo=$Row['cargo'];
+    $servicio=$Row['servicio'];
+    $fecha=$Row['fecha'];
+    $cantidad=$Row['cantidad'];
+    $unidad=$Row['unidad'];
+    $concepto=$Row['concepto'];
+    $manifiesto=$Row['manifiesto'];
+    $factura=$Row['factura'];
+    $unidadasig=$Row['unidadasig'];
+    $estado=$Row['estado'];
+  }
+  
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,7 +92,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Trabajador</h5>
+          <h5 class="centered">Admin</h5>
           <li class="mt">
             <a class="active" href="index.html">
               <i class="fa fa-dashboard"></i>
@@ -77,29 +105,80 @@
               <span>Ordenes de Servicios</span>
               </a>
             <ul class="sub">
-              
+              <li><a href="crear_orden.php">Crear Orden</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
               <li><a href="calendar.html">Calendario</a></li>
+              <li><a href="crear_servicio.html">Crear Servicio</a></li>
+              <li><a href="listar_servicios.php">Lista de Servicios</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Cortes</span>
+              </a>
+            <ul class="sub">
+              <li><a href="crear_reporte.html">Programar Corte</a></li>
+              <li><a href="listar_reportes.php">Bitacora de Corte</a></li>
+              
               
             </ul>
           </li>
-          
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Manifiestos</span>
+              </a>
+            <ul class="sub">
+              <li><a href="crear_manifiesto.html">Crear Manifiesto</a></li>
+              <li><a href="listar_manifiesto.php">Bitacora de Corte</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Acuses</span>
+              </a>
+            <ul class="sub">
+              <li><a href="crear_acuse.html">Crear Acuses</a></li>
+              <li><a href="listar_acuses.php">Bitacora de Acuses</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Reporte Imades</span>
+              </a>
+          </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-car"></i>
               <span>Unidades</span>
               </a>
             <ul class="sub">
-             
-
-              
+              <li><a href="alta_unidad.html">Dar de alta</a></li>
+              <li><a href="listar_unidades.php">Mis Unidades</a></li>
+              <li><a href="bitacora_combustible.html">Registrar Mantenimiento</a></li>
               <li><a href="bitacora_combustible.html">Registrar combustible</a></li>
-              
+              <li><a href="listar_mantenimientos.php">Listar Mantenimientos</a></li>
               <li><a href="listar_combustible.php">Listar combustibles</a></li>
 
             </ul>
           </li>
-          
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-group"></i>
+              <span>Usuarios</span>
+              </a>
+            <ul class="sub">
+              <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
+              <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
+              <li><a href="alta_usuarios.html">Crear Cliente</a></li>
+              <li><a href="listar_clientes.php">Listar Clientes</a></li>
+              
+              
+            </ul>
+          </li>
          
         </ul>
         <!-- sidebar menu end-->
@@ -112,24 +191,46 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Bitaroca de Combustible</h3>
+        <h3><i class="fa fa-angle-right"></i> Editar Orden</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="php/registro_combustible.php" class="form-horizontal style-form" method="POST">
+              <form action="php/editar_orden.php" class="form-horizontal style-form" method='POST'>
+                <h3>Datos del Servicio</h3>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Indentificador</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="identificador" value="<?php echo $id; ?>" readonly>
+                  </div>
+                </div>
                 
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Encargado</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="unidad">
+                    <input type="text" name='encargado' class="form-control" value="<?php echo $encargado; ?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3">Fecha de carga</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Cargo</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='cargo' class="form-control" value="<?php echo $cargo; ?>">
+                  </div>
+                </div>
+               
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Estado de la Orden</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='estado' class="form-control" value="<?php echo $estado; ?>">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label class="control-label col-md-3">Fecha de programación</label>
                   <div class="col-md-3 col-xs-11">
                     <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
-                      <input type="text" readonly="" value="01-01-2014" size="16" class="form-control" name="fecha">
+                      <input type="text" readonly="" value="<?php echo $fecha; ?> size="16" name='fecha' class="form-control">
                       <span class="input-group-btn add-on">
                         <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
                         </span>
@@ -137,55 +238,47 @@
                     <span class="help-block">Select date</span>
                   </div>
                 </div>
+                <div class="row mt"></div>
+                <h3>Datos del Residuo</h3>
+                <hr>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Km inicial</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Cantidad</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="km_inicial">
+                    <input type="text" name='cantidad' class="form-control" value="<?php echo $cantidad; ?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Km final</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="km_final">
+                    <input type="text" name='unidad_residuo' class="form-control" value="<?php echo $unidad; ?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tipo de Servicio</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Concepto</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="tipo_servicio">
+                    <input type="text" name='concepto' class="form-control" value="<?php echo $concepto; ?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Litros de Carga</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Manifiesto</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="litros">
+                    <input type="text" name='manifiesto' class="form-control" value="<?php echo $manifiesto; ?>">
                   </div>
                 </div>
-               
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No.Factura</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Factura</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="no_factura">
+                    <input type="text" name='factura' class="form-control" value="<?php echo $factura; ?>">
                   </div>
                 </div>
+                <div class="row mt"></div>
+                
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Operador</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="operador">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit">Guardar</button>
+                      <button class="btn btn-theme04" type="button">Cancelar</button>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Importe</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="importe">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-lg-offset-2 col-lg-10">
-                    <button class="btn btn-theme" type="submit">Crear</button>
-                    <button class="btn btn-theme04" type="button">Cancelar</button>
-                  </div>
-                </div>
                 
                
               </form>

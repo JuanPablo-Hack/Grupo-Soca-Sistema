@@ -2,12 +2,12 @@
   $id=$_GET['id'];
   include 'php/conexion.php';
 
-  $sql="SELECT * FROM produccion_mina WHERE id='".$id."'";
+  $sql="SELECT * FROM patio_acopio WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   if ($Row = mysqli_fetch_array($result))
   {
     $folio=$Row['id'];
-    $nombre= $Row['nombre_mina'];
+    $nombre= $Row['mina_origen'];
     $unidad=$Row['unidad'];
     $encargado=$Row['operador'];
     $p_tara=$Row['p_tara'];
@@ -15,7 +15,7 @@
     $p_neto=$Row['p_neto'];
     $autoriza=$Row['autoriza'];
     
-    $hora=$Row['hora_salida'];
+    $hora=$Row['hora_ingreso'];
     $fecha=$Row['creado'];
    
     
@@ -105,7 +105,7 @@
                 <div class="row">
                   <div class="col-md-9">
                    
-                    <h4>Nombre de la Mina: <?php echo $nombre; ?></h4>
+                    <h4>Mina de Origen: <?php echo $nombre; ?></h4>
                     <address>
                   <strong>Autoriza:<?php echo $autoriza; ?></strong><br>
                   Unidad: <?php echo $nombre2; ?><br>
@@ -118,7 +118,7 @@
                   <div class="col-md-3">
                     <br>
                     <div>
-                      <div class="pull-left"> Hora de Salida: </div>
+                      <div class="pull-left"> Hora de Ingreso: </div>
                       <div class="pull-right"> <?php echo $hora; ?> </div>
                       <div class="clearfix"></div>
                     </div>

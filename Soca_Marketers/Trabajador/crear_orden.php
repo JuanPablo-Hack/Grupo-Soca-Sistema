@@ -1,5 +1,11 @@
 <?php
- include 'php/conexion.php';
+  include 'php/conexion.php';
+  $sql="SELECT * FROM trabajador";
+  $result = mysqli_query($conexion,$sql);
+  $sql2="SELECT * FROM unidades";
+  $result2 = mysqli_query($conexion,$sql2);
+  $sql3="SELECT * FROM minas";
+  $result3 = mysqli_query($conexion,$sql3);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,9 +26,11 @@
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link href="lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
-  <link href="lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
-  <link rel="stylesheet" href="lib/advanced-datatable/css/DT_bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-fileupload/bootstrap-fileupload.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datepicker/css/datepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-daterangepicker/daterangepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-timepicker/compiled/timepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datertimepicker.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
@@ -120,100 +128,127 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora Orden</h3>
-        <div class="row mb">
-          <!-- page start-->
-          <div class="content-panel">
-            <div class="adv-table">
-              <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
-                <thead>
-                  <tr>
-                    
-                    <th>Nombre de Mina</th>
-                    <th>Unidad</th>
-                    <th class="hidden-phone">Placas</th>
-                    <th class="hidden-phone">Operador</th>
-                    <th class="hidden-phone">No. Guia</th>
-                    <th class="hidden-phone">Autoriza</th>
-                    <th class="hidden-phone">Hora de Salida</th>
-                    <th class="hidden-phone">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <?php
-                    $sql="SELECT * FROM produccion_mina";
-                    $resultado = $conexion->query($sql);
-                    while ($mostrar=mysqli_fetch_array($resultado)) {  
-                  ?>
-                  <tr >
-                    
-                  <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM minas WHERE id='".$mostrar['nombre_mina']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM unidades WHERE id='".$mostrar['unidad']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['modelo'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM unidades WHERE id='".$mostrar['unidad']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['placas'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM trabajador WHERE id='".$mostrar['operador']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                    <td><?php echo $mostrar['no_guia'] ?></td>
-                    <td><?php echo $mostrar['autoriza'] ?></td>
-                    <td><?php echo $mostrar['hora_salida'] ?></td>
-                    <td>
-                     
-                      
-                      <a href='./orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
-
-                      <a href='./editar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                      <a href='./eliminar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
-                      
-                    </td>
-                  </tr>
-                  <?php
-                    }                 
+        <h3><i class="fa fa-angle-right"></i> Crear Registro de Producción Diaria de Mina</h3>
+        <div class="row mt">
+          <!--  DATE PICKERS -->
+          <div class="col-lg-12">
+            <div class="form-panel">
+              <form action="php/crear_orden.php" class="form-horizontal style-form" method='POST'>
+                
+              <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre de la mina</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='mina'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result3)) {			 
                  ?>
-                </tbody>
-              </table>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='unidad'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result2)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
+                <?php
+                }
+                ?>
+                </select>
+                  </div>
+                </div>
+                
+               
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Operador</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='operador'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
+                  </div>
+                </div>
+               
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Guía</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_guia' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_tara' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_burto' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P. Neto</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_neto' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Autoriza</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='autoriza' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Hora de Salida</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='hora_salida' class="form-control">
+                  </div>
+                </div>
+                
+                 
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit">Guardar</button>
+                      <button class="btn btn-theme04" type="button">Cancelar</button>
+                    </div>
+                  </div>
+                
+               
+              </form>
             </div>
+             
+          
+          <!-- col-lg-12-->
+        </div>
+            <!-- /form-panel -->
           </div>
-          <!-- page end-->
+          <!-- /col-lg-12 -->
         </div>
         <!-- /row -->
+        <!-- DATE TIME PICKERS -->
+       
+            <!-- /form-panel -->
+          </div>
+          <!-- /col-lg-12 -->
+        </div>
+        <!-- row -->
       </section>
       <!-- /wrapper -->
     </section>
@@ -243,17 +278,23 @@
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="lib/jquery/jquery.min.js"></script>
-  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="lib/jquery.scrollTo.min.js"></script>
   <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
-  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.dataTables.js"></script>
-  <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
- 
+  <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/date.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/moment.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+  <script src="lib/advanced-form-components.js"></script>
+
 </body>
 
 </html>
