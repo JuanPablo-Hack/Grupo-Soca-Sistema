@@ -1,11 +1,6 @@
 <?php
   $id=$_GET['id'];
-  $nombreServidor = "localhost";
-  $nombreUsuario = "root";
-  $passwordBaseDeDatos = "";
-  $nombreBaseDeDatos = "resoca";
-  
-  $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
+  include 'php/conexion.php';
   $sql="DELETE FROM trabajador WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   

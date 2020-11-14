@@ -1,10 +1,5 @@
 <?php
-  $nombreServidor = "localhost";
-  $nombreUsuario = "root";
-  $passwordBaseDeDatos = "";
-  $nombreBaseDeDatos = "resoca";
-  
-  $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
+  include 'php/conexion.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
