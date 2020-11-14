@@ -3,11 +3,11 @@
   include 'php/conexion.php';
 
   $id=$_GET['id'];
-  $sql="SELECT * FROM 	produccion_mina WHERE id='".$id."'";
+  $sql="SELECT * FROM 		patio_acopio_salida WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   if ($Row = mysqli_fetch_array($result))
   {
-    $nombre= $Row['nombre_mina'];
+    $nombre= $Row['patio_destino'];
     
     $unidad=$Row['unidad'];
     $operador=$Row['operador'];
@@ -108,8 +108,7 @@
             <ul class="sub">
               <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
-              <li><a href="alta_mina.html">Registrar Mina</a></li>
-              <li><a href="listar_minas.php">Minas Registradas</a></li>
+              
              
             </ul>
           </li>
@@ -136,31 +135,7 @@
             </ul>
           </li>
          
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-car"></i>
-              <span>Unidades</span>
-              </a>
-            <ul class="sub">
-              <li><a href="alta_unidad.html">Dar de alta</a></li>
-              <li><a href="listar_unidades.php">Mis Unidades</a></li>
-              
-
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-group"></i>
-              <span>Usuarios</span>
-              </a>
-            <ul class="sub">
-              <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
-              <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-             
-              
-              
-            </ul>
-          </li>
+          
          
         </ul>
         <!-- sidebar menu end-->
@@ -178,32 +153,17 @@
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="php/editar_orden.php" class="form-horizontal style-form" method='POST'>
+              <form action="php/editar_orden3.php" class="form-horizontal style-form" method='POST'>
               <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Identificador</label>
                   <div class="col-sm-4">
                     <input type="text" name='identificador' class="form-control" value="<?php echo $id;?>" readonly>
                   </div>
                 </div>
-              <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre de la mina</label>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Patio Destino</label>
                   <div class="col-sm-4">
-                  <select class="form-control" name='mina'>
-                  <option value="<?php echo $nombre; ?>"><?php  $sql1="SELECT * FROM minas WHERE id='".$nombre."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;?></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result3)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
+                    <input type="text" name='mina' class="form-control" value="<?php echo $nombre?>">
                   </div>
                 </div>
                 <div class="form-group">

@@ -3,11 +3,11 @@
   include 'php/conexion.php';
 
   $id=$_GET['id'];
-  $sql="SELECT * FROM 	produccion_mina WHERE id='".$id."'";
+  $sql="SELECT * FROM 	patio_acopio WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   if ($Row = mysqli_fetch_array($result))
   {
-    $nombre= $Row['nombre_mina'];
+    $nombre= $Row['mina_origen'];
     
     $unidad=$Row['unidad'];
     $operador=$Row['operador'];
@@ -16,7 +16,7 @@
     $p_bruto=$Row['p_bruto'];
     $p_neto=$Row['p_neto'];
     $autoriza=$Row['autoriza'];
-    $hora_salida=$Row['hora_salida'];
+    $hora_salida=$Row['hora_ingreso'];
    
   }
   $sql="SELECT * FROM trabajador";
@@ -108,8 +108,7 @@
             <ul class="sub">
               <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
-              <li><a href="alta_mina.html">Registrar Mina</a></li>
-              <li><a href="listar_minas.php">Minas Registradas</a></li>
+              
              
             </ul>
           </li>
@@ -136,31 +135,7 @@
             </ul>
           </li>
          
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-car"></i>
-              <span>Unidades</span>
-              </a>
-            <ul class="sub">
-              <li><a href="alta_unidad.html">Dar de alta</a></li>
-              <li><a href="listar_unidades.php">Mis Unidades</a></li>
-              
-
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-group"></i>
-              <span>Usuarios</span>
-              </a>
-            <ul class="sub">
-              <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
-              <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-             
-              
-              
-            </ul>
-          </li>
+          
          
         </ul>
         <!-- sidebar menu end-->
@@ -178,7 +153,7 @@
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="php/editar_orden.php" class="form-horizontal style-form" method='POST'>
+              <form action="php/editar_orden2.php" class="form-horizontal style-form" method='POST'>
               <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Identificador</label>
                   <div class="col-sm-4">

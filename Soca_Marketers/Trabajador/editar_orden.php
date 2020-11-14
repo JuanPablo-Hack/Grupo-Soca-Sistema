@@ -1,29 +1,30 @@
 <?php
-  $id=$_GET['id'];
-  $nombreServidor = "localhost";
-  $nombreUsuario = "root";
-  $passwordBaseDeDatos = "";
-  $nombreBaseDeDatos = "resoca";
   
-  $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
-  $sql="SELECT * FROM ordenes WHERE id='".$id."'";
+  include 'php/conexion.php';
+
+  $id=$_GET['id'];
+  $sql="SELECT * FROM 	produccion_mina WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   if ($Row = mysqli_fetch_array($result))
   {
-    $nombre= $Row['cliente'];
+    $nombre= $Row['nombre_mina'];
     
-    $encargado=$Row['encargado'];
-    $cargo=$Row['cargo'];
-    $servicio=$Row['servicio'];
-    $fecha=$Row['fecha'];
-    $cantidad=$Row['cantidad'];
     $unidad=$Row['unidad'];
-    $concepto=$Row['concepto'];
-    $manifiesto=$Row['manifiesto'];
-    $factura=$Row['factura'];
-    $unidadasig=$Row['unidadasig'];
-    $estado=$Row['estado'];
+    $operador=$Row['operador'];
+    $no_guia=$Row['no_guia'];
+    $p_tara=$Row['p_tara'];
+    $p_bruto=$Row['p_bruto'];
+    $p_neto=$Row['p_neto'];
+    $autoriza=$Row['autoriza'];
+    $hora_salida=$Row['hora_salida'];
+   
   }
+  $sql="SELECT * FROM trabajador";
+  $result = mysqli_query($conexion,$sql);
+  $sql2="SELECT * FROM unidades";
+  $result2 = mysqli_query($conexion,$sql2);
+  $sql3="SELECT * FROM minas";
+  $result3 = mysqli_query($conexion,$sql3);
   
 ?>
 <!DOCTYPE html>
@@ -102,24 +103,23 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Ordenes de Servicios</span>
+              <span>Producción de Mina</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_orden.php">Crear Orden</a></li>
+              <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
-              <li><a href="calendar.html">Calendario</a></li>
-              <li><a href="crear_servicio.html">Crear Servicio</a></li>
-              <li><a href="listar_servicios.php">Lista de Servicios</a></li>
+              
+             
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
-              <span>Cortes</span>
+              <span>Ingresos de Patio de Acopio</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_reporte.html">Programar Corte</a></li>
-              <li><a href="listar_reportes.php">Bitacora de Corte</a></li>
+              <li><a href="crear_orden2.php">Crear Registro</a></li>
+              <li><a href="listar_orden2.php">Bitacora</a></li>
               
               
             </ul>
@@ -127,58 +127,15 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
-              <span>Manifiestos</span>
+              <span>Salida de Patio de Acopio</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_manifiesto.html">Crear Manifiesto</a></li>
-              <li><a href="listar_manifiesto.php">Bitacora de Corte</a></li>
+              <li><a href="crear_orden3.php">Crear Registro</a></li>
+              <li><a href="listar_orden3.php">Bitacora</a></li>
             </ul>
           </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Acuses</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_acuse.html">Crear Acuses</a></li>
-              <li><a href="listar_acuses.php">Bitacora de Acuses</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Reporte Imades</span>
-              </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-car"></i>
-              <span>Unidades</span>
-              </a>
-            <ul class="sub">
-              <li><a href="alta_unidad.html">Dar de alta</a></li>
-              <li><a href="listar_unidades.php">Mis Unidades</a></li>
-              <li><a href="bitacora_combustible.html">Registrar Mantenimiento</a></li>
-              <li><a href="bitacora_combustible.html">Registrar combustible</a></li>
-              <li><a href="listar_mantenimientos.php">Listar Mantenimientos</a></li>
-              <li><a href="listar_combustible.php">Listar combustibles</a></li>
-
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-group"></i>
-              <span>Usuarios</span>
-              </a>
-            <ul class="sub">
-              <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
-              <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-              <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-              <li><a href="listar_clientes.php">Listar Clientes</a></li>
-              
-              
-            </ul>
-          </li>
+         
+          
          
         </ul>
         <!-- sidebar menu end-->
@@ -197,82 +154,118 @@
           <div class="col-lg-12">
             <div class="form-panel">
               <form action="php/editar_orden.php" class="form-horizontal style-form" method='POST'>
-                <h3>Datos del Servicio</h3>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Indentificador</label>
+              <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Identificador</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="identificador" value="<?php echo $id; ?>" readonly>
+                    <input type="text" name='identificador' class="form-control" value="<?php echo $id;?>" readonly>
                   </div>
                 </div>
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Encargado</label>
+              <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre de la mina</label>
                   <div class="col-sm-4">
-                    <input type="text" name='encargado' class="form-control" value="<?php echo $encargado; ?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Cargo</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='cargo' class="form-control" value="<?php echo $cargo; ?>">
-                  </div>
-                </div>
-               
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Estado de la Orden</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='estado' class="form-control" value="<?php echo $estado; ?>">
-                  </div>
-                </div>
-                
-                <div class="form-group">
-                  <label class="control-label col-md-3">Fecha de programación</label>
-                  <div class="col-md-3 col-xs-11">
-                    <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
-                      <input type="text" readonly="" value="<?php echo $fecha; ?> size="16" name='fecha' class="form-control">
-                      <span class="input-group-btn add-on">
-                        <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
-                        </span>
-                    </div>
-                    <span class="help-block">Select date</span>
-                  </div>
-                </div>
-                <div class="row mt"></div>
-                <h3>Datos del Residuo</h3>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Cantidad</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='cantidad' class="form-control" value="<?php echo $cantidad; ?>">
+                  <select class="form-control" name='mina'>
+                  <option value="<?php echo $nombre; ?>"><?php  $sql1="SELECT * FROM minas WHERE id='".$nombre."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;?></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result3)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
                   <div class="col-sm-4">
-                    <input type="text" name='unidad_residuo' class="form-control" value="<?php echo $unidad; ?>">
+                  <select class="form-control" name='unidad'>
+                  <option value="<?php echo $unidad; ?>"><?php   $sql1="SELECT * FROM unidades WHERE id='".$unidad."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['modelo'];  
+                      }
+                      echo $nombre; ?></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result2)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Concepto</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='concepto' class="form-control" value="<?php echo $concepto; ?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Manifiesto</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='manifiesto' class="form-control" value="<?php echo $manifiesto; ?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Factura</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='factura' class="form-control" value="<?php echo $factura; ?>">
-                  </div>
-                </div>
-                <div class="row mt"></div>
                 
+               
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Operador</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='operador'>
+                  <option value="<?php echo $operador; ?>"><?php $sql1="SELECT * FROM trabajador WHERE id='".$operador."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;?></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
+                  </div>
+                </div>
+               
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Guía</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_guia' class="form-control" value="<?php echo $no_guia;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_tara' class="form-control" value="<?php echo $p_tara;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_burto' class="form-control" value="<?php echo $p_bruto;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P. Neto</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_neto' class="form-control" value="<?php echo $p_neto;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Autoriza</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='autoriza' class="form-control" value="<?php echo $autoriza;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Hora de Salida</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='hora_salida' class="form-control" value="<?php echo $hora_salida;?>">
+                  </div>
+                </div>
+                
+                 
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
                       <button class="btn btn-theme" type="submit">Guardar</button>

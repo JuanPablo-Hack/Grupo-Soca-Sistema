@@ -1,7 +1,7 @@
 <?php
   $id=$_GET['id'];
   include 'php/conexion.php';
-  $sql="DELETE FROM produccion_mina WHERE id='".$id."'";
+  $sql="DELETE FROM patio_acopio_salida WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   
   

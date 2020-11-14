@@ -1,29 +1,26 @@
 <?php
   $id=$_GET['id'];
-  $nombreServidor = "localhost";
-  $nombreUsuario = "root";
-  $passwordBaseDeDatos = "";
-  $nombreBaseDeDatos = "resoca";
+  include 'php/conexion.php';
   
-  $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
-  $sql="SELECT * FROM ordenes WHERE id='".$id."'";
+  
+  $sql="SELECT * FROM viajes WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   if ($Row = mysqli_fetch_array($result))
   {
-    $nombre= $Row['cliente'];
+    $fecha= $Row['fecha'];
     
-    $encargado=$Row['encargado'];
-    $cargo=$Row['cargo'];
-    $servicio=$Row['servicio'];
-    $fecha=$Row['fecha'];
-    $cantidad=$Row['cantidad'];
+    $hora=$Row['hora'];
     $unidad=$Row['unidad'];
-    $concepto=$Row['concepto'];
-    $manifiesto=$Row['manifiesto'];
-    $factura=$Row['factura'];
-    $unidadasig=$Row['unidadasig'];
-    $estado=$Row['estado'];
+    $operador=$Row['operador'];
+    $no_viaje=$Row['no_viaje'];
+    $peso=$Row['peso'];
+    $transportista=$Row['transportista'];
+    
   }
+  $sql="SELECT * FROM trabajador";
+  $result = mysqli_query($conexion,$sql);
+  $sql2="SELECT * FROM unidades";
+  $result2 = mysqli_query($conexion,$sql2);
   
 ?>
 <!DOCTYPE html>
@@ -102,54 +99,28 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Ordenes de Servicios</span>
+              <span>Registro de Viajes</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_orden.php">Crear Orden</a></li>
+              <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
-              <li><a href="calendar.html">Calendario</a></li>
-              <li><a href="crear_servicio.html">Crear Servicio</a></li>
-              <li><a href="listar_servicios.php">Lista de Servicios</a></li>
+             
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Cortes</span>
+              <i class="fa fa-calendar"></i>
+              <span>Entradas y Salidas</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_reporte.html">Programar Corte</a></li>
-              <li><a href="listar_reportes.php">Bitacora de Corte</a></li>
-              
-              
+              <li><a href="crear_orden2.php">Crear Registro</a></li>
+              <li><a href="listar_orden2.php">Bitacora</a></li>
+             
             </ul>
           </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Manifiestos</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_manifiesto.html">Crear Manifiesto</a></li>
-              <li><a href="listar_manifiesto.php">Bitacora de Corte</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Acuses</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_acuse.html">Crear Acuses</a></li>
-              <li><a href="listar_acuses.php">Bitacora de Acuses</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Reporte Imades</span>
-              </a>
-          </li>
+         
+         
+         
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-car"></i>
@@ -158,10 +129,7 @@
             <ul class="sub">
               <li><a href="alta_unidad.html">Dar de alta</a></li>
               <li><a href="listar_unidades.php">Mis Unidades</a></li>
-              <li><a href="bitacora_combustible.html">Registrar Mantenimiento</a></li>
-              <li><a href="bitacora_combustible.html">Registrar combustible</a></li>
-              <li><a href="listar_mantenimientos.php">Listar Mantenimientos</a></li>
-              <li><a href="listar_combustible.php">Listar combustibles</a></li>
+              
 
             </ul>
           </li>
@@ -173,8 +141,7 @@
             <ul class="sub">
               <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
               <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-              <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-              <li><a href="listar_clientes.php">Listar Clientes</a></li>
+             
               
               
             </ul>
@@ -197,40 +164,17 @@
           <div class="col-lg-12">
             <div class="form-panel">
               <form action="php/editar_orden.php" class="form-horizontal style-form" method='POST'>
-                <h3>Datos del Servicio</h3>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Indentificador</label>
+              <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Identificador</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="identificador" value="<?php echo $id; ?>" readonly>
+                    <input type="text" name='mina' class="form-control" value="<?php echo $id;?>" readonly>
                   </div>
                 </div>
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Encargado</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='encargado' class="form-control" value="<?php echo $encargado; ?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Cargo</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='cargo' class="form-control" value="<?php echo $cargo; ?>">
-                  </div>
-                </div>
-               
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Estado de la Orden</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='estado' class="form-control" value="<?php echo $estado; ?>">
-                  </div>
-                </div>
-                
-                <div class="form-group">
-                  <label class="control-label col-md-3">Fecha de programación</label>
+              <div class="form-group">
+                  <label class="control-label col-md-3">Fecha de llegada</label>
                   <div class="col-md-3 col-xs-11">
                     <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
-                      <input type="text" readonly="" value="<?php echo $fecha; ?> size="16" name='fecha' class="form-control">
+                      <input type="text" readonly="" value="<?php echo $fecha;?>" size="16" name='fecha' class="form-control">
                       <span class="input-group-btn add-on">
                         <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
                         </span>
@@ -238,41 +182,81 @@
                     <span class="help-block">Select date</span>
                   </div>
                 </div>
-                <div class="row mt"></div>
-                <h3>Datos del Residuo</h3>
-                <hr>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Cantidad</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Hora de llegada</label>
                   <div class="col-sm-4">
-                    <input type="text" name='cantidad' class="form-control" value="<?php echo $cantidad; ?>">
+                    <input type="text" name='mina' class="form-control" value="<?php echo $hora;?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
                   <div class="col-sm-4">
-                    <input type="text" name='unidad_residuo' class="form-control" value="<?php echo $unidad; ?>">
+                  <select class="form-control" name='unidad'>
+                  <option value="<?php echo $unidad; ?>"><?php   $sql1="SELECT * FROM unidades WHERE id='".$unidad."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['modelo'];  
+                      }
+                      echo $nombre; ?></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result2)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Concepto</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='concepto' class="form-control" value="<?php echo $concepto; ?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Manifiesto</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='manifiesto' class="form-control" value="<?php echo $manifiesto; ?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Factura</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='factura' class="form-control" value="<?php echo $factura; ?>">
-                  </div>
-                </div>
-                <div class="row mt"></div>
                 
+               
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Operador</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='operador'>
+                  <option value="<?php echo $operador; ?>"><?php $sql1="SELECT * FROM trabajador WHERE id='".$operador."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;?></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
+                  </div>
+                </div>
+               
+                
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Viaje</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_tara' class="form-control" value="<?php echo $no_viaje; ?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Peso</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_burto' class="form-control" value="<?php echo $peso; ?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Línea Transportista </label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_neto' class="form-control" value="<?php echo $transportista; ?>">
+                  </div>
+                </div>
+                
+                
+                 
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
                       <button class="btn btn-theme" type="submit">Guardar</button>

@@ -3,11 +3,11 @@
   include 'php/conexion.php';
 
   $id=$_GET['id'];
-  $sql="SELECT * FROM 	produccion_mina WHERE id='".$id."'";
+  $sql="SELECT * FROM 	patio_acopio WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   if ($Row = mysqli_fetch_array($result))
   {
-    $nombre= $Row['nombre_mina'];
+    $nombre= $Row['mina_origen'];
     
     $unidad=$Row['unidad'];
     $operador=$Row['operador'];
@@ -16,7 +16,7 @@
     $p_bruto=$Row['p_bruto'];
     $p_neto=$Row['p_neto'];
     $autoriza=$Row['autoriza'];
-    $hora_salida=$Row['hora_salida'];
+    $hora_salida=$Row['hora_ingreso'];
    
   }
   $sql="SELECT * FROM trabajador";
@@ -178,7 +178,7 @@
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="php/editar_orden.php" class="form-horizontal style-form" method='POST'>
+              <form action="php/editar_orden2.php" class="form-horizontal style-form" method='POST'>
               <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Identificador</label>
                   <div class="col-sm-4">
