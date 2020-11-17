@@ -1,3 +1,24 @@
+<?php
+  $id=$_GET['id'];
+  include 'php/conexion.php';
+  $sql="SELECT * FROM unidades WHERE id='".$id."'";
+  $result = mysqli_query($conexion,$sql);
+  if ($Row = mysqli_fetch_array($result))
+  {
+    $modelo= $Row['modelo'];
+    
+    $ano=$Row['ano'];
+    $color=$Row['color'];
+    $placas=$Row['placas'];
+    $no_economico=$Row['noeconomico'];
+    $capacidad=$Row['capacidad'];
+    $tipo_unidad=$Row['tipounidad'];
+    $tipo_combustible=$Row['tipocombustible'];
+    $serie=$Row['serie'];
+    $descripcion=$Row['descripcion'];
+  }
+  
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,7 +79,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="img/slg.png" class="img-circle" width="80"></a></p>
           <h5 class="centered">Admin</h5>
           <li class="mt">
             <a class="active" href="index.html">
@@ -69,54 +90,28 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Ordenes de Servicios</span>
+              <span>Registro de Viajes</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_orden.php">Crear Orden</a></li>
+              <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
-              <li><a href="calendar.html">Calendario</a></li>
-              <li><a href="crear_servicio.html">Crear Servicio</a></li>
-              <li><a href="listar_servicios.php">Lista de Servicios</a></li>
+             
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Cortes</span>
+              <i class="fa fa-calendar"></i>
+              <span>Entradas y Salidas</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_reporte.html">Programar Corte</a></li>
-              <li><a href="listar_reportes.php">Bitacora de Corte</a></li>
-              
-              
+              <li><a href="crear_orden2.php">Crear Registro</a></li>
+              <li><a href="listar_orden2.php">Bitacora</a></li>
+             
             </ul>
           </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Manifiestos</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_manifiesto.html">Crear Manifiesto</a></li>
-              <li><a href="listar_manifiesto.php">Bitacora de Corte</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Acuses</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_acuse.html">Crear Acuses</a></li>
-              <li><a href="listar_acuses.php">Bitacora de Acuses</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Reporte Imades</span>
-              </a>
-          </li>
+         
+         
+         
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-car"></i>
@@ -125,10 +120,7 @@
             <ul class="sub">
               <li><a href="alta_unidad.html">Dar de alta</a></li>
               <li><a href="listar_unidades.php">Mis Unidades</a></li>
-              <li><a href="bitacora_combustible.html">Registrar Mantenimiento</a></li>
-              <li><a href="bitacora_combustible.html">Registrar combustible</a></li>
-              <li><a href="listar_mantenimientos.php">Listar Mantenimientos</a></li>
-              <li><a href="listar_combustible.php">Listar combustibles</a></li>
+              
 
             </ul>
           </li>
@@ -140,8 +132,7 @@
             <ul class="sub">
               <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
               <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-              <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-              <li><a href="listar_clientes.php">Listar Clientes</a></li>
+             
               
               
             </ul>
@@ -158,7 +149,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Alta de Unidad</h3>
+        <h3><i class="fa fa-angle-right"></i> Editar de Unidad</h3>
         <!-- BASIC FORM VALIDATION -->
       
         <!-- /row -->
@@ -168,65 +159,71 @@
            
             <div class="form-panel">
               <div class=" form">
-                <form class="cmxform form-horizontal style-form" id="commentForm" method="POST" action="./php/agregar_unidad.php">
+                <form class="cmxform form-horizontal style-form" id="commentForm" method="POST" action="./php/editar_unidad.php">
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Identificador</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='identificador' class="form-control" value="<?php echo $id;?>" readonly>
+                  </div>
+                </div>
                   <div class="form-group ">
                     <label for="cname" class="control-label col-lg-2">Modelo</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="cname" name="modelo" minlength="2" type="text" required />
+                      <input class=" form-control" id="cname" name="modelo" minlength="2" type="text" value="<?php echo $modelo;?>" required />
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="cname" class="control-label col-lg-2">Año</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="cname" name="ano" minlength="2" type="text" required />
+                      <input class=" form-control" id="cname" name="ano" minlength="2" type="text" value="<?php echo $ano;?>" required />
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="curl" class="control-label col-lg-2">Color</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="curl" type="text" name="color" required />
+                      <input class="form-control " id="curl" type="text" name="color" value="<?php echo $color;?>" required />
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="curl" class="control-label col-lg-2">Placas</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="curl" type="text" name="placas" required />
+                      <input class="form-control " id="curl" type="text" name="placas" value="<?php echo $placas;?>" required />
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="curl" class="control-label col-lg-2">No. economico</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="curl" type="text" name="no_economico" required />
+                      <input class="form-control " id="curl" type="text" name="no_economico" value="<?php echo $no_economico;?>" required />
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="curl" class="control-label col-lg-2">Capacidad de Carga</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="curl" type="text" name="capacidad" />
+                      <input class="form-control " id="curl" type="text" name="capacidad" value="<?php echo $capacidad;?>" />
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="curl" class="control-label col-lg-2">Tipo de unidad</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="curl" type="text" name="tipo_unidad" />
+                      <input class="form-control " id="curl" type="text" name="tipo_unidad" value="<?php echo $tipo_unidad;?>" />
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="curl" class="control-label col-lg-2">Tipo de Combustible</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="curl" type="text" name="tipo_combustible" required />
+                      <input class="form-control " id="curl" type="text" name="tipo_combustible" value="<?php echo $tipo_combustible;?>" required />
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="curl" class="control-label col-lg-2">No. de serie</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="curl" type="text" name="serie" required/>
+                      <input class="form-control " id="curl" type="text" name="serie" value="<?php echo $serie;?>" required/>
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="ccomment" class="control-label col-lg-2">Descripción</label>
                     <div class="col-lg-10">
-                      <textarea class="form-control " id="ccomment" name="descripcion" required></textarea>
+                      <textarea class="form-control " id="ccomment" name="descripcion" value="<?php echo $descripcion;?>" required></textarea>
                     </div>
                   </div>
                   <div class="form-group">

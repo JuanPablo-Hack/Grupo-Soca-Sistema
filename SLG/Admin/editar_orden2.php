@@ -1,9 +1,38 @@
 <?php
+  $id=$_GET['id'];
   include 'php/conexion.php';
+  
+  
+  $sql="SELECT * FROM mercancia WHERE id='".$id."'";
+  $result = mysqli_query($conexion,$sql);
+  if ($Row = mysqli_fetch_array($result))
+  {
+    $no_formato= $Row['no_formato'];
+    $no_contenedor= $Row['no_contenedor'];
+    
+    $naviera=$Row['naviera'];
+    $tipo_contenedor=$Row['tipo_contenedor'];
+    $fecha=$Row['fecha'];
+    $booking=$Row['booking'];
+    $referencia=$Row['referencia'];
+    $agencia_aduanal=$Row['agencia_aduanal'];
+    $cliente=$Row['cliente'];
+    $transportista=$Row['transportista'];
+    $unidad=$Row['unidad'];
+    $operador=$Row['operador'];
+    $observa=$Row['observa'];
+    $hora_comienzo=$Row['hora_comienzo'];
+    $peso=$Row['peso'];
+    $hora_final=$Row['hora_final'];
+    $no_vgm=$Row['no_vgm'];
+    $embalaje=$Row['embalaje'];
+    
+  }
   $sql="SELECT * FROM trabajador";
   $result = mysqli_query($conexion,$sql);
   $sql2="SELECT * FROM unidades";
   $result2 = mysqli_query($conexion,$sql2);
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -140,18 +169,47 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Registro de Producción Diaria de Mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Editar Orden</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="php/crear_orden.php" class="form-horizontal style-form" method='POST'>
-                
+              <form action="php/editar_orden2.php" class="form-horizontal style-form" method='POST'>
               <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Identificador</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='id' class="form-control" value="<?php echo $id;?>" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Formato</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_formato' class="form-control" value="<?php echo $no_formato;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Contenedor</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_contenedor' class="form-control" value="<?php echo $no_contenedor;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Línea Naviera</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='naviera' class="form-control" value="<?php echo $naviera;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo de Contenedor</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='tipo_contenedor' class="form-control" value="<?php echo $tipo_contenedor;?>">
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="control-label col-md-3">Fecha de llegada</label>
                   <div class="col-md-3 col-xs-11">
                     <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
-                      <input type="text" readonly="" value="01-01-2014" size="16" name='fecha' class="form-control">
+                      <input type="text" readonly="" value="<?php echo $fecha;?>" size="16" name='fecha' class="form-control">
                       <span class="input-group-btn add-on">
                         <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
                         </span>
@@ -160,16 +218,48 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Hora de llegada</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Booking</label>
                   <div class="col-sm-4">
-                    <input type="text" name='mina' class="form-control">
+                    <input type="text" name='booking' class="form-control" value="<?php echo $booking;?>">
                   </div>
                 </div>
+             
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Referencia</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='referencia' class="form-control" value="<?php echo $referencia;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Agencia Aduanal</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='agencia_aduanal' class="form-control" value="<?php echo $agencia_aduanal;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Cliente</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='cliente' class="form-control" value="<?php echo $cliente;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Transportista</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='transportista' class="form-control" value="<?php echo $transportista;?>">
+                  </div>
+                </div>
+               
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
                   <div class="col-sm-4">
                   <select class="form-control" name='unidad'>
-                  <option value="0"></option>
+                  <option value="<?php echo $unidad;?>"><?php   $sql1="SELECT * FROM unidades WHERE id='".$unidad."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['modelo'];  
+                      }
+                      echo $nombre; ?></option>
                   <?php 
                     while ($Row1 = mysqli_fetch_array($result2)) {			 
                  ?>
@@ -187,7 +277,13 @@
                   <label class="col-sm-2 col-sm-2 control-label">Operador</label>
                   <div class="col-sm-4">
                   <select class="form-control" name='operador'>
-                  <option value="0"></option>
+                  <option value="<?php echo $operador; ?>"><?php $sql1="SELECT * FROM trabajador WHERE id='".$operador."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;?></option>
                   <?php 
                     while ($Row1 = mysqli_fetch_array($result)) {			 
                  ?>
@@ -202,24 +298,41 @@
                 
                 
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. Viaje</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Observaciones</label>
                   <div class="col-sm-4">
-                    <input type="text" name='p_tara' class="form-control">
+                    <input type="text" name='observaciones' class="form-control" value="<?php echo $observa; ?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Peso</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Hora de Comienzo</label>
                   <div class="col-sm-4">
-                    <input type="text" name='p_burto' class="form-control">
+                    <input type="text" name='hora_comienzo' class="form-control" value="<?php echo $hora_comienzo; ?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Línea Transportista </label>
+                  <label class="col-sm-2 col-sm-2 control-label">Peso </label>
                   <div class="col-sm-4">
-                    <input type="text" name='p_neto' class="form-control">
+                    <input type="text" name='peso' class="form-control" value="<?php echo $peso; ?>">
                   </div>
                 </div>
-                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Hora finalización </label>
+                  <div class="col-sm-4">
+                    <input type="text" name='hora_final' class="form-control" value="<?php echo $hora_final; ?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. VGM </label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_vgm' class="form-control" value="<?php echo $no_vgm; ?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Embalaje </label>
+                  <div class="col-sm-4">
+                    <input type="text" name='embalaje' class="form-control" value="<?php echo $embalaje; ?>">
+                  </div>
+                </div>
                 
                  
                 <div class="form-group">

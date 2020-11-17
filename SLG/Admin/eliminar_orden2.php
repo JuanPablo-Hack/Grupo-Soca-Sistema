@@ -3,7 +3,7 @@
   include 'php/conexion.php';
   
   $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
-  $sql="DELETE FROM viajes WHERE id='".$id."'";
+  $sql="DELETE FROM mercancia WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   
   

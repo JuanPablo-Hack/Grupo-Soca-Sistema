@@ -1,11 +1,6 @@
 <?php
   $id=$_GET['id'];
-  $nombreServidor = "localhost";
-  $nombreUsuario = "root";
-  $passwordBaseDeDatos = "";
-  $nombreBaseDeDatos = "resoca";
-  
-  $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
+  include 'php/conexion.php';
   $sql="SELECT * FROM trabajador WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   if ($Row = mysqli_fetch_array($result))
@@ -82,7 +77,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="img/slg.png" class="img-circle" width="80"></a></p>
           <h5 class="centered">Admin</h5>
           <li class="mt">
             <a class="active" href="index.html">
@@ -93,54 +88,28 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Ordenes de Servicios</span>
+              <span>Registro de Viajes</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_orden.php">Crear Orden</a></li>
+              <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
-              <li><a href="calendar.html">Calendario</a></li>
-              <li><a href="crear_servicio.html">Crear Servicio</a></li>
-              <li><a href="listar_servicios.php">Lista de Servicios</a></li>
+             
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Cortes</span>
+              <i class="fa fa-calendar"></i>
+              <span>Entradas y Salidas</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_reporte.html">Programar Corte</a></li>
-              <li><a href="listar_reportes.php">Bitacora de Corte</a></li>
-              
-              
+              <li><a href="crear_orden2.php">Crear Registro</a></li>
+              <li><a href="listar_orden2.php">Bitacora</a></li>
+             
             </ul>
           </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Manifiestos</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_manifiesto.html">Crear Manifiesto</a></li>
-              <li><a href="listar_manifiesto.php">Bitacora de Corte</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Acuses</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_acuse.html">Crear Acuses</a></li>
-              <li><a href="listar_acuses.php">Bitacora de Acuses</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Reporte Imades</span>
-              </a>
-          </li>
+         
+         
+         
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-car"></i>
@@ -149,10 +118,7 @@
             <ul class="sub">
               <li><a href="alta_unidad.html">Dar de alta</a></li>
               <li><a href="listar_unidades.php">Mis Unidades</a></li>
-              <li><a href="bitacora_combustible.html">Registrar Mantenimiento</a></li>
-              <li><a href="bitacora_combustible.html">Registrar combustible</a></li>
-              <li><a href="listar_mantenimientos.php">Listar Mantenimientos</a></li>
-              <li><a href="listar_combustible.php">Listar combustibles</a></li>
+              
 
             </ul>
           </li>
@@ -164,8 +130,7 @@
             <ul class="sub">
               <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
               <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-              <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-              <li><a href="listar_clientes.php">Listar Clientes</a></li>
+             
               
               
             </ul>
@@ -194,7 +159,7 @@
             
             <div class="form-panel">
               <div class="form">
-              <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/agregar_trabajador.php">
+              <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/editar_trabajador.php">
               <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Indentificador</label>
                   <div class="col-sm-4">

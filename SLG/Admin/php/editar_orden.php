@@ -2,7 +2,7 @@
 
 include 'conexion.php';
 
-$id=$_POST['identificador'];
+$id=$_POST['id'];
 
 $fecha=$_POST['fecha'];
 $hora=$_POST['mina'];
