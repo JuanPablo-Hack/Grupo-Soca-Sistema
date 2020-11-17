@@ -10,6 +10,7 @@ $p_burto=$_POST['p_burto'];
 $p_neto=$_POST['p_neto'];
 $autoriza=$_POST['autoriza'];
 $no_guia=$_POST['no_guia'];
+$vgm=$_POST['vgm'];
 $hora=$_POST['hora_salida'];
 
 
@@ -21,7 +22,7 @@ if ($conexion ->connect_error) {
 }else{
    
          
-        $sql="INSERT INTO patio_acopio_salida(patio_destino,unidad,operador,no_guia,p_tara,p_bruto,p_neto,autoriza,hora_salida) VALUES ('$mina','$unidad','$operador','$no_guia','$p_tara','$p_burto','$p_neto','$autoriza','$hora');";
+        $sql="INSERT INTO patio_acopio_salida(patio_destino,unidad,operador,no_guia,p_tara,p_bruto,p_neto,no_vgm,autoriza,hora_salida) VALUES ('$mina','$unidad','$operador','$no_guia','$p_tara','$p_burto','$vgm','$p_neto','$autoriza','$hora');";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");

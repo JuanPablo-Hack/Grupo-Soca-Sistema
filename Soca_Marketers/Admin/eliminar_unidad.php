@@ -1,7 +1,7 @@
 <?php
   $id=$_GET['id'];
   include 'php/conexion.php';
-  $sql="DELETE FROM trabajador WHERE id='".$id."'";
+  $sql="DELETE FROM unidades WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   
   

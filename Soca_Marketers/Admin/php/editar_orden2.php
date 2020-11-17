@@ -13,13 +13,15 @@ $p_neto=$_POST['p_neto'];
 $autoriza=$_POST['autoriza'];
 $no_guia=$_POST['no_guia'];
 $hora=$_POST['hora_salida'];
+$mineral=$_POST['mineral'];
+$recibe=$_POST['recibe'];
 
 if ($conexion ->connect_error) {
     die("Conexion Fallida: " . $conn ->connect_error);
 }else{
    
          
-        $sql="UPDATE patio_acopio SET mina_origen='$mina',unidad='$unidad',operador='$operador',no_guia='$no_guia',p_tara='$p_tara',p_bruto='$p_burto',p_neto='$p_neto',autoriza='$autoriza',hora_ingreso='$hora'  WHERE id='$id'";
+        $sql="UPDATE patio_acopio SET mina_origen='$mina',unidad='$unidad',operador='$operador',no_guia='$no_guia',mineral='$mineral',p_tara='$p_tara',p_bruto='$p_burto',p_neto='$p_neto',autoriza='$autoriza',recibe='$recibe',hora_ingreso='$hora'  WHERE id='$id'";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");

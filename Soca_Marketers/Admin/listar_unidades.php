@@ -62,7 +62,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a></p>
           <h5 class="centered">Admin</h5>
           <li class="mt">
             <a class="active" href="index.html">
@@ -163,6 +163,7 @@
                       <th class="numeric">Tipo de Combustible</th>
                       <th class="numeric">Serie</th>
                       <th class="numeric">Descripcion</th>
+                      <th class="numeric">Acciones</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -183,6 +184,15 @@
                     <td><?php echo $mostrar['tipocombustible']?></td>
                     <td><?php echo $mostrar['serie']?></td>
                     <td><?php echo $mostrar['descripcion']?></td>
+                    <td>
+                     
+                      
+                    
+
+                     <a href='./editar_unidad.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                     <a href='./eliminar_unidad.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                     
+                   </td>
                   </tr>
                  <?php
                     }                 

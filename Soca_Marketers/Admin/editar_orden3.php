@@ -17,6 +17,7 @@
     $p_neto=$Row['p_neto'];
     $autoriza=$Row['autoriza'];
     $hora_salida=$Row['hora_salida'];
+    $vgm=$Row['no_vgm'];
    
   }
   $sql="SELECT * FROM trabajador";
@@ -92,7 +93,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a></p>
           <h5 class="centered">Admin</h5>
           <li class="mt">
             <a class="active" href="index.html">
@@ -173,7 +174,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Editar Orden</h3>
+        <h3><i class="fa fa-angle-right"></i> Editar  salida de patio acopio</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
@@ -254,6 +255,12 @@
                   <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_burto' class="form-control" value="<?php echo $p_bruto;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. VGM</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='vgm' class="form-control" value="<?php echo $vgm;?>">
                   </div>
                 </div>
                 <div class="form-group">

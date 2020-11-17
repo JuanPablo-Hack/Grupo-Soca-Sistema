@@ -72,7 +72,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a></p>
           <h5 class="centered">Admin</h5>
           <li class="mt">
             <a class="active" href="index.html">
@@ -215,7 +215,12 @@
                     <input type="text" name='no_guia' class="form-control">
                   </div>
                 </div> 
-                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo de minaral</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='mineral' class="form-control">
+                  </div>
+                </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
                   <div class="col-sm-4">
@@ -238,6 +243,12 @@
                   <label class="col-sm-2 col-sm-2 control-label">Autoriza</label>
                   <div class="col-sm-4">
                     <input type="text" name='autoriza' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre del quien recibe</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='recibe' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">

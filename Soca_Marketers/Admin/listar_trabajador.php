@@ -64,7 +64,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a></p>
           <h5 class="centered">Admin</h5>
           <li class="mt">
             <a class="active" href="index.html">
@@ -175,8 +175,9 @@
                     <td><?php echo $mostrar['nombre'] ?></td>
                     <td><?php echo $mostrar['curp'] ?></td>
                     <td><?php echo $mostrar['rfc'] ?></td>
-                    <td><?php echo $mostrar['nss'] ?></td>
+                   
                     <td><?php echo $mostrar['cargo'] ?></td>
+                    <td><?php echo $mostrar['nss'] ?></td>
                     <td>
                     
                       <a href='./editar_trabajador.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
