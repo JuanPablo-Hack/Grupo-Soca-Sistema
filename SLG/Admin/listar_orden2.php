@@ -134,7 +134,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora Orden</h3>
+        <h3><i class="fa fa-angle-right"></i> Bitacora de Entradas y Salidas</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">

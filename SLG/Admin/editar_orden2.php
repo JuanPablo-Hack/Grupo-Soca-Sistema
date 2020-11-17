@@ -169,7 +169,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Editar Orden</h3>
+        <h3><i class="fa fa-angle-right"></i> Editar Entradas y Salidas</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
