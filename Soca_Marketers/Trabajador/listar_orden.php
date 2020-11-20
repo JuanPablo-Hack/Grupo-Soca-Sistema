@@ -64,7 +64,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a></p>
           <h5 class="centered">Admin</h5>
           <li class="mt">
             <a class="active" href="index.html">
@@ -80,7 +80,7 @@
             <ul class="sub">
               <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
-              
+            
              
             </ul>
           </li>
@@ -120,7 +120,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora Orden</h3>
+        <h3><i class="fa fa-angle-right"></i> Bitacora de salida de mina</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -128,14 +128,15 @@
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    
+                    <th>Cliente</th>
                     <th>Nombre de Mina</th>
+                    <th>Tipo de mineral</th>
                     <th>Unidad</th>
                     <th class="hidden-phone">Placas</th>
                     <th class="hidden-phone">Operador</th>
-                    <th class="hidden-phone">No. Guia</th>
-                    <th class="hidden-phone">Autoriza</th>
-                    <th class="hidden-phone">Hora de Salida</th>
+                    
+                   
+                    <th class="hidden-phone">Estado</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
@@ -146,7 +147,18 @@
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
                   <tr >
+                  
+                  <td><?php 
                     
+                     
+                    $sql1="SELECT * FROM clientes WHERE id='".$mostrar['cliente']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
                   <td><?php 
                     
                      
@@ -158,6 +170,7 @@
                       }
                       echo $nombre;
                     ?></td>
+                    <td><?php echo $mostrar['mineral'] ?></td>
                     <td><?php 
                     
                      
@@ -191,16 +204,26 @@
                       }
                       echo $nombre;
                     ?></td>
-                    <td><?php echo $mostrar['no_guia'] ?></td>
-                    <td><?php echo $mostrar['autoriza'] ?></td>
-                    <td><?php echo $mostrar['hora_salida'] ?></td>
+                    
+                  
+                    <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM estados WHERE id='".$mostrar['estado']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
                     <td>
                      
                       
                       <a href='./orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
 
                       <a href='./editar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                      
+                      <a href='./eliminar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                       
                     </td>
                   </tr>

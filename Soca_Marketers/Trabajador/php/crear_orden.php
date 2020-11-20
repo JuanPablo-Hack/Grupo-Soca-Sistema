@@ -2,7 +2,11 @@
 
 include 'conexion.php';
 
+$nombre_cliente=$_POST['nombre_cliente'];
 $mina=$_POST['mina'];
+$mineral=$_POST['mineral'];
+$metros=$_POST['metros'];
+$destino=$_POST['destino'];
 $unidad=$_POST['unidad'];
 $operador=$_POST['operador'];
 $p_tara=$_POST['p_tara'];
@@ -21,7 +25,7 @@ if ($conexion ->connect_error) {
 }else{
    
          
-        $sql="INSERT INTO produccion_mina(nombre_mina,unidad,operador,no_guia,p_tara,p_bruto,p_neto,autoriza,hora_salida) VALUES ('$mina','$unidad','$operador','$no_guia','$p_tara','$p_burto','$p_neto','$autoriza','$hora');";
+        $sql="INSERT INTO produccion_mina(cliente,nombre_mina,mineral,unidad,operador,no_guia,p_tara,p_bruto,p_neto,metros3,autoriza,hora_salida,destino) VALUES ('$nombre_cliente','$mina','$mineral','$unidad','$operador','$no_guia','$p_tara','$p_burto','$p_neto','$metros','$autoriza','$hora','$destino');";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");

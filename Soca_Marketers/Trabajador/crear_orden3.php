@@ -4,6 +4,8 @@
   $result = mysqli_query($conexion,$sql);
   $sql2="SELECT * FROM unidades";
   $result2 = mysqli_query($conexion,$sql2);
+  $sql4="SELECT * FROM clientes";
+  $result4 = mysqli_query($conexion,$sql4);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +72,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a></p>
           <h5 class="centered">Admin</h5>
           <li class="mt">
             <a class="active" href="index.html">
@@ -86,7 +88,7 @@
             <ul class="sub">
               <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
-              
+            
              
             </ul>
           </li>
@@ -133,12 +135,62 @@
             <div class="form-panel">
               <form action="php/crear_orden3.php" class="form-horizontal style-form" method='POST'>
                 
+                   
+              <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Cliente</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='nombre_cliente'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result4)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
+                  </div>
+                </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Patio Destino</label>
                   <div class="col-sm-4">
                     <input type="text" name='mina' class="form-control">
                   </div>
                 </div>
+               
+               
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Guía</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_guia' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_tara' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_burto' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. VGM</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='vgm' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">D.M.T</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_neto' class="form-control">
+                  </div>
+                </div>
+                 
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
                   <div class="col-sm-4">
@@ -172,32 +224,6 @@
                 </select>
                   </div>
                 </div>
-               
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. Guía</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='no_guia' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='p_tara' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='p_burto' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Neto</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='p_neto' class="form-control">
-                  </div>
-                </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Autoriza</label>
                   <div class="col-sm-4">
@@ -210,8 +236,41 @@
                     <input type="text" name='hora_salida' class="form-control">
                   </div>
                 </div>
-                
-                 
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Lote</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='lote' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Sello</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='sello' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group last">
+                  <label class="control-label col-md-3">Image Upload</label>
+                  <div class="col-md-9">
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
+                      </div>
+                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                      <div>
+                        <span class="btn btn-theme02 btn-file">
+                          <span class="fileupload-new"><i class="fa fa-paperclip"></i> Selecciona las imagenes</span>
+                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                        <input type="file" class="default" />
+                        </span>
+                        <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
+                      </div>
+                    </div>
+                    <span class="label label-info">NOTE!</span>
+                    <span>
+                      Agrega las imagénes de evidencias de lo que esta sucediendo para generar el reporte
+                      </span>
+                  </div>
+                </div>  
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
                       <button class="btn btn-theme" type="submit">Guardar</button>

@@ -143,8 +143,9 @@
             <ul class="sub">
               <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
               <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-             
               
+              <li><a href="alta_usuarios.html">Crear Cliente</a></li>
+              <li><a href="listar_clientes.php">Listar Clientes</a></li>
               
             </ul>
           </li>

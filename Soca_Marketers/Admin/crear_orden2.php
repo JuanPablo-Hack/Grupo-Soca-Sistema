@@ -6,6 +6,8 @@
   $result2 = mysqli_query($conexion,$sql2);
   $sql3="SELECT * FROM minas";
   $result3 = mysqli_query($conexion,$sql3);
+  $sql4="SELECT * FROM clientes";
+  $result4 = mysqli_query($conexion,$sql4);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -136,8 +138,9 @@
             <ul class="sub">
               <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
               <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-             
               
+              <li><a href="alta_usuarios.html">Crear Cliente</a></li>
+              <li><a href="listar_clientes.php">Listar Clientes</a></li>
               
             </ul>
           </li>
@@ -161,6 +164,21 @@
               <form action="php/crear_orden2.php" class="form-horizontal style-form" method='POST'>
                 
               <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Cliente</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='nombre_cliente'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result4)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
+                  </div>
+                </div>
+              <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Nombre de la mina</label>
                   <div class="col-sm-4">
                   <select class="form-control" name='mina'>
@@ -175,6 +193,18 @@
                 </select>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo de mineral</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='mineral' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Guía</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_guia' class="form-control">
+                  </div>
+                </div> 
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
                   <div class="col-sm-4">
@@ -209,18 +239,8 @@
                   </div>
                 </div>
                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. Guía</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='no_guia' class="form-control">
-                  </div>
-                </div> 
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tipo de minaral</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='mineral' class="form-control">
-                  </div>
-                </div>
+                
+                
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
                   <div class="col-sm-4">
@@ -234,7 +254,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Neto</label>
+                  <label class="col-sm-2 col-sm-2 control-label">W.M.T</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_neto' class="form-control">
                   </div>
@@ -257,6 +277,42 @@
                     <input type="text" name='hora_salida' class="form-control">
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Lote</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='lote' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Sello</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='sello' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group last">
+                  <label class="control-label col-md-3">Image Upload</label>
+                  <div class="col-md-9">
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
+                      </div>
+                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                      <div>
+                        <span class="btn btn-theme02 btn-file">
+                          <span class="fileupload-new"><i class="fa fa-paperclip"></i> Selecciona las imagenes</span>
+                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                        <input type="file" class="default" />
+                        </span>
+                        <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
+                      </div>
+                    </div>
+                    <span class="label label-info">NOTE!</span>
+                    <span>
+                      Agrega las imagénes de evidencias de lo que esta sucediendo para generar el reporte
+                      </span>
+                  </div>
+                </div>
+
                 
                  
                 <div class="form-group">

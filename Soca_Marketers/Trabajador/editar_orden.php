@@ -7,16 +7,20 @@
   $result = mysqli_query($conexion,$sql);
   if ($Row = mysqli_fetch_array($result))
   {
+    $cliente= $Row['cliente'];
     $nombre= $Row['nombre_mina'];
-    
+    $mineral= $Row['mineral'];
     $unidad=$Row['unidad'];
     $operador=$Row['operador'];
     $no_guia=$Row['no_guia'];
     $p_tara=$Row['p_tara'];
     $p_bruto=$Row['p_bruto'];
     $p_neto=$Row['p_neto'];
+    $metros=$Row['metros3'];
     $autoriza=$Row['autoriza'];
     $hora_salida=$Row['hora_salida'];
+    $destino=$Row['destino'];
+    $estado=$Row['estado'];
    
   }
   $sql="SELECT * FROM trabajador";
@@ -25,6 +29,9 @@
   $result2 = mysqli_query($conexion,$sql2);
   $sql3="SELECT * FROM minas";
   $result3 = mysqli_query($conexion,$sql3);
+  $sql4="SELECT * FROM estados";
+  $result4 = mysqli_query($conexion,$sql4);
+  
   
 ?>
 <!DOCTYPE html>
@@ -92,7 +99,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a></p>
           <h5 class="centered">Admin</h5>
           <li class="mt">
             <a class="active" href="index.html">
@@ -108,7 +115,7 @@
             <ul class="sub">
               <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
-              
+            
              
             </ul>
           </li>
@@ -148,7 +155,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Editar Orden</h3>
+        <h3><i class="fa fa-angle-right"></i> Editar salida de mina</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
@@ -179,6 +186,12 @@
                 }
                 ?>
                 </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo de Mineral</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='mineral' class="form-control" value="<?php echo $mineral;?>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -247,9 +260,15 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Neto</label>
+                  <label class="col-sm-2 col-sm-2 control-label">W.M.T</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_neto' class="form-control" value="<?php echo $p_neto;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Metros Cúbicos</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='metros' class="form-control" value="<?php echo $metros;?>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -262,6 +281,33 @@
                   <label class="col-sm-2 col-sm-2 control-label">Hora de Salida</label>
                   <div class="col-sm-4">
                     <input type="text" name='hora_salida' class="form-control" value="<?php echo $hora_salida;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Destino</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='destino' class="form-control" value="<?php echo $destino;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Estado</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='estado'>
+                  <option value="<?php echo $estado; ?>"><?php $sql1="SELECT * FROM estados WHERE id='".$estado."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;?></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result4)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 

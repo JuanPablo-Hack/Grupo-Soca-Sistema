@@ -128,8 +128,9 @@
             <ul class="sub">
               <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
               <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-             
               
+              <li><a href="alta_usuarios.html">Crear Cliente</a></li>
+              <li><a href="listar_clientes.php">Listar Clientes</a></li>
               
             </ul>
           </li>
@@ -153,14 +154,15 @@
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    
+                    <th>Cliente</th>
                     <th>Nombre de Mina</th>
+                    <th>Tipo de mineral</th>
                     <th>Unidad</th>
                     <th class="hidden-phone">Placas</th>
                     <th class="hidden-phone">Operador</th>
-                    <th class="hidden-phone">No. Guia</th>
-                    <th class="hidden-phone">Autoriza</th>
-                    <th class="hidden-phone">Hora de Salida</th>
+                    
+                   
+                    <th class="hidden-phone">Estado</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
@@ -171,7 +173,18 @@
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
                   <tr >
+                  
+                  <td><?php 
                     
+                     
+                    $sql1="SELECT * FROM clientes WHERE id='".$mostrar['cliente']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
                   <td><?php 
                     
                      
@@ -183,6 +196,7 @@
                       }
                       echo $nombre;
                     ?></td>
+                    <td><?php echo $mostrar['mineral'] ?></td>
                     <td><?php 
                     
                      
@@ -216,9 +230,19 @@
                       }
                       echo $nombre;
                     ?></td>
-                    <td><?php echo $mostrar['no_guia'] ?></td>
-                    <td><?php echo $mostrar['autoriza'] ?></td>
-                    <td><?php echo $mostrar['hora_salida'] ?></td>
+                    
+                  
+                    <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM estados WHERE id='".$mostrar['estado']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
                     <td>
                      
                       

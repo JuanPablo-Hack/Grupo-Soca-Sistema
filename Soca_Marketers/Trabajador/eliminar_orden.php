@@ -1,12 +1,7 @@
 <?php
   $id=$_GET['id'];
-  $nombreServidor = "localhost";
-  $nombreUsuario = "root";
-  $passwordBaseDeDatos = "";
-  $nombreBaseDeDatos = "resoca";
-  
-  $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
-  $sql="DELETE FROM ordenes WHERE id='".$id."'";
+  include 'php/conexion.php';
+  $sql="DELETE FROM produccion_mina WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   
   

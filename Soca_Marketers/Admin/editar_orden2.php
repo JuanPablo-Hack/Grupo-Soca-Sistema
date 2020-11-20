@@ -19,6 +19,9 @@
     $hora_salida=$Row['hora_ingreso'];
     $mineral=$Row['mineral'];
     $recibe=$Row['recibe'];
+    $lote=$Row['no_lote'];
+    $sello=$Row['no_sello'];
+    $estado=$Row['estado'];
    
   }
   $sql="SELECT * FROM trabajador";
@@ -27,6 +30,8 @@
   $result2 = mysqli_query($conexion,$sql2);
   $sql3="SELECT * FROM minas";
   $result3 = mysqli_query($conexion,$sql3);
+  $sql4="SELECT * FROM estados";
+  $result4 = mysqli_query($conexion,$sql4);
   
 ?>
 <!DOCTYPE html>
@@ -158,8 +163,9 @@
             <ul class="sub">
               <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
               <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-             
               
+              <li><a href="alta_usuarios.html">Crear Cliente</a></li>
+              <li><a href="listar_clientes.php">Listar Clientes</a></li>
               
             </ul>
           </li>
@@ -303,7 +309,39 @@
                     <input type="text" name='hora_salida' class="form-control" value="<?php echo $hora_salida;?>">
                   </div>
                 </div>
-                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Lote</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='hora_salida' class="form-control" value="<?php echo $lote;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Sello</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='hora_salida' class="form-control" value="<?php echo $sello;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Estado</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='estado'>
+                  <option value="<?php echo $estado; ?>"><?php $sql1="SELECT * FROM estados WHERE id='".$estado."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;?></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result4)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
+                  </div>
+                </div>
                  
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">

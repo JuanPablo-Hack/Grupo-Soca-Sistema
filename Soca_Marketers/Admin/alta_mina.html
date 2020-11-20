@@ -122,8 +122,9 @@
             <ul class="sub">
               <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
               <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-             
               
+              <li><a href="alta_usuarios.html">Crear Cliente</a></li>
+              <li><a href="listar_clientes.php">Listar Clientes</a></li>
               
             </ul>
           </li>
@@ -208,23 +209,22 @@
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="ccomment" class="control-label col-lg-2">Propiedad del terreno</label>
+                    <label for="ccomment" class="control-label col-lg-2">Propietarios del terreno</label>
                     <div class="col-lg-10">
                       <textarea class="form-control " id="ccomment" name="propiedad" required></textarea>
                     </div>
                   </div>
-                  <div class="form-group ">
-                    <label for="ccomment" class="control-label col-lg-2">Propiedad pequeña</label>
-                    <div class="col-lg-10">
-                      <textarea class="form-control " id="ccomment" name="propiedad_peque" required></textarea>
+                  <div class="form-group">
+                    <label class="col-sm-2 col-sm-2 control-label">Tipo de propiedad: </label>
+                    <div class="col-sm-4">
+                    <select class="form-control" name='tipo_propiedad'>
+                      <option>Propiedad Pequeña</option>
+                      <option>Ejido</option>
+                      
+                    </select>
                     </div>
                   </div>
-                  <div class="form-group ">
-                    <label for="ccomment" class="control-label col-lg-2">Ejido</label>
-                    <div class="col-lg-10">
-                      <textarea class="form-control " id="ccomment" name="ejido" required></textarea>
-                    </div>
-                  </div>
+                 
                   <h2>Accesos al proyecto minero</h2>
                   <hr>
                   <div class="form-group">
@@ -421,6 +421,12 @@
                       <input class="form-control " id="curl" type="text" name="metodologia" required/>
                     </div>
                   </div>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">Análisis:</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="text" name="metodologia" required/>
+                    </div>
+                  </div>
                   <h2>Permisos Locales</h2>
                   <hr>
                   <div class="form-group">
@@ -458,7 +464,13 @@
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="curl" class="control-label col-lg-2">Correo electrónico::</label>
+                    <label for="curl" class="control-label col-lg-2">Correo electrónico:</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="text" name="email_minero" required/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">Dirección:</label>
                     <div class="col-lg-10">
                       <input class="form-control " id="curl" type="text" name="email_minero" required/>
                     </div>
