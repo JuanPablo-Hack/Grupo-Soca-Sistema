@@ -8,18 +8,9 @@ create table admin(
 
 insert into admin(user,contra) VALUES ('admin','admin123');
 
-create table clientes(
+create table estados(
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nombre VARCHAR(75) NOT NULL,
-    nra VARCHAR(15) NOT NULL,
-    telefono VARCHAR(10) NULL,
-    email VARCHAR(100) NOT NULL UNIQUE KEY,
-    area VARCHAR(30) NULL,
-    rfc VARCHAR(13) NOT NULL UNIQUE key,
-    dir VARCHAR(150) NULL,
-    cp VARCHAR(5) NULL,
-    user VARCHAR(40)  NOT NULL UNIQUE key,
-    pwd VARCHAR(150) NOT NULL,
+    nombre VARCHAR(20) NOT NULL,
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

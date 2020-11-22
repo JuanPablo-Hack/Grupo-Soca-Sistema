@@ -122,7 +122,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora de salida de patio acopio</h3>
+        <h3><i class="fa fa-angle-right"></i> Bitacora de salida de mina</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -130,52 +130,38 @@
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
+                    <th>ID</th>
+                    <th>Fecha de recepción de la muestra</th>
+                    <th>Material</th>
+                    <th>No. De muestras</th>
+                    <th class="hidden-phone">Peso aproximado</th>
+                    <th class="hidden-phone">Fecha del envío</th>
                     
-                    <th>Patio de Destino</th>
-                    <th>Unidad</th>
-                    <th class="hidden-phone">Placas</th>
-                    <th class="hidden-phone">Operador</th>
-                    <th class="hidden-phone">No. Guía</th>
-                    <th class="hidden-phone">Autoriza</th>
-                    <th class="hidden-phone">Hora de Salida</th>
+                   
+                    <th class="hidden-phone">Estado</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT * FROM patio_acopio_salida";
+                    $sql="SELECT * FROM muestras";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
                   <tr >
+                  
+                    <td><?php echo $mostrar['id'] ?></td>
+                    <td><?php echo $mostrar['fecha_recep'] ?></td>
+                    <td><?php echo $mostrar['material'] ?></td>
+                    <td><?php echo $mostrar['no_muestras'] ?></td>
+                    <td><?php echo $mostrar['peso'] ?></td>
+                    <td><?php echo $mostrar['fecha_envio'] ?></td>
                     
-                    <td><?php echo $mostrar['patio_destino'] ?></td>
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM unidades WHERE id='".$mostrar['unidad']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['modelo'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                    <td><?php 
+                  
+                    <td><?php
                     
                      
-                    $sql1="SELECT * FROM unidades WHERE id='".$mostrar['unidad']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['placas'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM trabajador WHERE id='".$mostrar['operador']."'";
+                    $sql1="SELECT * FROM estados WHERE id='".$mostrar['estado']."'";
                     $result1 = mysqli_query($conexion,$sql1);
                     if ($Row = mysqli_fetch_array($result1))
                       {
@@ -183,16 +169,13 @@
                       }
                       echo $nombre;
                     ?></td>
-                    <td><?php echo $mostrar['no_guia'] ?></td>
-                    <td><?php echo $mostrar['autoriza'] ?></td>
-                    <td><?php echo $mostrar['hora_salida'] ?></td>
                     <td>
                      
                       
-                      <a href='./orden3.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+                      
 
-                      <a href='./editar_orden3.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                      <a href='./eliminar_orden3.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      <a href='./editar_muestra.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href='./eliminar_muestra.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                       
                     </td>
                   </tr>

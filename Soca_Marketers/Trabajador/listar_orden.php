@@ -80,6 +80,8 @@
             <ul class="sub">
               <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
+              <li><a href="alta_muestras.php">Crear Registro de Muestra</a></li>
+              <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
             
              
             </ul>

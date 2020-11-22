@@ -1,13 +1,31 @@
 <?php
+  
   include 'php/conexion.php';
-  $sql="SELECT * FROM trabajador";
+
+  $id=$_GET['id'];
+  $sql="SELECT * FROM 	muestras WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
-  $sql2="SELECT * FROM unidades";
-  $result2 = mysqli_query($conexion,$sql2);
-  $sql3="SELECT * FROM minas";
-  $result3 = mysqli_query($conexion,$sql3);
-  $sql4="SELECT * FROM clientes";
+  if ($Row = mysqli_fetch_array($result))
+  {
+    $fecha_recep= $Row['fecha_recep'];
+    $material= $Row['material'];
+    $no_muestras= $Row['no_muestras'];
+    $peso=$Row['peso'];
+    $tipo_muestra=$Row['tipo_muestra'];
+    $lab_ext=$Row['lab_ext'];
+    $fecha_envio=$Row['fecha_envio'];
+    $servicio_soli=$Row['servicio_soli'];
+    $ele_ana=$Row['ele_ana'];
+    $observaciones=$Row['observaciones'];
+    $estado=$Row['estado'];
+    
+   
+  }
+  
+  $sql4="SELECT * FROM estados";
   $result4 = mysqli_query($conexion,$sql4);
+  
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -132,18 +150,109 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Registro de Ingreso de Patio de Acopio</h3>
+        <h3><i class="fa fa-angle-right"></i> Editar salida de mina</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="php/crear_orden2.php" class="form-horizontal style-form" method='POST'>
-                
+              <form action="php/editar_muestra.php" class="form-horizontal style-form" method='POST'>
               <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Cliente</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Identificador</label>
                   <div class="col-sm-4">
-                  <select class="form-control" name='nombre_cliente'>
-                  <option value="0"></option>
+                    <input type="text" name='identificador' class="form-control" value="<?php echo $id;?>" readonly>
+                  </div>
+                </div>s
+              <div class="form-group">
+                    <label class="control-label col-md-3">Fecha de recepción de la muestra</label>
+                    <div class="col-md-3 col-xs-11">
+                      <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
+                        <input type="text" readonly="" value="<?php echo $fecha_recep;?>" size="16" name='fecha_recep' class="form-control">
+                        <span class="input-group-btn add-on">
+                          <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
+                          </span>
+                      </div>
+                      <span class="help-block">Select date</span>
+                    </div>
+                  </div>
+              
+              
+              
+               
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Material</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='material' class="form-control" value="<?php echo $material;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. de muestras</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_muestras' class="form-control" value="<?php echo $no_muestras;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Peso aproximado</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='peso' class="form-control" value="<?php echo $peso;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo de muestra</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='tipo' class="form-control" value="<?php echo $tipo_muestra;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Envío a laboratorio externo</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='lab_ext' class="form-control" value="<?php echo $lab_ext;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">Fecha del envío</label>
+                    <div class="col-md-3 col-xs-11">
+                      <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
+                        <input type="text" readonly="" value="<?php echo $fecha_envio;?>" size="16" name='fecha_envio' class="form-control">
+                        <span class="input-group-btn add-on">
+                          <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
+                          </span>
+                      </div>
+                      <span class="help-block">Select date</span>
+                    </div>
+                  </div>
+               
+                
+               
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo de servicio solicitado</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='servicio_soli' class="form-control" value="<?php echo $servicio_soli;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Elementos a analizar</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='ele_ana' class="form-control" value="<?php echo $ele_ana;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Observaciones</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='observaciones' class="form-control" value="<?php echo $observaciones;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Estado</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='estado'>
+                  <option value="<?php echo $estado; ?>"><?php $sql1="SELECT * FROM estados WHERE id='".$estado."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;?></option>
                   <?php 
                     while ($Row1 = mysqli_fetch_array($result4)) {			 
                  ?>
@@ -154,141 +263,6 @@
                 </select>
                   </div>
                 </div>
-              <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre de la mina</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='mina'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result3)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tipo de mineral</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='mineral' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. Guía</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='no_guia' class="form-control">
-                  </div>
-                </div> 
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='unidad'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result2)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-                
-               
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Operador</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='operador'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-               
-                
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='p_tara' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='p_burto' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">W.M.T</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='p_neto' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Autoriza</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='autoriza' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre del quien recibe</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='recibe' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Hora de Ingreso</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='hora_salida' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. Lote</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='lote' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. Sello</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='sello' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group last">
-                  <label class="control-label col-md-3">Image Upload</label>
-                  <div class="col-md-9">
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
-                      </div>
-                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                      <div>
-                        <span class="btn btn-theme02 btn-file">
-                          <span class="fileupload-new"><i class="fa fa-paperclip"></i> Selecciona las imagenes</span>
-                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                        <input type="file" class="default" />
-                        </span>
-                        <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
-                      </div>
-                    </div>
-                    <span class="label label-info">NOTE!</span>
-                    <span>
-                      Agrega las imagénes de evidencias de lo que esta sucediendo para generar el reporte
-                      </span>
-                  </div>
-                </div>
-
                 
                  
                 <div class="form-group">
