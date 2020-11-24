@@ -70,7 +70,7 @@
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
-    <aside>
+   <aside>
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
@@ -92,6 +92,8 @@
               <li><a href="listar_orden.php">Bitacora</a></li>
               <li><a href="alta_muestras.php">Crear Registro de Muestra</a></li>
               <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+              <li><a href="crear_lote.php">Crear Registro de Lote</a></li>
+              <li><a href="listar_lotes.php">Bitacora de Lotes</a></li>
             
              
             </ul>

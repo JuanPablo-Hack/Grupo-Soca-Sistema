@@ -75,7 +75,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Admin</h5>
+          <h5 class="centered">Supervisor</h5>
           <li class="mt">
             <a class="active" href="index.html">
               <i class="fa fa-dashboard"></i>
@@ -92,6 +92,8 @@
               <li><a href="listar_orden.php">Bitacora</a></li>
               <li><a href="alta_muestras.php">Crear Registro de Muestra</a></li>
               <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+              <li><a href="crear_lote.php">Crear Registro de Lote</a></li>
+              <li><a href="listar_lotes.php">Bitacora de Lotes</a></li>
             
              
             </ul>

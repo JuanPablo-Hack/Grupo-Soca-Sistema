@@ -26,18 +26,9 @@ create table trabajador(
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-create table unidades(
+create table tallas(
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    modelo VARCHAR(75) NOT NULL,
-    ano VARCHAR(4) NOT NULL,
-    color VARCHAR(15) NOT NULL,
-    placas VARCHAR(15) NOT NULL,
-    noeconomico VARCHAR(20) NOT NULL,
-    capacidad VARCHAR(20) NOT NULL,
-    tipounidad VARCHAR(30) NOT NULL,
-    tipocombustible VARCHAR(75) NOT NULL,
-    serie VARCHAR(50) NOT NULL,
-    descripcion VARCHAR(150) NOT NULL,
+    nombre VARCHAR(75) NOT NULL,
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
