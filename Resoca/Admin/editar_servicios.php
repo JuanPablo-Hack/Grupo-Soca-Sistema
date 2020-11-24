@@ -264,6 +264,24 @@
                     <input type="text" class="form-control" name="ubicacion" value="<?php echo $ubicacion; ?>">
                   </div>
                 </div>
+                <h3>Herramientas a utilizar</h3>
+                <hr>
+                <div class="form-group ">
+                  <label for="ccomment" class="control-label col-lg-2">Descripción de Material
+                  </label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="descripcion_material" value="<?php echo $material; ?>">
+                  </div>
+                </div>
+                <h3>Equipo de Seguridad Necesario</h3>
+                <hr>
+                <div class="form-group ">
+                  <label for="ccomment" class="control-label col-lg-2">Descripción de Equipo
+                  </label>
+                  <div class="col-lg-10">
+                    <input type="text" class="form-control" name="descripcion_equipo" value="<?php echo $equipo; ?>">
+                  </div>
+                </div>
                 
                 <div class="form-group">
                   <div class="col-lg-offset-2 col-lg-10">

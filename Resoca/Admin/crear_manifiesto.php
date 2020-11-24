@@ -2,6 +2,8 @@
   include 'php/conexion.php';
   $sql="SELECT * FROM clientes";
   $result = mysqli_query($conexion,$sql);
+  $sql2="SELECT * FROM unidad_medidas";
+  $result2 = mysqli_query($conexion,$sql2);
   
 ?>
 <!DOCTYPE html>
@@ -217,9 +219,18 @@
                 <h5>Unidad</h5>
                 <hr>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Vol/Peso</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad de Medida</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="vol_peso">
+                  <select class="form-control" name='unidad'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row2 = mysqli_fetch_array($result2)) {			 
+                 ?>
+                <option value=<?php echo $Row2['id']; ?>><?php echo $Row2['vol_peso'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 <h3>Datos del Transporte</h3>

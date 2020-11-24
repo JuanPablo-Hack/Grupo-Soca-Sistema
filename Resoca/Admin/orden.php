@@ -211,7 +211,7 @@
                       <td><?php echo $destinofinal; ?></td>
                       <td><?php echo $ubicacion; ?></td>
                       <td class="text-right"><?php echo $equipo; ?></td>
-                      <td class="text-right"><?php echo $auxiliar; ?></td>
+                      <td><?php echo $material; ?></td>
                     </tr>
                    
                    
