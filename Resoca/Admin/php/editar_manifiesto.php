@@ -3,7 +3,7 @@
 include 'conexion.php';
 
 $id=$_POST['identificador'];
-$cliente=$_POST['cliente'];
+$cliente=$_POST['nombre_cliente'];
 $capacidad=$_POST['capacidad'];
 $tipo=$_POST['tipo'];
 $total_residuo=$_POST['total_residuo'];
@@ -12,6 +12,7 @@ $fecha=$_POST['fecha'];
 $unidad=$_POST['unidad'];
 $nombre_recibe=$_POST['nombre_recibe'];
 $estado=$_POST['estado'];
+
 
 if ($conexion ->connect_error) {
     die("Conexion Fallida: " . $conn ->connect_error);

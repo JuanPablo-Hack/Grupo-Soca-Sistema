@@ -4,6 +4,8 @@
   $result = mysqli_query($conexion,$sql);
   $sql2="SELECT * FROM unidad_medidas";
   $result2 = mysqli_query($conexion,$sql2);
+  $sql3="SELECT * FROM unidades";
+  $result3 = mysqli_query($conexion,$sql3);
   
 ?>
 <!DOCTYPE html>
@@ -221,12 +223,12 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Unidad de Medida</label>
                   <div class="col-sm-4">
-                  <select class="form-control" name='unidad'>
+                  <select class="form-control" name='vol_peso'>
                   <option value="0"></option>
                   <?php 
                     while ($Row2 = mysqli_fetch_array($result2)) {			 
                  ?>
-                <option value=<?php echo $Row2['id']; ?>><?php echo $Row2['vol_peso'];?></option>
+                <option value=<?php echo $Row2['id']; ?>><?php echo $Row2['nombre'];?></option>
                 <?php
                 }
                 ?>
@@ -249,9 +251,18 @@
                 </div>
                 
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Unidad de Vehicular</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad Asignada</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="unidad">
+                  <select class="form-control" name='unidad'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result3)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 <h3>Destinatario</h3>

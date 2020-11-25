@@ -16,7 +16,7 @@ if ($conexion ->connect_error) {
         $sql="INSERT INTO acuses(cliente,encargado,puesto,descripcion,manifiesto,estado) VALUES ('$cliente', '$encargado', '$puesto', '$descripcion', '$manifiesto','Activo');";
         $resultado = $conexion->query($sql);
         if($resultado){
-            header("Refresh:0; url=../registro_exitoso.html");
+            header("Refresh:0; url=../registro_exitoso_acuse.html");
         }else{
             header("Refresh:0; url=../error_registro.html");
         }

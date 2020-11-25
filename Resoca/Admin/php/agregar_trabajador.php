@@ -21,7 +21,7 @@ if ($conexion ->connect_error) {
         $sql="INSERT INTO trabajador(nombre,curp,rfc,nss,cargo,user,pwd) VALUES ('$nombre','$curp','$rfc','$nss','$cargo','$user','$contra')";
         $resultado = $conexion->query($sql);
         if($resultado){
-            header("Refresh:0; url=../registro_exitoso.html");
+            header("Refresh:0; url=../registro_exitoso_trabajador.html");
         }else{
            
             header("Refresh:0; url=../error_registro.html");

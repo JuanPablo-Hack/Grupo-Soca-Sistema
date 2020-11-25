@@ -17,6 +17,12 @@
     $estado=$Row['estado'];
     
   }
+  $sql="SELECT * FROM clientes";
+  $result = mysqli_query($conexion,$sql);
+  $sql2="SELECT * FROM unidad_medidas";
+  $result2 = mysqli_query($conexion,$sql2);
+  $sql3="SELECT * FROM unidades";
+  $result3 = mysqli_query($conexion,$sql3);
   
 ?>
 <!DOCTYPE html>
@@ -198,6 +204,21 @@
                     <input type="text" class="form-control" name="identificador" value="<?php echo $id; ?>" readonly>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Cliente</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='nombre_cliente'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
+                  </div>
+                </div>
                 
                 <h5>Contenedor</h5>
                 <hr>
@@ -224,9 +245,18 @@
                 <h5>Unidad</h5>
                 <hr>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Vol/Peso</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad de Medida</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="vol_peso" value="<?php echo $volpeso; ?>">
+                  <select class="form-control" name='vol_peso'>
+                  <option value="<?php echo $volpeso; ?>"></option>
+                  <?php 
+                    while ($Row2 = mysqli_fetch_array($result2)) {			 
+                 ?>
+                <option value=<?php echo $Row2['id']; ?>><?php echo $Row2['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 <h3>Datos del Transporte</h3>
@@ -250,11 +280,21 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Unidad de Vehicular</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad Asignada</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="unidad" value="<?php echo $unidad; ?>">
+                  <select class="form-control" name='unidad'>
+                  <option value="<?php echo $unidad; ?>"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result3)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
+              
                 <h3>Destinatario</h3>
                 <hr>
                 

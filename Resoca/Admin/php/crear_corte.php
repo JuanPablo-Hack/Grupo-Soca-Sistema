@@ -20,7 +20,7 @@ if ($conexion ->connect_error) {
         $sql="INSERT INTO cortes(folio,ticket,porcentaje,kg,cantidad,unidad,descripcion,precio,importe) VALUES ('$folio', '$ticket', '$porcentaje', '$kilos', '$cantidad', '$unidad', '$descripcion', '$precio', '$importe');";
         $resultado = $conexion->query($sql);
         if($resultado){
-            header("Refresh:0; url=../registro_exitoso.html");
+            header("Refresh:0; url=../registro_exitoso_corte.html");
         }else{
             header("Refresh:0; url=../error_registro.html");
         }

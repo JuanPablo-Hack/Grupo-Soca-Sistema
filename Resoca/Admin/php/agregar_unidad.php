@@ -24,7 +24,7 @@ if ($conexion ->connect_error) {
         $sql="INSERT INTO unidades(modelo,ano,color,placas,noeconomico,capacidad,tipounidad,tipocombustible,serie,descripcion) VALUES ('$modelo','$ano','$color','$placas','$no_economico','$capacidad','$tipo_unidad','$tipo_combustible','$serie','$descripcion')";
         $resultado = $conexion->query($sql);
         if($resultado){
-            header("Refresh:0; url=../registro_exitoso.html");
+            header("Refresh:0; url=../registro_exitoso_unidad.html");
         }else{
             header("Refresh:0; url=../error_registro.html");
         }
