@@ -149,6 +149,7 @@
                     <th class="hidden-phone">No. Formato</th>
                     <th class="hidden-phone">Unidad</th>
                     <th class="hidden-phone">Conductor</th>
+                    <th class="hidden-phone">No. Lote</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
@@ -188,7 +189,7 @@
                       echo $nombre;
                     ?></td>
                    
-                    
+                   <td><?php echo $mostrar['no_lote'] ?></td>
                     <td>
                      
                       

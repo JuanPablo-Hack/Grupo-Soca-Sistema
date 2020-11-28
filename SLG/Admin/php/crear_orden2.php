@@ -19,6 +19,7 @@ $hora_comienzo=$_POST['hora_comienzo'];
 $peso=$_POST['peso'];
 $hora_final=$_POST['hora_final'];
 $no_vgm=$_POST['no_vgm'];
+$no_lote=$_POST['no_lote'];
 $embalaje=$_POST['embalaje'];
 
 
@@ -31,7 +32,7 @@ if ($conexion ->connect_error) {
 }else{
    
          
-        $sql="INSERT INTO mercancia(no_formato,no_contenedor,naviera,tipo_contenedor,fecha,booking,referencia,agencia_aduanal,cliente,transportista,unidad,operador,observa,hora_comienzo,peso,hora_final,no_vgm,embalaje) VALUES ('$no_formato','$no_contenedor','$naviera','$tipo_contenedor','$fecha','$booking','$referencia','$agencia_aduanal','$cliente','$transportista','$unidad','$operador','$observaciones','$hora_comienzo','$peso','$hora_final','$no_vgm','$embalaje');";
+        $sql="INSERT INTO mercancia(no_formato,no_contenedor,naviera,tipo_contenedor,fecha,booking,referencia,agencia_aduanal,cliente,transportista,unidad,operador,observa,hora_comienzo,peso,hora_final,no_vgm,no_lote,embalaje) VALUES ('$no_formato','$no_contenedor','$naviera','$tipo_contenedor','$fecha','$booking','$referencia','$agencia_aduanal','$cliente','$transportista','$unidad','$operador','$observaciones','$hora_comienzo','$peso','$hora_final','$no_vgm','$no_lote','$embalaje');";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");
