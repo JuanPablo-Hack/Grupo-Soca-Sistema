@@ -1,3 +1,10 @@
+<?php
+  include 'php/conexion.php';
+  $sql="SELECT * FROM trabajador";
+  $result = mysqli_query($conexion,$sql);
+  $sql2="SELECT * FROM unidades";
+  $result2 = mysqli_query($conexion,$sql2);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -130,8 +137,8 @@
             <ul class="sub">
               <li><a href="alta_unidad.html">Dar de alta</a></li>
               <li><a href="listar_unidades.php">Mis Unidades</a></li>
-              <li><a href="bitacora_mantenimiento.html">Registrar Mantenimiento</a></li>
-              <li><a href="bitacora_combustible.html">Registrar Combustible</a></li>
+              <li><a href="bitacora_mantenimiento.php">Registrar Mantenimiento</a></li>
+              <li><a href="bitacora_combustible.php">Registrar Combustible</a></li>
               <li><a href="listar_mantenimientos.php">Listar Mantenimientos</a></li>
               <li><a href="listar_combustible.php">Listar Combustibles</a></li>
 
@@ -170,10 +177,19 @@
             <div class="form-panel">
               <form action="php/registro_combustible.php" class="form-horizontal style-form" method="POST">
                 
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
+              <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad Asignada</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="unidad">
+                  <select class="form-control" name='unidad'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result2)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 <div class="form-group">
@@ -222,7 +238,16 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Operador</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="operador">
+                  <select class="form-control" name='operador'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 <div class="form-group">
@@ -234,7 +259,7 @@
                 <div class="form-group">
                   <div class="col-lg-offset-2 col-lg-10">
                     <button class="btn btn-theme" type="submit">Crear</button>
-                    <button class="btn btn-theme04" type="button">Cancelar</button>
+                    <a href="listar_combustible.php" class="btn btn-theme04" type="button">Cancelar</a>
                   </div>
                 </div>
                 

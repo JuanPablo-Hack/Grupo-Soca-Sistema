@@ -64,7 +64,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="img/banner.png" class="img-circle" width="80"></a></p>
           <h5 class="centered">Trabajador</h5>
           <li class="mt">
             <a class="active" href="index.html">
@@ -94,7 +94,7 @@
              
 
               
-              <li><a href="bitacora_combustible.html">Registrar combustible</a></li>
+              <li><a href="bitacora_combustible.php">Registrar combustible</a></li>
               
               <li><a href="listar_combustible.php">Listar combustibles</a></li>
 
@@ -134,6 +134,7 @@
                       <th class="numeric">No. de Factura</th>
                       <th class="numeric">Operador</th>
                       <th class="numeric">Importe</th>
+                      <th>Acciones</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -144,7 +145,17 @@
                   ?>
                   <tr>
                     <td><?php echo $mostrar['id'] ?></td>
-                    <td><?php echo $mostrar['unidad'] ?></td>
+                    <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM unidades WHERE id='".$mostrar['unidad']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['modelo'];  
+                      }
+                      echo $nombre;
+                    ?></td>
                     <td><?php echo $mostrar['fecha'] ?></td>
                     <td><?php echo $mostrar['kminicial'] ?></td>
                     <td><?php echo $mostrar['kmfinal'] ?></td>
@@ -152,8 +163,27 @@
                     <td><?php echo $mostrar['litros'] ?></td>
                     <td><?php echo $mostrar['rendimiento'] ?></td>
                     <td><?php echo $mostrar['factura']?></td>
-                    <td><?php echo $mostrar['operador']?></td>
+                    <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM trabajador WHERE id='".$mostrar['operador']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
                     <td><?php echo $mostrar['importe']?></td>
+                    <td>
+                     
+                      
+                     
+
+                      <a href='./editar_combustible.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href='./eliminar_combustible.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      
+                    </td>
                   </tr>
                  <?php
                     }                 

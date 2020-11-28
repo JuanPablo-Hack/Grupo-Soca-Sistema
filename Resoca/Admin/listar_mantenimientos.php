@@ -181,6 +181,7 @@
                       <th class="numeric">Descripcion</th>
                       <th class="numeric">Fecha del próximo servicio</th>
                       <th class="numeric">Kilometraje</th>
+                      <th>Acciones</th>
                       
                     </tr>
                   </thead>
@@ -192,13 +193,32 @@
                   ?>
                   <tr>
                     <td><?php echo $mostrar['id'] ?></td>
-                    <td><?php echo $mostrar['unidad'] ?></td>
+                    <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM unidades WHERE id='".$mostrar['unidad']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['modelo'];  
+                      }
+                      echo $nombre;
+                    ?></td>
                     <td><?php echo $mostrar['taller'] ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
                     <td><?php echo $mostrar['nofactura'] ?></td>
                     <td><?php echo $mostrar['descripcion'] ?></td>
                     <td><?php echo $mostrar['fecha'] ?></td>
                     <td><?php echo $mostrar['km'] ?></td>
+                    <td>
+                     
+                      
+                     
+
+                      <a href='./editar_mantenimiento.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href='./eliminar_mantenimiento.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      
+                    </td>
                     
                   </tr>
                  <?php

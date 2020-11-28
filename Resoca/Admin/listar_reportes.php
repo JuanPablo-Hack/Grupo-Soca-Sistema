@@ -131,8 +131,8 @@
             <ul class="sub">
               <li><a href="alta_unidad.html">Dar de alta</a></li>
               <li><a href="listar_unidades.php">Mis Unidades</a></li>
-              <li><a href="bitacora_mantenimiento.html">Registrar Mantenimiento</a></li>
-              <li><a href="bitacora_combustible.html">Registrar Combustible</a></li>
+              <li><a href="bitacora_mantenimiento.php">Registrar Mantenimiento</a></li>
+              <li><a href="bitacora_combustible.php">Registrar Combustible</a></li>
               <li><a href="listar_mantenimientos.php">Listar Mantenimientos</a></li>
               <li><a href="listar_combustible.php">Listar Combustibles</a></li>
 

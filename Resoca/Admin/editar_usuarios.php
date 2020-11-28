@@ -148,8 +148,8 @@
             <ul class="sub">
               <li><a href="alta_unidad.html">Dar de alta</a></li>
               <li><a href="listar_unidades.php">Mis Unidades</a></li>
-              <li><a href="bitacora_mantenimiento.html">Registrar Mantenimiento</a></li>
-              <li><a href="bitacora_combustible.html">Registrar Combustible</a></li>
+              <li><a href="bitacora_mantenimiento.php">Registrar Mantenimiento</a></li>
+              <li><a href="bitacora_combustible.php">Registrar Combustible</a></li>
               <li><a href="listar_mantenimientos.php">Listar Mantenimientos</a></li>
               <li><a href="listar_combustible.php">Listar Combustibles</a></li>
 
@@ -289,7 +289,7 @@
                   <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
                       <button class="btn btn-theme" type="submit">Guardar</button>
-                      <button class="btn btn-theme04" type="button">Cancelar</button>
+                      <a href="listar_clientes.php" class="btn btn-theme04" type="button">Cancelar</a>
                     </div>
                   </div>
                 </form>

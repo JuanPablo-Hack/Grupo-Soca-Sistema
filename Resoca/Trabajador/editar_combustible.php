@@ -1,3 +1,28 @@
+<?php
+  $id=$_GET['id'];
+  include 'php/conexion.php';
+  $sql="SELECT * FROM registros_combustible WHERE id='".$id."'";
+  $result = mysqli_query($conexion,$sql);
+  if ($Row = mysqli_fetch_array($result))
+  {
+    $unidad= $Row['unidad'];
+    
+    $fecha=$Row['fecha'];
+    $kminicial=$Row['kminicial'];
+    $kmfinal=$Row['kmfinal'];
+    $tiposervicio=$Row['tiposervicio'];
+    $litros=$Row['litros'];
+    $rendimiento=$Row['rendimiento'];
+    $factura=$Row['factura'];
+    $operador=$Row['operador'];
+    $importe=$Row['importe'];
+    
+  }
+  $sql="SELECT * FROM trabajador";
+  $result = mysqli_query($conexion,$sql);
+  $sql2="SELECT * FROM unidades";
+  $result2 = mysqli_query($conexion,$sql2);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,11 +42,6 @@
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-fileupload/bootstrap-fileupload.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datepicker/css/datepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-daterangepicker/daterangepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-timepicker/compiled/timepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datertimepicker.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
@@ -63,7 +83,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="img/banner.png" class="img-circle" width="80"></a></p>
           <h5 class="centered">Trabajador</h5>
           <li class="mt">
             <a class="active" href="index.html">
@@ -93,7 +113,7 @@
              
 
               
-              <li><a href="bitacora_combustible.html">Registrar combustible</a></li>
+              <li><a href="bitacora_combustible.php">Registrar combustible</a></li>
               
               <li><a href="listar_combustible.php">Listar combustibles</a></li>
 
@@ -112,24 +132,43 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Bitaroca de Combustible</h3>
+        <h3><i class="fa fa-angle-right"></i> Editar Combustible</h3>
+        <!-- BASIC FORM VALIDATION -->
+      
+        <!-- /row -->
+        <!-- FORM VALIDATION -->
         <div class="row mt">
-          <!--  DATE PICKERS -->
           <div class="col-lg-12">
+           
             <div class="form-panel">
-              <form action="php/registro_combustible.php" class="form-horizontal style-form" method="POST">
-                
+              <div class=" form">
+                <form class="cmxform form-horizontal style-form" id="commentForm" method="POST" action="./php/editar_combustible.php">
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Identificador</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='identificador' class="form-control" value="<?php echo $id;?>" readonly>
+                  </div>
+                </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="unidad">
+                  <select class="form-control" name='unidad'>
+                  <option value="<?php echo $unidad;?>"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result2)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-md-3">Fecha de carga</label>
                   <div class="col-md-3 col-xs-11">
                     <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
-                      <input type="text" readonly="" value="01-01-2014" size="16" class="form-control" name="fecha">
+                      <input type="text" readonly="" value="<?php echo $fecha;?>" size="16" class="form-control" name="fecha">
                       <span class="input-group-btn add-on">
                         <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
                         </span>
@@ -140,72 +179,73 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Km inicial</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="km_inicial">
+                    <input type="text" class="form-control" name="km_inicial" value="<?php echo $kminicial;?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Km final</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="km_final">
+                    <input type="text" class="form-control" name="km_final" value="<?php echo $kmfinal;?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Tipo de Servicio</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="tipo_servicio">
+                    <input type="text" class="form-control" name="tipo_servicio" value="<?php echo $tiposervicio;?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Litros de Carga</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="litros">
+                    <input type="text" class="form-control" name="litros" value="<?php echo $litros;?>">
                   </div>
                 </div>
                
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">No.Factura</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="no_factura">
+                    <input type="text" class="form-control" name="no_factura" value="<?php echo $factura;?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Operador</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="operador">
+                  <select class="form-control" name='operador'>
+                  <option value="<?php echo $operador;?>"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Importe</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="importe">
+                    <input type="text" class="form-control" name="importe" value="<?php echo $importe;?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-lg-offset-2 col-lg-10">
                     <button class="btn btn-theme" type="submit">Crear</button>
-                    <button class="btn btn-theme04" type="button">Cancelar</button>
+                    <a href="listar_combustible.php" class="btn btn-theme04" type="button">Cancelar</a>
                   </div>
                 </div>
-                
-               
-              </form>
+                </form>
+              </div>
             </div>
-             
-          
-          <!-- col-lg-12-->
-        </div>
             <!-- /form-panel -->
           </div>
           <!-- /col-lg-12 -->
         </div>
         <!-- /row -->
-        <!-- DATE TIME PICKERS -->
        
-            <!-- /form-panel -->
-          </div>
           <!-- /col-lg-12 -->
         </div>
-        <!-- row -->
+        <!-- /row -->
       </section>
       <!-- /wrapper -->
     </section>
@@ -242,15 +282,7 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
-  <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/date.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/daterangepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/moment.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-  <script src="lib/advanced-form-components.js"></script>
+  <script src="lib/form-validation-script.js"></script>
 
 </body>
 
