@@ -110,7 +110,7 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Registro de Viajes</span>
+              <span>Ingresos a granel</span>
               </a>
             <ul class="sub">
               <li><a href="crear_orden.php">Crear Registro</a></li>
@@ -121,7 +121,7 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Entradas y Salidas</span>
+              <span>Consolidación de mercancias</span>
               </a>
             <ul class="sub">
               <li><a href="crear_orden2.php">Crear Registro</a></li>
@@ -169,7 +169,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Editar Entradas y Salidas</h3>
+        <h3><i class="fa fa-angle-right"></i> Editar Registro de Consolidación de Mercancía</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
