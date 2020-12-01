@@ -181,6 +181,10 @@
                     <th> Programación de Corte</th>
                     <th> RFC</th>
                     <th> Direccion</th>
+                    <th> Encargado</th>
+                    <th> Cargo</th>
+                    <th> Télefono</th>
+                    <th> E-mail</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -200,6 +204,10 @@
                     <td><?php echo $mostrar['fecha_corte'] ?></td>
                     <td><?php echo $mostrar['rfc'] ?></td>
                     <td><?php echo $mostrar['dir'].",".$mostrar['cp'] ?></td>
+                    <td><?php echo $mostrar['nombre_representante'] ?></td>
+                    <td><?php echo $mostrar['cargo'] ?></td>
+                    <td><?php echo $mostrar['email_representante'] ?></td>
+                    <td><?php echo $mostrar['tel_representante'] ?></td>
                     <td>
                    
                     <a href='./editar_usuarios.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>

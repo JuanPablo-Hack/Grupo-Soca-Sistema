@@ -1,4 +1,24 @@
-
+<?php
+  $id=$_GET['id'];
+  include 'php/conexion.php';
+  $sql="SELECT * FROM clientes WHERE id='".$id."'";
+  $result = mysqli_query($conexion,$sql);
+  if ($Row = mysqli_fetch_array($result))
+  {
+    $nombre= $Row['nombre'];
+    
+    $nra=$Row['nra'];
+    $telefono=$Row['telefono'];
+    $email=$Row['email'];
+    $area=$Row['area'];
+    $fecha=$Row['fecha_corte'];
+    $rfc=$Row['rfc'];
+    $dir=$Row['dir'];
+    $cp=$Row['cp'];
+    $user=$Row['user'];
+    $pwd=$Row['pwd'];
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -169,7 +189,7 @@
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="php/agregar_usuario.php" class="form-horizontal style-form" method='POST'>
+              <form action="php/editar_usuarios.php" class="form-horizontal style-form" method='POST'>
               <h3>Datos generales</h3>
                   <hr>
                   <div class="form-group ">
