@@ -70,12 +70,12 @@
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
-   <aside>
+    <aside>
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Admin</h5>
+          <h5 class="centered">Supervisor</h5>
           <li class="mt">
             <a class="active" href="index.html">
               <i class="fa fa-dashboard"></i>
@@ -106,7 +106,8 @@
             <ul class="sub">
               <li><a href="crear_orden2.php">Crear Registro</a></li>
               <li><a href="listar_orden2.php">Bitacora</a></li>
-              
+              <li><a href="crear_lote_acopio.php">Crear Registro de Lote</a></li>
+              <li><a href="listar_lotes_acopio.php">Bitacora de Lotes</a></li>
               
             </ul>
           </li>

@@ -1,11 +1,31 @@
 <?php
+  
   include 'php/conexion.php';
-  $sql="SELECT * FROM trabajador";
+
+  $id=$_GET['id'];
+  $sql="SELECT * FROM lotes_acopio WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
-  $sql2="SELECT * FROM unidades";
+  if ($Row = mysqli_fetch_array($result))
+  {
+    $mina= $Row['mina'];
+    $material= $Row['material'];
+    $talla=$Row['talla'];
+    $calidad=$Row['calidad'];
+    $metros=$Row['metros'];
+    $observaciones=$Row['observaciones'];
+    
+   
+  }
+  $sql="SELECT * FROM tallas";
+  $result = mysqli_query($conexion,$sql);
+  $sql2="SELECT * FROM materiales";
   $result2 = mysqli_query($conexion,$sql2);
-  $sql4="SELECT * FROM clientes";
+  $sql3="SELECT * FROM minas";
+  $result3 = mysqli_query($conexion,$sql3);
+  $sql4="SELECT * FROM calidad";
   $result4 = mysqli_query($conexion,$sql4);
+ 
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +93,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Admin</h5>
+          <h5 class="centered">Supervisor</h5>
           <li class="mt">
             <a class="active" href="index.html">
               <i class="fa fa-dashboard"></i>
@@ -88,9 +108,11 @@
             <ul class="sub">
               <li><a href="crear_orden.php">Crear Registro</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
-              <li><a href="alta_mina.html">Registrar Mina</a></li>
-              <li><a href="listar_minas.php">Minas Registradas</a></li>
-              <li><a href="listar_lotes.php">Minas Registradas</a></li>
+              <li><a href="alta_muestras.php">Crear Registro de Muestra</a></li>
+              <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+              <li><a href="crear_lote.php">Crear Registro de Lote</a></li>
+              <li><a href="listar_lotes.php">Bitacora de Lotes</a></li>
+            
              
             </ul>
           </li>
@@ -102,7 +124,8 @@
             <ul class="sub">
               <li><a href="crear_orden2.php">Crear Registro</a></li>
               <li><a href="listar_orden2.php">Bitacora</a></li>
-              <li><a href="listar_lotes_acopio.php">Minas Registradas</a></li>
+              <li><a href="crear_lote_acopio.php">Crear Registro de Lote</a></li>
+              <li><a href="listar_lotes_acopio.php">Bitacora de Lotes</a></li>
               
             </ul>
           </li>
@@ -117,32 +140,7 @@
             </ul>
           </li>
          
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-car"></i>
-              <span>Unidades</span>
-              </a>
-            <ul class="sub">
-              <li><a href="alta_unidad.html">Dar de alta</a></li>
-              <li><a href="listar_unidades.php">Mis Unidades</a></li>
-              
-
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-group"></i>
-              <span>Usuarios</span>
-              </a>
-            <ul class="sub">
-              <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
-              <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-              
-              <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-              <li><a href="listar_clientes.php">Listar Clientes</a></li>
-              
-            </ul>
-          </li>
+          
          
         </ul>
         <!-- sidebar menu end-->
@@ -155,21 +153,25 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Registro de Salida de Patio de Acopio</h3>
+        <h3><i class="fa fa-angle-right"></i> Editar salida de mina</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="php/crear_orden3.php" class="form-horizontal style-form" method='POST'>
-                
-                   
+              <form action="php/editar_lote_acopio.php" class="form-horizontal style-form" method='POST'>
               <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Cliente</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Identificador</label>
                   <div class="col-sm-4">
-                  <select class="form-control" name='nombre_cliente'>
-                  <option value="0"></option>
+                    <input type="text" name='identificador' class="form-control" value="<?php echo $id;?>" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre de la mina</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='mina'>
+                  <option value="<?php echo $mina?>"></option>
                   <?php 
-                    while ($Row1 = mysqli_fetch_array($result4)) {			 
+                    while ($Row1 = mysqli_fetch_array($result3)) {			 
                  ?>
                 <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
                 <?php
@@ -179,68 +181,25 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Patio Destino</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo de material</label>
                   <div class="col-sm-4">
-                    <input type="text" name='mina' class="form-control">
-                  </div>
-                </div>
-               
-               
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. Guía</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='no_guia' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='p_tara' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='p_burto' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. VGM</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='vgm' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">D.M.T</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='p_neto' class="form-control">
-                  </div>
-                </div>
-                 
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='unidad'>
-                  <option value="0"></option>
+                  <select class="form-control" name='material'>
+                  <option value="<?php echo $material?>"></option>
                   <?php 
                     while ($Row1 = mysqli_fetch_array($result2)) {			 
                  ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
                 <?php
                 }
                 ?>
                 </select>
                   </div>
                 </div>
-                
-               
-                
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Operador</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Tallas</label>
                   <div class="col-sm-4">
-                  <select class="form-control" name='operador'>
-                  <option value="0"></option>
+                  <select class="form-control" name='tallas'>
+                  <option value="<?php echo $talla?>"></option>
                   <?php 
                     while ($Row1 = mysqli_fetch_array($result)) {			 
                  ?>
@@ -252,52 +211,42 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Autoriza</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Calidad</label>
                   <div class="col-sm-4">
-                    <input type="text" name='autoriza' class="form-control">
+                  <select class="form-control" name='calidad'>
+                  <option value="<?php echo $calidad?>"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result4)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
+               
+                
+                
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Hora de Salida</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Metros Cúbicos</label>
                   <div class="col-sm-4">
-                    <input type="text" name='hora_salida' class="form-control">
+                    <input type="text" name='metros' class="form-control" value='<?php echo $metros;?>'>
                   </div>
                 </div>
+              
+                
+               
+                
+                
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. Lote</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Observaciones</label>
                   <div class="col-sm-4">
-                    <input type="text" name='lote' class="form-control">
+                    <input type="text" name='observaciones' class="form-control" value='<?php echo $observaciones;?>' >
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. Sello</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='sello' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group last">
-                  <label class="control-label col-md-3">Image Upload</label>
-                  <div class="col-md-9">
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
-                      </div>
-                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                      <div>
-                        <span class="btn btn-theme02 btn-file">
-                          <span class="fileupload-new"><i class="fa fa-paperclip"></i> Selecciona las imagenes</span>
-                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                        <input type="file" class="default" />
-                        </span>
-                        <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
-                      </div>
-                    </div>
-                    <span class="label label-info">NOTE!</span>
-                    <span>
-                      Agrega las imagénes de evidencias de lo que esta sucediendo para generar el reporte
-                      </span>
-                  </div>
-                </div>  
+                
+                 
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
                       <button class="btn btn-theme" type="submit">Guardar</button>

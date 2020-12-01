@@ -106,7 +106,8 @@
             <ul class="sub">
               <li><a href="crear_orden2.php">Crear Registro</a></li>
               <li><a href="listar_orden2.php">Bitacora</a></li>
-              
+              <li><a href="crear_lote_acopio.php">Crear Registro de Lote</a></li>
+              <li><a href="listar_lotes_acopio.php">Bitacora de Lotes</a></li>
               
             </ul>
           </li>

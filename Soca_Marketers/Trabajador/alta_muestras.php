@@ -106,7 +106,8 @@
             <ul class="sub">
               <li><a href="crear_orden2.php">Crear Registro</a></li>
               <li><a href="listar_orden2.php">Bitacora</a></li>
-              
+              <li><a href="crear_lote_acopio.php">Crear Registro de Lote</a></li>
+              <li><a href="listar_lotes_acopio.php">Bitacora de Lotes</a></li>
               
             </ul>
           </li>
@@ -183,7 +184,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Envío a laboratorio externo</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre de laboratorio externo</label>
                   <div class="col-sm-4">
                     <input type="text" name='lab_ext' class="form-control">
                   </div>
@@ -216,9 +217,29 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Lote</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='lote' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Observaciones</label>
                   <div class="col-sm-4">
                     <input type="text" name='observaciones' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-md-3">Evidencias en formato PDF</label>
+                  <div class="controls col-md-9">
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                      <span class="btn btn-theme02 btn-file">
+                        <span class="fileupload-new"><i class="fa fa-paperclip"></i> Seleccione Archivo PDF</span>
+                      <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                      <input type="file" class="default" />
+                      </span>
+                      <span class="fileupload-preview" style="margin-left:5px;"></span>
+                      <a href="advanced_form_components.html#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
+                    </div>
                   </div>
                 </div>
                 

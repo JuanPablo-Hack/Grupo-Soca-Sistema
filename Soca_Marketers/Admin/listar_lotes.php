@@ -20,10 +20,12 @@
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+  <link href="lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+  <link rel="stylesheet" href="lib/advanced-datatable/css/DT_bootstrap.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
-  <link href="css/table-responsive.css" rel="stylesheet">
 
   <!-- =======================================================
     Template Name: Dashio
@@ -145,73 +147,111 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Listado de Unidades</h3>
-        <div class="row mt">
-          <div class="col-lg-12">
-            <div class="content-panel">
-              
-              <section id="unseen">
-                <table class="table table-bordered table-striped table-condensed">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Modelo</th>
-                      <th class="numeric">Año</th>
-                      <th class="numeric">Color</th>
-                      <th class="numeric">Placas</th>
-                      <th class="numeric">No. Economíco</th>
-                      <th class="numeric">Capacidad</th>
-                      <th class="numeric">Tipo de Unidada</th>
-                      <th class="numeric">Tipo de Combustible</th>
-                      <th class="numeric">Serie</th>
-                      <th class="numeric">Descripcion</th>
-                      <th class="numeric">Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  <?php
-                    $sql="SELECT * FROM unidades";
+        <h3><i class="fa fa-angle-right"></i> Bitacora de Lotes</h3>
+        <div class="row mb">
+          <!-- page start-->
+          <div class="content-panel">
+            <div class="adv-table">
+              <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nombre de Mina</th>
+                    <th>Tipo de mineral</th>
+                    <th>Metros Cubicos</th>
+                    <th class="hidden-phone">Tallas</th>
+                    <th class="hidden-phone">Calidad</th>
+                    
+                   
+                   
+                    <th class="hidden-phone">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <?php
+                    $sql="SELECT * FROM lotes";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
-                  <tr>
-                    <td><?php echo $mostrar['id'] ?></td>
-                    <td><?php echo $mostrar['modelo'] ?></td>
-                    <td><?php echo $mostrar['ano'] ?></td>
-                    <td><?php echo $mostrar['color'] ?></td>
-                    <td><?php echo $mostrar['placas'] ?></td>
-                    <td><?php echo $mostrar['noeconomico'] ?></td>
-                    <td><?php echo $mostrar['capacidad'] ?></td>
-                    <td><?php echo $mostrar['tipounidad'] ?></td>
-                    <td><?php echo $mostrar['tipocombustible']?></td>
-                    <td><?php echo $mostrar['serie']?></td>
-                    <td><?php echo $mostrar['descripcion']?></td>
+                  <tr >
+                  
+                  <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM materiales WHERE id='".$mostrar['material']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre.'-'.$mostrar['id'];
+                    ?></td>
+                  <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM minas WHERE id='".$mostrar['mina']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
+                   
+                    <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM materiales WHERE id='".$mostrar['material']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
+                   <td><?php echo $mostrar['metros'] ?></td>
+                    
+                  
+                    <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM tallas WHERE id='".$mostrar['talla']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
+                    <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM calidad WHERE id='".$mostrar['calidad']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
                     <td>
                      
                       
                     
 
-                     <a href='./editar_unidad.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                     <a href='./eliminar_unidad.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
-                     
-                   </td>
+                      <a href='./editar_lote.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href='./eliminar_lote.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      
+                    </td>
                   </tr>
-                 <?php
+                  <?php
                     }                 
                  ?>
-                  </tbody>
-                </table>
-              </section>
+                </tbody>
+              </table>
             </div>
-            <!-- /content-panel -->
           </div>
-          <!-- /col-lg-4 -->
-        </div>
-        <!-- /row -->
-       
-            <!-- /content-panel -->
-          </div>
-          <!-- /col-lg-12 -->
+          <!-- page end-->
         </div>
         <!-- /row -->
       </section>
@@ -243,13 +283,17 @@
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="lib/jquery.scrollTo.min.js"></script>
   <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
+ 
 </body>
 
 </html>

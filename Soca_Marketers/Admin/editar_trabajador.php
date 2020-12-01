@@ -95,6 +95,7 @@
               <li><a href="listar_orden.php">Bitacora</a></li>
               <li><a href="alta_mina.html">Registrar Mina</a></li>
               <li><a href="listar_minas.php">Minas Registradas</a></li>
+              <li><a href="listar_lotes.php">Minas Registradas</a></li>
              
             </ul>
           </li>
@@ -106,7 +107,7 @@
             <ul class="sub">
               <li><a href="crear_orden2.php">Crear Registro</a></li>
               <li><a href="listar_orden2.php">Bitacora</a></li>
-              
+              <li><a href="listar_lotes_acopio.php">Minas Registradas</a></li>
               
             </ul>
           </li>

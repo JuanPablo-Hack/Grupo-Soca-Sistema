@@ -16,6 +16,7 @@
     $fecha_envio=$Row['fecha_envio'];
     $servicio_soli=$Row['servicio_soli'];
     $ele_ana=$Row['ele_ana'];
+    $no_lote=$Row['no_lote'];
     $observaciones=$Row['observaciones'];
     $estado=$Row['estado'];
     
@@ -124,7 +125,8 @@
             <ul class="sub">
               <li><a href="crear_orden2.php">Crear Registro</a></li>
               <li><a href="listar_orden2.php">Bitacora</a></li>
-              
+              <li><a href="crear_lote_acopio.php">Crear Registro de Lote</a></li>
+              <li><a href="listar_lotes_acopio.php">Bitacora de Lotes</a></li>
               
             </ul>
           </li>
@@ -163,7 +165,7 @@
                   <div class="col-sm-4">
                     <input type="text" name='identificador' class="form-control" value="<?php echo $id;?>" readonly>
                   </div>
-                </div>s
+                </div>
               <div class="form-group">
                     <label class="control-label col-md-3">Fecha de recepción de la muestra</label>
                     <div class="col-md-3 col-xs-11">
@@ -206,7 +208,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Envío a laboratorio externo</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre de laboratorio externo</label>
                   <div class="col-sm-4">
                     <input type="text" name='lab_ext' class="form-control" value="<?php echo $lab_ext;?>">
                   </div>
@@ -236,6 +238,12 @@
                   <label class="col-sm-2 col-sm-2 control-label">Elementos a analizar</label>
                   <div class="col-sm-4">
                     <input type="text" name='ele_ana' class="form-control" value="<?php echo $ele_ana;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Lote</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='lote' class="form-control" value="<?php echo $no_lote;?>">
                   </div>
                 </div>
                 <div class="form-group">

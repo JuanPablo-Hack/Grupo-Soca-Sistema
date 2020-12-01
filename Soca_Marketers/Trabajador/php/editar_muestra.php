@@ -13,6 +13,7 @@ $lab_ext=$_POST['lab_ext'];
 $fecha_envio=$_POST['fecha_envio'];
 $servicio_soli=$_POST['servicio_soli'];
 $ele_ana=$_POST['ele_ana'];
+$lote=$_POST['lote'];
 $observaciones=$_POST['observaciones'];
 
 $estado=$_POST['estado'];
@@ -25,7 +26,7 @@ if ($conexion ->connect_error) {
 }else{
    
          
-        $sql="UPDATE muestras SET fecha_recep='$fecha_recep',material='$material',no_muestras='$no_muestras',peso='$peso',tipo_muestra='$tipo',lab_ext='$lab_ext',fecha_envio='$fecha_envio',servicio_soli='$servicio_soli',ele_ana='$ele_ana',observaciones='$observaciones',estado='$estado'  WHERE id='$id'";
+        $sql="UPDATE muestras SET fecha_recep='$fecha_recep',material='$material',no_muestras='$no_muestras',peso='$peso',tipo_muestra='$tipo',lab_ext='$lab_ext',fecha_envio='$fecha_envio',servicio_soli='$servicio_soli',ele_ana='$ele_ana',no_lote='$lote',observaciones='$observaciones',estado='$estado'  WHERE id='$id'";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");
