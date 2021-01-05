@@ -16,13 +16,12 @@ create table estados(
 
 create table trabajador(
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nombre VARCHAR(75) NOT NULL,
-    curp VARCHAR(40) NOT NULL UNIQUE key,
-    rfc VARCHAR(13) NOT NULL UNIQUE key,
-    nss VARCHAR(25) NOT NULL UNIQUE key,
-    cargo VARCHAR(50) NOT NULL,
-    user VARCHAR(40)  NOT NULL UNIQUE key,
-    pwd VARCHAR(150) NOT NULL,
+    peso_bruto INT NOT NULL ,
+    peso_neto INT NOT NULL ,
+    peso_tara INT NOT NULL,
+    transportista VARCHAR(40)  NOT NULL,
+    operador INT NOT NULL,
+    unidad INT NOT NULL ,
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

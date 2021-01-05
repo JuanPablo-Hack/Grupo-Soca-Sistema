@@ -1,5 +1,9 @@
 <?php
- include 'php/conexion.php';
+  include 'php/conexion.php';
+  $sql="SELECT * FROM trabajador";
+  $result = mysqli_query($conexion,$sql);
+  $sql2="SELECT * FROM unidades";
+  $result2 = mysqli_query($conexion,$sql2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +24,14 @@
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-fileupload/bootstrap-fileupload.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datepicker/css/datepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-daterangepicker/daterangepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-timepicker/compiled/timepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datertimepicker.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
-  <link href="css/table-responsive.css" rel="stylesheet">
 
   <!-- =======================================================
     Template Name: Dashio
@@ -92,7 +100,6 @@
              
             </ul>
           </li>
-         
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
@@ -104,6 +111,7 @@
              
             </ul>
           </li>
+         
          
           <li class="sub-menu">
             <a href="javascript:;">
@@ -142,75 +150,104 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Listado de Unidades</h3>
+        <h3><i class="fa fa-angle-right"></i> Crear registro de viajes por ingresos a granel</h3>
         <div class="row mt">
+          <!--  DATE PICKERS -->
           <div class="col-lg-12">
-            <div class="content-panel">
+            <div class="form-panel">
+              <form action="php/crear_orden3.php" class="form-horizontal style-form" method='POST'>
+                
               
-              <section id="unseen">
-                <table class="table table-bordered table-striped table-condensed">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Modelo</th>
-                      <th class="numeric">Año</th>
-                      <th class="numeric">Color</th>
-                      <th class="numeric">Placas</th>
-                      <th class="numeric">No. Economíco</th>
-                      <th class="numeric">Capacidad</th>
-                      <th class="numeric">Tipo de Unidada</th>
-                      <th class="numeric">Tipo de Combustible</th>
-                      <th class="numeric">Serie</th>
-                      <th class="numeric">Descripcion</th>
-                      <th class="numeric">Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  <?php
-                    $sql="SELECT * FROM unidades";
-                    $resultado = $conexion->query($sql);
-                    while ($mostrar=mysqli_fetch_array($resultado)) {  
-                  ?>
-                  <tr>
-                    <td><?php echo $mostrar['id'] ?></td>
-                    <td><?php echo $mostrar['modelo'] ?></td>
-                    <td><?php echo $mostrar['ano'] ?></td>
-                    <td><?php echo $mostrar['color'] ?></td>
-                    <td><?php echo $mostrar['placas'] ?></td>
-                    <td><?php echo $mostrar['noeconomico'] ?></td>
-                    <td><?php echo $mostrar['capacidad'] ?></td>
-                    <td><?php echo $mostrar['tipounidad'] ?></td>
-                    <td><?php echo $mostrar['tipocombustible']?></td>
-                    <td><?php echo $mostrar['serie']?></td>
-                    <td><?php echo $mostrar['descripcion']?></td>
-                    <td>
-                     
-                      
-                    
-
-                     <a href='./editar_unidad.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                     <a href='./eliminar_unidad.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
-                     
-                   </td>
-                  </tr>
-                 <?php
-                    }                 
+               
+                
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Peso Bruto</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_bruto' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Peso Neto</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_neto' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Peso Tara</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_tara' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Línea Transportista </label>
+                  <div class="col-sm-4">
+                    <input type="text" name='transportista' class="form-control">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='unidad'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result2)) {			 
                  ?>
-                  </tbody>
-                </table>
-              </section>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
+                <?php
+                }
+                ?>
+                </select>
+                  </div>
+                </div>
+                
+               
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Operador</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='operador'>
+                  <option value="0"></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                <?php
+                }
+                ?>
+                </select>
+                  </div>
+                </div>
+                
+                
+                 
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit">Guardar</button>
+                      <button class="btn btn-theme04" type="button">Cancelar</button>
+                    </div>
+                  </div>
+                
+               
+              </form>
             </div>
-            <!-- /content-panel -->
-          </div>
-          <!-- /col-lg-4 -->
+             
+          
+          <!-- col-lg-12-->
         </div>
-        <!-- /row -->
-       
-            <!-- /content-panel -->
+            <!-- /form-panel -->
           </div>
           <!-- /col-lg-12 -->
         </div>
         <!-- /row -->
+        <!-- DATE TIME PICKERS -->
+       
+            <!-- /form-panel -->
+          </div>
+          <!-- /col-lg-12 -->
+        </div>
+        <!-- row -->
       </section>
       <!-- /wrapper -->
     </section>
@@ -247,6 +284,16 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
+  <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/date.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/moment.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+  <script src="lib/advanced-form-components.js"></script>
+
 </body>
 
 </html>

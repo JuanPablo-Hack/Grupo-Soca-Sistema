@@ -119,7 +119,17 @@
              
             </ul>
           </li>
-         
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-calendar"></i>
+              <span>Consolidación de buque</span>
+              </a>
+            <ul class="sub">
+              <li><a href="crear_orden3.php">Crear Registro</a></li>
+              <li><a href="listar_orden3.php">Bitacora</a></li>
+             
+            </ul>
+          </li>
          
          
           <li class="sub-menu">
