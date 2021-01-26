@@ -6,7 +6,7 @@ include './conexion.php';
 
 $user = $_POST['user'];
 $password = sha1($_POST['contra']);
-echo $password;
+
 
 if ($conexion ->connect_error) {
     die("Conexion Fallida: " . $conexion ->connect_error);
