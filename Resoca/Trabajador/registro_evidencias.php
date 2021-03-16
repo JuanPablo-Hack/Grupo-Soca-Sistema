@@ -1,3 +1,14 @@
+<?php
+  $id=$_GET['id'];
+  include 'php/conexion.php';
+  $sql="SELECT * FROM ordenes WHERE id='".$id."'";
+  $result = mysqli_query($conexion,$sql);
+  if ($Row = mysqli_fetch_array($result))
+  {
+    $folio= $Row['id'];
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -117,29 +128,29 @@
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="#" class="form-horizontal style-form">
+              <form action="php/evidencia.php" class="form-horizontal style-form" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Tiempo transcurrido</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="identificador" value="01:20:25" readonly>
+                    <input type="text" class="form-control" name="tiempo" >
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Folio Relacionado</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="identificador" value="B154" readonly>
+                    <input type="text" class="form-control" name="folio" value="<?php echo $folio;?>" readonly>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Cantidad de Residuo Recolectado</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="identificador"  required>
+                    <input type="text" class="form-control" name="cantidad"  required>
                   </div>
                 </div>
                 <div class="form-group ">
                   <label for="ccomment" class="col-sm-2 col-sm-2 control-label">Comentarios</label>
                   <div class="col-sm-4">
-                    <textarea class="form-control " id="ccomment" name="comment" required></textarea>
+                    <textarea class="form-control " id="ccomment" name="comentarios" required></textarea>
                   </div>
                 </div>
                 <div class="form-group last">
@@ -154,7 +165,7 @@
                         <span class="btn btn-theme02 btn-file">
                         <span class="fileupload-new"><i class="fa fa-paperclip"></i> Seleccionar Imagen</span>
                         <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                        <input type="file" class="default" />
+                          <input type="file" class="form-control" id="image" name="image" multiple>
                         </span>
                         <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
                       </div>
@@ -165,7 +176,12 @@
                       </span>
                   </div>
                 </div>
-                
+                <div class="form-group">
+                  <div class="col-lg-offset-2 col-lg-10">
+                    <button class="btn btn-theme" type="submit">Subir Evidencias</button>
+                    <a href="listar_combustible.php" class="btn btn-theme04" type="button">Cancelar</a>
+                  </div>
+                </div>
                 </div>
               </form>
             </div>

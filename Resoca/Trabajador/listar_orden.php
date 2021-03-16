@@ -143,7 +143,7 @@
                     <td><?php echo $mostrar['servicio'] ?></td>
                     <td><?php echo $mostrar['estado'] ?></td>
                     <td>
-                      <a href="./lock_screen.html"class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+                      <a href="./registro_evidencias.php?id=<?php echo $mostrar['id']  ?>" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                     
                       <a href='./orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i></a>
                       

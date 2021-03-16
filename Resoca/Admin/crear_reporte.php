@@ -82,6 +82,7 @@
               <li><a href="calendar.html">Calendario</a></li>
               <li><a href="crear_servicio.html">Crear Servicio</a></li>
               <li><a href="listar_servicios.php">Lista de Servicios</a></li>
+              <li><a href="listar_evidencias.php">Lista de Evidencias</a></li>
             </ul>
           </li>
           <li class="sub-menu">
