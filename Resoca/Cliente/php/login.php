@@ -21,6 +21,7 @@ if ($conexion ->connect_error) {
         if($hash==$password){
             //$_SESSION['email'] = $correo;	
 	        //Redirecciono al usuario a la página principal del sitio.
+            $_SESSION['user'] = $row['id'];
 	        header("HTTP/1.1 302 Moved Temporarily"); 
             header("Location: ../index.html");
         }else{
