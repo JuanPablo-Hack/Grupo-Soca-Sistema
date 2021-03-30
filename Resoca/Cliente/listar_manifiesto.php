@@ -1,5 +1,6 @@
 <?php
 include 'php/conexion.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -152,6 +153,7 @@ include 'php/conexion.php';
                 </thead>
                 <tbody>
                   <?php
+                  echo $_SESSION['user'];
                   if (isset($_SESSION['user'])) {
                     $id = $_SESSION['user'];
                     $sql = "SELECT * FROM manifiestos WHERE nombre = '$id'";

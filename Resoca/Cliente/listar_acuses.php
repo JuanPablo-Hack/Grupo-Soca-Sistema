@@ -1,5 +1,7 @@
 <?php
 include 'php/conexion.php';
+session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
