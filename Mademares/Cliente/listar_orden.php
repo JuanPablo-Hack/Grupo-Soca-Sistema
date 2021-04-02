@@ -1,5 +1,6 @@
 <?php
- include 'php/conexion.php';
+include 'php/conexion.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,10 +49,10 @@
       <!--logo start-->
       <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
       <!--logo end-->
-     
+
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+          <li><a class="logout" href="php/logout.php">Cerrar Sesión</a></li>
         </ul>
       </div>
     </header>
@@ -64,64 +65,63 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Admin</h5>
+          <p class="centered"><a href="profile.html"><img src="img/banner.png" class="img-circle" width="80"></a></p>
+          <h5 class="centered">Cliente</h5>
           <li class="mt">
-            <a class="active" href="index.html">
+            <a class="active" href="index.php">
               <i class="fa fa-dashboard"></i>
               <span>Panel de Control</span>
-              </a>
+            </a>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
               <span>Ordenes de Servicios</span>
-              </a>
+            </a>
             <ul class="sub">
-             
+
               <li><a href="listar_orden.php">Bitacora</a></li>
-              
+
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Cortes</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="listar_reportes.php">Mis cortes</a></li>
-              
-              
-              
+
+
+
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Manifiestos</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="listar_manifiesto.php">Mis manifiestos</a></li>
-              
+
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Acuses</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="listar_acuses.php">Mis acuses</a></li>
-             
+
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Reporte General</span>
-              </a>
+            </a>
           </li>
-          
          
         </ul>
         <!-- sidebar menu end-->
@@ -142,7 +142,7 @@
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    
+
                     <th>Folio</th>
                     <th>Nombre del cliente</th>
                     <th class="hidden-phone">Fecha</th>
@@ -152,30 +152,33 @@
                   </tr>
                 </thead>
                 <tbody>
-                <?php
-                    $sql="SELECT * FROM ordenes";
-                    $resultado = $conexion->query($sql);
-                    while ($mostrar=mysqli_fetch_array($resultado)) {  
-                  ?>
-                  <tr >
-                    
-                    <td><?php echo $mostrar['id'] ?></td>
-                    <td><?php echo $mostrar['cliente'] ?></td>
-                    <td><?php echo $mostrar['fecha'] ?></td>
-                    <td><?php echo $mostrar['servicio'] ?></td>
-                    <td><?php echo $mostrar['estado'] ?></td>
-                    <td>
-                     
-                      
-                      <a href='./orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
-
-                     
-                      
-                    </td>
-                  </tr>
                   <?php
-                    }                 
-                 ?>
+                  if (isset($_SESSION['user'])) {
+                    $id = $_SESSION['user'];
+                    $sql = "SELECT * FROM ordenes WHERE cliente = '$id'";
+                    $resultado = $conexion->query($sql);
+                    while ($mostrar = mysqli_fetch_array($resultado)) {
+                  ?>
+                      <tr>
+
+                        <td><?php echo $mostrar['id'] ?></td>
+                        <td><?php echo $mostrar['cliente'] ?></td>
+                        <td><?php echo $mostrar['fecha'] ?></td>
+                        <td><?php echo $mostrar['servicio'] ?></td>
+                        <td><?php echo $mostrar['estado'] ?></td>
+                        <td>
+                          <a href='php/ordenesPDF.php?orden=<?php echo $mostrar['id']  ?>' target="_blank" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+
+                         
+
+
+
+                        </td>
+                      </tr>
+                  <?php
+                    }
+                  }
+                  ?>
                 </tbody>
               </table>
             </div>
@@ -205,7 +208,7 @@
         </div>
         <a href="index.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
-          </a>
+        </a>
       </div>
     </footer>
     <!--footer end-->
@@ -222,7 +225,7 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
- 
+
 </body>
 
 </html>

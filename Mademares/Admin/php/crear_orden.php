@@ -18,6 +18,8 @@ $unidad=$_POST['unidad'];
 
 
 
+
+
 if ($conexion ->connect_error) {
     die("Conexion Fallida: " . $conn ->connect_error);
 }else{

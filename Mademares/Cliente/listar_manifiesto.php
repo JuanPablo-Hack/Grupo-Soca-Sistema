@@ -1,5 +1,6 @@
 <?php
-  include 'php/conexion.php';
+include 'php/conexion.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,10 +49,10 @@
       <!--logo start-->
       <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
       <!--logo end-->
-     
+
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+          <li><a class="logout" href="php/logout.php">Cerrar Sesión</a></li>
         </ul>
       </div>
     </header>
@@ -64,64 +65,63 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/favicon.ico" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Admin</h5>
+          <p class="centered"><a href="profile.html"><img src="img/banner.png" class="img-circle" width="80"></a></p>
+          <h5 class="centered">Cliente</h5>
           <li class="mt">
-            <a class="active" href="index.html">
+            <a class="active" href="index.php">
               <i class="fa fa-dashboard"></i>
               <span>Panel de Control</span>
-              </a>
+            </a>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
               <span>Ordenes de Servicios</span>
-              </a>
+            </a>
             <ul class="sub">
-             
+
               <li><a href="listar_orden.php">Bitacora</a></li>
-              
+
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Cortes</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="listar_reportes.php">Mis cortes</a></li>
-              
-              
-              
+
+
+
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Manifiestos</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="listar_manifiesto.php">Mis manifiestos</a></li>
-              
+
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Acuses</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="listar_acuses.php">Mis acuses</a></li>
-             
+
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Reporte General</span>
-              </a>
+            </a>
           </li>
-          
          
         </ul>
         <!-- sidebar menu end-->
@@ -151,27 +151,31 @@
                   </tr>
                 </thead>
                 <tbody>
-                <?php
-                    $sql="SELECT * FROM manifiestos";
-                    $resultado = $conexion->query($sql);
-                    while ($mostrar=mysqli_fetch_array($resultado)) {  
-                  ?>
-                  <tr >
-                    <td><?php echo $mostrar['id'] ?></td>
-                    <td><?php echo $mostrar['nombre'] ?></td>
-                    <td><?php echo $mostrar['capacidad'] ?></td>
-                    <td><?php echo $mostrar['creado'] ?></td>
-                    <td><?php echo $mostrar['estado'] ?></td>
-                   
-                    <td>
-                      <button class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></button>
-                     
-                      
-                    </td>
-                  </tr>
                   <?php
-                    }                 
-                 ?>
+                  echo $_SESSION['user'];
+                  if (isset($_SESSION['user'])) {
+                    $id = $_SESSION['user'];
+                    $sql = "SELECT * FROM manifiestos WHERE nombre = '$id'";
+                    $resultado = $conexion->query($sql);
+                    while ($mostrar = mysqli_fetch_array($resultado)) {
+                  ?>
+                      <tr>
+                        <td><?php echo $mostrar['id'] ?></td>
+                        <td><?php echo $mostrar['nombre'] ?></td>
+                        <td><?php echo $mostrar['capacidad'] ?></td>
+                        <td><?php echo $mostrar['creado'] ?></td>
+                        <td><?php echo $mostrar['estado'] ?></td>
+
+                        <td>
+                          <button class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></button>
+
+
+                        </td>
+                      </tr>
+                  <?php
+                    }
+                  }
+                  ?>
                 </tbody>
               </table>
             </div>
@@ -201,7 +205,7 @@
         </div>
         <a href="index.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
-          </a>
+        </a>
       </div>
     </footer>
     <!--footer end-->
@@ -218,7 +222,7 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
-  
+
 </body>
 
 </html>

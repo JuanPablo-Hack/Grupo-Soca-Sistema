@@ -83,6 +83,7 @@
               <li><a href="calendar.html">Calendario</a></li>
               <li><a href="crear_servicio.html">Crear Servicio</a></li>
               <li><a href="listar_servicios.php">Lista de Servicios</a></li>
+              <li><a href="listar_evidencias.php">Lista de Evidencias</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -217,10 +218,11 @@
                     <td>
                      
                       
-                      <a href='./orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+                      <a href='php/ordenesPDF.php?orden=<?php echo $mostrar['id']  ?>' target="_blank" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
 
-                      <a href='./editar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href='./.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                       <a href='./eliminar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      <a href='./duplicar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-file-text-o "></i></a>
                       
                     </td>
                   </tr>

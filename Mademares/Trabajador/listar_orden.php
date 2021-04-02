@@ -1,5 +1,5 @@
 <?php
- include 'php/conexion.php';
+include 'php/conexion.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +48,7 @@
       <!--logo start-->
       <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
       <!--logo end-->
-     
+
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
@@ -70,38 +70,38 @@
             <a class="active" href="index.html">
               <i class="fa fa-dashboard"></i>
               <span>Panel de Control</span>
-              </a>
+            </a>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
               <span>Ordenes de Servicios</span>
-              </a>
+            </a>
             <ul class="sub">
-              
+
               <li><a href="listar_orden.php">Bitacora</a></li>
               <li><a href="calendar.html">Calendario</a></li>
-              
+
             </ul>
           </li>
-          
+
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-car"></i>
               <span>Unidades</span>
-              </a>
+            </a>
             <ul class="sub">
-             
 
-              
+
+
               <li><a href="bitacora_combustible.php">Registrar combustible</a></li>
-              
+
               <li><a href="listar_combustible.php">Listar combustibles</a></li>
 
             </ul>
           </li>
-          
-         
+
+
         </ul>
         <!-- sidebar menu end-->
       </div>
@@ -130,28 +130,29 @@
                   </tr>
                 </thead>
                 <tbody>
-                <?php
-                    $sql="SELECT * FROM ordenes WHERE estado='Activo'";
-                    $resultado = $conexion->query($sql);
-                    while ($mostrar=mysqli_fetch_array($resultado)) {  
-                  ?>
-                  <tr >
-                    
-                    <td><?php echo $mostrar['id'] ?></td>
-                    <td><?php echo $mostrar['cliente'] ?></td>
-                    <td><?php echo $mostrar['fecha'] ?></td>
-                    <td><?php echo $mostrar['servicio'] ?></td>
-                    <td><?php echo $mostrar['estado'] ?></td>
-                    <td>
-                      <a href="./lock_screen.html"class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
-                    
-                      <a href='./orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i></a>
-                      
-                    </td>
-                  </tr>
                   <?php
-                    }                 
-                 ?>
+                  $sql = "SELECT * FROM ordenes WHERE estado='Activo'";
+                  $resultado = $conexion->query($sql);
+                  while ($mostrar = mysqli_fetch_array($resultado)) {
+                  ?>
+                    <tr>
+
+                      <td><?php echo $mostrar['id'] ?></td>
+                      <td><?php echo $mostrar['cliente'] ?></td>
+                      <td><?php echo $mostrar['fecha'] ?></td>
+                      <td><?php echo $mostrar['servicio'] ?></td>
+                      <td><?php echo $mostrar['estado'] ?></td>
+                      <td>
+                        <a href='php/ordenesPDF.php?orden=<?php echo $mostrar['id']  ?>' target="_blank" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+                        <a href="./registro_evidencias.php?id=<?php echo $mostrar['id']  ?>" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+
+                        <a href='./orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i></a>
+
+                      </td>
+                    </tr>
+                  <?php
+                  }
+                  ?>
                 </tbody>
               </table>
             </div>
@@ -181,7 +182,7 @@
         </div>
         <a href="index.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
-          </a>
+        </a>
       </div>
     </footer>
     <!--footer end-->
@@ -198,7 +199,7 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
- 
+
 </body>
 
 </html>
