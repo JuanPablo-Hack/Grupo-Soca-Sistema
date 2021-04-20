@@ -1,11 +1,6 @@
 <?php
   include 'php/conexion.php';
-  $sql="SELECT * FROM clientes";
-  $result = mysqli_query($conexion,$sql);
-  $sql2="SELECT * FROM unidad_medidas";
-  $result2 = mysqli_query($conexion,$sql2);
-  $sql3="SELECT * FROM unidades";
-  $result3 = mysqli_query($conexion,$sql3);
+  $id_cliente=$_GET['cliente'];
   
 ?>
 <!DOCTYPE html>
@@ -174,135 +169,68 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Manifiesto</h3>
+        <h3><i class="fa fa-angle-right"></i>Subir Manifiestos</h3>
+        <!-- BASIC FORM VALIDATION -->
+        
+        <!-- /row -->
+        <!-- FORM VALIDATION -->
+        
+        <!-- /row -->
         <div class="row mt">
-          <!--  DATE PICKERS -->
           <div class="col-lg-12">
-            <div class="form-panel">
-              <h3>Datos del Generador</h3>
-              <hr>
-              <form action="php/crear_manifiesto.php" class="form-horizontal style-form" method="POST">
-              <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Cliente</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='nombre_cliente'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-                <h5>Contenedor</h5>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Capacidad</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="capacidad">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tipo</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="tipo">
-                  </div>
-                </div>
-                <h5>Cantidad</h5>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Total de residuo</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="total_residuo">
-                  </div>
-                </div>
-                <h5>Unidad</h5>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Unidad de Medida</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='vol_peso'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row2 = mysqli_fetch_array($result2)) {			 
-                 ?>
-                <option value=<?php echo $Row2['id']; ?>><?php echo $Row2['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-                <h3>Datos del Transporte</h3>
-                <hr>
-                <div class="form-group">
-                  <label class="control-label col-md-3">Fecha de programación</label>
-                  <div class="col-md-3 col-xs-11">
-                    <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
-                      <input type="text" readonly="" value="01-01-2014" size="16" class="form-control" name="fecha">
-                      <span class="input-group-btn add-on">
-                        <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
-                        </span>
-                    </div>
-                    <span class="help-block">Select date</span>
-                  </div>
-                </div>
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Unidad Asignada</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='unidad'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result3)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-                <h3>Destinatario</h3>
-                <hr>
-                
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre de quien recibe</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="nombre_recibe"> 
-                  </div>
-                </div>
-                
-                <div class="form-group">
-                  <div class="col-lg-offset-2 col-lg-10">
-                    <button class="btn btn-theme" type="submit">Crear</button>
-                    <a href="listar_manifiesto.php" class="btn btn-theme04" type="button">Cancelar</a>
-                  </div>
-                </div>
-                
-                
-               
-              </form>
-            </div>
             
-          <!-- col-lg-12-->
-        </div>
+            <div class="form-panel">
+              <div class="form">
+              <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/crear_manifiesto.php">
+              <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Indentificador</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="identificador" value="<?php echo $id_cliente; ?>" readonly>
+                  </div>
+                </div>
+                  <div class="form-group ">
+                    <label for="firstname" class="control-label col-lg-2">Titulo del Manifiesto</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="firstname" name="titulo" type="text"  />
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="lastname" class="control-label col-lg-2">Descripción</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="lastname" name="descripcion" type="text"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                  <label class="control-label col-md-3">Adjunta el manifiesto</label>
+                  <div class="controls col-md-9">
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                      <span class="btn btn-theme02 btn-file">
+                        <span class="fileupload-new"><i class="fa fa-paperclip"></i> Select file</span>
+                      <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                      <input type="file" name="archivo"/>
+                      </span>
+                      <span class="fileupload-preview" style="margin-left:5px;"></span>
+                      <a href="advanced_form_components.html#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
+                    </div>
+                  </div>
+                </div>
+                  
+                  
+                  
+                  <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit">Subir</button>
+                      <a href="listar_trabajador.php" class="btn btn-theme04" type="button">Cancelar</a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
             <!-- /form-panel -->
           </div>
           <!-- /col-lg-12 -->
         </div>
         <!-- /row -->
-        <!-- DATE TIME PICKERS -->
-       
-            <!-- /form-panel -->
-          </div>
-          <!-- /col-lg-12 -->
-        </div>
-        <!-- row -->
       </section>
       <!-- /wrapper -->
     </section>

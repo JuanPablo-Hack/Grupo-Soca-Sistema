@@ -190,7 +190,7 @@
             
             <div class="form-panel">
               <div class="form">
-              <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/agregar_trabajador.php">
+              <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/editar_trabajador.php">
               <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Indentificador</label>
                   <div class="col-sm-4">

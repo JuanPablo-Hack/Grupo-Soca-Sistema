@@ -173,41 +173,48 @@ include 'php/conexion.php';
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    <th>Folio</th>
+                   
                     <th>Nombre del cliente</th>
-                    <th class="hidden-phone">No. Manifiesto</th>
-                    <th class="hidden-phone">Fecha</th>
-                    <th class="hidden-phone">Estado</th>
+                    <th class="hidden-phone">Cantidad Acumulada</th>
+                    <th class="hidden-phone">No. de Servicios</th>
+                    <th class="hidden-phone">Manifiestos Pendientes</th>
                     <th class="hidden-phone">Acciones</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                  $sql = "SELECT * FROM manifiestos";
+                  $sql = "SELECT COUNT(id) as servicios,cliente as cliente, SUM(cantidad) as acumulado from ordenes GROUP BY cliente";
                   $resultado = $conexion->query($sql);
                   while ($mostrar = mysqli_fetch_array($resultado)) {
                   ?>
                     <tr>
-                      <td><?php echo $mostrar['id'] ?></td>
+                     
                       <td><?php
 
 
-                          $sql1 = "SELECT * FROM clientes WHERE id='" . $mostrar['nombre'] . "'";
+                          $sql1 = "SELECT * FROM clientes WHERE id='" . $mostrar['cliente'] . "'";
                           $result1 = mysqli_query($conexion, $sql1);
                           if ($Row = mysqli_fetch_array($result1)) {
                             $nombre = $Row['nombre'];
                           }
                           echo $nombre;
                           ?></td>
-                      <td><?php echo $mostrar['capacidad'] ?></td>
-                      <td><?php echo $mostrar['creado'] ?></td>
-                      <td><?php echo $mostrar['estado'] ?></td>
-
+                      <td><?php echo $mostrar['acumulado'] ?></td>
+                      <td><?php echo $mostrar['servicios'] ?></td>
+                      <td><?php 
+                          $manifiestos_pen= intval($mostrar['acumulado'] / 1500);
+                          if($manifiestos_pen >= 1){
+                            echo $manifiestos_pen;
+                          }else{
+                            echo "No hay pendientes";
+                          }
+                      
+                      ?></td>
                       <td>
 
-                        <a href="php/manifiestoPDF.php?manifiesto=<?php echo $mostrar['id']  ?>" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
-                        <a href='./editar_manifiesto.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a href='./eliminar_manifiesto.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                        <a href="crear_manifiesto.php?cliente=<?php echo $mostrar['cliente']  ?>" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+                        
 
                       </td>
                     </tr>
