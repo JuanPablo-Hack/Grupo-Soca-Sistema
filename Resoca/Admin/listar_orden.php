@@ -216,7 +216,7 @@ include 'php/conexion.php';
                       <td>
 
 
-                        <a onclick="crearPDF(<?php echo $mostrar['id'] ?>)" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+                        <a onclick="crearPDF(<?php echo $mostrar['id'] ?>)" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
 
                         <a href='./.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                         <a href='./eliminar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
