@@ -1,5 +1,5 @@
 <?php
-  include 'php/conexion.php';
+include 'php/conexion.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +48,7 @@
       <!--logo start-->
       <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
       <!--logo end-->
-     
+
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
@@ -70,13 +70,13 @@
             <a class="active" href="index.html">
               <i class="fa fa-dashboard"></i>
               <span>Panel de Control</span>
-              </a>
+            </a>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
               <span>Ordenes de Servicios</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="crear_orden.php">Crear Orden</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
@@ -90,19 +90,19 @@
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Cortes</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="crear_reporte.php">Programar Corte</a></li>
               <li><a href="listar_reportes.php">Bitacora de Corte</a></li>
-              
-              
+
+
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Manifiestos</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="crear_manifiesto.php">Crear Manifiesto</a></li>
               <li><a href="listar_manifiesto.php">Bitacora de Corte</a></li>
@@ -112,7 +112,7 @@
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Acuses</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="crear_acuse.php">Crear Acuses</a></li>
               <li><a href="listar_acuses.php">Bitacora de Acuses</a></li>
@@ -122,13 +122,13 @@
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Reporte Imades</span>
-              </a>
+            </a>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-car"></i>
               <span>Unidades</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="alta_unidad.html">Dar de alta</a></li>
               <li><a href="listar_unidades.php">Mis Unidades</a></li>
@@ -143,17 +143,17 @@
             <a href="javascript:;">
               <i class="fa fa-group"></i>
               <span>Usuarios</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
               <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
               <li><a href="alta_usuarios.html">Crear Cliente</a></li>
               <li><a href="listar_clientes.php">Listar Clientes</a></li>
-              
-              
+
+
             </ul>
           </li>
-         
+
         </ul>
         <!-- sidebar menu end-->
       </div>
@@ -173,7 +173,7 @@
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    
+
                     <th>Folio</th>
                     <th>Nombre del cliente</th>
                     <th class="hidden-phone">Fecha</th>
@@ -183,52 +183,50 @@
                   </tr>
                 </thead>
                 <tbody>
-                <?php
-                    $sql="SELECT * FROM ordenes";
-                    $resultado = $conexion->query($sql);
-                    while ($mostrar=mysqli_fetch_array($resultado)) {  
-                  ?>
-                  <tr >
-                    
-                    <td><?php echo $mostrar['id'] ?></td>
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM clientes WHERE id='".$mostrar['cliente']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                    <td><?php echo $mostrar['fecha'] ?></td>
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM servicios WHERE id='".$mostrar['servicio']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                    <td><?php echo $mostrar['estado'] ?></td>
-                    <td>
-                     
-                      
-                      <a href='php/ordenesPDF.php?orden=<?php echo $mostrar['id']  ?>' target="_blank" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
-
-                      <a href='./.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                      <a href='./eliminar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
-                      <a href='./duplicar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-file-text-o "></i></a>
-                      
-                    </td>
-                  </tr>
                   <?php
-                    }                 
-                 ?>
+                  $sql = "SELECT * FROM ordenes";
+                  $resultado = $conexion->query($sql);
+                  while ($mostrar = mysqli_fetch_array($resultado)) {
+                  ?>
+                    <tr>
+
+                      <td><?php echo $mostrar['id'] ?></td>
+                      <td><?php
+
+
+                          $sql1 = "SELECT * FROM clientes WHERE id='" . $mostrar['cliente'] . "'";
+                          $result1 = mysqli_query($conexion, $sql1);
+                          if ($Row = mysqli_fetch_array($result1)) {
+                            $nombre = $Row['nombre'];
+                          }
+                          echo $nombre;
+                          ?></td>
+                      <td><?php echo $mostrar['fecha'] ?></td>
+                      <td><?php
+
+
+                          $sql1 = "SELECT * FROM servicios WHERE id='" . $mostrar['servicio'] . "'";
+                          $result1 = mysqli_query($conexion, $sql1);
+                          if ($Row = mysqli_fetch_array($result1)) {
+                            $nombre = $Row['nombre'];
+                          }
+                          echo $nombre;
+                          ?></td>
+                      <td><?php echo $mostrar['estado'] ?></td>
+                      <td>
+
+
+                        <a onclick="crearPDF(<?php echo $mostrar['id'] ?>)" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+
+                        <a href='./.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                        <a href='./eliminar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                        <a href='./duplicar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-file-text-o "></i></a>
+
+                      </td>
+                    </tr>
+                  <?php
+                  }
+                  ?>
                 </tbody>
               </table>
             </div>
@@ -258,7 +256,7 @@
         </div>
         <a href="index.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
-          </a>
+        </a>
       </div>
     </footer>
     <!--footer end-->
@@ -275,7 +273,48 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
- 
+  <!-- PDF -->
+
+  <script>
+    function addScript(url) {
+      var script = document.createElement('script');
+      script.type = 'application/javascript';
+      script.src = url;
+      document.head.appendChild(script);
+    }
+    addScript('https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js');
+
+    function crearPDF(id) {
+      var opt = {
+        margin: 1,
+        filename: 'Orden.pdf',
+        image: {
+          type: 'jpeg',
+          quality: 0.98
+        },
+        html2canvas: {
+          scale: 3
+        },
+        jsPDF: {
+          unit: 'in',
+          format: 'a3',
+          orientation: 'portrait'
+        }
+      };
+
+      $.ajax({
+        type: 'POST',
+        data: "id=" + id,
+        url: 'php/ordenesPDF.php',
+        success: function(r) {
+          // console.log(r);
+          var worker = html2pdf().set(opt).from(r).toPdf().save();
+
+        }
+      });
+    }
+  </script>
+
 </body>
 
 </html>
