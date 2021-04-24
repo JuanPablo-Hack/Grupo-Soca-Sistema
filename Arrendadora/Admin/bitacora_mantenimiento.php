@@ -65,103 +65,65 @@
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
     <aside>
-      <div id="sidebar" class="nav-collapse ">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/banner.png" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Admin</h5>
-          <li class="mt">
-            <a class="active" href="index.html">
-              <i class="fa fa-dashboard"></i>
-              <span>Panel de Control</span>
-              </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-calendar"></i>
-              <span>Ordenes de Servicios</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_orden.php">Crear Orden</a></li>
-              <li><a href="listar_orden.php">Bitacora</a></li>
-              <li><a href="calendar.html">Calendario</a></li>
-              <li><a href="crear_servicio.html">Crear Servicio</a></li>
-              <li><a href="listar_servicios.php">Lista de Servicios</a></li>
-              <li><a href="listar_evidencias.php">Lista de Evidencias</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Cortes</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_reporte.php">Programar Corte</a></li>
-              <li><a href="listar_reportes.php">Bitacora de Corte</a></li>
-              
-              
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Manifiestos</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_manifiesto.php">Crear Manifiesto</a></li>
-              <li><a href="listar_manifiesto.php">Bitacora de Corte</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Acuses</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_acuse.php">Crear Acuses</a></li>
-              <li><a href="listar_acuses.php">Bitacora de Acuses</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Reporte Imades</span>
-              </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-car"></i>
-              <span>Unidades</span>
-              </a>
-            <ul class="sub">
-              <li><a href="alta_unidad.html">Dar de alta</a></li>
-              <li><a href="listar_unidades.php">Mis Unidades</a></li>
-              <li><a href="bitacora_mantenimiento.php">Registrar Mantenimiento</a></li>
-              <li><a href="bitacora_combustible.php">Registrar Combustible</a></li>
-              <li><a href="listar_mantenimientos.php">Listar Mantenimientos</a></li>
-              <li><a href="listar_combustible.php">Listar Combustibles</a></li>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered">
+                        <a href="profile.html"><img src="img/login_banner.png" class="img-circle" width="80"></a>
+                    </p>
+                    <h5 class="centered">Admin</h5>
+                    <li class="mt">
+                        <a class="active" href="index.html">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Panel de Control</span>
+                        </a>
+                    </li>
 
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-group"></i>
-              <span>Usuarios</span>
-              </a>
-            <ul class="sub">
-              <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
-              <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-              <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-              <li><a href="listar_clientes.php">Listar Clientes</a></li>
-              
-              
-            </ul>
-          </li>
-         
-        </ul>
-        <!-- sidebar menu end-->
-      </div>
-    </aside>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Inventario</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_unidad.html">Dar de alta</a></li>
+                            <li><a href="listar_unidades.php">Mis Unidades</a></li>
+
+
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-car"></i>
+                            <span>Mantenimientos</span>
+                        </a>
+                        <ul class="sub">
+
+                            <li><a href="bitacora_mantenimiento.php">Registrar Mantenimiento</a></li>
+                            <li><a href="listar_mantenimientos.php">Listar Mantenimientos</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-group"></i>
+                            <span>Usuarios</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
+                            <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
+                            <li><a href="alta_usuarios.html">Crear Cliente</a></li>
+                            <li><a href="listar_clientes.php">Listar Clientes</a></li>
+
+
+                        </ul>
+                    </li>
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
     <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
@@ -196,9 +158,9 @@
                 <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label">Niveles de aceite de motor correctos:</label>
                     <div class="col-sm-4">
-                    <select class="form-control" id="carretera" onchange="myFunction()" name='carretera'>
-                      <option value="1">Si</option>
-                      <option value="2">No</option>
+                    <select class="form-control" id="carretera" onchange="myFunction()" name='aceite_motor'>
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
                     </select>
                     </div>
                 </div>
@@ -208,7 +170,7 @@
                       <div class="form-group">
                       <label class="col-sm-2 col-sm-2 control-label">Comentario</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="descripcion">
+                        <input type="text" class="form-control" name="comen_motor">
                       </div>
                 
                     
@@ -216,9 +178,9 @@
                 <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label">Niveles de aceite hidraulico correctos:</label>
                     <div class="col-sm-4">
-                    <select class="form-control" id="carretera" onchange="myFunction()" name='carretera'>
-                      <option value="1">Si</option>
-                      <option value="2">No</option>
+                    <select class="form-control" id="carretera" onchange="myFunction()" name='aceite_hidra'>
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
                     </select>
                     </div>
                 </div>
@@ -228,7 +190,7 @@
                       <div class="form-group">
                       <label class="col-sm-2 col-sm-2 control-label">Comentario</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="descripcion">
+                        <input type="text" class="form-control" name="comen_hidra">
                       </div>
                 
                     
@@ -236,9 +198,9 @@
                 <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label">Niveles de anticogelante correctos:</label>
                     <div class="col-sm-4">
-                    <select class="form-control" id="carretera" onchange="myFunction()" name='carretera'>
-                      <option value="1">Si</option>
-                      <option value="2">No</option>
+                    <select class="form-control" id="carretera" onchange="myFunction()" name='anticogelante'>
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
                     </select>
                     </div>
                 </div>
@@ -248,7 +210,7 @@
                       <div class="form-group">
                       <label class="col-sm-2 col-sm-2 control-label">Comentario</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="descripcion">
+                        <input type="text" class="form-control" name="comen_anti">
                       </div>
                 
                     
@@ -256,9 +218,9 @@
                 <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label">Niveles de liquido de frenos correctos:</label>
                     <div class="col-sm-4">
-                    <select class="form-control" id="carretera" onchange="myFunction()" name='carretera'>
-                      <option value="1">Si</option>
-                      <option value="2">No</option>
+                    <select class="form-control" id="carretera" onchange="myFunction()" name='frenos'>
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
                     </select>
                     </div>
                 </div>
@@ -268,7 +230,7 @@
                       <div class="form-group">
                       <label class="col-sm-2 col-sm-2 control-label">Comentario</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="descripcion">
+                        <input type="text" class="form-control" name="comen_frenos">
                       </div>
                 
                     
@@ -277,29 +239,47 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Chequeo de mangueras</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="descripcion">
+                    <input type="text" class="form-control" name="mangueras">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Chequeo de pernos</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="descripcion">
+                    <input type="text" class="form-control" name="pernos">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Chequeo de marcadores de tablero</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="descripcion">
+                    <input type="text" class="form-control" name="marcadores">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Detalles de carrocería</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="descripcion">
+                    <input type="text" class="form-control" name="carroceria">
                   </div>
                 </div>
-               
-                
+                <h3>Info del mantenimiento</h3>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre del solicitante</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="solicitante">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Autoriza</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="autoriza">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Descripción</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="descrip">
+                  </div>
+                </div>
                 <div class="form-group">
                   <div class="col-lg-offset-2 col-lg-10">
                     <button class="btn btn-theme" type="submit">Crear</button>

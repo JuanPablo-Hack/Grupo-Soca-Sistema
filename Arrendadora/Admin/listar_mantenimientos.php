@@ -61,103 +61,65 @@
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
     <aside>
-      <div id="sidebar" class="nav-collapse ">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/banner.png" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Admin</h5>
-          <li class="mt">
-            <a class="active" href="index.html">
-              <i class="fa fa-dashboard"></i>
-              <span>Panel de Control</span>
-              </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-calendar"></i>
-              <span>Ordenes de Servicios</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_orden.php">Crear Orden</a></li>
-              <li><a href="listar_orden.php">Bitacora</a></li>
-              <li><a href="calendar.html">Calendario</a></li>
-              <li><a href="crear_servicio.html">Crear Servicio</a></li>
-              <li><a href="listar_servicios.php">Lista de Servicios</a></li>
-              <li><a href="listar_evidencias.php">Lista de Evidencias</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Cortes</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_reporte.php">Programar Corte</a></li>
-              <li><a href="listar_reportes.php">Bitacora de Corte</a></li>
-              
-              
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Manifiestos</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_manifiesto.php">Crear Manifiesto</a></li>
-              <li><a href="listar_manifiesto.php">Bitacora de Corte</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Acuses</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_acuse.php">Crear Acuses</a></li>
-              <li><a href="listar_acuses.php">Bitacora de Acuses</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Reporte Imades</span>
-              </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-car"></i>
-              <span>Unidades</span>
-              </a>
-            <ul class="sub">
-              <li><a href="alta_unidad.html">Dar de alta</a></li>
-              <li><a href="listar_unidades.php">Mis Unidades</a></li>
-              <li><a href="bitacora_mantenimiento.php">Registrar Mantenimiento</a></li>
-              <li><a href="bitacora_combustible.php">Registrar Combustible</a></li>
-              <li><a href="listar_mantenimientos.php">Listar Mantenimientos</a></li>
-              <li><a href="listar_combustible.php">Listar Combustibles</a></li>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered">
+                        <a href="profile.html"><img src="img/login_banner.png" class="img-circle" width="80"></a>
+                    </p>
+                    <h5 class="centered">Admin</h5>
+                    <li class="mt">
+                        <a class="active" href="index.html">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Panel de Control</span>
+                        </a>
+                    </li>
 
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-group"></i>
-              <span>Usuarios</span>
-              </a>
-            <ul class="sub">
-              <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
-              <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-              <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-              <li><a href="listar_clientes.php">Listar Clientes</a></li>
-              
-              
-            </ul>
-          </li>
-         
-        </ul>
-        <!-- sidebar menu end-->
-      </div>
-    </aside>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Inventario</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_unidad.html">Dar de alta</a></li>
+                            <li><a href="listar_unidades.php">Mis Unidades</a></li>
+
+
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-car"></i>
+                            <span>Mantenimientos</span>
+                        </a>
+                        <ul class="sub">
+
+                            <li><a href="bitacora_mantenimiento.php">Registrar Mantenimiento</a></li>
+                            <li><a href="listar_mantenimientos.php">Listar Mantenimientos</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-group"></i>
+                            <span>Usuarios</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
+                            <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
+                            <li><a href="alta_usuarios.html">Crear Cliente</a></li>
+                            <li><a href="listar_clientes.php">Listar Clientes</a></li>
+
+
+                        </ul>
+                    </li>
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
     <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
@@ -176,19 +138,17 @@
                     <tr>
                       <th>ID</th>
                       <th>Unidad</th>
-                      <th class="numeric">Taller</th>
-                      <th class="numeric">Fecha de entrada</th>
-                      <th class="numeric">Factura</th>
-                      <th class="numeric">Descripcion</th>
-                      <th class="numeric">Fecha del próximo servicio</th>
-                      <th class="numeric">Kilometraje</th>
+                      <th>Solicitante</th>
+                      <th>Autoriza</th>
+                      <th class="numeric">Fecha y hora del registro</th>
+                      <th>Descripción</th>
                       <th>Acciones</th>
                       
                     </tr>
                   </thead>
                   <tbody>
                   <?php
-                    $sql="SELECT * FROM registros_mantenimiento";
+                    $sql="SELECT * FROM mantenimiento";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
@@ -197,7 +157,7 @@
                     <td><?php 
                     
                      
-                    $sql1="SELECT * FROM unidades WHERE id='".$mostrar['unidad']."'";
+                    $sql1="SELECT * FROM unidades WHERE id='".$mostrar['unidadasig']."'";
                     $result1 = mysqli_query($conexion,$sql1);
                     if ($Row = mysqli_fetch_array($result1))
                       {
@@ -205,18 +165,17 @@
                       }
                       echo $nombre;
                     ?></td>
-                    <td><?php echo $mostrar['taller'] ?></td>
+                    <td><?php echo $mostrar['solicitante'] ?></td>
+                    <td><?php echo $mostrar['autoriza'] ?></td>
+                    <td><?php echo $mostrar['descrip'] ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
-                    <td><?php echo $mostrar['nofactura'] ?></td>
-                    <td><?php echo $mostrar['descripcion'] ?></td>
-                    <td><?php echo $mostrar['fecha'] ?></td>
-                    <td><?php echo $mostrar['km'] ?></td>
+                   
                     <td>
                      
                       
                      
 
-                      <a href='./editar_mantenimiento.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      
                       <a href='./eliminar_mantenimiento.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                       
                     </td>
