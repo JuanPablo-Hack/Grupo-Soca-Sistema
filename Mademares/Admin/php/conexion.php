@@ -1,9 +1,9 @@
 <?php
 
 $nombreServidor = "localhost";
-$nombreUsuario = "u298097659_mmr";
-$passwordBaseDeDatos = "GrupoSoca1511*";
-$nombreBaseDeDatos = "u298097659_mademares";
+$nombreUsuario = "root";
+$passwordBaseDeDatos = "";
+$nombreBaseDeDatos = "mmr";
 
 $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
 

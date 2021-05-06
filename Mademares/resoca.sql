@@ -31,19 +31,28 @@ create table tallas(
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-create table ordenes(
+create table cartaaporte(
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    cliente VARCHAR(75) NOT NULL,
-    encargado VARCHAR(75) NOT NULL,
-    cargo VARCHAR(75) NOT NULL,
-    servicio VARCHAR(75) NOT NULL,
-    fecha TIMESTAMP,
-    cantidad VARCHAR(4) NOT NULL,
-    unidad VARCHAR(15) NOT NULL,
-    concepto VARCHAR(40) NOT NULL,
-    manifiesto VARCHAR(15) NOT NULL,
-    factura VARCHAR(15) NOT NULL,
-    unidadasig VARCHAR(25) NOT NULL,
+    ruta VARCHAR(75) NOT NULL,
+    destino VARCHAR(75) NOT NULL,
+    materia VARCHAR(75) NOT NULL,
+    embalaje VARCHAR(75) NOT NULL,
+    peligro VARCHAR(75) NOT NULL,
+    numun VARCHAR(15) NOT NULL,
+    clase VARCHAR(40) NOT NULL,
+    cpa VARCHAR(15) NOT NULL,
+    denominacion VARCHAR(15) NOT NULL,
+    bultos VARCHAR(25) NOT NULL,
+    lts VARCHAR(25) NOT NULL,
+    peso_bruto VARCHAR(25) NOT NULL,
+    nombre_exp VARCHAR(25) NOT NULL,
+    dir_exp VARCHAR(25) NOT NULL,
+    pob_exp VARCHAR(25) NOT NULL,
+    tel_exp VARCHAR(25) NOT NULL,
+    nombre_dest VARCHAR(25) NOT NULL,
+    dir_dest VARCHAR(25) NOT NULL,
+    pob_dest VARCHAR(25) NOT NULL,
+    tel_dest VARCHAR(25) NOT NULL,
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

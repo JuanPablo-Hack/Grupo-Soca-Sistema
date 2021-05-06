@@ -1,14 +1,3 @@
-<?php
-  include 'php/conexion.php';
-  $sql="SELECT * FROM trabajador";
-  $result = mysqli_query($conexion,$sql);
-  $sql2="SELECT * FROM unidades";
-  $result2 = mysqli_query($conexion,$sql2);
-  $sql3="SELECT * FROM minas";
-  $result3 = mysqli_query($conexion,$sql3);
-  $sql4="SELECT * FROM clientes";
-  $result4 = mysqli_query($conexion,$sql4);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,7 +63,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="img/banner.png" class="img-circle" width="80"></a></p>
           <h5 class="centered">Admin</h5>
           <li class="mt">
             <a class="active" href="index.html">
@@ -85,40 +74,55 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
-              <span>Producción de Mina</span>
+              <span>Ordenes de Servicios</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_orden.php">Crear Registro</a></li>
+              <li><a href="crear_orden.php">Crear Orden</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
-              <li><a href="alta_mina.html">Registrar Mina</a></li>
-              <li><a href="listar_minas.php">Minas Registradas</a></li>
-              <li><a href="listar_lotes.php">Minas Registradas</a></li>
-             
+              <li><a href="calendar.html">Calendario</a></li>
+              <li><a href="crear_servicio.html">Crear Servicio</a></li>
+              <li><a href="listar_servicios.php">Lista de Servicios</a></li>
+              <li><a href="listar_evidencias.php">Lista de Evidencias</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
-              <span>Ingresos de Patio de Acopio</span>
+              <span>Cortes</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_orden2.php">Crear Registro</a></li>
-              <li><a href="listar_orden2.php">Bitacora</a></li>
-              <li><a href="listar_lotes_acopio.php">Minas Registradas</a></li>
+              <li><a href="crear_reporte.php">Programar Corte</a></li>
+              <li><a href="listar_reportes.php">Bitacora de Corte</a></li>
+              
               
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
-              <span>Salida de Patio de Acopio</span>
+              <span>Manifiestos</span>
               </a>
             <ul class="sub">
-              <li><a href="crear_orden3.php">Crear Registro</a></li>
-              <li><a href="listar_orden3.php">Bitacora</a></li>
+              <li><a href="crear_manifiesto.php">Crear Manifiesto</a></li>
+              <li><a href="listar_manifiesto.php">Bitacora de Corte</a></li>
             </ul>
           </li>
-         
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Acuses</span>
+              </a>
+            <ul class="sub">
+              <li><a href="crear_acuse.php">Crear Acuses</a></li>
+              <li><a href="listar_acuses.php">Bitacora de Acuses</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Reporte Imades</span>
+              </a>
+          </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-car"></i>
@@ -127,7 +131,10 @@
             <ul class="sub">
               <li><a href="alta_unidad.html">Dar de alta</a></li>
               <li><a href="listar_unidades.php">Mis Unidades</a></li>
-              
+              <li><a href="bitacora_mantenimiento.php">Registrar Mantenimiento</a></li>
+              <li><a href="bitacora_combustible.php">Registrar Combustible</a></li>
+              <li><a href="listar_mantenimientos.php">Listar Mantenimientos</a></li>
+              <li><a href="listar_combustible.php">Listar Combustibles</a></li>
 
             </ul>
           </li>
@@ -139,9 +146,9 @@
             <ul class="sub">
               <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
               <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-              
               <li><a href="alta_usuarios.html">Crear Cliente</a></li>
               <li><a href="listar_clientes.php">Listar Clientes</a></li>
+              
               
             </ul>
           </li>
@@ -157,125 +164,20 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Registro de Producción Diaria de Mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Crear Carta Aporte</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="php/crear_orden.php" class="form-horizontal style-form" method='POST'>
+              <form action="php/crear_cartaaporte.php" class="form-horizontal style-form" method='POST'>
+                <h3>Datos del Servicio</h3>
+                <hr>
                 
-              <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Cliente</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='nombre_cliente'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result4)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-              <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre de la mina</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='mina'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result3)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tipo de mineral</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='mineral' class="form-control">
-                  </div>
-                </div>
-              
-               
                 
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. Guía</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Ruta</label>
                   <div class="col-sm-4">
-                    <input type="text" name='no_guia' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='p_tara' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='p_burto' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">W.M.T</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='p_neto' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Metros Cúbicos</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='metros' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='unidad'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result2)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-                
-               
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Operador</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='operador'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Autoriza</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='autoriza' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Hora de Salida</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='hora_salida' class="form-control">
+                    <input type="text" name='ruta' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
@@ -284,34 +186,133 @@
                     <input type="text" name='destino' class="form-control">
                   </div>
                 </div>
-                <div class="form-group last">
-                  <label class="control-label col-md-3">Subir Imágenes</label>
-                  <div class="col-md-9">
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
-                      </div>
-                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                      <div>
-                        <span class="btn btn-theme02 btn-file">
-                        <span class="fileupload-new"><i class="fa fa-paperclip"></i> Seleccionar Imagen</span>
-                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                          <input type="file" class="form-control" id="image" name="image" multiple>
-                        </span>
-                        <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
-                      </div>
-                    </div>
-                    <span class="label label-info">NOTA!</span>
-                    <span>
-                     No se te olvide adjuntar todas las fotos de las evidencias del servicio.
-                      </span>
+              
+               
+                
+               
+                <div class="row mt"></div>
+                <h3>Datos de la mercancia</h3>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Materia</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='materia' class="form-control">
                   </div>
                 </div>
-                 
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Grupo Embalaje</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='embalaje' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Peligro</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='peligro' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">NUMUN</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='numun' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Clase</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='clase' class="form-control">
+                  </div>
+                </div>
+                <div class="row mt"></div>
+                <h3>Datos de los bultos</h3>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">CPA</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='cpa' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Denominacións</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='denominacion' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Bultos</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='bultos' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Lts & KGS</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='lts' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Peso Bruto</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='peso_bruto' class="form-control">
+                  </div>
+                </div>
+                <h3>Datos del expedidor</h3>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='nombre_exp' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Dirección</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='dir_exp' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Población</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='pob_exp' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Télefono</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='tel_exp' class="form-control">
+                  </div>
+                </div>
+                <h3>Datos del destinatario</h3>
+                <hr>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='nombre_dest' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Dirección</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='dir_dest' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Población</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='pob_dest' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Télefono</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='tel_dest' class="form-control">
+                  </div>
+                </div>
+                
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
                       <button class="btn btn-theme" type="submit">Guardar</button>
-                      <button class="btn btn-theme04" type="button">Cancelar</button>
+                      <a href="listar_orden.php" class="btn btn-theme04" type="button">Cancelar</a>
                     </div>
                   </div>
                 
