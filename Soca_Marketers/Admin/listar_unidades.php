@@ -80,7 +80,7 @@
               <li><a href="listar_orden.php">Bitacora</a></li>
               <li><a href="alta_mina.html">Registrar Mina</a></li>
               <li><a href="listar_minas.php">Minas Registradas</a></li>
-              <li><a href="listar_lotes.php">Minas Registradas</a></li>
+              <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
              
             </ul>
           </li>
