@@ -94,7 +94,7 @@
             <ul class="sub">
               <li><a href="crear_orden2.php">Crear Registro</a></li>
               <li><a href="listar_orden2.php">Bitacora</a></li>
-              <li><a href="listar_lotes_acopio.php">Minas Registradas</a></li>
+              <li><a href="listar_lotes_acopio.php">Bitacora de lotes</a></li>
               
             </ul>
           </li>
