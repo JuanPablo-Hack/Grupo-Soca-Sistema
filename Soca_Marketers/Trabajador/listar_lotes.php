@@ -61,63 +61,83 @@
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
     <aside>
-      <div id="sidebar" class="nav-collapse ">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Supervisor</h5>
-          <li class="mt">
-            <a class="active" href="index.html">
-              <i class="fa fa-dashboard"></i>
-              <span>Panel de Control</span>
-              </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-calendar"></i>
-              <span>Producción de Mina</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_orden.php">Crear Registro</a></li>
-              <li><a href="listar_orden.php">Bitacora</a></li>
-              <li><a href="alta_muestras.php">Crear Registro de Muestra</a></li>
-              <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
-              <li><a href="crear_lote.php">Crear Registro de Lote</a></li>
-              <li><a href="listar_lotes.php">Bitacora de Lotes</a></li>
-            
-             
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Ingresos de Patio de Acopio</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_orden2.php">Crear Registro</a></li>
-              <li><a href="listar_orden2.php">Bitacora</a></li>
-              <li><a href="crear_lote_acopio.php">Crear Registro de Lote</a></li>
-              <li><a href="listar_lotes_acopio.php">Bitacora de Lotes</a></li>
-              
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Salida de Patio de Acopio</span>
-              </a>
-            <ul class="sub">
-              <li><a href="crear_orden3.php">Crear Registro</a></li>
-              <li><a href="listar_orden3.php">Bitacora</a></li>
-            </ul>
-          </li>
-         
-          
-         
-        </ul>
-        <!-- sidebar menu end-->
-      </div>
-    </aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered">
+                        <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
+                    </p>
+                    <h5 class="centered">Supervisor</h5>
+                    <li class="mt">
+                        <a class="active" href="index.html">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Panel de Control</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-calendar"></i>
+                            <span>Producción de Mina</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="crear_orden.php">Crear Registro</a></li>
+                            <li><a href="listar_orden.php">Bitacora</a></li>
+                            <li><a href="crear_lote.php">Crear Registro de Lote</a></li>
+                            <li><a href="listar_lotes.php">Bitacora de Lotes</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Ingresos de Patio de Acopio</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="crear_orden2.php">Crear Registro</a></li>
+                            <li><a href="listar_orden2.php">Bitacora</a></li>
+                            <li><a href="crear_lote_acopio.php">Crear Registro de Lote</a></li>
+                            <li><a href="listar_lotes_acopio.php">Bitacora de Lotes</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Salida de Patio de Acopio</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="crear_orden3.php">Crear Registro</a></li>
+                            <li><a href="listar_orden3.php">Bitacora</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Analisis y Muestras</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_muestras.php">Registro de muestra</a></li>
+                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Prospección de mina</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_muestras.php">Registro de muestra</a></li>
+                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+                        </ul>
+                    </li>
+
+
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
     <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
@@ -134,6 +154,7 @@
                 <thead>
                   <tr>
                     <th>ID</th>
+                    <th>No. Lote</th>
                     <th>Nombre de Mina</th>
                     <th>Tipo de mineral</th>
                     <th>Metros Cubicos</th>
@@ -153,17 +174,8 @@
                   ?>
                   <tr >
                   
-                  <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM materiales WHERE id='".$mostrar['material']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre.'-'.$mostrar['id'];
-                    ?></td>
+                  <td><?php echo $mostrar['id'] ?></td>
+                  <td><?php echo $mostrar['no_lote'] ?></td>
                   <td><?php 
                     
                      

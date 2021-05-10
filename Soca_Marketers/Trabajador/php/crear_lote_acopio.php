@@ -3,6 +3,7 @@
 include 'conexion.php';
 
 $mina=$_POST['mina'];
+$no_lote=$_POST['no_lote'];
 $material=$_POST['material'];
 $tallas=$_POST['tallas'];
 $calidad=$_POST['calidad'];
@@ -14,7 +15,7 @@ if ($conexion ->connect_error) {
 }else{
    
          
-        $sql="INSERT INTO lotes_acopio(mina,material,talla,calidad,metros,observaciones) VALUES ('$mina','$material','$tallas','$calidad','$metros','$observaciones');";
+        $sql="INSERT INTO lotes_acopio(mina,no_lote,material,talla,calidad,metros,observaciones) VALUES ('$mina','$no_lote','$material','$tallas','$calidad','$metros','$observaciones');";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");

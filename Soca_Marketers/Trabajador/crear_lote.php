@@ -141,7 +141,13 @@
           <div class="col-lg-12">
             <div class="form-panel">
               <form action="php/crear_lote.php" class="form-horizontal style-form" method='POST'>
-                
+               
+              <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Lote</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_lote' class="form-control">
+                  </div>
+                </div>
              
               <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Nombre de la mina</label>
