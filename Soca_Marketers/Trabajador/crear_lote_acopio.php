@@ -141,6 +141,16 @@
                             <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Inventario</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_muestras.php">Bitacora de Acumulado</a></li>
+                            
+                        </ul>
+                    </li>
 
 
 
@@ -235,6 +245,24 @@
                   <label class="col-sm-2 col-sm-2 control-label">Metros Cúbicos</label>
                   <div class="col-sm-4">
                     <input type="text" name='metros' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Peso de 50 a 10 mm</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='peso_1' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Peso de 10 mm a finos</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='peso_2' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Peso de ganga</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='peso_3' class="form-control">
                   </div>
                 </div>
               

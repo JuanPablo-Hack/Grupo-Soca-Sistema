@@ -29,7 +29,7 @@ if ($conexion ->connect_error) {
         $sql="INSERT INTO patio_acopio(cliente,mina_origen,unidad,operador,no_guia,mineral,p_tara,p_bruto,p_neto,autoriza,recibe,hora_ingreso,no_lote,no_sello,estado) VALUES ('$nombre_cliente','$mina','$unidad','$operador','$no_guia','$mineral','$p_tara','$p_burto','$p_neto','$autoriza','$recibe','$hora','$lote','$sello','$estado');";
         $resultado = $conexion->query($sql);
         if($resultado){
-            header("Refresh:0; url=../registro_exitoso.html");
+            header("Refresh:0; url=../registro_exitoso_orden2.html");
         }else{
             header("Refresh:0; url=../error_registro.html");
         }

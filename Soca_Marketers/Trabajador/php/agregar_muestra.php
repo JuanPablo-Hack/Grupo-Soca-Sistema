@@ -7,7 +7,6 @@ include 'conexion.php';
 $fecha_recep=$_POST['fecha_recep'];
 $material=$_POST['material'];
 $folio=$_POST['folio'];
-$no_muestras=intval($_POST['no_muestras']);
 $peso=$_POST['peso'];
 $tipo=$_POST['tipo'];
 $lab_ext=$_POST['lab_ext'];
@@ -26,7 +25,7 @@ if ($conexion ->connect_error) {
 }else{
    
          
-        $sql="INSERT INTO muestras(fecha_recep,folio,material,no_muestras,peso,tipo_muestra,lab_ext,fecha_envio,servicio_soli,ele_ana,no_lote,localidad,info_geo,peso_esp,observaciones,estado) VALUES ('$fecha_recep','$folio','$material','$no_muestras','$peso','$tipo','$lab_ext','$fecha_envio','$servicio_soli','$ele_ana','$lote','$localidad','$info_geo','$peso_esp','$observaciones',1);";
+        $sql="INSERT INTO muestras(fecha_recep,folio,material,peso,tipo_muestra,lab_ext,fecha_envio,servicio_soli,ele_ana,no_lote,localidad,info_geo,peso_esp,observaciones,estado) VALUES ('$fecha_recep','$folio','$material','$peso','$tipo','$lab_ext','$fecha_envio','$servicio_soli','$ele_ana','$lote','$localidad','$info_geo','$peso_esp','$observaciones',1);";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");

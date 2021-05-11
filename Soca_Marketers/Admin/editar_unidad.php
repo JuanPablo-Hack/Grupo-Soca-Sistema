@@ -172,6 +172,18 @@
 
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-car"></i>
+                            <span>Inventario</span>
+                        </a>
+                        <ul class="sub">
+                           
+                            <li><a href="listar_unidades.php">Bitacora de Acumulado</a></li>
+
+
+                        </ul>
+                    </li>
 
                 </ul>
                 <!-- sidebar menu end-->

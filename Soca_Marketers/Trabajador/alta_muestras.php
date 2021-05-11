@@ -141,6 +141,16 @@
                             <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Inventario</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_muestras.php">Bitacora de Acumulado</a></li>
+                            
+                        </ul>
+                    </li>
 
 
 
@@ -155,7 +165,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Registro de Producción Diaria de Mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Crear Registro de Muestra y Mina</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
@@ -190,12 +200,7 @@
                     <input type="text" name='material' class="form-control">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. de muestras</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='no_muestras' class="form-control">
-                  </div>
-                </div>
+                
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Peso aproximado</label>
                   <div class="col-sm-4">

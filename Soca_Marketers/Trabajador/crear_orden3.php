@@ -139,6 +139,16 @@
                             <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Inventario</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_muestras.php">Bitacora de Acumulado</a></li>
+                            
+                        </ul>
+                    </li>
 
 
 
@@ -201,12 +211,6 @@
                   <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_burto' class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. VGM</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='vgm' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
@@ -273,6 +277,13 @@
                     <input type="text" name='sello' class="form-control">
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Metros Cúbicos</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='m3' class="form-control">
+                  </div>
+                </div>
+               
                 <div class="form-group last">
                   <label class="control-label col-md-3">Image Upload</label>
                   <div class="col-md-9">

@@ -28,7 +28,7 @@ if ($conexion ->connect_error) {
         $sql="INSERT INTO produccion_mina(cliente,nombre_mina,mineral,unidad,operador,no_guia,p_tara,p_bruto,p_neto,metros3,autoriza,hora_salida,destino) VALUES ('$nombre_cliente','$mina','$mineral','$unidad','$operador','$no_guia','$p_tara','$p_burto','$p_neto','$metros','$autoriza','$hora','$destino');";
         $resultado = $conexion->query($sql);
         if($resultado){
-            header("Refresh:0; url=../registro_exitoso.html");
+            header("Refresh:0; url=../registro_exitoso_orden.html");
         }else{
             header("Refresh:0; url=../error_registro.html");
         }

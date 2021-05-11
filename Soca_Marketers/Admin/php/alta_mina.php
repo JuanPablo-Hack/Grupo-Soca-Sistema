@@ -57,7 +57,7 @@ if ($conexion ->connect_error) {
         $sql="INSERT INTO minas(nombre,localidad,km_patio,no_titulo,vigencia_concesion,coordenadas,concesionarios,estudios,pagos,propiedad,propiedad_peque,ejido,carretera,terraceria,estado,herradura,caminata,veta,largo_veta,ancho_veta,alto_veta,cuerpo,largo_cuerpo,ancho_cuerpo,alto_cuerpo,otro_dimen,minado_cielo,minado_sub,otro_minado,material,prod_mensual,presen_material,triturado,breña,otro_presen,laboratorio,metodologia,explotacion,transito,nombre_minero,tel_minero,email_minero,nombre_representante,nombre_empresa,expectativas,comentarios) VALUES ('$nombre_mina','$localidad','$km_patio','$no_titulo','$vigencia','$coordenadas','$concesionarios','$estudios','$pagos','$propiedad','$propiedad_peque','$ejido','$carretera','$terraceria','$estado','$herradura','$caminata','$veta','$largo_veta','$ancho_veta','$alto_veta','$cuerpo','$largo_cuerpo','$ancho_cuerpo','$alto_cuerpo','$otro_dimensiones','$minado_cielo','$minado_sub','$otro','$material','$prod_mensual','$presen_material','$triturado','$breña','$otro_presen','$laboratorio','$metodologia','$explotacion','$transito','$nombre_minero','$tel_minero','$email_minero','$nombre_repre','$nombre_empresa','$expectativas','$comentarios');";
         $resultado = $conexion->query($sql);
         if($resultado){
-            header("Refresh:0; url=../registro_exitoso.html");
+            header("Refresh:0; url=../registro_exitoso_mina.html");
         }else{
             header("Refresh:0; url=../error_registro.html");
         }

@@ -7,7 +7,7 @@ $id=$_POST['identificador'];
 $$fecha_recep=$_POST['fecha_recep'];
 $material=$_POST['material'];
 $folio=$_POST['folio'];
-$no_muestras=intval($_POST['no_muestras']);
+
 $peso=$_POST['peso'];
 $tipo=$_POST['tipo'];
 $lab_ext=$_POST['lab_ext'];
@@ -30,7 +30,7 @@ if ($conexion ->connect_error) {
 }else{
    
          
-        $sql="UPDATE muestras SET fecha_recep='$fecha_recep',folio='$folio',material='$material',no_muestras='$no_muestras',peso='$peso',tipo_muestra='$tipo',lab_ext='$lab_ext',fecha_envio='$fecha_envio',servicio_soli='$servicio_soli',ele_ana='$ele_ana',no_lote='$lote',localidad='$localidad',info_geo='$info_geo',peso_esp='$peso_esp',observaciones='$observaciones',estado='$estado'  WHERE id='$id'";
+        $sql="UPDATE muestras SET fecha_recep='$fecha_recep',folio='$folio',material='$material',peso='$peso',tipo_muestra='$tipo',lab_ext='$lab_ext',fecha_envio='$fecha_envio',servicio_soli='$servicio_soli',ele_ana='$ele_ana',no_lote='$lote',localidad='$localidad',info_geo='$info_geo',peso_esp='$peso_esp',observaciones='$observaciones',estado='$estado'  WHERE id='$id'";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");

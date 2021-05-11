@@ -13,14 +13,18 @@ $p_neto=$_POST['p_neto'];
 $autoriza=$_POST['autoriza'];
 $no_guia=$_POST['no_guia'];
 $hora=$_POST['hora_salida'];
-$vgm=$_POST['vgm'];
+$lote=$_POST['lote'];
+$sello=$_POST['sello'];
+$m3=$_POST['m3'];
+$estado=$_POST['estado'];
+
 
 if ($conexion ->connect_error) {
     die("Conexion Fallida: " . $conn ->connect_error);
 }else{
    
          
-        $sql="UPDATE patio_acopio_salida SET patio_destino='$mina',unidad='$unidad',operador='$operador',no_guia='$no_guia',p_tara='$p_tara',p_bruto='$p_burto',p_neto='$p_neto',no_vgm='$vgm',autoriza='$autoriza',hora_salida='$hora'  WHERE id='$id'";
+        $sql="UPDATE patio_acopio_salida SET patio_destino='$mina',unidad='$unidad',operador='$operador',no_guia='$no_guia',p_tara='$p_tara',p_bruto='$p_burto',p_neto='$p_neto',autoriza='$autoriza',hora_salida='$hora',no_lote='$lote',no_sello='$sello',m3='$m3',estado='$estado'  WHERE id='$id'";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");

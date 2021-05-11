@@ -10,7 +10,7 @@
     $fecha_recep= $Row['fecha_recep'];
     $folio= $Row['folio'];
     $material= $Row['material'];
-    $no_muestras= $Row['no_muestras'];
+    
     $peso=$Row['peso'];
     $tipo_muestra=$Row['tipo_muestra'];
     $lab_ext=$Row['lab_ext'];
@@ -164,6 +164,16 @@
                             <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Inventario</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_muestras.php">Bitacora de Acumulado</a></li>
+                            
+                        </ul>
+                    </li>
 
 
 
@@ -218,12 +228,7 @@
                     <input type="text" name='material' class="form-control" value="<?php echo $material;?>">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. de muestras</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='no_muestras' class="form-control" value="<?php echo $no_muestras;?>">
-                  </div>
-                </div>
+               
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Peso aproximado</label>
                   <div class="col-sm-4">

@@ -17,10 +17,13 @@
     $p_neto=$Row['p_neto'];
     $autoriza=$Row['autoriza'];
     $hora_salida=$Row['hora_salida'];
-    $vgm=$Row['no_vgm'];
+    
     $lote=$Row['no_lote'];
     $sello=$Row['no_sello'];
+    $m3=$Row['m3'];
+   
     $estado=$Row['estado'];
+
    
   }
   $sql="SELECT * FROM trabajador";
@@ -165,6 +168,16 @@
                             <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Inventario</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_muestras.php">Bitacora de Acumulado</a></li>
+                            
+                        </ul>
+                    </li>
 
 
 
@@ -263,15 +276,9 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. VGM</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='vgm' class="form-control" value="<?php echo $p_neto;?>">
-                  </div>
-                </div>
-                <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">P. Neto</label>
                   <div class="col-sm-4">
-                    <input type="text" name='p_neto' class="form-control" value="<?php echo $vgm;?>">
+                    <input type="text" name='p_neto' class="form-control" value="<?php echo $p_neto;?>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -289,15 +296,22 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">No. Lote</label>
                   <div class="col-sm-4">
-                    <input type="text" name='hora_salida' class="form-control" value="<?php echo $lote;?>">
+                    <input type="text" name='lote' class="form-control" value="<?php echo $lote;?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">No. Sello</label>
                   <div class="col-sm-4">
-                    <input type="text" name='hora_salida' class="form-control" value="<?php echo $sello;?>">
+                    <input type="text" name='sello' class="form-control" value="<?php echo $sello;?>">
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Metros Cúbicos</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='m3' class="form-control" value="<?php echo $m3;?>">
+                  </div>
+                </div>
+                
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Estado</label>
                   <div class="col-sm-4">

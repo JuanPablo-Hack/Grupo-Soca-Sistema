@@ -145,7 +145,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora de salida de mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Bitacora de muestra y mina</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -156,7 +156,7 @@
                     <th>Folio</th>
                     <th>Fecha de recepción de la muestra</th>
                     <th>Material</th>
-                    <th>No. De muestra</th>
+                    
                     <th class="hidden-phone">Peso aproximado</th>
                     <th class="hidden-phone">Fecha del envío</th>
                     
@@ -176,7 +176,7 @@
                     <td><?php echo $mostrar['folio'] ?></td>
                     <td><?php echo $mostrar['fecha_recep'] ?></td>
                     <td><?php echo $mostrar['material'] ?></td>
-                    <td><?php echo $mostrar['no_muestras'] ?></td>
+                    
                     <td><?php echo $mostrar['peso'] ?></td>
                     <td><?php echo $mostrar['fecha_envio'] ?></td>
                     
