@@ -94,7 +94,7 @@
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-calendar"></i>
-                            <span>Acarreo de Mineral</span>
+                            <span>Produccion y Acopio en mina</span>
                         </a>
                         <ul class="sub">
                             <li><a href="crear_orden.php">Crear Registro</a></li>
@@ -108,7 +108,7 @@
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>Ingresos de Patio de Acopio</span>
+                            <span>Patio de trituracion</span>
                         </a>
                         <ul class="sub">
                             <li><a href="crear_orden2.php">Crear Registro</a></li>
@@ -120,7 +120,7 @@
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>Salida de Patio de Acopio</span>
+                            <span>Salida de Patio de mina</span>
                         </a>
                         <ul class="sub">
                             <li><a href="crear_orden3.php">Crear Registro</a></li>

@@ -61,58 +61,60 @@
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
     <aside>
-      <div id="sidebar" class="nav-collapse ">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Admin</h5>
-          <li class="mt">
-            <a class="active" href="index.html">
-              <i class="fa fa-dashboard"></i>
-              <span>Panel de Control</span>
-              </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-calendar"></i>
-              <span>Producción de Mina</span>
-              </a>
-            <ul class="sub">
-             
-              <li><a href="listar_orden.php">Mis registros</a></li>
-            
-             
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Ingresos de Patio de Acopio</span>
-              </a>
-            <ul class="sub">
-              
-              <li><a href="listar_orden2.php">Mis registros</a></li>
-              
-              
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Salida de Patio de Acopio</span>
-              </a>
-            <ul class="sub">
-              
-              <li><a href="listar_orden3.php">Mis registros</a></li>
-            </ul>
-          </li>
-         
-          
-         
-        </ul>
-        <!-- sidebar menu end-->
-      </div>
-    </aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered">
+                        <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
+                    </p>
+                    <h5 class="centered">Admin</h5>
+                    <li class="mt">
+                        <a class="active" href="index.html">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Panel de Control</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-calendar"></i>
+                            <span>Producción y Acopio en mina</span>
+                        </a>
+                        <ul class="sub">
+
+                            <li><a href="listar_orden.php">Mis registros</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Patio de trituracion</span>
+                        </a>
+                        <ul class="sub">
+
+                            <li><a href="listar_orden2.php">Mis registros</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Salida de Patio de mina</span>
+                        </a>
+                        <ul class="sub">
+
+                            <li><a href="listar_orden3.php">Mis registros</a></li>
+                        </ul>
+                    </li>
+
+
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
     <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
