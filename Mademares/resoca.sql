@@ -14,14 +14,23 @@ create table estados(
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-create table trabajador(
+create table transportista(
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    peso_bruto INT NOT NULL ,
-    peso_neto INT NOT NULL ,
-    peso_tara INT NOT NULL,
-    transportista VARCHAR(40)  NOT NULL,
-    operador INT NOT NULL,
-    unidad INT NOT NULL ,
+    nombre_empresa VARCHAR(40)  NOT NULL,
+    rfc VARCHAR(15)  NOT NULL,
+    dir_empresa VARCHAR(40)  NOT NULL,
+    tel_empresa VARCHAR(40)  NOT NULL,
+    operador VARCHAR(40)  NOT NULL,
+    cargo VARCHAR(40)  NOT NULL,
+    licencia VARCHAR(40)  NOT NULL,
+    tel_operador VARCHAR(40)  NOT NULL,
+    modelo VARCHAR(40)  NOT NULL,
+    placas VARCHAR(40)  NOT NULL,
+    ano VARCHAR(40)  NOT NULL,
+    capcidad VARCHAR(40)  NOT NULL,
+    color VARCHAR(40)  NOT NULL,
+    seguro VARCHAR(40)  NOT NULL,
+    descripcion VARCHAR(40)  NOT NULL,
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

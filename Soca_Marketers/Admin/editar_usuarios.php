@@ -93,38 +93,12 @@
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
-                            <i class="fa fa-calendar"></i>
-                            <span>Produccion y Acopio en mina</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="crear_orden.php">Crear Registro</a></li>
-                            <li><a href="listar_orden.php">Bitacora</a></li>
-                            <li><a href="alta_mina.html">Registrar Mina</a></li>
-                            <li><a href="listar_minas.php">Minas Registradas</a></li>
-                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>Patio de trituracion</span>
+                            <span>Prospección de Minas</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="crear_orden2.php">Crear Registro</a></li>
-                            <li><a href="listar_orden2.php">Bitacora</a></li>
-                            <li><a href="listar_lotes_acopio.php">Bitacora de lotes</a></li>
 
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Salida de Patio de mina</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="crear_orden3.php">Crear Registro</a></li>
-                            <li><a href="listar_orden3.php">Bitacora</a></li>
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
@@ -137,17 +111,59 @@
                             <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
+                   
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-calendar"></i>
+                            <span>Produccion y Acopio en mina</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="crear_orden.php">Crear Registro</a></li>
+                            <li><a href="listar_orden.php">Bitacora</a></li>
+                            <li><a href="alta_mina.html">Registrar Mina</a></li>
+                            <li><a href="listar_minas.php">Minas Registradas</a></li>
+                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
+
+                        </ul>
+                    </li>
+                    
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>Prospección de Minas</span>
+                            <span>Salida de Patio de mina</span>
                         </a>
                         <ul class="sub">
-
-                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+                            <li><a href="crear_orden3.php">Crear Registro</a></li>
+                            <li><a href="listar_orden3.php">Bitacora</a></li>
+                            <li><a href="listar_lotes_acopio.php">Bitacora de lotes</a></li>
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Patio de trituracion</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="crear_orden2.php">Crear Registro</a></li>
+                            <li><a href="listar_orden2.php">Bitacora</a></li>
+                            <li><a href="listar_lotes_acopio.php">Bitacora de lotes</a></li>
+                            <li><a href="listar_acomulado.php">Bitacora de Acumulado</a></li>
 
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-car"></i>
+                            <span>Inventario</span>
+                        </a>
+                        <ul class="sub">
+                           
+                            <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+                            <li><a href="alta_transportista.html">Alta de Transportista</a></li>
+
+
+                        </ul>
+                    </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-car"></i>
@@ -174,18 +190,7 @@
 
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-car"></i>
-                            <span>Inventario</span>
-                        </a>
-                        <ul class="sub">
-                           
-                            <li><a href="listar_unidades.php">Bitacora de Acumulado</a></li>
-
-
-                        </ul>
-                    </li>
+                    
 
                 </ul>
                 <!-- sidebar menu end-->

@@ -86,6 +86,26 @@
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Prospección de mina</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="prospeccion_mina.php">Registro de muestra</a></li>
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Analisis y Muestras</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_muestras.php">Registro de muestra</a></li>
+                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
                             <i class="fa fa-calendar"></i>
                             <span>Producción y Acopio de mina</span>
                         </a>
@@ -95,19 +115,6 @@
                             <li><a href="crear_lote.php">Crear Registro de Lote</a></li>
                             <li><a href="listar_lotes.php">Bitacora de Lotes</a></li>
 
-
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Patio de Trituración</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="crear_orden2.php">Crear Registro</a></li>
-                            <li><a href="listar_orden2.php">Bitacora</a></li>
-                            <li><a href="crear_lote_acopio.php">Crear Registro de Lote</a></li>
-                            <li><a href="listar_lotes_acopio.php">Bitacora de Lotes</a></li>
 
                         </ul>
                     </li>
@@ -124,30 +131,26 @@
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>Analisis y Muestras</span>
+                            <span>Patio de Trituración</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="alta_muestras.php">Registro de muestra</a></li>
-                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+                            <li><a href="crear_orden2.php">Crear Registro</a></li>
+                            <li><a href="listar_orden2.php">Bitacora</a></li>
+                            <li><a href="crear_lote_acopio.php">Crear Registro de Lote</a></li>
+                            <li><a href="listar_lotes_acopio.php">Bitacora de Lotes</a></li>
+                            <li><a href="listar_acomulado.php">Bitacora de Acumulado</a></li>
+
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Prospección de mina</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_muestras.php">Registro de muestra</a></li>
-                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
-                        </ul>
-                    </li>
+                    
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
                             <span>Inventario</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="alta_muestras.php">Bitacora de Acumulado</a></li>
+                            <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+                            <li><a href="alta_transportista.html">Alta de Transportistas</a></li>
                             
                         </ul>
                     </li>
@@ -165,7 +168,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Registro de Producción Diaria de Mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Crear Registro de Producción y Acopio de Mina</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
@@ -224,13 +227,13 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
+                  <label class="col-sm-2 col-sm-2 control-label">P. Bruto</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_burto' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">W.M.T</label>
+                  <label class="col-sm-2 col-sm-2 control-label">P. Neto</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_neto' class="form-control">
                   </div>
@@ -292,7 +295,29 @@
                     <input type="text" name='destino' class="form-control">
                   </div>
                 </div>
-                
+                <div class="form-group last">
+                  <label class="control-label col-md-3">Evidencias</label>
+                  <div class="col-md-9">
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
+                      </div>
+                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                      <div>
+                        <span class="btn btn-theme02 btn-file">
+                          <span class="fileupload-new"><i class="fa fa-paperclip"></i> Selecciona las imagenes</span>
+                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                        <input type="file" class="default" />
+                        </span>
+                        <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Quitar</a>
+                      </div>
+                    </div>
+                    <span class="label label-info">NOTA!</span>
+                    <span>
+                      Agrega las imagénes de evidencias de lo que esta sucediendo para generar el reporte
+                      </span>
+                  </div>
+                </div>
                  
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">

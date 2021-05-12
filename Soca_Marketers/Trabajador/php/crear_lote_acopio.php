@@ -11,6 +11,7 @@ $metros=floatval($_POST['metros']);
 $peso_1=$_POST['peso_1'];
 $peso_2=$_POST['peso_2'];
 $peso_3=$_POST['peso_3'];
+$peso_4=$_POST['peso_4'];
 $observaciones=$_POST['observaciones'];
 
 if ($conexion ->connect_error) {
@@ -18,7 +19,7 @@ if ($conexion ->connect_error) {
 }else{
    
          
-        $sql="INSERT INTO lotes_acopio(mina,no_lote,material,talla,calidad,metros,peso_1,peso_2,peso_3,observaciones) VALUES ('$mina','$no_lote','$material','$tallas','$calidad','$metros','$peso_1','$peso_2','$peso_3','$observaciones');";
+        $sql="INSERT INTO lotes_acopio(mina,no_lote,material,talla,calidad,metros,peso_1,peso_2,peso_3,peso_4,observaciones) VALUES ('$mina','$no_lote','$material','$tallas','$calidad','$metros','$peso_1','$peso_2','$peso_3','$peso_4','$observaciones');";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");
