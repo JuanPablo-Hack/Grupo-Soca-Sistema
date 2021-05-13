@@ -6,15 +6,13 @@ include 'conexion.php';
 $id_cliente=$_POST['identificador'];
 $titulo=$_POST['titulo'];
 $descripcion=$_POST['descripcion'];
-$nombre = $_FILES['archivo']['name'];
-$destino = "archivos/" . $nombre;
+
 
 
 echo $id_cliente;
 echo $titulo;
 echo $descripcion;
-echo $nombre;
-echo $destino;
+
 
 /*
 

@@ -14,6 +14,15 @@ create table estados(
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+create table estados(
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id_cliente INT NOT NULL,
+    titulo VARCHAR(20) NOT NULL,
+    descripcion VARCHAR(100) NOT NULL,
+    ruta VARCHAR(100)  NOT NULL,
+    creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 create table trabajador(
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     peso_bruto INT NOT NULL ,
