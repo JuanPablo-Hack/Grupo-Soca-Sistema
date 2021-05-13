@@ -21,6 +21,7 @@
     $lote=$Row['no_lote'];
     $sello=$Row['no_sello'];
     $m3=$Row['m3'];
+    $transportista_id=$Row['transportista_id'];
    
     $estado=$Row['estado'];
 
@@ -34,6 +35,8 @@
   $result3 = mysqli_query($conexion,$sql3);
   $sql4="SELECT * FROM estados";
   $result4 = mysqli_query($conexion,$sql4);
+  $sql5="SELECT * FROM transportista";
+  $result5 = mysqli_query($conexion,$sql5);
   
 ?>
 <!DOCTYPE html>
@@ -312,6 +315,29 @@
                   <label class="col-sm-2 col-sm-2 control-label">Metros Cúbicos</label>
                   <div class="col-sm-4">
                     <input type="text" name='m3' class="form-control" value="<?php echo $m3;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Operador de Transportista</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='operador'>
+                   
+                  <option value="<?php echo $transportista_id; ?>"><?php $sql1="SELECT * FROM transportista WHERE id='".$transportista_id."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['operador'];  
+                      }
+                      echo $nombre;?></option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result5)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['operador'];?></option>
+                <?php
+                }
+                ?>
+                <option value="0">Ninguna</option> 
+                </select>
                   </div>
                 </div>
                 
