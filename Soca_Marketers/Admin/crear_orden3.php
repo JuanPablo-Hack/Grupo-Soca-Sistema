@@ -6,6 +6,8 @@
   $result2 = mysqli_query($conexion,$sql2);
   $sql4="SELECT * FROM clientes";
   $result4 = mysqli_query($conexion,$sql4);
+  $sql5="SELECT * FROM transportista";
+  $result5 = mysqli_query($conexion,$sql5);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +77,7 @@
                     <p class="centered">
                         <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
-                    <h5 class="centered">Admin</h5>
+                    <h5 class="centered">Supervisor</h5>
                     <li class="mt">
                         <a class="active" href="index.html">
                             <i class="fa fa-dashboard"></i>
@@ -85,10 +87,10 @@
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>Prospección de Minas</span>
+                            <span>Prospección de mina</span>
                         </a>
                         <ul class="sub">
-
+                            <li><a href="prospeccion_mina.php">Registro de muestra</a></li>
                             <li><a href="listar_prospeccionmina.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
@@ -98,26 +100,24 @@
                             <span>Analisis y Muestras</span>
                         </a>
                         <ul class="sub">
-
+                            <li><a href="alta_muestras.php">Registro de muestra</a></li>
                             <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
-                   
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-calendar"></i>
-                            <span>Produccion y Acopio en mina</span>
+                            <span>Producción y Acopio de mina</span>
                         </a>
                         <ul class="sub">
                             <li><a href="crear_orden.php">Crear Registro</a></li>
                             <li><a href="listar_orden.php">Bitacora</a></li>
-                            <li><a href="alta_mina.html">Registrar Mina</a></li>
-                            <li><a href="listar_minas.php">Minas Registradas</a></li>
-                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
+                            <li><a href="crear_lote.php">Crear Registro de Lote</a></li>
+                            <li><a href="listar_lotes.php">Bitacora de Lotes</a></li>
+
 
                         </ul>
                     </li>
-                    
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
@@ -126,62 +126,36 @@
                         <ul class="sub">
                             <li><a href="crear_orden3.php">Crear Registro</a></li>
                             <li><a href="listar_orden3.php">Bitacora</a></li>
-                            <li><a href="listar_lotes_acopio.php">Bitacora de lotes</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>Patio de trituracion</span>
+                            <span>Patio de Trituración</span>
                         </a>
                         <ul class="sub">
                             <li><a href="crear_orden2.php">Crear Registro</a></li>
                             <li><a href="listar_orden2.php">Bitacora</a></li>
-                            <li><a href="listar_lotes_acopio.php">Bitacora de lotes</a></li>
+                            <li><a href="crear_lote_acopio.php">Crear Registro de Lote</a></li>
+                            <li><a href="listar_lotes_acopio.php">Bitacora de Lotes</a></li>
                             <li><a href="listar_acomulado.php">Bitacora de Acumulado</a></li>
 
                         </ul>
                     </li>
+                    
                     <li class="sub-menu">
                         <a href="javascript:;">
-                            <i class="fa fa-car"></i>
+                            <i class="fa fa-book"></i>
                             <span>Inventario</span>
                         </a>
                         <ul class="sub">
-                           
                             <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
-                            <li><a href="alta_transportista.html">Alta de Transportista</a></li>
-
-
+                            <li><a href="alta_transportista.html">Alta de Transportistas</a></li>
+                            
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-car"></i>
-                            <span>Unidades</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_unidad.html">Dar de alta</a></li>
-                            <li><a href="listar_unidades.php">Mis Unidades</a></li>
 
 
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-group"></i>
-                            <span>Usuarios</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
-                            <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-
-                            <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-                            <li><a href="listar_clientes.php">Listar Clientes</a></li>
-
-                        </ul>
-                    </li>
-                    
 
                 </ul>
                 <!-- sidebar menu end-->
@@ -194,7 +168,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Registro de Salida de Mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Crear Registro de Salida de Patio de Acopio</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
@@ -245,7 +219,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Neto</label>
+                  <label class="col-sm-2 col-sm-2 control-label">D.M.T</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_neto' class="form-control">
                   </div>
@@ -312,6 +286,22 @@
                   <label class="col-sm-2 col-sm-2 control-label">Metros Cúbicos</label>
                   <div class="col-sm-4">
                     <input type="text" name='m3' class="form-control">
+                  </div>
+                </div>
+               
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre del operador de transportista</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='transportista_id'>
+                  <option value="0">Ninguna</option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result5)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['operador'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                
