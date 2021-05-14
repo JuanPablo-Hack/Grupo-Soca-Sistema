@@ -175,9 +175,9 @@ include 'php/conexion.php';
                   <tr>
                    
                     <th>Nombre del cliente</th>
-                    <th class="hidden-phone">Cantidad Acumulada</th>
-                    <th class="hidden-phone">No. de Servicios</th>
-                    <th class="hidden-phone">Manifiestos Pendientes</th>
+                    <th class="hidden-phone">Titulo</th>
+                    <th class="hidden-phone">Descripción</th>
+                   
                     <th class="hidden-phone">Acciones</th>
                     
                   </tr>
@@ -202,19 +202,12 @@ include 'php/conexion.php';
                           ?></td>
                       <td><?php echo $mostrar['acumulado'] ?></td>
                       <td><?php echo $mostrar['servicios'] ?></td>
-                      <td><?php 
-                          $manifiestos_pen= intval($mostrar['acumulado'] / 1500);
-                          if($manifiestos_pen >= 1){
-                            echo $manifiestos_pen;
-                          }else{
-                            echo "No hay pendientes";
-                          }
                       
-                      ?></td>
                       <td>
 
-                        <a href="crear_manifiesto.php?cliente=<?php echo $mostrar['cliente']  ?>" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
-                        
+                        <a href="crear_manifiesto.php?cliente=<?php echo $mostrar['cliente']  ?>" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
+                        <a href='./editar_manifiesto.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                        <a href='./eliminar_manifiesto.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
 
                       </td>
                     </tr>

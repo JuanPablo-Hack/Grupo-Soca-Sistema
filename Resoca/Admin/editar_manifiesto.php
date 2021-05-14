@@ -191,18 +191,17 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Manifiesto</h3>
+        <h3><i class="fa fa-angle-right"></i> Editar Manifiesto</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <h3>Datos del Generador</h3>
-              <hr>
+             
               <form action="php/editar_manifiesto.php" class="form-horizontal style-form" method="POST">
               <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Indentificador</label>
+                 
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="identificador" value="<?php echo $id; ?>" readonly>
+                    <input type="hidden" class="form-control" name="identificador" value="<?php echo $id; ?>" readonly>
                   </div>
                 </div>
                 <div class="form-group">
@@ -221,89 +220,30 @@
                   </div>
                 </div>
                 
-                <h5>Contenedor</h5>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Capacidad</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="capacidad" value="<?php echo $capacidad; ?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tipo</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="tipo" value="<?php echo $tipo; ?>">
-                  </div>
-                </div>
-                <h5>Cantidad</h5>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Total de residuo</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="total_residuo" value="<?php echo $totalresiduo; ?>">
-                  </div>
-                </div>
-                <h5>Unidad</h5>
-                <hr>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Unidad de Medida</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='vol_peso'>
-                  <option value="<?php echo $volpeso; ?>"></option>
-                  <?php 
-                    while ($Row2 = mysqli_fetch_array($result2)) {			 
-                 ?>
-                <option value=<?php echo $Row2['id']; ?>><?php echo $Row2['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-                <h3>Datos del Transporte</h3>
-                <hr>
-                <div class="form-group">
-                  <label class="control-label col-md-3">Fecha de programación</label>
-                  <div class="col-md-3 col-xs-11">
-                    <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
-                      <input type="text" readonly="" value="<?php echo $fecha; ?> size="16" class="form-control" name="fecha">
-                      <span class="input-group-btn add-on">
-                        <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
-                        </span>
+                <div class="form-group ">
+                    <label for="firstname" class="control-label col-lg-2">Titulo del Manifiesto</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="firstname" name="titulo" type="text"  />
                     </div>
-                    <span class="help-block">Select date</span>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Estado</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="estado" value="<?php echo $estado; ?>">
+                  <div class="form-group ">
+                    <label for="lastname" class="control-label col-lg-2">Descripción</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="lastname" name="descripcion" type="text"/>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Unidad Asignada</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='unidad'>
-                  <option value="<?php echo $unidad; ?>"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result3)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-              
-                <h3>Destinatario</h3>
-                <hr>
-                
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre de quien recibe</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="nombre_recibe" value="<?php echo $nombrerecibe; ?>"> 
+                  <div class="form-group">
+                  <label class="control-label col-md-3">Adjunta el manifiesto</label>
+                  <div class="controls col-md-9">
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                      <span class="btn btn-theme02 btn-file">
+                        <span class="fileupload-new"><i class="fa fa-paperclip"></i> Select file</span>
+                      <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                      <input type="file" name="archivo"/>
+                      </span>
+                      <span class="fileupload-preview" style="margin-left:5px;"></span>
+                      <a href="advanced_form_components.html#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
+                    </div>
                   </div>
                 </div>
                 
