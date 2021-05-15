@@ -1,29 +1,35 @@
 <?php
-  $id=$_GET['id'];
-  include 'php/conexion.php';
-  $sql="SELECT * FROM manifiestos WHERE id='".$id."'";
-  $result = mysqli_query($conexion,$sql);
-  if ($Row = mysqli_fetch_array($result))
-  {
-    $nombre= $Row['nombre'];
-    
-    $capacidad=$Row['capacidad'];
-    $tipo=$Row['tipo'];
-    $totalresiduo=$Row['totalresiduo'];
-    $volpeso=$Row['volpeso'];
-    $fecha=$Row['fecha'];
-    $unidad=$Row['unidad'];
-    $nombrerecibe=$Row['nombrerecibe'];
-    $estado=$Row['estado'];
-    
-  }
-  $sql="SELECT * FROM clientes";
-  $result = mysqli_query($conexion,$sql);
-  $sql2="SELECT * FROM unidad_medidas";
-  $result2 = mysqli_query($conexion,$sql2);
-  $sql3="SELECT * FROM unidades";
-  $result3 = mysqli_query($conexion,$sql3);
-  
+$id = $_GET['id'];
+include 'php/conexion.php';
+// $sql="SELECT * FROM manifiestos WHERE id='".$id."'";
+// $result = mysqli_query($conexion,$sql);
+// if ($Row = mysqli_fetch_array($result))
+// {
+//   $nombre= $Row['nombre'];
+
+//   $capacidad=$Row['capacidad'];
+//   $tipo=$Row['tipo'];
+//   $totalresiduo=$Row['totalresiduo'];
+//   $volpeso=$Row['volpeso'];
+//   $fecha=$Row['fecha'];
+//   $unidad=$Row['unidad'];
+//   $nombrerecibe=$Row['nombrerecibe'];
+//   $estado=$Row['estado'];
+
+// }
+$sqlManififesto = "SELECT * FROM manifiestos WHERE id = " . $_GET['id'];
+$resultManifiesto = mysqli_query($conexion, $sqlManififesto);
+$rowManifiesto = mysqli_fetch_array($resultManifiesto);
+$clienteOption = "SELECT * FROM clientes WHERE id =".$rowManifiesto['id_cliente'];
+$resultOption = mysqli_query($conexion, $clienteOption);
+$rowOption = mysqli_fetch_array($resultOption);
+$sql = "SELECT * FROM clientes WHERE id !=".$rowManifiesto['id_cliente'];
+$result = mysqli_query($conexion, $sql);
+// $sql2="SELECT * FROM unidad_medidas";
+// $result2 = mysqli_query($conexion,$sql2);
+// $sql3="SELECT * FROM unidades";
+// $result3 = mysqli_query($conexion,$sql3);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +80,7 @@
       <!--logo start-->
       <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
       <!--logo end-->
-     
+
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
@@ -96,13 +102,13 @@
             <a class="active" href="index.html">
               <i class="fa fa-dashboard"></i>
               <span>Panel de Control</span>
-              </a>
+            </a>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
               <span>Ordenes de Servicios</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="crear_orden.php">Crear Orden</a></li>
               <li><a href="listar_orden.php">Bitacora</a></li>
@@ -116,19 +122,19 @@
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Cortes</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="crear_reporte.php">Programar Corte</a></li>
               <li><a href="listar_reportes.php">Bitacora de Corte</a></li>
-              
-              
+
+
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Manifiestos</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="crear_manifiesto.php">Crear Manifiesto</a></li>
               <li><a href="listar_manifiesto.php">Bitacora de Corte</a></li>
@@ -138,7 +144,7 @@
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Acuses</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="crear_acuse.php">Crear Acuses</a></li>
               <li><a href="listar_acuses.php">Bitacora de Acuses</a></li>
@@ -148,13 +154,13 @@
             <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Reporte Imades</span>
-              </a>
+            </a>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-car"></i>
               <span>Unidades</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="alta_unidad.html">Dar de alta</a></li>
               <li><a href="listar_unidades.php">Mis Unidades</a></li>
@@ -169,17 +175,17 @@
             <a href="javascript:;">
               <i class="fa fa-group"></i>
               <span>Usuarios</span>
-              </a>
+            </a>
             <ul class="sub">
               <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
               <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
               <li><a href="alta_usuarios.html">Crear Cliente</a></li>
               <li><a href="listar_clientes.php">Listar Clientes</a></li>
-              
-              
+
+
             </ul>
           </li>
-         
+
         </ul>
         <!-- sidebar menu end-->
       </div>
@@ -196,81 +202,82 @@
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-             
-              <form action="php/editar_manifiesto.php" class="form-horizontal style-form" method="POST">
-              <div class="form-group">
-                 
+
+              <form enctype="multipart/form-data" action="php/editar_manifiesto.php" class="form-horizontal style-form" method="POST">
+                <div class="form-group">
+
                   <div class="col-sm-4">
                     <input type="hidden" class="form-control" name="identificador" value="<?php echo $id; ?>" readonly>
+                    <input type="hidden" class="form-control" name="cliente" value="<?php echo $rowManifiesto['id_cliente']; ?>" readonly>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Cliente</label>
                   <div class="col-sm-4">
-                  <select class="form-control" name='nombre_cliente'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
+                    <select class="form-control" name='nombre_cliente'>
+                      <option value="<?php echo $rowOption['id']; ?>" selected><?php echo $rowOption['nombre']; ?></option>
+                      <?php
+                      while ($Row1 = mysqli_fetch_array($result)) {
+                      ?>
+                        <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre']; ?></option>
+                      <?php
+                      }
+                      ?>
+                    </select>
                   </div>
                 </div>
-                
+
                 <div class="form-group ">
-                    <label for="firstname" class="control-label col-lg-2">Titulo del Manifiesto</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="firstname" name="titulo" type="text"  />
-                    </div>
+                  <label for="firstname" class="control-label col-lg-2">Titulo del Manifiesto</label>
+                  <div class="col-lg-10">
+                    <input class=" form-control" value="<?php echo $rowManifiesto['titulo'] ?>" id="firstname" name="titulo" type="text" />
                   </div>
-                  <div class="form-group ">
-                    <label for="lastname" class="control-label col-lg-2">Descripción</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="lastname" name="descripcion" type="text"/>
-                    </div>
+                </div>
+                <div class="form-group ">
+                  <label for="lastname" class="control-label col-lg-2">Descripción</label>
+                  <div class="col-lg-10">
+                    <input class=" form-control" value="<?php echo $rowManifiesto['descripcion'] ?>" id="lastname" name="descripcion" type="text" />
                   </div>
-                  <div class="form-group">
+                </div>
+                <div class="form-group">
                   <label class="control-label col-md-3">Adjunta el manifiesto</label>
                   <div class="controls col-md-9">
                     <div class="fileupload fileupload-new" data-provides="fileupload">
                       <span class="btn btn-theme02 btn-file">
                         <span class="fileupload-new"><i class="fa fa-paperclip"></i> Select file</span>
-                      <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                      <input type="file" name="archivo"/>
+                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                        <input type="file" name="archivo" />
                       </span>
                       <span class="fileupload-preview" style="margin-left:5px;"></span>
                       <a href="advanced_form_components.html#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="form-group">
                   <div class="col-lg-offset-2 col-lg-10">
                     <button class="btn btn-theme" type="submit">Guardar</button>
                     <a href="listar_manifiesto.php" class="btn btn-theme04" type="button">Cancelar</a>
                   </div>
                 </div>
-                
-                
-               
+
+
+
               </form>
             </div>
-            
-          <!-- col-lg-12-->
-        </div>
-            <!-- /form-panel -->
+
+            <!-- col-lg-12-->
           </div>
-          <!-- /col-lg-12 -->
+          <!-- /form-panel -->
+        </div>
+        <!-- /col-lg-12 -->
         </div>
         <!-- /row -->
         <!-- DATE TIME PICKERS -->
-       
-            <!-- /form-panel -->
-          </div>
-          <!-- /col-lg-12 -->
+
+        <!-- /form-panel -->
+        </div>
+        <!-- /col-lg-12 -->
         </div>
         <!-- row -->
       </section>
@@ -295,7 +302,7 @@
         </div>
         <a href="index.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
-          </a>
+        </a>
       </div>
     </footer>
     <!--footer end-->

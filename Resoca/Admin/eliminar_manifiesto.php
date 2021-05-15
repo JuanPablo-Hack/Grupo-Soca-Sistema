@@ -1,6 +1,15 @@
 <?php
   $id=$_GET['id'];
   include 'php/conexion.php';
+  $sqlm = "SELECT * FROM manifiestos WHERE id = '$id'";
+  $resultm = mysqli_query($conexion, $sqlm);
+  $row = mysqli_fetch_array($resultm);
+
+  $ruta_manifiestos = 'manifiestos/';
+  $ruta_manifiestos_cliente = $ruta_manifiestos . $row['id_cliente'] . "/";
+
+  unlink($ruta_manifiestos_cliente.$row['ruta']);
+
   $sql="DELETE FROM manifiestos WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   

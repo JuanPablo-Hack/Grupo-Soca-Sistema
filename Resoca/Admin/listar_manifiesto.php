@@ -184,7 +184,7 @@ include 'php/conexion.php';
                 </thead>
                 <tbody>
                   <?php
-                  $sql = "SELECT COUNT(id) as servicios,cliente as cliente, SUM(cantidad) as acumulado from ordenes GROUP BY cliente";
+                  $sql = "SELECT * FROM manifiestos";
                   $resultado = $conexion->query($sql);
                   while ($mostrar = mysqli_fetch_array($resultado)) {
                   ?>
@@ -193,19 +193,19 @@ include 'php/conexion.php';
                       <td><?php
 
 
-                          $sql1 = "SELECT * FROM clientes WHERE id='" . $mostrar['cliente'] . "'";
+                          $sql1 = "SELECT * FROM clientes WHERE id='" . $mostrar['id_cliente'] . "'";
                           $result1 = mysqli_query($conexion, $sql1);
                           if ($Row = mysqli_fetch_array($result1)) {
                             $nombre = $Row['nombre'];
                           }
                           echo $nombre;
                           ?></td>
-                      <td><?php echo $mostrar['acumulado'] ?></td>
-                      <td><?php echo $mostrar['servicios'] ?></td>
+                      <td><?php echo $mostrar['titulo'] ?></td>
+                      <td><?php echo $mostrar['descripcion'] ?></td>
                       
                       <td>
 
-                        <a href="crear_manifiesto.php?cliente=<?php echo $mostrar['cliente']  ?>" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
+                        <a href="manifiestos/<?php echo $Row['id'] . "/".$mostrar['ruta']?>" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
                         <a href='./editar_manifiesto.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                         <a href='./eliminar_manifiesto.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
 

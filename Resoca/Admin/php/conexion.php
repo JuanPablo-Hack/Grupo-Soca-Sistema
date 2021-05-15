@@ -3,7 +3,7 @@
 $nombreServidor = "localhost";
 $nombreUsuario = "root";
 $passwordBaseDeDatos = "";
-$nombreBaseDeDatos = "resoca";
+$nombreBaseDeDatos = "soca";
 
 $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
 

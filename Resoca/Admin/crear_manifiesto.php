@@ -181,7 +181,7 @@
             
             <div class="form-panel">
               <div class="form">
-              <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/crear_manifiesto.php">
+              <form enctype="multipart/form-data" class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/crear_manifiesto.php">
               <div class="form-group">
                   
                   <div class="col-sm-4">
