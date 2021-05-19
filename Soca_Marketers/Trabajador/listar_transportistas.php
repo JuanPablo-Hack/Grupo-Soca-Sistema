@@ -132,7 +132,7 @@
 
                         </ul>
                     </li>
-                    
+
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
@@ -140,8 +140,8 @@
                         </a>
                         <ul class="sub">
                             <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
-                            <li><a href="alta_transportista.html">Alta de Transportistas</a></li>
-                            
+                            <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+
                         </ul>
                     </li>
 
@@ -185,8 +185,17 @@
                   ?>
                   <tr >
                     
-                    <td><?php echo $mostrar['nombre_empresa'] ?></td>
-                    <td><?php echo $mostrar['tel_empresa'] ?></td>
+                    <td><?php
+
+
+                    $sql1 = "SELECT * FROM empresa_transportista WHERE id='" .$mostrar['id_trans']. "'";
+                    $result1 = mysqli_query($conexion, $sql1);
+                    if ($Row = mysqli_fetch_array($result1)) {
+                      $nombre = $Row['nombre'];
+                    }
+                    echo $nombre;
+                    ?></td>
+                    <td><?php echo $mostrar['tel_operador'] ?></td>
                     <td><?php echo $mostrar['operador'] ?></td>  
                     <td><?php echo $mostrar['licencia'] ?></td>
                     <td><?php echo $mostrar['modelo'] ?></td>

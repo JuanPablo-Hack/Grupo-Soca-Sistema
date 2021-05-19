@@ -94,7 +94,7 @@
                             <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
-
+                   
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-calendar"></i>
@@ -109,7 +109,7 @@
 
                         </ul>
                     </li>
-
+                    
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
@@ -140,10 +140,9 @@
                             <span>Inventario</span>
                         </a>
                         <ul class="sub">
-
-                            <li><a href="listar_transportistas_empresas.php">Padrón de Transportistas</a></li>
-                            <li><a href="listar_transportistas.php">Lista de operadores</a></li>
-                            <li><a href="alta_trans.html">Alta de Transportistas</a></li>
+                           
+                            <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+                            <li><a href="alta_transportista.html">Alta de Transportista</a></li>
 
 
                         </ul>
@@ -174,7 +173,7 @@
 
                         </ul>
                     </li>
-
+                    
 
                 </ul>
                 <!-- sidebar menu end-->
@@ -187,7 +186,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora de Acumulado de Patio de Trituración</h3>
+        <h3><i class="fa fa-angle-right"></i> Padrón de transportistas</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -196,40 +195,37 @@
                 <thead>
                   <tr>
                     
-                    <th>Mina de Origen</th>
-                    <th>Total recibido en breña</th>
-                    <th class="hidden-phone">Total triturado de 50 a 10 mm</th>
-                    <th class="hidden-phone">Total triturado de 10 mm a finos</th>
-                    <th class="hidden-phone">Total de ganga</th>
-                    
+                    <th>Nombre de la empresa</th>
+                    <th>RFC</th>
+                   
+                    <th class="hidden-phone">Dirección</th>
+                    <th class="hidden-phone">Telefono</th>
+                   
+                    <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT mina, SUM(peso_1) as breña, SUM(peso_2) as triturado, SUM(peso_3) as triturado_finos, SUM(peso_4) as ganga FROM lotes_acopio GROUP BY mina";
+                    $sql="SELECT * FROM empresa_transportista";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
                   <tr >
                     
-                  <td><?php 
-                    
+                    <td><?php echo $mostrar['nombre'] ?></td>
+                    <td><?php echo $mostrar['rfc'] ?></td>
+                    <td><?php echo $mostrar['dir'] ?></td>  
+                    <td><?php echo $mostrar['tel'] ?></td>
+                   
+                    <td>
                      
-                    $sql1="SELECT * FROM minas WHERE id='".$mostrar['mina_origen']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                   
-                   
-                    <td><?php echo $mostrar['breña'] ?></td>
-                    <td><?php echo $mostrar['triturado'] ?></td>
-                    <td><?php echo $mostrar['triturado_finos'] ?></td>
-                    <td><?php echo $mostrar['ganga'] ?></td>
+                      
                     
+
+                      <a href='./editar_transportista.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href='./eliminar_trans_empresa.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      
+                    </td>
                   </tr>
                   <?php
                     }                 

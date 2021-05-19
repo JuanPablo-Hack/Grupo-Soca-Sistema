@@ -167,7 +167,7 @@
 
                         </ul>
                     </li>
-                    
+
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
@@ -175,8 +175,8 @@
                         </a>
                         <ul class="sub">
                             <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
-                            <li><a href="alta_transportista.html">Alta de Transportistas</a></li>
-                            
+                            <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+
                         </ul>
                     </li>
 

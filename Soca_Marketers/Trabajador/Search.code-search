@@ -1,0 +1,139 @@
+# Query:   <li><a href="alta_transportista.html">Alta de Transportistas</a></li>
+# ContextLines: 1
+
+27 results - 27 files
+
+Soca_Marketers\Trabajador\alta_muestras.php:
+  152                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  153:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  154                              
+
+Soca_Marketers\Trabajador\alta_trans.php:
+  143                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  144:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  145                              
+
+Soca_Marketers\Trabajador\alta_transportista.html:
+  136                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  137:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  138  
+
+Soca_Marketers\Trabajador\crear_lote_acopio.php:
+  152                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  153:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  154                              
+
+Soca_Marketers\Trabajador\crear_lote.php:
+  152                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  153:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  154                              
+
+Soca_Marketers\Trabajador\crear_orden.php:
+  152                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  153:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  154                              
+
+Soca_Marketers\Trabajador\crear_orden2.php:
+  152                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  153:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  154                              
+
+Soca_Marketers\Trabajador\crear_orden3.php:
+  152                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  153:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  154                              
+
+Soca_Marketers\Trabajador\editar_lote_acopio.php:
+  173                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  174:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  175                              
+
+Soca_Marketers\Trabajador\editar_lote.php:
+  170                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  171:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  172                              
+
+Soca_Marketers\Trabajador\editar_muestra.php:
+  175                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  176:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  177                              
+
+Soca_Marketers\Trabajador\editar_orden.php:
+  177                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  178:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  179                              
+
+Soca_Marketers\Trabajador\editar_orden2.php:
+  177                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  178:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  179                              
+
+Soca_Marketers\Trabajador\editar_orden3.php:
+  182                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  183:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  184                              
+
+Soca_Marketers\Trabajador\editar_prospecionmina.php:
+  175                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  176:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  177                              
+
+Soca_Marketers\Trabajador\editar_transportista.php:
+  167                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  168:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  169                              
+
+Soca_Marketers\Trabajador\index.html:
+  134                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  135:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  136                              
+
+Soca_Marketers\Trabajador\listar_acomulado.php:
+  142                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  143:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  144                              
+
+Soca_Marketers\Trabajador\listar_lotes_acopio.php:
+  142                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  143:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  144                              
+
+Soca_Marketers\Trabajador\listar_lotes.php:
+  142                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  143:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  144                              
+
+Soca_Marketers\Trabajador\listar_muestras.php:
+  142                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  143:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  144                              
+
+Soca_Marketers\Trabajador\listar_orden.php:
+  142                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  143:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  144                              
+
+Soca_Marketers\Trabajador\listar_orden2.php:
+  142                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  143:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  144                              
+
+Soca_Marketers\Trabajador\listar_orden3.php:
+  142                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  143:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  144                              
+
+Soca_Marketers\Trabajador\listar_prospeccionmina.php:
+  142                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  143:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  144                              
+
+Soca_Marketers\Trabajador\listar_transportistas.php:
+  142                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  143:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  144                              
+
+Soca_Marketers\Trabajador\prospeccion_mina.php:
+  152                              <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+  153:                             <li><a href="alta_trans.php">Alta de Transportistas</a></li>
+  154                              

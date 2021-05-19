@@ -1,27 +1,10 @@
 <?php
-  
   include 'php/conexion.php';
-
-  $id=$_GET['id'];
-  $sql="SELECT * FROM 	empresa_transportista WHERE id='".$id."'";
-  $result = mysqli_query($conexion,$sql);
-  if ($Row = mysqli_fetch_array($result))
-  {
-    
-    $nombre_empresa= $Row['nombre'];
-    $rfc= $Row['rfc'];
-    $dir_empresa= $Row['dir'];
-    
-    $tel_empresa=$Row['tel'];
-   
-    
-   
-  }
   
-  
-  
-  
+  $sql4="SELECT * FROM empresa_transportista";
+  $result4 = mysqli_query($conexion,$sql4);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -85,7 +68,7 @@
                     <p class="centered">
                         <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
-                    <h5 class="centered">Admin</h5>
+                    <h5 class="centered">Supervisor</h5>
                     <li class="mt">
                         <a class="active" href="index.html">
                             <i class="fa fa-dashboard"></i>
@@ -95,10 +78,10 @@
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>Prospección de Minas</span>
+                            <span>Prospección de mina</span>
                         </a>
                         <ul class="sub">
-
+                            <li><a href="prospeccion_mina.php">Registro de muestra</a></li>
                             <li><a href="listar_prospeccionmina.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
@@ -108,26 +91,24 @@
                             <span>Analisis y Muestras</span>
                         </a>
                         <ul class="sub">
-
+                            <li><a href="alta_muestras.php">Registro de muestra</a></li>
                             <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
-
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-calendar"></i>
-                            <span>Produccion y Acopio en mina</span>
+                            <span>Producción y Acopio de mina</span>
                         </a>
                         <ul class="sub">
                             <li><a href="crear_orden.php">Crear Registro</a></li>
                             <li><a href="listar_orden.php">Bitacora</a></li>
-                            <li><a href="alta_mina.html">Registrar Mina</a></li>
-                            <li><a href="listar_minas.php">Minas Registradas</a></li>
-                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
+                            <li><a href="crear_lote.php">Crear Registro de Lote</a></li>
+                            <li><a href="listar_lotes.php">Bitacora de Lotes</a></li>
+
 
                         </ul>
                     </li>
-
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
@@ -136,62 +117,35 @@
                         <ul class="sub">
                             <li><a href="crear_orden3.php">Crear Registro</a></li>
                             <li><a href="listar_orden3.php">Bitacora</a></li>
-                            <li><a href="listar_lotes_acopio.php">Bitacora de lotes</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>Patio de trituracion</span>
+                            <span>Patio de Trituración</span>
                         </a>
                         <ul class="sub">
                             <li><a href="crear_orden2.php">Crear Registro</a></li>
                             <li><a href="listar_orden2.php">Bitacora</a></li>
-                            <li><a href="listar_lotes_acopio.php">Bitacora de lotes</a></li>
+                            <li><a href="crear_lote_acopio.php">Crear Registro de Lote</a></li>
+                            <li><a href="listar_lotes_acopio.php">Bitacora de Lotes</a></li>
                             <li><a href="listar_acomulado.php">Bitacora de Acumulado</a></li>
 
                         </ul>
                     </li>
+
                     <li class="sub-menu">
                         <a href="javascript:;">
-                            <i class="fa fa-car"></i>
+                            <i class="fa fa-book"></i>
                             <span>Inventario</span>
                         </a>
                         <ul class="sub">
-
-                            <li><a href="listar_transportistas_empresas.php">Padrón de Transportistas</a></li>
-                            <li><a href="listar_transportistas.php">Lista de operadores</a></li>
-                            <li><a href="alta_trans.html">Alta de Transportistas</a></li>
-
+                            <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
+                            <li><a href="alta_trans.php">Alta de Transportistas</a></li>
 
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-car"></i>
-                            <span>Unidades</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_unidad.html">Dar de alta</a></li>
-                            <li><a href="listar_unidades.php">Mis Unidades</a></li>
 
-
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-group"></i>
-                            <span>Usuarios</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
-                            <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-
-                            <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-                            <li><a href="listar_clientes.php">Listar Clientes</a></li>
-
-                        </ul>
-                    </li>
 
 
                 </ul>
@@ -217,40 +171,95 @@
 
                         <div class="form-panel">
                             <div class="form">
-                                <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/editar_trans.php">
+                                <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/alta_trans.php">
                                     <h3>Datos de la empresa</h3>
                                     <hr>
+                                    <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Transportista</label>
+                                    <div class="col-sm-4">
+                                    <select class="form-control" name='nombre_trans'>
+                                    <option value="0"></option>
+                                    <?php 
+                                        while ($Row1 = mysqli_fetch_array($result4)) {			 
+                                    ?>
+                                    <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                    </select>
+                                    </div>
+                                    </div>
+                                    <h3>Datos del operador</h3>
+                                    <hr>
                                     <div class="form-group ">
-                                        <label for="firstname" class="control-label col-lg-2">ID</label>
+                                        <label for="username" class="control-label col-lg-2">Nombre completo</label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" id="firstname" name="identificador" type="text" value="<?php echo $id; ?>"/>
+                                            <input class="form-control " id="username" name="operador" type="text" />
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="firstname" class="control-label col-lg-2">Nombre de la empresa</label>
+                                        <label for="username" class="control-label col-lg-2">Cargo</label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" id="firstname" name="nombre_empresa" type="text" value="<?php echo $nombre_empresa; ?>"/>
+                                            <input class="form-control " id="username" name="cargo" type="text" />
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="lastname" class="control-label col-lg-2">RFC</label>
+                                        <label for="username" class="control-label col-lg-2">Licencia</label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" id="lastname" name="rfc" type="text" value="<?php echo $rfc;?>"/>
+                                            <input class="form-control " id="username" name="licencia" type="text" />
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="username" class="control-label col-lg-2">Dirección</label>
+                                        <label for="password" class="control-label col-lg-2">Telefono</label>
                                         <div class="col-lg-10">
-                                            <input class="form-control " id="username" name="dir_empresa" type="text" value="<?php echo $dir_empresa; ?>"/>
+                                            <input class="form-control " id="password" name="tel_operador" type="text" />
+                                        </div>
+                                    </div>
+                                    <h3>Datos de la unidad</h3>
+                                    <hr>
+                                    <div class="form-group ">
+                                        <label for="username" class="control-label col-lg-2">Modelo</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="username" name="modelo" type="text" />
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="username" class="control-label col-lg-2">Telefono</label>
+                                        <label for="username" class="control-label col-lg-2">Placas</label>
                                         <div class="col-lg-10">
-                                            <input class="form-control " id="username" name="tel_empresa" type="text" value="<?php echo $tel_empresa; ?>"/>
+                                            <input class="form-control " id="username" name="placas" type="text" />
                                         </div>
                                     </div>
                                     
+                                    <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2">Año</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="password" name="ano" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2">Capacidad</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="password" name="capcidad" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2">Color</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="password" name="color" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2">Seguro</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="password" name="seguro" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2">Descripción</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="password" name="descripcion" type="text" />
+                                        </div>
+                                    </div>
                                     
 
                                     <div class="form-group">

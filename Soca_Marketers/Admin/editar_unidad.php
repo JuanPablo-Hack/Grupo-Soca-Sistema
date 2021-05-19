@@ -109,7 +109,7 @@
                             <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
-                   
+
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-calendar"></i>
@@ -124,7 +124,7 @@
 
                         </ul>
                     </li>
-                    
+
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
@@ -155,9 +155,10 @@
                             <span>Inventario</span>
                         </a>
                         <ul class="sub">
-                           
-                            <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
-                            <li><a href="alta_transportista.html">Alta de Transportista</a></li>
+
+                            <li><a href="listar_transportistas_empresas.php">Padrón de Transportistas</a></li>
+                            <li><a href="listar_transportistas.php">Lista de operadores</a></li>
+                            <li><a href="alta_trans.html">Alta de Transportistas</a></li>
 
 
                         </ul>
@@ -188,7 +189,7 @@
 
                         </ul>
                     </li>
-                    
+
 
                 </ul>
                 <!-- sidebar menu end-->

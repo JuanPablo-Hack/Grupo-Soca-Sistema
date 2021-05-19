@@ -14,12 +14,12 @@ create table estados(
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-create table estados(
+create table empresa_transportista(
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    id_cliente INT NOT NULL,
-    titulo VARCHAR(20) NOT NULL,
-    descripcion VARCHAR(100) NOT NULL,
-    ruta VARCHAR(100)  NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    rfc VARCHAR(13) NOT NULL,
+    dir VARCHAR(100)  NOT NULL,
+    tel VARCHAR(10)  NOT NULL,
     creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

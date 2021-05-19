@@ -77,7 +77,7 @@
                     <p class="centered">
                         <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
-                    <h5 class="centered">Supervisor</h5>
+                    <h5 class="centered">Admin</h5>
                     <li class="mt">
                         <a class="active" href="index.html">
                             <i class="fa fa-dashboard"></i>
@@ -87,10 +87,10 @@
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>Prospección de mina</span>
+                            <span>Prospección de Minas</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="prospeccion_mina.php">Registro de muestra</a></li>
+
                             <li><a href="listar_prospeccionmina.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
@@ -100,24 +100,26 @@
                             <span>Analisis y Muestras</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="alta_muestras.php">Registro de muestra</a></li>
+
                             <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
+
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-calendar"></i>
-                            <span>Producción y Acopio de mina</span>
+                            <span>Produccion y Acopio en mina</span>
                         </a>
                         <ul class="sub">
                             <li><a href="crear_orden.php">Crear Registro</a></li>
                             <li><a href="listar_orden.php">Bitacora</a></li>
-                            <li><a href="crear_lote.php">Crear Registro de Lote</a></li>
-                            <li><a href="listar_lotes.php">Bitacora de Lotes</a></li>
-
+                            <li><a href="alta_mina.html">Registrar Mina</a></li>
+                            <li><a href="listar_minas.php">Minas Registradas</a></li>
+                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
 
                         </ul>
                     </li>
+
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
@@ -126,35 +128,62 @@
                         <ul class="sub">
                             <li><a href="crear_orden3.php">Crear Registro</a></li>
                             <li><a href="listar_orden3.php">Bitacora</a></li>
+                            <li><a href="listar_lotes_acopio.php">Bitacora de lotes</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>Patio de Trituración</span>
+                            <span>Patio de trituracion</span>
                         </a>
                         <ul class="sub">
                             <li><a href="crear_orden2.php">Crear Registro</a></li>
                             <li><a href="listar_orden2.php">Bitacora</a></li>
-                            <li><a href="crear_lote_acopio.php">Crear Registro de Lote</a></li>
-                            <li><a href="listar_lotes_acopio.php">Bitacora de Lotes</a></li>
+                            <li><a href="listar_lotes_acopio.php">Bitacora de lotes</a></li>
                             <li><a href="listar_acomulado.php">Bitacora de Acumulado</a></li>
 
                         </ul>
                     </li>
-                    
                     <li class="sub-menu">
                         <a href="javascript:;">
-                            <i class="fa fa-book"></i>
+                            <i class="fa fa-car"></i>
                             <span>Inventario</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="listar_transportistas.php">Padrón de Transportistas</a></li>
-                            <li><a href="alta_transportista.html">Alta de Transportistas</a></li>
-                            
+
+                            <li><a href="listar_transportistas_empresas.php">Padrón de Transportistas</a></li>
+                            <li><a href="listar_transportistas.php">Lista de operadores</a></li>
+                            <li><a href="alta_trans.html">Alta de Transportistas</a></li>
+
+
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-car"></i>
+                            <span>Unidades</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_unidad.html">Dar de alta</a></li>
+                            <li><a href="listar_unidades.php">Mis Unidades</a></li>
 
+
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-group"></i>
+                            <span>Usuarios</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
+                            <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
+
+                            <li><a href="alta_usuarios.html">Crear Cliente</a></li>
+                            <li><a href="listar_clientes.php">Listar Clientes</a></li>
+
+                        </ul>
+                    </li>
 
 
                 </ul>
