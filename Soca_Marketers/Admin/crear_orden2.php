@@ -8,6 +8,8 @@
   $result3 = mysqli_query($conexion,$sql3);
   $sql4="SELECT * FROM clientes";
   $result4 = mysqli_query($conexion,$sql4);
+  $sql6="SELECT * FROM lotes";
+  $result6 = mysqli_query($conexion,$sql6);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,32 +92,24 @@
                             <span>Prospección de Minas</span>
                         </a>
                         <ul class="sub">
-
-                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Analisis y Muestras</span>
-                        </a>
-                        <ul class="sub">
-
+                            <li><a href="alta_mina.html">Registrar Mina</a></li>
+                            <li><a href="listar_minas.php">Minas Registradas</a></li>
+                            <li><a href="alta_muestras.php">Registro de Muestra</a></li>
                             <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
 
+
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-calendar"></i>
-                            <span>Produccion y Acopio en mina</span>
+                            <span>Produccion en mina</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="crear_orden.php">Crear Registro</a></li>
-                            <li><a href="listar_orden.php">Bitacora</a></li>
-                            <li><a href="alta_mina.html">Registrar Mina</a></li>
-                            <li><a href="listar_minas.php">Minas Registradas</a></li>
+                            <li><a href="crear_lote.php">Crear Lote</a></li>
                             <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
+                            <li><a href="#">Crear Muestreo de Lote</a></li>
+                            <li><a href="#">Bitacora de muestras de lotes</a></li>
 
                         </ul>
                     </li>
@@ -126,9 +120,9 @@
                             <span>Salida de Patio de mina</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="crear_orden3.php">Crear Registro</a></li>
-                            <li><a href="listar_orden3.php">Bitacora</a></li>
-                            <li><a href="listar_lotes_acopio.php">Bitacora de lotes</a></li>
+                            <li><a href="crear_orden3.php">Crear Registro de Salida</a></li>
+                            <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
+
                         </ul>
                     </li>
                     <li class="sub-menu">
@@ -137,23 +131,23 @@
                             <span>Patio de trituracion</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="crear_orden2.php">Crear Registro</a></li>
+                            <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
                             <li><a href="listar_orden2.php">Bitacora</a></li>
-                            <li><a href="listar_lotes_acopio.php">Bitacora de lotes</a></li>
-                            <li><a href="listar_acomulado.php">Bitacora de Acumulado</a></li>
+                            <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
+                            <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
-                            <i class="fa fa-car"></i>
+                            <i class="fa fa-truck"></i>
                             <span>Inventario</span>
                         </a>
                         <ul class="sub">
 
-                            <li><a href="listar_transportistas_empresas.php">Padrón de Transportistas</a></li>
-                            <li><a href="listar_transportistas.php">Lista de operadores</a></li>
-                            <li><a href="alta_trans.html">Alta de Transportistas</a></li>
+                            <li><a href="#">Acumulado en Mina</a></li>
+                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
+
 
 
                         </ul>
@@ -166,6 +160,10 @@
                         <ul class="sub">
                             <li><a href="alta_unidad.html">Dar de alta</a></li>
                             <li><a href="listar_unidades.php">Mis Unidades</a></li>
+                            <li><a href="alta_unidad.html">Dar de alta transportista</a></li>
+                            <li><a href="listar_unidades.php">Transportistas</a></li>
+                            <li><a href="alta_unidad.html">Dar de operador externo</a></li>
+                            <li><a href="listar_unidades.php">Operadores Externos</a></li>
 
 
                         </ul>
@@ -283,19 +281,19 @@
                 
                 
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Peso Tara</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_tara' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Peso Bruto</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_burto' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Neto</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Peso Neto</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_neto' class="form-control">
                   </div>
@@ -321,7 +319,16 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">No. Lote</label>
                   <div class="col-sm-4">
-                    <input type="text" name='lote' class="form-control">
+                  <select class="form-control" name='lote'>
+                  
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result6)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['no_lote'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 <div class="form-group">

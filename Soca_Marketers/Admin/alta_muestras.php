@@ -1,38 +1,13 @@
 <?php
-  
   include 'php/conexion.php';
-
-  $id=$_GET['id'];
-  $sql="SELECT * FROM 	produccion_mina WHERE id='".$id."'";
-  $result = mysqli_query($conexion,$sql);
-  if ($Row = mysqli_fetch_array($result))
-  {
-    $cliente= $Row['cliente'];
-    $nombre= $Row['nombre_mina'];
-    $mineral= $Row['mineral'];
-    $unidad=$Row['unidad'];
-    $operador=$Row['operador'];
-    $no_guia=$Row['no_guia'];
-    $p_tara=$Row['p_tara'];
-    $p_bruto=$Row['p_bruto'];
-    $p_neto=$Row['p_neto'];
-    $metros=$Row['metros3'];
-    $autoriza=$Row['autoriza'];
-    $hora_salida=$Row['hora_salida'];
-    $destino=$Row['destino'];
-    $estado=$Row['estado'];
-   
-  }
   $sql="SELECT * FROM trabajador";
   $result = mysqli_query($conexion,$sql);
   $sql2="SELECT * FROM unidades";
   $result2 = mysqli_query($conexion,$sql2);
   $sql3="SELECT * FROM minas";
   $result3 = mysqli_query($conexion,$sql3);
-  $sql4="SELECT * FROM estados";
+  $sql4="SELECT * FROM clientes";
   $result4 = mysqli_query($conexion,$sql4);
-  
-  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -218,29 +193,31 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Editar salida de mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Crear Registro de Muestra y Mina</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="php/editar_orden.php" class="form-horizontal style-form" method='POST'>
+              <form action="php/agregar_muestra.php" class="form-horizontal style-form" method='POST'>
+              
               <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Identificador</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='identificador' class="form-control" value="<?php echo $id;?>" readonly>
+                    <label class="control-label col-md-3">Fecha de recepción de la muestra</label>
+                    <div class="col-md-3 col-xs-11">
+                      <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
+                        <input type="text" readonly="" value="01-01-2014" size="16" name='fecha_recep' class="form-control">
+                        <span class="input-group-btn add-on">
+                          <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
+                          </span>
+                      </div>
+                      <span class="help-block">Select date</span>
+                    </div>
                   </div>
-                </div>
-              <div class="form-group">
+              
+                  <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Nombre de la mina</label>
                   <div class="col-sm-4">
                   <select class="form-control" name='mina'>
-                  <option value="<?php echo $nombre; ?>"><?php  $sql1="SELECT * FROM minas WHERE id='".$nombre."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;?></option>
+                  <option value="0"></option>
                   <?php 
                     while ($Row1 = mysqli_fetch_array($result3)) {			 
                  ?>
@@ -251,126 +228,103 @@
                 </select>
                   </div>
                 </div>
+              
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tipo de Mineral</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Folio</label>
                   <div class="col-sm-4">
-                    <input type="text" name='mineral' class="form-control" value="<?php echo $mineral;?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='unidad'>
-                  <option value="<?php echo $unidad; ?>"><?php   $sql1="SELECT * FROM unidades WHERE id='".$unidad."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['modelo'];  
-                      }
-                      echo $nombre; ?></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result2)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
-                <?php
-                }
-                ?>
-                </select>
+                    <input type="text" name='folio' class="form-control">
                   </div>
                 </div>
                 
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Material</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='material' class="form-control">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Peso aproximado</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='peso' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo de muestra</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='tipo' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre de laboratorio externo</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='lab_ext' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">Fecha del envío</label>
+                    <div class="col-md-3 col-xs-11">
+                      <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
+                        <input type="text" readonly="" value="01-01-2014" size="16" name='fecha_envio' class="form-control">
+                        <span class="input-group-btn add-on">
+                          <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
+                          </span>
+                      </div>
+                      <span class="help-block">Select date</span>
+                    </div>
+                  </div>
                
                 
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Operador</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='operador'>
-                  <option value="<?php echo $operador; ?>"><?php $sql1="SELECT * FROM trabajador WHERE id='".$operador."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;?></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
                
-                
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. Guía</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo de servicio solicitado</label>
                   <div class="col-sm-4">
-                    <input type="text" name='no_guia' class="form-control" value="<?php echo $no_guia;?>">
+                    <input type="text" name='servicio_soli' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Elementos a analizar</label>
                   <div class="col-sm-4">
-                    <input type="text" name='p_tara' class="form-control" value="<?php echo $p_tara;?>">
+                    <input type="text" name='ele_ana' class="form-control">
+                  </div>
+                </div>
+              
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Localidad</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='localidad' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Información Geologica</label> 
                   <div class="col-sm-4">
-                    <input type="text" name='p_burto' class="form-control" value="<?php echo $p_bruto;?>">
+                    <input type="text" name='info_geo' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">W.M.T</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Peso especifico</label> 
                   <div class="col-sm-4">
-                    <input type="text" name='p_neto' class="form-control" value="<?php echo $p_neto;?>">
+                    <input type="text" name='peso_esp' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Metros Cúbicos</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Observaciones</label>
                   <div class="col-sm-4">
-                    <input type="text" name='metros' class="form-control" value="<?php echo $metros;?>">
+                    <input type="text" name='observaciones' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Autoriza</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='autoriza' class="form-control" value="<?php echo $autoriza;?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Hora de Salida</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='hora_salida' class="form-control" value="<?php echo $hora_salida;?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Destino</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='destino' class="form-control" value="<?php echo $destino;?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Estado</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='estado'>
-                  <option value="<?php echo $estado; ?>"><?php $sql1="SELECT * FROM estados WHERE id='".$estado."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;?></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result4)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
+                  <label class="control-label col-md-3">Evidencias en formato PDF</label>
+                  <div class="controls col-md-9">
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                      <span class="btn btn-theme02 btn-file">
+                        <span class="fileupload-new"><i class="fa fa-paperclip"></i> Seleccione Archivo PDF</span>
+                      <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                      <input type="file" class="default" />
+                      </span>
+                      <span class="fileupload-preview" style="margin-left:5px;"></span>
+                      <a href="advanced_form_components.html#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
+                    </div>
                   </div>
                 </div>
                 

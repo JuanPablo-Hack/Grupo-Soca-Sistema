@@ -80,32 +80,24 @@
                             <span>Prospección de Minas</span>
                         </a>
                         <ul class="sub">
-
-                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Analisis y Muestras</span>
-                        </a>
-                        <ul class="sub">
-
+                            <li><a href="alta_mina.html">Registrar Mina</a></li>
+                            <li><a href="listar_minas.php">Minas Registradas</a></li>
+                            <li><a href="alta_muestras.php">Registro de Muestra</a></li>
                             <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
 
+
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-calendar"></i>
-                            <span>Produccion y Acopio en mina</span>
+                            <span>Produccion en mina</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="crear_orden.php">Crear Registro</a></li>
-                            <li><a href="listar_orden.php">Bitacora</a></li>
-                            <li><a href="alta_mina.html">Registrar Mina</a></li>
-                            <li><a href="listar_minas.php">Minas Registradas</a></li>
+                            <li><a href="crear_lote.php">Crear Lote</a></li>
                             <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
+                            <li><a href="#">Crear Muestreo de Lote</a></li>
+                            <li><a href="#">Bitacora de muestras de lotes</a></li>
 
                         </ul>
                     </li>
@@ -116,9 +108,9 @@
                             <span>Salida de Patio de mina</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="crear_orden3.php">Crear Registro</a></li>
-                            <li><a href="listar_orden3.php">Bitacora</a></li>
-                            <li><a href="listar_lotes_acopio.php">Bitacora de lotes</a></li>
+                            <li><a href="crear_orden3.php">Crear Registro de Salida</a></li>
+                            <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
+
                         </ul>
                     </li>
                     <li class="sub-menu">
@@ -127,23 +119,23 @@
                             <span>Patio de trituracion</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="crear_orden2.php">Crear Registro</a></li>
+                            <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
                             <li><a href="listar_orden2.php">Bitacora</a></li>
-                            <li><a href="listar_lotes_acopio.php">Bitacora de lotes</a></li>
-                            <li><a href="listar_acomulado.php">Bitacora de Acumulado</a></li>
+                            <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
+                            <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
-                            <i class="fa fa-car"></i>
+                            <i class="fa fa-truck"></i>
                             <span>Inventario</span>
                         </a>
                         <ul class="sub">
 
-                            <li><a href="listar_transportistas_empresas.php">Padrón de Transportistas</a></li>
-                            <li><a href="listar_transportistas.php">Lista de operadores</a></li>
-                            <li><a href="alta_trans.html">Alta de Transportistas</a></li>
+                            <li><a href="#">Acumulado en Mina</a></li>
+                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
+
 
 
                         </ul>
@@ -156,6 +148,10 @@
                         <ul class="sub">
                             <li><a href="alta_unidad.html">Dar de alta</a></li>
                             <li><a href="listar_unidades.php">Mis Unidades</a></li>
+                            <li><a href="alta_unidad.html">Dar de alta transportista</a></li>
+                            <li><a href="listar_unidades.php">Transportistas</a></li>
+                            <li><a href="alta_unidad.html">Dar de operador externo</a></li>
+                            <li><a href="listar_unidades.php">Operadores Externos</a></li>
 
 
                         </ul>
@@ -199,10 +195,12 @@
                     <th>Mina de Origen</th>
                     <th>Unidad</th>
                     
-                    <th class="hidden-phone">Operador</th>
-                    <th class="hidden-phone">Metros Cúbicos</th>
+                    <th class="hidden-phone">Mineral</th>
+                    <th class="hidden-phone">Peso Bruto</th>
+                    <th class="hidden-phone">Peso Tara</th>
+                    <th class="hidden-phone">Peso Neto</th>
                     <th class="hidden-phone">Autoriza</th>
-                    <th class="hidden-phone">Hora de Ingreso</th>
+                    <th class="hidden-phone">Fecha y hora de ingreso</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
@@ -236,20 +234,12 @@
                       }
                       echo $nombre;
                     ?></td>
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM trabajador WHERE id='".$mostrar['operador']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                    <td><?php echo $mostrar['m3'] ?></td>
+                    <td><?php echo $mostrar['mineral'] ?></td>
+                    <td><?php echo $mostrar['p_bruto'] ?></td>
+                    <td><?php echo $mostrar['p_tara'] ?></td>
+                    <td><?php echo $mostrar['p_neto'] ?></td>
                     <td><?php echo $mostrar['autoriza'] ?></td>
-                    <td><?php echo $mostrar['hora_ingreso'] ?></td>
+                    <td><?php echo $mostrar['creado'] ?></td>
                     <td>
                      
                       
