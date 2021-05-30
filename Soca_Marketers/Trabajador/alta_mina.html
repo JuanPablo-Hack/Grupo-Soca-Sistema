@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>GrupoSoca</title>
+
+    <!-- Favicons -->
+    <link href="img/favicon.ico" rel="icon">
+    <link href="img/apple-touch-icon.ico" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet">
+
+    <!-- =======================================================
+    Template Name: Dashio
+    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
+    Author: TemplateMag.com
+    License: https://templatemag.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+    <section id="container">
+        <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+        <!--header start-->
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
+            <!--logo end-->
+
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+        <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered">
+                        <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
+                    </p>
+                    <h5 class="centered">Supervisor</h5>
+                    <li class="mt">
+                        <a class="active" href="index.html">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Panel de Control</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Prospección de Minas</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_mina.html">Registrar Mina</a></li>
+                            <li><a href="listar_minas.php">Minas Registradas</a></li>
+                            <li><a href="alta_muestras.php">Registro de Muestra</a></li>
+                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-calendar"></i>
+                            <span>Produccion en mina</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="crear_lote.php">Crear Lote</a></li>
+                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
+                            <li><a href="#">Crear Muestreo de Lote</a></li>
+                            <li><a href="#">Bitacora de muestras de lotes</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Salida de Patio de mina</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="crear_orden3.php">Crear Registro de Salida</a></li>
+                            <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Patio de trituracion</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
+                            <li><a href="listar_orden2.php">Bitacora</a></li>
+                            <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
+                            <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-car"></i>
+                            <span>Unidades</span>
+                        </a>
+                        <ul class="sub">
+
+                            <li><a href="alta_unidad.html">Dar de operador externo</a></li>
+                            <li><a href="listar_unidades.php">Operadores Externos</a></li>
+
+
+                        </ul>
+                    </li>
+
+
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                <h3><i class="fa fa-angle-right"></i> Registro de Mina</h3>
+                <!-- BASIC FORM VALIDATION -->
+
+                <!-- /row -->
+                <!-- FORM VALIDATION -->
+                <div class="row mt">
+                    <div class="col-lg-12">
+
+                        <div class="form-panel">
+                            <div class=" form">
+                                <form class="cmxform form-horizontal style-form" id="commentForm" method="POST" action="./php/alta_mina.php">
+                                    <h2>Aspectos Legales</h2>
+                                    <hr>
+                                    <div class="form-group ">
+                                        <label for="cname" class="control-label col-lg-2">Nombre de la mina</label>
+                                        <div class="col-lg-10">
+                                            <input class=" form-control" id="cname" name="nombre_mina" minlength="2" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="cname" class="control-label col-lg-2">Localidad y municipio</label>
+                                        <div class="col-lg-10">
+                                            <input class=" form-control" id="cname" name="localidad" minlength="2" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">Kilometraje de mina a Patio Manzanillo</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="km_patio" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">Número del título y has. del denuncio minero:</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="no_titulo" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">Vigencia de la concesión minera:</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="vigencia" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">Coordenadas UTM del P.P.:</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="coordenadas" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">Nombre completo de los concesionarios:</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="concesionarios" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="ccomment" class="control-label col-lg-2">Propietarios del terreno</label>
+                                        <div class="col-lg-10">
+                                            <textarea class="form-control " id="ccomment" name="propiedad"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-sm-2 control-label">Tipo de propiedad: </label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" name='tipo_propiedad'>
+                      <option>Propiedad Pequeña</option>
+                      <option>Ejido</option>
+                      
+                    </select>
+                                        </div>
+                                    </div>
+
+                                    <h2>Accesos al proyecto minero</h2>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-sm-2 control-label">Carretera pavimentada:</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" id="carretera" onchange="myFunction()">
+                      <option value="1">No</option>
+                      <option value="2">Si</option>
+                    </select>
+                                        </div>
+                                    </div>
+                                    <div style="display: none;" id="carac_carretera">
+
+                                        <div class="form-group ">
+                                            <label for="curl" class="control-label col-lg-2">Terraceria (km):</label>
+                                            <div class="col-lg-10">
+                                                <input class="form-control " id="curl" type="text" name="terraceria" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 col-sm-2 control-label">Estado:</label>
+                                            <div class="col-sm-4">
+                                                <select class="form-control" name='estado'>
+                        <option>Bueno</option>
+                        <option>Regular</option>
+                        <option>Malo</option>
+                      </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="curl" class="control-label col-lg-2">Camino de herradura:</label>
+                                            <div class="col-lg-10">
+                                                <input class="form-control " id="curl" type="text" name="herradura" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="curl" class="control-label col-lg-2">Tiempo aproximado de caminata:</label>
+                                            <div class="col-lg-10">
+                                                <input class="form-control " id="curl" type="text" name="caminata" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <h2>Tipo de explotación minera</h2>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-sm-2 control-label">Minado a cielo abierto (tajo):</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" name='minado_cielo'>
+                      <option>Si</option>
+                      <option>No</option>
+                      
+                    </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-sm-2 control-label">Minado subterráneo:</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" name='minado_sub'>
+                      <option>Si</option>
+                      <option>No</option>
+                      
+                    </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">Otro:</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="otro" />
+                                        </div>
+                                    </div>
+
+
+                                    <h2>Permisos Locales</h2>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-sm-2 control-label">Con las comunidades para realizar la explotación:</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" name='permiso_comun'>
+                      <option>Si</option>
+                      <option>No</option>
+                      
+                    </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-sm-2 control-label">Tránsito local por el paso vehicular:</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" name='transito'>
+                      <option>Si</option>
+                      <option>No</option>
+                      
+                    </select>
+                                        </div>
+                                    </div>
+                                    <h2>Contacto con los propietarios del denuncio minero / mina</h2>
+                                    <hr>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">Nombre completo:</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="nombre_minero" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">Teléfonos:</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="tel_minero" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">Correo electrónico:</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="email_minero" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">Dirección:</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="dir_minero" />
+                                        </div>
+                                    </div>
+                                    <h2>Visita del cliente</h2>
+                                    <hr>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">Nombre completo del representante:</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="nombre_repre" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">Nombre de la empresa:</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="nombre_empresa" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-sm-2 control-label">Cumplimiento de las expectativas:</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" name='expectativas'>
+                      <option>Si</option>
+                      <option>No</option>
+                      
+                    </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="ccomment" class="control-label col-lg-2">Comentarios:</label>
+                                        <div class="col-lg-10">
+                                            <textarea class="form-control " id="ccomment" name="comentarios"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                            <button class="btn btn-theme" type="submit">Enviar</button>
+                                            <button class="btn btn-theme04" type="button">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /form-panel -->
+                    </div>
+                    <!-- /col-lg-12 -->
+                </div>
+                <!-- /row -->
+
+                <!-- /col-lg-12 -->
+                </div>
+                <!-- /row -->
+            </section>
+            <!-- /wrapper -->
+        </section>
+        <!-- /MAIN CONTENT -->
+        <!--main content end-->
+        <!--footer start-->
+        <footer class="site-footer">
+            <div class="text-center">
+                <p>
+                    &copy; Copyrights <strong>GrupoSOCA</strong>. Todos los derechos reservados
+                </p>
+                <div class="credits">
+                    <!--
+            You are NOT allowed to delete the credit link to TemplateMag with free version.
+            You can delete the credit link only if you bought the pro version.
+            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
+            Licensing information: https://templatemag.com/license/
+          -->
+                    Creado y Diseñado por Jupiter.org
+                </div>
+                <a href="index.html#" class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+        <!--footer end-->
+    </section>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="lib/jquery.scrollTo.min.js"></script>
+    <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+    <!--common script for all pages-->
+    <script src="lib/common-scripts.js"></script>
+    <!--script for this page-->
+    <script src="lib/form-validation-script.js"></script>
+    <script src="scripts/forms.js"></script>
+
+</body>
+
+</html>
