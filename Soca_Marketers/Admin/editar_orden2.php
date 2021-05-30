@@ -183,10 +183,9 @@
                         <ul class="sub">
                             <li><a href="alta_unidad.html">Dar de alta</a></li>
                             <li><a href="listar_unidades.php">Mis Unidades</a></li>
-                            <li><a href="alta_unidad.html">Dar de alta transportista</a></li>
-                            <li><a href="listar_unidades.php">Transportistas</a></li>
-                            <li><a href="alta_unidad.html">Dar de operador externo</a></li>
-                            <li><a href="listar_unidades.php">Operadores Externos</a></li>
+                            <li><a href="alta_trans.html">Dar de alta transportista</a></li>
+                            <li><a href="listar_transportistas_empresas.php">Transportistas</a></li>
+                            <li><a href="listar_transportistas.php">Operadores Externos</a></li>
 
 
                         </ul>
