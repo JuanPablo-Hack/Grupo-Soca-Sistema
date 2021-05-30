@@ -154,7 +154,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora de Lotes de produccion y acopio de mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Padrón de transportistas</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -162,84 +162,47 @@
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>No. Lote</th>
-                    <th>Nombre de Mina</th>
-                    <th>Tipo de mineral</th>
-                    <th>Metros Cubicos</th>
-                    <th class="hidden-phone">Tallas</th>
-                    <th class="hidden-phone">Calidad</th>
                     
+                    <th>Nombre de la empresa</th>
+                    <th>Teléfono</th>
                    
-                   
+                    <th class="hidden-phone">Operador</th>
+                    <th class="hidden-phone">Licencia</th>
+                    <th class="hidden-phone">Modelo</th>
+                    <th class="hidden-phone">Placas</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT * FROM lotes";
+                    $sql="SELECT * FROM transportista";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
                   <tr >
-                  
-                  <td><?php echo $mostrar['id'] ?></td>
-                  <td><?php echo $mostrar['no_lote'] ?></td>
-                  <td><?php 
                     
-                     
-                    $sql1="SELECT * FROM minas WHERE id='".$mostrar['mina']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
+                    <td><?php
+
+
+                    $sql1 = "SELECT * FROM empresa_transportista WHERE id='" .$mostrar['id_trans']. "'";
+                    $result1 = mysqli_query($conexion, $sql1);
+                    if ($Row = mysqli_fetch_array($result1)) {
+                      $nombre = $Row['nombre'];
+                    }
+                    echo $nombre;
                     ?></td>
-                   
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM materiales WHERE id='".$mostrar['material']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                   <td><?php echo $mostrar['metros'] ?></td>
-                    
-                  
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM tallas WHERE id='".$mostrar['talla']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM calidad WHERE id='".$mostrar['calidad']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
+                    <td><?php echo $mostrar['tel_operador'] ?></td>
+                    <td><?php echo $mostrar['operador'] ?></td>  
+                    <td><?php echo $mostrar['licencia'] ?></td>
+                    <td><?php echo $mostrar['modelo'] ?></td>
+                    <td><?php echo $mostrar['placas'] ?></td>
                     <td>
                      
                       
                     
 
-                      <a href='./editar_lote.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                      <a href='./eliminar_lote.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      <a href='./editar_transportista.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href='./eliminar_trans.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                       
                     </td>
                   </tr>

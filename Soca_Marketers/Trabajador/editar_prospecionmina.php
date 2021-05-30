@@ -167,8 +167,8 @@
                         </a>
                         <ul class="sub">
 
-                            <li><a href="alta_unidad.html">Dar de operador externo</a></li>
-                            <li><a href="listar_unidades.php">Operadores Externos</a></li>
+                            <li><a href="alta_trans.php">Dar de operador externo</a></li>
+                            <li><a href="listar_transportistas.php">Operadores Externos</a></li>
 
 
                         </ul>
