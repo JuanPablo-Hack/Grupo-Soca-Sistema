@@ -132,7 +132,6 @@
                     <th>Peso de 10 mm a finos</th>
                     <th>Peso de ganga</th>
                     
-                    <th class="hidden-phone">Calidad</th>
                     
                    
                    
