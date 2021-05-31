@@ -131,7 +131,7 @@
                     <th>Peso de 50 a 10 mm</th>
                     <th>Peso de 10 mm a finos</th>
                     <th>Peso de ganga</th>
-                    <th class="hidden-phone">Tallas</th>
+                    
                     <th class="hidden-phone">Calidad</th>
                     
                    
@@ -199,19 +199,7 @@
                       }
                       echo $nombre;
                     ?></td>
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM calidad WHERE id='".$mostrar['calidad']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                    
-                  </tr>
+                   
                   <?php
                     }                 
                  ?>
