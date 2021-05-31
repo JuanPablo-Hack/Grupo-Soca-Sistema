@@ -67,7 +67,7 @@
                     <p class="centered">
                         <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
-                    <h5 class="centered">Admin</h5>
+                    <h5 class="centered">Cliente</h5>
                     <li class="mt">
                         <a class="active" href="index.html">
                             <i class="fa fa-dashboard"></i>
@@ -76,13 +76,37 @@
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Prospección de Minas</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
                             <i class="fa fa-calendar"></i>
-                            <span>Producción y Acopio en mina</span>
+                            <span>Produccion en mina</span>
                         </a>
                         <ul class="sub">
 
-                            <li><a href="listar_orden.php">Mis registros</a></li>
+                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
 
+                            <li><a href="#">Bitacora de muestras de lotes</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Salida de Patio de mina</span>
+                        </a>
+                        <ul class="sub">
+
+                            <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
 
                         </ul>
                     </li>
@@ -93,19 +117,24 @@
                         </a>
                         <ul class="sub">
 
-                            <li><a href="listar_orden2.php">Mis registros</a></li>
+                            <li><a href="listar_orden2.php">Bitacora</a></li>
 
+                            <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Salida de Patio de mina</span>
+                            <i class="fa fa-truck"></i>
+                            <span>Inventario</span>
                         </a>
                         <ul class="sub">
 
-                            <li><a href="listar_orden3.php">Mis registros</a></li>
+                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
+                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
+
+
+
                         </ul>
                     </li>
 
@@ -122,7 +151,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora de salida de mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Bitacora de Producción y Acopio de Mina</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -138,7 +167,7 @@
                     <th class="hidden-phone">Operador</th>
                     
                    
-                    <th class="hidden-phone">Estado</th>
+                    <th class="hidden-phone">Metros Cubicos</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
@@ -207,24 +236,14 @@
                       echo $nombre;
                     ?></td>
                     
-                  
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM estados WHERE id='".$mostrar['estado']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
+                    <td><?php echo $mostrar['metros3'] ?></td>
                     <td>
                      
                       
                       <a href='./orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
 
-                     
+                      <a href='./editar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href='./eliminar_orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                       
                     </td>
                   </tr>

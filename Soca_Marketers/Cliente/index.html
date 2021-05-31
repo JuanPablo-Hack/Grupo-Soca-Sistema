@@ -59,7 +59,7 @@
                     <p class="centered">
                         <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
-                    <h5 class="centered">Admin</h5>
+                    <h5 class="centered">Cliente</h5>
                     <li class="mt">
                         <a class="active" href="index.html">
                             <i class="fa fa-dashboard"></i>
@@ -68,13 +68,37 @@
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Prospección de Minas</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
                             <i class="fa fa-calendar"></i>
-                            <span>Producción y Acopio en mina</span>
+                            <span>Produccion en mina</span>
                         </a>
                         <ul class="sub">
 
-                            <li><a href="listar_orden.php">Mis registros</a></li>
+                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
 
+                            <li><a href="#">Bitacora de muestras de lotes</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Salida de Patio de mina</span>
+                        </a>
+                        <ul class="sub">
+
+                            <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
 
                         </ul>
                     </li>
@@ -85,19 +109,24 @@
                         </a>
                         <ul class="sub">
 
-                            <li><a href="listar_orden2.php">Mis registros</a></li>
+                            <li><a href="listar_orden2.php">Bitacora</a></li>
 
+                            <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Salida de Patio de mina</span>
+                            <i class="fa fa-truck"></i>
+                            <span>Inventario</span>
                         </a>
                         <ul class="sub">
 
-                            <li><a href="listar_orden3.php">Mis registros</a></li>
+                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
+                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
+
+
+
                         </ul>
                     </li>
 
@@ -262,144 +291,7 @@
                     <!-- **********************************************************************************************************************************************************
               RIGHT SIDEBAR CONTENT
               *********************************************************************************************************************************************************** -->
-                    <div class="col-lg-3 ds">
-                        <!--COMPLETED ACTIONS DONUTS CHART-->
-                        <div class="donut-main">
-                            <h4>COMPLETED ACTIONS & PROGRESS</h4>
-                            <canvas id="newchart" height="130" width="130"></canvas>
-                            <script>
-                                var doughnutData = [{
-                                    value: 70,
-                                    color: "#4ECDC4"
-                                }, {
-                                    value: 30,
-                                    color: "#fdfdfd"
-                                }];
-                                var myDoughnut = new Chart(document.getElementById("newchart").getContext("2d")).Doughnut(doughnutData);
-                            </script>
-                        </div>
-                        <!--NEW EARNING STATS -->
-                        <div class="panel terques-chart">
-                            <div class="panel-body">
-                                <div class="chart">
-                                    <div class="centered">
-                                        <span>TODAY EARNINGS</span>
-                                        <strong>$ 890,00 | 15%</strong>
-                                    </div>
-                                    <br>
-                                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,564,455]"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--new earning end-->
-                        <!-- RECENT ACTIVITIES SECTION -->
-                        <h4 class="centered mt">RECENT ACTIVITY</h4>
-                        <!-- First Activity -->
-                        <div class="desc">
-                            <div class="thumb">
-                                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                            </div>
-                            <div class="details">
-                                <p>
-                                    <muted>Just Now</muted>
-                                    <br/>
-                                    <a href="#">Paul Rudd</a> purchased an item.<br/>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Second Activity -->
-                        <div class="desc">
-                            <div class="thumb">
-                                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                            </div>
-                            <div class="details">
-                                <p>
-                                    <muted>2 Minutes Ago</muted>
-                                    <br/>
-                                    <a href="#">James Brown</a> subscribed to your newsletter.<br/>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Third Activity -->
-                        <div class="desc">
-                            <div class="thumb">
-                                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                            </div>
-                            <div class="details">
-                                <p>
-                                    <muted>3 Hours Ago</muted>
-                                    <br/>
-                                    <a href="#">Diana Kennedy</a> purchased a year subscription.<br/>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Fourth Activity -->
-                        <div class="desc">
-                            <div class="thumb">
-                                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                            </div>
-                            <div class="details">
-                                <p>
-                                    <muted>7 Hours Ago</muted>
-                                    <br/>
-                                    <a href="#">Brando Page</a> purchased a year subscription.<br/>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- USERS ONLINE SECTION -->
-                        <h4 class="centered mt">TEAM MEMBERS ONLINE</h4>
-                        <!-- First Member -->
-                        <div class="desc">
-                            <div class="thumb">
-                                <img class="img-circle" src="img/ui-divya.jpg" width="35px" height="35px" align="">
-                            </div>
-                            <div class="details">
-                                <p>
-                                    <a href="#">DIVYA MANIAN</a><br/>
-                                    <muted>Available</muted>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Second Member -->
-                        <div class="desc">
-                            <div class="thumb">
-                                <img class="img-circle" src="img/ui-sherman.jpg" width="35px" height="35px" align="">
-                            </div>
-                            <div class="details">
-                                <p>
-                                    <a href="#">DJ SHERMAN</a><br/>
-                                    <muted>I am Busy</muted>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Third Member -->
-                        <div class="desc">
-                            <div class="thumb">
-                                <img class="img-circle" src="img/ui-danro.jpg" width="35px" height="35px" align="">
-                            </div>
-                            <div class="details">
-                                <p>
-                                    <a href="#">DAN ROGERS</a><br/>
-                                    <muted>Available</muted>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Fourth Member -->
-                        <div class="desc">
-                            <div class="thumb">
-                                <img class="img-circle" src="img/ui-zac.jpg" width="35px" height="35px" align="">
-                            </div>
-                            <div class="details">
-                                <p>
-                                    <a href="#">Zac Sniders</a><br/>
-                                    <muted>Available</muted>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- CALENDAR-->
 
-                        <!-- / calendar -->
-                    </div>
                     <!-- /col-lg-3 -->
                 </div>
                 <!-- /row -->
@@ -447,9 +339,9 @@
         $(document).ready(function() {
             var unique_id = $.gritter.add({
                 // (string | mandatory) the heading of the notification
-                title: 'Bienvenido Administrador',
+                title: 'Bienvenido Cliente',
                 // (string | mandatory) the text inside the notification
-                text: 'Recuerda de revisar todos tus pendientes para la semana, éxito!.',
+                text: 'Realiza el seguimiento de todo el proceso de tu mineral en nuestro sistema.',
                 // (string | optional) the image to display on the left
                 image: 'img/banner.png',
                 // (bool | optional) if you want it to fade out on its own or just sit there
