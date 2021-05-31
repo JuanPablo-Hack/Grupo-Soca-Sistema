@@ -191,7 +191,7 @@
                 <thead>
                   <tr>
                     <th>Mina Origen</th>
-                    <th>Fecha de recepción de la muestra</th>
+                    <th>Fecha y hora de recepción de la muestra</th>
                     <th>Material</th>
                     <th>No. De muestra</th>
                     <th class="hidden-phone">Peso aproximado</th>
@@ -221,7 +221,7 @@
                       }
                       echo $nombre;
                     ?></td>
-                    <td><?php echo $mostrar['fecha_recep'] ?></td>
+                    <td><?php echo $mostrar['creado'] ?></td>
                     <td><?php echo $mostrar['material'] ?></td>
                     <td><?php echo $mostrar['no_muestras'] ?></td>
                     <td><?php echo $mostrar['peso'] ?></td>

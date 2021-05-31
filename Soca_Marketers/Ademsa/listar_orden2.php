@@ -1,5 +1,17 @@
 <?php
  include 'php/conexion.php';
+ $sql="SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio";
+ $result = mysqli_query($conexion,$sql);
+ if ($Row = mysqli_fetch_array($result))
+  {
+    
+    
+    $tara=$Row['tara'];
+    $bruto=$Row['bruto'];
+    $neto=$Row['neto'];
+    
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -155,9 +167,9 @@
                       echo $nombre;
                     ?></td>
                     <td><?php echo $mostrar['mineral'] ?></td>
-                    <td><?php echo $mostrar['p_bruto'] ?></td>
-                    <td><?php echo $mostrar['p_tara'] ?></td>
-                    <td><?php echo $mostrar['p_neto'] ?></td>
+                    <td><?php echo $mostrar['p_bruto']." "."Kg" ?></td>
+                    <td><?php echo $mostrar['p_tara']." "."Kg" ?></td>
+                    <td><?php echo $mostrar['p_neto']." "."Kg" ?></td>
                     <td><?php echo $mostrar['autoriza'] ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
                     
@@ -165,6 +177,14 @@
                   <?php
                     }                 
                  ?>
+                 <tr>
+                   <td></td>
+                   <td></td>
+                   <td>Total</td>
+                   <td><?php echo $tara." "."Kg" ?></td>
+                   <td><?php echo $bruto." "."Kg" ?></td>
+                   <td><?php echo $neto." "."Kg" ?></td>
+                 </tr>
                 </tbody>
               </table>
             </div>

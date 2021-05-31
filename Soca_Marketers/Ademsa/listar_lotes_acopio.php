@@ -1,5 +1,17 @@
 <?php
  include 'php/conexion.php';
+ $sql="SELECT SUM(peso_1) as breña, SUM(peso_2) as triturado, SUM(peso_3) as triturado_finos, SUM(peso_4) as ganga FROM lotes_acopio";
+ $result = mysqli_query($conexion,$sql);
+ if ($Row = mysqli_fetch_array($result))
+  {
+    
+    
+    $breña=$Row['breña'];
+    $triturado=$Row['triturado'];
+    $triturado_finos=$Row['triturado_finos'];
+    $ganga=$Row['ganga'];
+    
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -170,10 +182,10 @@
                       }
                       echo $nombre;
                     ?></td>
-                   <td><?php echo $mostrar['peso_1'] ?></td>
-                   <td><?php echo $mostrar['peso_2'] ?></td>
-                   <td><?php echo $mostrar['peso_3'] ?></td>
-                   <td><?php echo $mostrar['peso_4'] ?></td>
+                   <td><?php echo $mostrar['peso_1']." "."Kg"?></td>
+                   <td><?php echo $mostrar['peso_2']." "."Kg"?></td>
+                   <td><?php echo $mostrar['peso_3']." "."Kg"?></td>
+                   <td><?php echo $mostrar['peso_4']." "."Kg"?></td>
                     
                   
                     <td><?php 
@@ -203,6 +215,16 @@
                   <?php
                     }                 
                  ?>
+                 <tr>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td>Total</td>
+                   <td><?php echo $breña." "."Kg" ?></td>
+                   <td><?php echo $triturado." "."Kg" ?></td>
+                   <td><?php echo $triturado_finos." "."Kg" ?></td>
+                   <td><?php echo $ganga." "."Kg" ?></td>
+                 </tr>
                 </tbody>
               </table>
             </div>

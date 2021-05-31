@@ -25,7 +25,7 @@ if ($conexion ->connect_error) {
 }else{
    
          
-        $sql="INSERT INTO muestras(fecha_recep,mina,folio,material,peso,tipo_muestra,lab_ext,fecha_envio,servicio_soli,ele_ana,localidad,info_geo,peso_esp,observaciones,estado) VALUES ('$fecha_recep','$mina','$folio','$material','$peso','$tipo','$lab_ext','$fecha_envio','$servicio_soli','$ele_ana','$localidad','$info_geo','$peso_esp','$observaciones',1);";
+        $sql="INSERT INTO muestras(fecha_recep,mina,folio,material,peso,tipo_muestra,lab_ext,fecha_envio,servicio_soli,ele_ana,localidad,info_geo,peso_esp,observaciones,estado) VALUES (' ','$mina','$folio','$material','$peso','$tipo','$lab_ext','$fecha_envio','$servicio_soli','$ele_ana','$localidad','$info_geo','$peso_esp','$observaciones',1);";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");
