@@ -1,5 +1,17 @@
 <?php
  include 'php/conexion.php';
+ $sql="SELECT SUM(peso_1) as breña, SUM(peso_2) as triturado, SUM(peso_3) as triturado_finos, SUM(peso_4) as ganga FROM lotes_acopio";
+ $result = mysqli_query($conexion,$sql);
+ if ($Row = mysqli_fetch_array($result))
+  {
+    
+    
+    $breña=$Row['breña'];
+    $triturado=$Row['triturado'];
+    $triturado_finos=$Row['triturado_finos'];
+    $ganga=$Row['ganga'];
+    
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,108 +79,29 @@
                     <p class="centered">
                         <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
-                    <h5 class="centered">Admin</h5>
+                    <h5 class="centered">Cliente</h5>
                     <li class="mt">
                         <a class="active" href="index.html">
                             <i class="fa fa-dashboard"></i>
                             <span>Panel de Control</span>
                         </a>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Prospección de Minas</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_mina.html">Registrar Mina</a></li>
-                            <li><a href="listar_minas.php">Minas Registradas</a></li>
-                            <li><a href="alta_muestras.php">Registro de Muestra</a></li>
-                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
-                        </ul>
-                    </li>
 
-
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-calendar"></i>
-                            <span>Produccion en mina</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="crear_lote.php">Crear Lote</a></li>
-                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-                            <li><a href="#">Crear Muestreo de Lote</a></li>
-                            <li><a href="#">Bitacora de muestras de lotes</a></li>
-
-                        </ul>
-                    </li>
-
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Salida de Patio de mina</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="crear_orden3.php">Crear Registro de Salida</a></li>
-                            <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
-
-                        </ul>
-                    </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
                             <span>Patio de trituracion</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
+
                             <li><a href="listar_orden2.php">Bitacora</a></li>
-                            <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
+
                             <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-truck"></i>
-                            <span>Inventario</span>
-                        </a>
-                        <ul class="sub">
-
-                            <li><a href="#">Acumulado en Mina</a></li>
-                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
 
 
-
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-car"></i>
-                            <span>Unidades</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_unidad.html">Dar de alta</a></li>
-                            <li><a href="listar_unidades.php">Mis Unidades</a></li>
-                            <li><a href="alta_trans.html">Dar de alta transportista</a></li>
-                            <li><a href="listar_transportistas_empresas.php">Transportistas</a></li>
-                            <li><a href="listar_transportistas.php">Operadores Externos</a></li>
-
-
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-group"></i>
-                            <span>Usuarios</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
-                            <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-
-                            <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-                            <li><a href="listar_clientes.php">Listar Clientes</a></li>
-
-                        </ul>
-                    </li>
 
 
                 </ul>
@@ -198,12 +131,12 @@
                     <th>Peso de 50 a 10 mm</th>
                     <th>Peso de 10 mm a finos</th>
                     <th>Peso de ganga</th>
-                    <th class="hidden-phone">Tallas</th>
+                   
                     <th class="hidden-phone">Calidad</th>
                     
                    
                    
-                    <th class="hidden-phone">Acciones</th>
+                   
                   </tr>
                 </thead>
                 <tbody>
@@ -249,23 +182,13 @@
                       }
                       echo $nombre;
                     ?></td>
-                   <td><?php echo $mostrar['peso_1'] ?></td>
-                   <td><?php echo $mostrar['peso_2'] ?></td>
-                   <td><?php echo $mostrar['peso_3'] ?></td>
-                   <td><?php echo $mostrar['peso_4'] ?></td>
+                   <td><?php echo $mostrar['peso_1']." "."Kg"?></td>
+                   <td><?php echo $mostrar['peso_2']." "."Kg"?></td>
+                   <td><?php echo $mostrar['peso_3']." "."Kg"?></td>
+                   <td><?php echo $mostrar['peso_4']." "."Kg"?></td>
                     
                   
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM tallas WHERE id='".$mostrar['talla']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
+                   
                     <td><?php 
                     
                      
@@ -277,19 +200,21 @@
                       }
                       echo $nombre;
                     ?></td>
-                    <td>
-                     
-                      
                     
-
-                      <a href='./editar_lote_acopio.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                      <a href='./eliminar_lote.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
-                      
-                    </td>
                   </tr>
                   <?php
                     }                 
                  ?>
+                 <tr>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td>Total</td>
+                   <td><?php echo $breña." "."Kg" ?></td>
+                   <td><?php echo $triturado." "."Kg" ?></td>
+                   <td><?php echo $triturado_finos." "."Kg" ?></td>
+                   <td><?php echo $ganga." "."Kg" ?></td>
+                 </tr>
                 </tbody>
               </table>
             </div>

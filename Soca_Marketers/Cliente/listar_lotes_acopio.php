@@ -1,5 +1,17 @@
 <?php
  include 'php/conexion.php';
+ $sql="SELECT SUM(peso_1) as breña, SUM(peso_2) as triturado, SUM(peso_3) as triturado_finos, SUM(peso_4) as ganga FROM lotes_acopio";
+ $result = mysqli_query($conexion,$sql);
+ if ($Row = mysqli_fetch_array($result))
+  {
+    
+    
+    $breña=$Row['breña'];
+    $triturado=$Row['triturado'];
+    $triturado_finos=$Row['triturado_finos'];
+    $ganga=$Row['ganga'];
+    
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,42 +86,7 @@
                             <span>Panel de Control</span>
                         </a>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Prospección de Minas</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
-                        </ul>
-                    </li>
 
-
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-calendar"></i>
-                            <span>Produccion en mina</span>
-                        </a>
-                        <ul class="sub">
-
-                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-
-                            <li><a href="#">Bitacora de muestras de lotes</a></li>
-
-                        </ul>
-                    </li>
-
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Salida de Patio de mina</span>
-                        </a>
-                        <ul class="sub">
-
-                            <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
-
-                        </ul>
-                    </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
@@ -123,20 +100,7 @@
 
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-truck"></i>
-                            <span>Inventario</span>
-                        </a>
-                        <ul class="sub">
 
-                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
-                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
-
-
-
-                        </ul>
-                    </li>
 
 
 
@@ -167,7 +131,7 @@
                     <th>Peso de 50 a 10 mm</th>
                     <th>Peso de 10 mm a finos</th>
                     <th>Peso de ganga</th>
-                    <th class="hidden-phone">Tallas</th>
+                   
                     <th class="hidden-phone">Calidad</th>
                     
                    
@@ -218,23 +182,13 @@
                       }
                       echo $nombre;
                     ?></td>
-                   <td><?php echo $mostrar['peso_1'] ?></td>
-                   <td><?php echo $mostrar['peso_2'] ?></td>
-                   <td><?php echo $mostrar['peso_3'] ?></td>
-                   <td><?php echo $mostrar['peso_4'] ?></td>
+                   <td><?php echo $mostrar['peso_1']." "."Kg"?></td>
+                   <td><?php echo $mostrar['peso_2']." "."Kg"?></td>
+                   <td><?php echo $mostrar['peso_3']." "."Kg"?></td>
+                   <td><?php echo $mostrar['peso_4']." "."Kg"?></td>
                     
                   
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM tallas WHERE id='".$mostrar['talla']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
+                   
                     <td><?php 
                     
                      
@@ -251,6 +205,16 @@
                   <?php
                     }                 
                  ?>
+                 <tr>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td>Total</td>
+                   <td><?php echo $breña." "."Kg" ?></td>
+                   <td><?php echo $triturado." "."Kg" ?></td>
+                   <td><?php echo $triturado_finos." "."Kg" ?></td>
+                   <td><?php echo $ganga." "."Kg" ?></td>
+                 </tr>
                 </tbody>
               </table>
             </div>

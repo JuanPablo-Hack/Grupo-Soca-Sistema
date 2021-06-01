@@ -1,5 +1,17 @@
 <?php
  include 'php/conexion.php';
+ $sql="SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio";
+ $result = mysqli_query($conexion,$sql);
+ if ($Row = mysqli_fetch_array($result))
+  {
+    
+    
+    $tara=$Row['tara'];
+    $bruto=$Row['bruto'];
+    $neto=$Row['neto'];
+    
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,42 +86,7 @@
                             <span>Panel de Control</span>
                         </a>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Prospección de Minas</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
-                        </ul>
-                    </li>
 
-
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-calendar"></i>
-                            <span>Produccion en mina</span>
-                        </a>
-                        <ul class="sub">
-
-                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-
-                            <li><a href="#">Bitacora de muestras de lotes</a></li>
-
-                        </ul>
-                    </li>
-
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Salida de Patio de mina</span>
-                        </a>
-                        <ul class="sub">
-
-                            <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
-
-                        </ul>
-                    </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
@@ -123,20 +100,7 @@
 
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-truck"></i>
-                            <span>Inventario</span>
-                        </a>
-                        <ul class="sub">
 
-                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
-                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
-
-
-
-                        </ul>
-                    </li>
 
 
 
@@ -203,9 +167,9 @@
                       echo $nombre;
                     ?></td>
                     <td><?php echo $mostrar['mineral'] ?></td>
-                    <td><?php echo $mostrar['p_bruto'] ?></td>
-                    <td><?php echo $mostrar['p_tara'] ?></td>
-                    <td><?php echo $mostrar['p_neto'] ?></td>
+                    <td><?php echo $mostrar['p_bruto']." "."Kg" ?></td>
+                    <td><?php echo $mostrar['p_tara']." "."Kg" ?></td>
+                    <td><?php echo $mostrar['p_neto']." "."Kg" ?></td>
                     <td><?php echo $mostrar['autoriza'] ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
                     
@@ -213,6 +177,14 @@
                   <?php
                     }                 
                  ?>
+                 <tr>
+                   <td></td>
+                   <td></td>
+                   <td>Total</td>
+                   <td><?php echo $tara." "."Kg" ?></td>
+                   <td><?php echo $bruto." "."Kg" ?></td>
+                   <td><?php echo $neto." "."Kg" ?></td>
+                 </tr>
                 </tbody>
               </table>
             </div>
