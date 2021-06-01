@@ -113,8 +113,8 @@
                         <ul class="sub">
                             <li><a href="crear_lote.php">Crear Lote</a></li>
                             <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-                            <li><a href="#">Crear Muestreo de Lote</a></li>
-                            <li><a href="#">Bitacora de muestras de lotes</a></li>
+                            <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
                         </ul>
                     </li>
@@ -150,7 +150,7 @@
                         </a>
                         <ul class="sub">
 
-                            <li><a href="#">Acumulado en Mina</a></li>
+                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
                             <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
 
 

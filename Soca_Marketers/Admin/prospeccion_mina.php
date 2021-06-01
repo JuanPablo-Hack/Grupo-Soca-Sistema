@@ -1,13 +1,8 @@
 <?php
   include 'php/conexion.php';
-  $sql="SELECT * FROM trabajador";
-  $result = mysqli_query($conexion,$sql);
-  $sql2="SELECT * FROM unidades";
-  $result2 = mysqli_query($conexion,$sql2);
-  $sql3="SELECT * FROM minas";
-  $result3 = mysqli_query($conexion,$sql3);
-  $sql4="SELECT * FROM clientes";
-  $result4 = mysqli_query($conexion,$sql4);
+  
+  $sql6="SELECT * FROM lotes";
+  $result6 = mysqli_query($conexion,$sql6);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +72,7 @@
                     <p class="centered">
                         <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
-                    <h5 class="centered">Supervisor</h5>
+                    <h5 class="centered">Admin</h5>
                     <li class="mt">
                         <a class="active" href="index.html">
                             <i class="fa fa-dashboard"></i>
@@ -106,8 +101,8 @@
                         <ul class="sub">
                             <li><a href="crear_lote.php">Crear Lote</a></li>
                             <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-                            <li><a href="#">Crear Muestreo de Lote</a></li>
-                            <li><a href="#">Bitacora de muestras de lotes</a></li>
+                            <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
                         </ul>
                     </li>
@@ -136,21 +131,49 @@
 
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-truck"></i>
+                            <span>Inventario</span>
+                        </a>
+                        <ul class="sub">
 
+                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
+                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
+
+
+
+                        </ul>
+                    </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-car"></i>
                             <span>Unidades</span>
                         </a>
                         <ul class="sub">
-
-                            <li><a href="alta_trans.php">Dar de operador externo</a></li>
+                            <li><a href="alta_unidad.html">Dar de alta</a></li>
+                            <li><a href="listar_unidades.php">Mis Unidades</a></li>
+                            <li><a href="alta_trans.html">Dar de alta transportista</a></li>
+                            <li><a href="listar_transportistas_empresas.php">Transportistas</a></li>
                             <li><a href="listar_transportistas.php">Operadores Externos</a></li>
 
 
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-group"></i>
+                            <span>Usuarios</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
+                            <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
 
+                            <li><a href="alta_usuarios.html">Crear Cliente</a></li>
+                            <li><a href="listar_clientes.php">Listar Clientes</a></li>
+
+                        </ul>
+                    </li>
 
 
                 </ul>
@@ -164,14 +187,14 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Registro Prospección de Mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Crear Muestra de Lote</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
               <form action="php/agregar_muestra2.php" class="form-horizontal style-form" method='POST'>
               
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                     <label class="control-label col-md-3">Fecha de recepción de la muestra</label>
                     <div class="col-md-3 col-xs-11">
                       <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
@@ -194,7 +217,7 @@
                 </div>
                 
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Material</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Mineral</label>
                   <div class="col-sm-4">
                     <input type="text" name='material' class="form-control">
                   </div>
@@ -248,7 +271,16 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">No. Lote</label>
                   <div class="col-sm-4">
-                    <input type="text" name='lote' class="form-control">
+                  <select class="form-control" name='lote'>
+                  
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result6)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['no_lote'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 <div class="form-group">

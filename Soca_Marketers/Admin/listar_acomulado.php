@@ -96,8 +96,8 @@
                         <ul class="sub">
                             <li><a href="crear_lote.php">Crear Lote</a></li>
                             <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-                            <li><a href="#">Crear Muestreo de Lote</a></li>
-                            <li><a href="#">Bitacora de muestras de lotes</a></li>
+                            <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
                         </ul>
                     </li>
@@ -133,7 +133,7 @@
                         </a>
                         <ul class="sub">
 
-                            <li><a href="#">Acumulado en Mina</a></li>
+                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
                             <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
 
 
@@ -192,6 +192,7 @@
                   <tr>
                     
                     <th>Mina de Origen</th>
+                    <th>Calidad</th>
                     <th>Total recibido en breña</th>
                     <th class="hidden-phone">Total triturado de 50 a 10 mm</th>
                     <th class="hidden-phone">Total triturado de 10 mm a finos</th>
@@ -201,7 +202,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT mina, SUM(peso_1) as breña, SUM(peso_2) as triturado, SUM(peso_3) as triturado_finos, SUM(peso_4) as ganga FROM lotes_acopio GROUP BY mina";
+                    $sql="SELECT material,calidad, SUM(peso_1) as breña, SUM(peso_2) as triturado, SUM(peso_3) as triturado_finos, SUM(peso_4) as ganga FROM lotes_acopio GROUP BY calidad";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
@@ -210,7 +211,7 @@
                   <td><?php 
                     
                      
-                    $sql1="SELECT * FROM minas WHERE id='".$mostrar['mina']."'";
+                    $sql1="SELECT * FROM materiales WHERE id='".$mostrar['material']."'";
                     $result1 = mysqli_query($conexion,$sql1);
                     if ($Row = mysqli_fetch_array($result1))
                       {
@@ -219,7 +220,17 @@
                       echo $nombre;
                     ?></td>
                    
-                   
+                   <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM calidad WHERE id='".$mostrar['calidad']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
                     <td><?php echo $mostrar['breña'] ?></td>
                     <td><?php echo $mostrar['triturado'] ?></td>
                     <td><?php echo $mostrar['triturado_finos'] ?></td>

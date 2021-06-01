@@ -174,15 +174,14 @@
                 </ul>
                 <!-- sidebar menu end-->
             </div>
-        </aside>
-    <!--sidebar end-->
+        </aside>d-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora de Lotes de produccion y acopio de mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Bitacora de Acumulado de Patio de Trituración</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -190,33 +189,27 @@
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>No. Lote</th>
-                    <th>Nombre de Mina</th>
-                    <th>Tipo de mineral</th>
-                    <th>Metros Cubicos</th>
-                    <th class="hidden-phone">Tallas</th>
-                    <th class="hidden-phone">Calidad</th>
                     
-                   
-                   
-                    <th class="hidden-phone">Acciones</th>
+                    <th>Mina de Origen</th>
+                    <th>Total peso tara</th>
+                    <th class="hidden-phone">Total peso bruto</th>
+                    <th class="hidden-phone">Total peso neto</th>
+                    
+                    
                   </tr>
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT * FROM lotes";
+                    $sql="SELECT mina_origen, SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio GROUP BY mina_origen";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
                   <tr >
-                  
-                  <td><?php echo $mostrar['id'] ?></td>
-                  <td><?php echo $mostrar['no_lote'] ?></td>
+                    
                   <td><?php 
                     
                      
-                    $sql1="SELECT * FROM minas WHERE id='".$mostrar['mina']."'";
+                    $sql1="SELECT * FROM minas WHERE id='".$mostrar['mina_origen']."'";
                     $result1 = mysqli_query($conexion,$sql1);
                     if ($Row = mysqli_fetch_array($result1))
                       {
@@ -225,51 +218,12 @@
                       echo $nombre;
                     ?></td>
                    
-                    <td><?php 
+                   
+                    <td><?php echo $mostrar['tara'] ?></td>
+                    <td><?php echo $mostrar['bruto'] ?></td>
+                    <td><?php echo $mostrar['neto'] ?></td>
                     
-                     
-                    $sql1="SELECT * FROM materiales WHERE id='".$mostrar['material']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                   <td><?php echo $mostrar['metros'] ?></td>
                     
-                  
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM tallas WHERE id='".$mostrar['talla']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM calidad WHERE id='".$mostrar['calidad']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                    <td>
-                     
-                      
-                    
-
-                      <a href='./editar_lote.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                      <a href='./eliminar_lote.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
-                      
-                    </td>
                   </tr>
                   <?php
                     }                 
