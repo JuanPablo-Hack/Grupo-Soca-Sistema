@@ -85,7 +85,7 @@
                     <p class="centered">
                         <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
-                    <h5 class="centered">Admin</h5>
+                    <h5 class="centered">Supervisor</h5>
                     <li class="mt">
                         <a class="active" href="index.html">
                             <i class="fa fa-dashboard"></i>
@@ -114,8 +114,8 @@
                         <ul class="sub">
                             <li><a href="crear_lote.php">Crear Lote</a></li>
                             <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-                            <li><a href="#">Crear Muestreo de Lote</a></li>
-                            <li><a href="#">Bitacora de muestras de lotes</a></li>
+                            <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
                         </ul>
                     </li>
@@ -151,7 +151,7 @@
                         </a>
                         <ul class="sub">
 
-                            <li><a href="#">Acumulado en Mina</a></li>
+                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
                             <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
 
 
@@ -166,28 +166,13 @@
                         <ul class="sub">
                             <li><a href="alta_unidad.html">Dar de alta</a></li>
                             <li><a href="listar_unidades.php">Mis Unidades</a></li>
-                            <li><a href="alta_unidad.html">Dar de alta transportista</a></li>
-                            <li><a href="listar_unidades.php">Transportistas</a></li>
-                            <li><a href="alta_unidad.html">Dar de operador externo</a></li>
-                            <li><a href="listar_unidades.php">Operadores Externos</a></li>
+                            <li><a href="alta_trans.php">Alta de Operadores Externos</a></li>
+                            <li><a href="listar_transportistas.php">Operadores Externos</a></li>
 
 
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-group"></i>
-                            <span>Usuarios</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
-                            <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
 
-                            <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-                            <li><a href="listar_clientes.php">Listar Clientes</a></li>
-
-                        </ul>
-                    </li>
 
 
                 </ul>

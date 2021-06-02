@@ -106,8 +106,8 @@
                         <ul class="sub">
                             <li><a href="crear_lote.php">Crear Lote</a></li>
                             <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-                            <li><a href="#">Crear Muestreo de Lote</a></li>
-                            <li><a href="#">Bitacora de muestras de lotes</a></li>
+                            <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
                         </ul>
                     </li>
@@ -136,15 +136,29 @@
 
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-truck"></i>
+                            <span>Inventario</span>
+                        </a>
+                        <ul class="sub">
 
+                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
+                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
+
+
+
+                        </ul>
+                    </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-car"></i>
                             <span>Unidades</span>
                         </a>
                         <ul class="sub">
-
-                            <li><a href="alta_trans.php">Dar de operador externo</a></li>
+                            <li><a href="alta_unidad.html">Dar de alta</a></li>
+                            <li><a href="listar_unidades.php">Mis Unidades</a></li>
+                            <li><a href="alta_trans.php">Alta de Operadores Externos</a></li>
                             <li><a href="listar_transportistas.php">Operadores Externos</a></li>
 
 
@@ -194,7 +208,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tipo de material</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo de mineral</label>
                   <div class="col-sm-4">
                   <select class="form-control" name='material'>
                   <option value="0"></option>

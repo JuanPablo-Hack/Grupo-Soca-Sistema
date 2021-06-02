@@ -17,7 +17,7 @@
     $fecha_envio=$Row['fecha_envio'];
     $servicio_soli=$Row['servicio_soli'];
     $ele_ana=$Row['ele_ana'];
-    $no_lote=$Row['no_lote'];
+    
     $localidad=$Row['localidad'];
     $info_geo=$Row['info_geo'];
     $peso_esp=$Row['peso_esp'];
@@ -129,8 +129,8 @@
                         <ul class="sub">
                             <li><a href="crear_lote.php">Crear Lote</a></li>
                             <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-                            <li><a href="#">Crear Muestreo de Lote</a></li>
-                            <li><a href="#">Bitacora de muestras de lotes</a></li>
+                            <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
                         </ul>
                     </li>
@@ -159,15 +159,29 @@
 
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-truck"></i>
+                            <span>Inventario</span>
+                        </a>
+                        <ul class="sub">
 
+                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
+                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
+
+
+
+                        </ul>
+                    </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-car"></i>
                             <span>Unidades</span>
                         </a>
                         <ul class="sub">
-
-                            <li><a href="alta_trans.php">Dar de operador externo</a></li>
+                            <li><a href="alta_unidad.html">Dar de alta</a></li>
+                            <li><a href="listar_unidades.php">Mis Unidades</a></li>
+                            <li><a href="alta_trans.php">Alta de Operadores Externos</a></li>
                             <li><a href="listar_transportistas.php">Operadores Externos</a></li>
 
 
@@ -199,7 +213,7 @@
                     <input type="text" name='identificador' class="form-control" value="<?php echo $id;?>" readonly>
                   </div>
                 </div>
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                     <label class="control-label col-md-3">Fecha de recepción de la muestra</label>
                     <div class="col-md-3 col-xs-11">
                       <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="01-01-2014" class="input-append date dpYears">
@@ -273,28 +287,23 @@
                     <input type="text" name='ele_ana' class="form-control" value="<?php echo $ele_ana;?>">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. Lote</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='lote' class="form-control" value="<?php echo $no_lote;?>">
-                  </div>
-                </div>
+               
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Localidad</label>
                   <div class="col-sm-4">
-                    <input type="text" name='folio' class="form-control" value="<?php echo $localidad;?>">
+                    <input type="text" name='localidad' class="form-control" value="<?php echo $localidad;?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Información Geologica</label>
                   <div class="col-sm-4">
-                    <input type="text" name='folio' class="form-control" value="<?php echo $info_geo;?>">
+                    <input type="text" name='info_geo' class="form-control" value="<?php echo $info_geo;?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Peso especifico</label>
                   <div class="col-sm-4">
-                    <input type="text" name='folio' class="form-control" value="<?php echo $peso_esp;?>">
+                    <input type="text" name='peso_esp' class="form-control" value="<?php echo $peso_esp;?>">
                   </div>
                 </div>
                 <div class="form-group">

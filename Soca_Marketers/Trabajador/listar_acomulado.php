@@ -1,34 +1,5 @@
 <?php
-  
-  include 'php/conexion.php';
-
-  $id=$_GET['id'];
-  $sql="SELECT * FROM lotes_acopio WHERE id='".$id."'";
-  $result = mysqli_query($conexion,$sql);
-  if ($Row = mysqli_fetch_array($result))
-  {
-    $mina= $Row['mina'];
-    $material= $Row['material'];
-    $talla=$Row['talla'];
-    $calidad=$Row['calidad'];
-    $metros=$Row['metros'];
-    $peso_1=$Row['peso_1'];
-    $peso_2=$Row['peso_2'];
-    $peso_3=$Row['peso_3'];
-    $observaciones=$Row['observaciones'];
-    
-   
-  }
-  $sql="SELECT * FROM tallas";
-  $result = mysqli_query($conexion,$sql);
-  $sql2="SELECT * FROM materiales";
-  $result2 = mysqli_query($conexion,$sql2);
-  $sql3="SELECT * FROM minas";
-  $result3 = mysqli_query($conexion,$sql3);
-  $sql4="SELECT * FROM calidad";
-  $result4 = mysqli_query($conexion,$sql4);
- 
-  
+ include 'php/conexion.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,11 +20,9 @@
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-fileupload/bootstrap-fileupload.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datepicker/css/datepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-daterangepicker/daterangepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-timepicker/compiled/timepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datertimepicker.css" />
+  <link href="lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+  <link href="lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+  <link rel="stylesheet" href="lib/advanced-datatable/css/DT_bootstrap.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
@@ -199,150 +168,71 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Editar salida de mina</h3>
-        <div class="row mt">
-          <!--  DATE PICKERS -->
-          <div class="col-lg-12">
-            <div class="form-panel">
-              <form action="php/editar_lote_acopio.php" class="form-horizontal style-form" method='POST'>
-              <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Identificador</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='identificador' class="form-control" value="<?php echo $id;?>" readonly>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre de la mina</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='mina'>
-                  <option value="<?php echo $mina?>"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result3)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+        <h3><i class="fa fa-angle-right"></i> Bitacora de Acumulado de Patio de Trituración</h3>
+        <div class="row mb">
+          <!-- page start-->
+          <div class="content-panel">
+            <div class="adv-table">
+              <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                <thead>
+                  <tr>
+                    
+                    <th>Mina de Origen</th>
+                    <th>Calidad</th>
+                    <th>Total recibido en breña</th>
+                    <th class="hidden-phone">Total triturado de 50 a 10 mm</th>
+                    <th class="hidden-phone">Total triturado de 10 mm a finos</th>
+                    <th class="hidden-phone">Total de ganga</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
                 <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tipo de material</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='material'>
-                  <option value="<?php echo $material?>"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result2)) {			 
+                    $sql="SELECT material,calidad, SUM(peso_1) as breña, SUM(peso_2) as triturado, SUM(peso_3) as triturado_finos, SUM(peso_4) as ganga FROM lotes_acopio GROUP BY calidad";
+                    $resultado = $conexion->query($sql);
+                    while ($mostrar=mysqli_fetch_array($resultado)) {  
+                  ?>
+                  <tr >
+                    
+                  <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM materiales WHERE id='".$mostrar['material']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
+                   
+                   <td><?php 
+                    
+                     
+                    $sql1="SELECT * FROM calidad WHERE id='".$mostrar['calidad']."'";
+                    $result1 = mysqli_query($conexion,$sql1);
+                    if ($Row = mysqli_fetch_array($result1))
+                      {
+                        $nombre= $Row['nombre'];  
+                      }
+                      echo $nombre;
+                    ?></td>
+                    <td><?php echo $mostrar['breña'] ?></td>
+                    <td><?php echo $mostrar['triturado'] ?></td>
+                    <td><?php echo $mostrar['triturado_finos'] ?></td>
+                    <td><?php echo $mostrar['ganga'] ?></td>
+                    
+                  </tr>
+                  <?php
+                    }                 
                  ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tallas</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='tallas'>
-                  <option value="<?php echo $talla?>"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Calidad</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='calidad'>
-                  <option value="<?php echo $calidad?>"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result4)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-               
-                
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Metros Cúbicos</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='metros' class="form-control" value='<?php echo $metros;?>'>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Peso de breña</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='peso_4' class="form-control" value='<?php echo $peso_3;?>'>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Peso de 50 a 10 mm</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='peso_1' class="form-control" value='<?php echo $peso_1;?>'>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Peso de 10 mm a finos</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='peso_2' class="form-control" value='<?php echo $peso_2;?>'>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Peso de ganga</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='peso_3' class="form-control" value='<?php echo $peso_3;?>'>
-                  </div>
-                </div>
-               
-                
-               
-                
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Observaciones</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='observaciones' class="form-control" value='<?php echo $observaciones;?>' >
-                  </div>
-                </div>
-                
-                 
-                <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
-                      <button class="btn btn-theme" type="submit">Guardar</button>
-                      <button class="btn btn-theme04" type="button">Cancelar</button>
-                    </div>
-                  </div>
-                
-               
-              </form>
+                </tbody>
+              </table>
             </div>
-             
-          
-          <!-- col-lg-12-->
-        </div>
-            <!-- /form-panel -->
           </div>
-          <!-- /col-lg-12 -->
+          <!-- page end-->
         </div>
         <!-- /row -->
-        <!-- DATE TIME PICKERS -->
-       
-            <!-- /form-panel -->
-          </div>
-          <!-- /col-lg-12 -->
-        </div>
-        <!-- row -->
       </section>
       <!-- /wrapper -->
     </section>
@@ -372,23 +262,17 @@
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="lib/jquery.scrollTo.min.js"></script>
   <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
-  <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/date.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/daterangepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/moment.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-  <script src="lib/advanced-form-components.js"></script>
-
+ 
 </body>
 
 </html>

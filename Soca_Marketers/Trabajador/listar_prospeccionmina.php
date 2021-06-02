@@ -96,8 +96,8 @@
                         <ul class="sub">
                             <li><a href="crear_lote.php">Crear Lote</a></li>
                             <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-                            <li><a href="#">Crear Muestreo de Lote</a></li>
-                            <li><a href="#">Bitacora de muestras de lotes</a></li>
+                            <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
                         </ul>
                     </li>
@@ -126,15 +126,29 @@
 
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-truck"></i>
+                            <span>Inventario</span>
+                        </a>
+                        <ul class="sub">
 
+                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
+                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
+
+
+
+                        </ul>
+                    </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-car"></i>
                             <span>Unidades</span>
                         </a>
                         <ul class="sub">
-
-                            <li><a href="alta_trans.php">Dar de operador externo</a></li>
+                            <li><a href="alta_unidad.html">Dar de alta</a></li>
+                            <li><a href="listar_unidades.php">Mis Unidades</a></li>
+                            <li><a href="alta_trans.php">Alta de Operadores Externos</a></li>
                             <li><a href="listar_transportistas.php">Operadores Externos</a></li>
 
 
@@ -154,7 +168,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora de prospección de mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Bitacora de muestra de producción de mina</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -167,7 +181,7 @@
                     <th>Material</th>
                     
                     <th class="hidden-phone">Peso aproximado</th>
-                    <th class="hidden-phone">Fecha del envío</th>
+                    <th class="hidden-phone">Fecha y hora del envío</th>
                     
                    
                     <th class="hidden-phone">Estado</th>
@@ -183,7 +197,7 @@
                   <tr >
                   
                     <td><?php echo $mostrar['folio'] ?></td>
-                    <td><?php echo $mostrar['fecha_recep'] ?></td>
+                    <td><?php echo $mostrar['creado'] ?></td>
                     <td><?php echo $mostrar['material'] ?></td>
                     
                     <td><?php echo $mostrar['peso'] ?></td>

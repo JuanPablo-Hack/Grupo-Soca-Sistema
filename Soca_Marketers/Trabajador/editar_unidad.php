@@ -1,33 +1,22 @@
 <?php
-  
-  include 'php/conexion.php';
-
   $id=$_GET['id'];
-  $sql="SELECT * FROM lotes_acopio WHERE id='".$id."'";
+  include 'php/conexion.php';
+  $sql="SELECT * FROM unidades WHERE id='".$id."'";
   $result = mysqli_query($conexion,$sql);
   if ($Row = mysqli_fetch_array($result))
   {
-    $mina= $Row['mina'];
-    $material= $Row['material'];
-    $talla=$Row['talla'];
-    $calidad=$Row['calidad'];
-    $metros=$Row['metros'];
-    $peso_1=$Row['peso_1'];
-    $peso_2=$Row['peso_2'];
-    $peso_3=$Row['peso_3'];
-    $observaciones=$Row['observaciones'];
+    $modelo= $Row['modelo'];
     
-   
+    $ano=$Row['ano'];
+    $color=$Row['color'];
+    $placas=$Row['placas'];
+    $no_economico=$Row['noeconomico'];
+    $capacidad=$Row['capacidad'];
+    $tipo_unidad=$Row['tipounidad'];
+    $tipo_combustible=$Row['tipocombustible'];
+    $serie=$Row['serie'];
+    $descripcion=$Row['descripcion'];
   }
-  $sql="SELECT * FROM tallas";
-  $result = mysqli_query($conexion,$sql);
-  $sql2="SELECT * FROM materiales";
-  $result2 = mysqli_query($conexion,$sql2);
-  $sql3="SELECT * FROM minas";
-  $result3 = mysqli_query($conexion,$sql3);
-  $sql4="SELECT * FROM calidad";
-  $result4 = mysqli_query($conexion,$sql4);
- 
   
 ?>
 <!DOCTYPE html>
@@ -49,11 +38,6 @@
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-fileupload/bootstrap-fileupload.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datepicker/css/datepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-daterangepicker/daterangepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-timepicker/compiled/timepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datertimepicker.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
@@ -199,150 +183,101 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Editar salida de mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Editar de Unidad</h3>
+        <!-- BASIC FORM VALIDATION -->
+      
+        <!-- /row -->
+        <!-- FORM VALIDATION -->
         <div class="row mt">
-          <!--  DATE PICKERS -->
           <div class="col-lg-12">
+           
             <div class="form-panel">
-              <form action="php/editar_lote_acopio.php" class="form-horizontal style-form" method='POST'>
-              <div class="form-group">
+              <div class=" form">
+                <form class="cmxform form-horizontal style-form" id="commentForm" method="POST" action="./php/editar_unidad.php">
+                <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Identificador</label>
                   <div class="col-sm-4">
                     <input type="text" name='identificador' class="form-control" value="<?php echo $id;?>" readonly>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre de la mina</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='mina'>
-                  <option value="<?php echo $mina?>"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result3)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
+                  <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">Modelo</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="cname" name="modelo" minlength="2" type="text" value="<?php echo $modelo;?>" required />
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tipo de material</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='material'>
-                  <option value="<?php echo $material?>"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result2)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
+                  <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">Año</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="cname" name="ano" minlength="2" type="text" value="<?php echo $ano;?>" required />
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tallas</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='tallas'>
-                  <option value="<?php echo $talla?>"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">Color</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="text" name="color" value="<?php echo $color;?>" required />
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Calidad</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='calidad'>
-                  <option value="<?php echo $calidad?>"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result4)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">Placas</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="text" name="placas" value="<?php echo $placas;?>" required />
+                    </div>
                   </div>
-                </div>
-               
-                
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Metros Cúbicos</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='metros' class="form-control" value='<?php echo $metros;?>'>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">No. economico</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="text" name="no_economico" value="<?php echo $no_economico;?>" required />
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Peso de breña</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='peso_4' class="form-control" value='<?php echo $peso_3;?>'>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">Capacidad de Carga</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="text" name="capacidad" value="<?php echo $capacidad;?>" />
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Peso de 50 a 10 mm</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='peso_1' class="form-control" value='<?php echo $peso_1;?>'>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">Tipo de unidad</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="text" name="tipo_unidad" value="<?php echo $tipo_unidad;?>" />
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Peso de 10 mm a finos</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='peso_2' class="form-control" value='<?php echo $peso_2;?>'>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">Tipo de Combustible</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="text" name="tipo_combustible" value="<?php echo $tipo_combustible;?>" required />
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Peso de ganga</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='peso_3' class="form-control" value='<?php echo $peso_3;?>'>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">No. de serie</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="curl" type="text" name="serie" value="<?php echo $serie;?>" required/>
+                    </div>
                   </div>
-                </div>
-               
-                
-               
-                
-                
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Observaciones</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='observaciones' class="form-control" value='<?php echo $observaciones;?>' >
+                  <div class="form-group ">
+                    <label for="ccomment" class="control-label col-lg-2">Descripción</label>
+                    <div class="col-lg-10">
+                      <textarea class="form-control " id="ccomment" name="descripcion" value="<?php echo $descripcion;?>" required></textarea>
+                    </div>
                   </div>
-                </div>
-                
-                 
-                <div class="form-group">
+                  <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                      <button class="btn btn-theme" type="submit">Guardar</button>
+                      <button class="btn btn-theme" type="submit">Enviar</button>
                       <button class="btn btn-theme04" type="button">Cancelar</button>
                     </div>
                   </div>
-                
-               
-              </form>
+                </form>
+              </div>
             </div>
-             
-          
-          <!-- col-lg-12-->
-        </div>
             <!-- /form-panel -->
           </div>
           <!-- /col-lg-12 -->
         </div>
         <!-- /row -->
-        <!-- DATE TIME PICKERS -->
        
-            <!-- /form-panel -->
-          </div>
           <!-- /col-lg-12 -->
         </div>
-        <!-- row -->
+        <!-- /row -->
       </section>
       <!-- /wrapper -->
     </section>
@@ -379,15 +314,7 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
-  <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/date.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/daterangepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/moment.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-  <script src="lib/advanced-form-components.js"></script>
+  <script src="lib/form-validation-script.js"></script>
 
 </body>
 

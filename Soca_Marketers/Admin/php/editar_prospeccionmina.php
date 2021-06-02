@@ -22,7 +22,7 @@ $observaciones=$_POST['observaciones'];
 
 $estado=$_POST['estado'];
 
-
+echo $id;
 
 
 if ($conexion ->connect_error) {

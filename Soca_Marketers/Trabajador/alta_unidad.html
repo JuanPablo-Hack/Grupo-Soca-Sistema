@@ -61,7 +61,7 @@
                     <p class="centered">
                         <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
-                    <h5 class="centered">Admin</h5>
+                    <h5 class="centered">Supervisor</h5>
                     <li class="mt">
                         <a class="active" href="index.html">
                             <i class="fa fa-dashboard"></i>
@@ -90,8 +90,8 @@
                         <ul class="sub">
                             <li><a href="crear_lote.php">Crear Lote</a></li>
                             <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-                            <li><a href="#">Crear Muestreo de Lote</a></li>
-                            <li><a href="#">Bitacora de muestras de lotes</a></li>
+                            <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
                         </ul>
                     </li>
@@ -127,7 +127,7 @@
                         </a>
                         <ul class="sub">
 
-                            <li><a href="#">Acumulado en Mina</a></li>
+                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
                             <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
 
 
@@ -142,28 +142,13 @@
                         <ul class="sub">
                             <li><a href="alta_unidad.html">Dar de alta</a></li>
                             <li><a href="listar_unidades.php">Mis Unidades</a></li>
-                            <li><a href="alta_unidad.html">Dar de alta transportista</a></li>
-                            <li><a href="listar_unidades.php">Transportistas</a></li>
-                            <li><a href="alta_unidad.html">Dar de operador externo</a></li>
-                            <li><a href="listar_unidades.php">Operadores Externos</a></li>
+                            <li><a href="alta_trans.php">Alta de Operadores Externos</a></li>
+                            <li><a href="listar_transportistas.php">Operadores Externos</a></li>
 
 
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-group"></i>
-                            <span>Usuarios</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
-                            <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
 
-                            <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-                            <li><a href="listar_clientes.php">Listar Clientes</a></li>
-
-                        </ul>
-                    </li>
 
 
                 </ul>
@@ -177,48 +162,80 @@
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper">
-                <h3><i class="fa fa-angle-right"></i> Alta de Transportistas</h3>
+                <h3><i class="fa fa-angle-right"></i> Alta de Unidad</h3>
                 <!-- BASIC FORM VALIDATION -->
 
                 <!-- /row -->
                 <!-- FORM VALIDATION -->
-
-                <!-- /row -->
                 <div class="row mt">
                     <div class="col-lg-12">
 
                         <div class="form-panel">
-                            <div class="form">
-                                <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/alta_transportista.php">
-                                    <h3>Datos de la empresa</h3>
-                                    <hr>
+                            <div class=" form">
+                                <form class="cmxform form-horizontal style-form" id="commentForm" method="POST" action="./php/agregar_unidad.php">
                                     <div class="form-group ">
-                                        <label for="firstname" class="control-label col-lg-2">Nombre de la empresa</label>
+                                        <label for="cname" class="control-label col-lg-2">Modelo</label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" id="firstname" name="nombre_empresa" type="text" />
+                                            <input class=" form-control" id="cname" name="modelo" minlength="2" type="text" required />
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="lastname" class="control-label col-lg-2">RFC</label>
+                                        <label for="cname" class="control-label col-lg-2">Año</label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" id="lastname" name="rfc" type="text" />
+                                            <input class=" form-control" id="cname" name="ano" minlength="2" type="text" required />
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="username" class="control-label col-lg-2">Dirección</label>
+                                        <label for="curl" class="control-label col-lg-2">Color</label>
                                         <div class="col-lg-10">
-                                            <input class="form-control " id="username" name="dir_empresa" type="text" />
+                                            <input class="form-control " id="curl" type="text" name="color" required />
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="username" class="control-label col-lg-2">Telefono</label>
+                                        <label for="curl" class="control-label col-lg-2">Placas</label>
                                         <div class="col-lg-10">
-                                            <input class="form-control " id="username" name="tel_empresa" type="text" />
+                                            <input class="form-control " id="curl" type="text" name="placas" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">No. economico</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="no_economico" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">Capacidad de Carga</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="capacidad" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">Tipo de unidad</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="tipo_unidad" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">Tipo de Combustible</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="tipo_combustible" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="curl" class="control-label col-lg-2">No. de serie</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="curl" type="text" name="serie" required/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="ccomment" class="control-label col-lg-2">Descripción</label>
+                                        <div class="col-lg-10">
+                                            <textarea class="form-control " id="ccomment" name="descripcion" required></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-lg-offset-2 col-lg-10">
-                                            <button class="btn btn-theme" type="submit">Guardar</button>
+                                            <button class="btn btn-theme" type="submit">Enviar</button>
                                             <button class="btn btn-theme04" type="button">Cancelar</button>
                                         </div>
                                     </div>
@@ -228,6 +245,10 @@
                         <!-- /form-panel -->
                     </div>
                     <!-- /col-lg-12 -->
+                </div>
+                <!-- /row -->
+
+                <!-- /col-lg-12 -->
                 </div>
                 <!-- /row -->
             </section>
