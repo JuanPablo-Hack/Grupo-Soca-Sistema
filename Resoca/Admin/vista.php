@@ -2,9 +2,9 @@
 if(!empty($_GET['id'])){
     //Credenciales de conexion
     $Host = 'localhost';
-    $Username = 'root';
-    $Password = '';
-    $dbName = 'resoca';
+    $Username = 'u298097659_rsp';
+    $Password = 'GrupoSoca1511*';
+    $dbName = 'u298097659_rsp';
     
     //Crear conexion mysql
     $db = new mysqli($Host, $Username, $Password, $dbName);
