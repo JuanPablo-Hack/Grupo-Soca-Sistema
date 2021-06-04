@@ -199,7 +199,7 @@
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="php/crear_orden3.php" class="form-horizontal style-form" method='POST'>
+              <form action="php/crear_orden3.php" class="form-horizontal style-form" method='POST' enctype="multipart/form-data">
                 
                    
               <div class="form-group">
@@ -352,7 +352,7 @@
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> Selecciona las imagenes</span>
                         <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                        <input type="file" class="default" />
+                        <input type="file" class="default" name="foto" id="foto" />
                         </span>
                         <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
                       </div>

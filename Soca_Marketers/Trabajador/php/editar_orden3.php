@@ -18,6 +18,10 @@ $sello=$_POST['sello'];
 $m3=$_POST['m3'];
 $transportista_id=$_POST['transportista_id'];
 $estado=$_POST['estado'];
+//Enviando imagen 
+
+$imagen = addslashes(file_get_contents($_FILES['foto']['tmp_name']));
+
 
 
 if ($conexion ->connect_error) {
@@ -25,7 +29,7 @@ if ($conexion ->connect_error) {
 }else{
    
          
-        $sql="UPDATE patio_acopio_salida SET patio_destino='$mina',unidad='$unidad',operador='$operador',no_guia='$no_guia',p_tara='$p_tara',p_bruto='$p_burto',p_neto='$p_neto',autoriza='$autoriza',hora_salida='$hora',no_lote='$lote',no_sello='$sello',m3='$m3',transportista_id='$transportista_id',estado='$estado'  WHERE id='$id'";
+        $sql="UPDATE patio_acopio_salida SET patio_destino='$mina',unidad='$unidad',operador='$operador',no_guia='$no_guia',p_tara='$p_tara',p_bruto='$p_burto',p_neto='$p_neto',autoriza='$autoriza',hora_salida='$hora',no_lote='$lote',no_sello='$sello',m3='$m3',transportista_id='$transportista_id',estado='$estado',foto='$imagen'  WHERE id='$id'";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");

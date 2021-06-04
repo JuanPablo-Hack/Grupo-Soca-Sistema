@@ -192,7 +192,7 @@
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="php/agregar_muestra2.php" class="form-horizontal style-form" method='POST'>
+              <form action="php/agregar_muestra2.php" class="form-horizontal style-form" method='POST' enctype="multipart/form-data">
               
               <div class="form-group" style="display: none;">
                     <label class="control-label col-md-3">Fecha de recepción de la muestra</label>
@@ -314,7 +314,7 @@
                       <span class="btn btn-theme02 btn-file">
                         <span class="fileupload-new"><i class="fa fa-paperclip"></i> Seleccione Archivo PDF</span>
                       <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                      <input type="file" class="default" />
+                      <input type="file" class="default" name="archivo" id="archivo" />
                       </span>
                       <span class="fileupload-preview" style="margin-left:5px;"></span>
                       <a href="advanced_form_components.html#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>

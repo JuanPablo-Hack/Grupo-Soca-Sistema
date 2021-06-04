@@ -60,7 +60,7 @@
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
-    <aside>
+    <<aside>
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
@@ -184,6 +184,7 @@
                     <th class="hidden-phone">Metros Cúbicos</th>
                     <th class="hidden-phone">Autoriza</th>
                     <th class="hidden-phone">Hora de Salida</th>
+                    <th class="hidden-phone">Fotos</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
@@ -222,10 +223,11 @@
                     <td><?php echo $mostrar['m3'] ?></td>
                     <td><?php echo $mostrar['autoriza'] ?></td>
                     <td><?php echo $mostrar['hora_salida'] ?></td>
+                    <td><img src="data:image/png;base64,<?php echo base64_encode($mostrar['foto']); ?>" width="250px" height="150px">
                     <td>
                      
                       
-                      <a href='./orden3.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+                     
 
                       <a href='./editar_orden3.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                       <a href='./eliminar_orden3.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>

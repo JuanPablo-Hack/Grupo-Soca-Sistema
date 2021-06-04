@@ -243,7 +243,7 @@
                      
                       
                       
-
+                      <a href="muestras/<?php echo $mostrar['folio'] . "/".$mostrar['ruta']?>" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
                       <a href='./editar_muestra.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                       <a href='./eliminar_muestra.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                       

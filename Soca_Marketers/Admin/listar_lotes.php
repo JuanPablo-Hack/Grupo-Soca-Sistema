@@ -197,7 +197,7 @@
                     <th>Metros Cubicos</th>
                     <th class="hidden-phone">Tallas</th>
                     <th class="hidden-phone">Calidad</th>
-                    
+                    <th class="hidden-phone">Fotos</th>
                    
                    
                     <th class="hidden-phone">Acciones</th>
@@ -261,11 +261,14 @@
                       }
                       echo $nombre;
                     ?></td>
+                    <td><img src="data:image/png;base64,<?php echo base64_encode($mostrar['foto']); ?>" width="250px" height="150px">
+                    
+                    </td>
                     <td>
                      
                       
                     
-
+                      
                       <a href='./editar_lote.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                       <a href='./eliminar_lote.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                       
