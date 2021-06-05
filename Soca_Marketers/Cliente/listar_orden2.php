@@ -86,7 +86,42 @@
                             <span>Panel de Control</span>
                         </a>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Prospección de Minas</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+                        </ul>
+                    </li>
 
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-calendar"></i>
+                            <span>Produccion en mina</span>
+                        </a>
+                        <ul class="sub">
+
+                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
+
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Salida de Patio de mina</span>
+                        </a>
+                        <ul class="sub">
+
+                            <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
+
+                        </ul>
+                    </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
@@ -100,7 +135,20 @@
 
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-truck"></i>
+                            <span>Inventario</span>
+                        </a>
+                        <ul class="sub">
 
+                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
+                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
+
+
+
+                        </ul>
+                    </li>
 
 
 

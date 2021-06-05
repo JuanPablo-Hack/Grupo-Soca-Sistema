@@ -94,7 +94,7 @@
 
                             <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
 
-                            <li><a href="#">Bitacora de muestras de lotes</a></li>
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
                         </ul>
                     </li>
@@ -151,7 +151,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora de prospección de mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Bitacora de muestra de producción de mina</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -164,7 +164,7 @@
                     <th>Material</th>
                     
                     <th class="hidden-phone">Peso aproximado</th>
-                    <th class="hidden-phone">Fecha del envío</th>
+                    <th class="hidden-phone">Fecha y hora del envío</th>
                     
                    
                     <th class="hidden-phone">Estado</th>
@@ -180,7 +180,7 @@
                   <tr >
                   
                     <td><?php echo $mostrar['folio'] ?></td>
-                    <td><?php echo $mostrar['fecha_recep'] ?></td>
+                    <td><?php echo $mostrar['creado'] ?></td>
                     <td><?php echo $mostrar['material'] ?></td>
                     
                     <td><?php echo $mostrar['peso'] ?></td>
@@ -199,12 +199,9 @@
                       echo $nombre;
                     ?></td>
                     <td>
+                      
+                      <a href="../prospeccion/<?php echo $mostrar['folio'] . "/".$mostrar['ruta']?>" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
                      
-                      
-                      
-
-                      <a href='./editar_prospecionmina.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                      <a href='./eliminar_prospeccionmina.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                       
                     </td>
                   </tr>

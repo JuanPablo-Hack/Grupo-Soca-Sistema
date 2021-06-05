@@ -94,7 +94,7 @@
 
                             <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
 
-                            <li><a href="#">Bitacora de muestras de lotes</a></li>
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
                         </ul>
                     </li>
@@ -165,6 +165,7 @@
                     <th>No. De muestra</th>
                     <th class="hidden-phone">Peso aproximado</th>
                     <th class="hidden-phone">Fecha del envío</th>
+                    <th class="hidden-phone">Acciones</th>
                     
                    
                     
@@ -196,7 +197,14 @@
                     <td><?php echo $mostrar['peso'] ?></td>
                     <td><?php echo $mostrar['fecha_envio'] ?></td>
                     
-                  
+                    <td>
+                     
+                      
+                      
+                     <a href="../muestras/<?php echo $mostrar['folio'] . "/".$mostrar['ruta']?>" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
+                    
+                     
+                   </td>
                    
                    
                   </tr>

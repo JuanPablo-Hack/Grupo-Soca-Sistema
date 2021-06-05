@@ -27,7 +27,7 @@ if ($conexion ->connect_error) {
     die("Conexion Fallida: " . $conn ->connect_error);
 }else{
         
-        $ruta_manifiestos = '../prospeccion/';
+        $ruta_manifiestos = '../../prospeccion/';
         $ruta_manifiestos_cliente = $ruta_manifiestos . $folio . "/";
 
         if(!file_exists($ruta_manifiestos)){

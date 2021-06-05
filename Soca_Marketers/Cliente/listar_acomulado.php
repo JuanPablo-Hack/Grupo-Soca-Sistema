@@ -94,7 +94,7 @@
 
                             <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
 
-                            <li><a href="#">Bitacora de muestras de lotes</a></li>
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
                         </ul>
                     </li>
