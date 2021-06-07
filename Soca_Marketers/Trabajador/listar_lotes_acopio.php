@@ -198,7 +198,7 @@
                     <th>Peso de ganga</th>
                    
                     <th class="hidden-phone">Calidad</th>
-                    
+                    <th class="hidden-phone">Acciones</th> 
                    
                    
                    
@@ -265,7 +265,15 @@
                       }
                       echo $nombre;
                     ?></td>
+                    <td>
+                     
+                      
                     
+                      
+                     <a href='./editar_lote_acopio.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                     <a href='./eliminar_lote_acopio.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                     
+                   </td>
                   </tr>
                   <?php
                     }                 

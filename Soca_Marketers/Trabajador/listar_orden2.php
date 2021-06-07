@@ -198,7 +198,7 @@
                     <th class="hidden-phone">Peso Neto</th>
                     <th class="hidden-phone">Autoriza</th>
                     <th class="hidden-phone">Fecha y hora de ingreso</th>
-                    
+                    <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -237,6 +237,15 @@
                     <td><?php echo $mostrar['p_neto']." "."Kg" ?></td>
                     <td><?php echo $mostrar['autoriza'] ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
+                    <td>
+                     
+                      
+                    
+                      
+                     <a href='./editar_orden2.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                     <a href='./eliminar_orden2.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                     
+                   </td>
                     
                   </tr>
                   <?php
