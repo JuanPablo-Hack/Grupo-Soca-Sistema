@@ -1,7 +1,8 @@
 <?php
 include_once 'conexion.php';
+$id = $_POST['id'];
 
-$orden = $conexion->query("SELECT * FROM ordenes WHERE id = 102");
+$orden = $conexion->query("SELECT * FROM ordenes WHERE id = $id");
 $ordenf = $orden->fetch_assoc();
 
 $cliente = $conexion->query("SELECT * FROM clientes WHERE id = " . $ordenf['cliente']);
