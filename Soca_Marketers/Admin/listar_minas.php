@@ -213,7 +213,7 @@
                     <td>
                      
                       
-                      <a href='./orden.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+                      <a onclick="crearPDF(<?php echo $mostrar['id'] ?>)" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
 
                    
                       
@@ -268,6 +268,45 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
+  <script>
+    function addScript(url) {
+      var script = document.createElement('script');
+      script.type = 'application/javascript';
+      script.src = url;
+      document.head.appendChild(script);
+    }
+    addScript('https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js');
+
+    function crearPDF(id) {
+      var opt = {
+        margin: 1,
+        filename: 'Registro_mina.pdf',
+        image: {
+          type: 'jpeg',
+          quality: 0.98
+        },
+        html2canvas: {
+          scale: 3
+        },
+        jsPDF: {
+          unit: 'in',
+          format: 'a3',
+          orientation: 'portrait'
+        }
+      };
+
+      $.ajax({
+        type: 'POST',
+        data: "id=" + id,
+        url: 'php/minasPDF.php',
+        success: function(r) {
+          // console.log(r);
+          var worker = html2pdf().set(opt).from(r).toPdf().save();
+
+        }
+      });
+    }
+  </script>
  
 </body>
 
