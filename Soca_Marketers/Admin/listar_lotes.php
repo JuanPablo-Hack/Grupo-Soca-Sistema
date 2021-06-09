@@ -182,7 +182,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora de Lotes de produccion y acopio de mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Bitacora de Lotes de produccion de mina</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -190,14 +190,14 @@
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    <th>ID</th>
+                    
                     <th>No. Lote</th>
                     <th>Nombre de Mina</th>
                     <th>Tipo de mineral</th>
                     <th>Metros Cubicos</th>
                     <th class="hidden-phone">Tallas</th>
                     <th class="hidden-phone">Calidad</th>
-                    <th class="hidden-phone">Fotos</th>
+                    
                    
                    
                     <th class="hidden-phone">Acciones</th>
@@ -211,7 +211,7 @@
                   ?>
                   <tr >
                   
-                  <td><?php echo $mostrar['id'] ?></td>
+                 
                   <td><?php echo $mostrar['no_lote'] ?></td>
                   <td><?php 
                     
@@ -261,14 +261,14 @@
                       }
                       echo $nombre;
                     ?></td>
-                    <td><img src="data:image/png;base64,<?php echo base64_encode($mostrar['foto']); ?>" width="250px" height="150px">
+                    
                     
                     </td>
                     <td>
                      
                       
                     
-                      
+                      <a onclick="crearPDF(<?php echo $mostrar['id'] ?>)" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
                       <a href='./editar_lote.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                       <a href='./eliminar_lote.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                       
@@ -323,7 +323,45 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
- 
+  <script>
+    function addScript(url) {
+      var script = document.createElement('script');
+      script.type = 'application/javascript';
+      script.src = url;
+      document.head.appendChild(script);
+    }
+    addScript('https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js');
+
+    function crearPDF(id) {
+      var opt = {
+        margin: 1,
+        filename: 'lote.pdf',
+        image: {
+          type: 'jpeg',
+          quality: 0.98
+        },
+        html2canvas: {
+          scale: 3
+        },
+        jsPDF: {
+          unit: 'in',
+          format: 'a3',
+          orientation: 'portrait'
+        }
+      };
+
+      $.ajax({
+        type: 'POST',
+        data: "id=" + id,
+        url: 'php/lotesPDF.php',
+        success: function(r) {
+          // console.log(r);
+          var worker = html2pdf().set(opt).from(r).toPdf().save();
+
+        }
+      });
+    }
+  </script>
 </body>
 
 </html>
