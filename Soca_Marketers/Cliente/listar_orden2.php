@@ -181,6 +181,7 @@
                     <th class="hidden-phone">Peso Neto</th>
                     <th class="hidden-phone">Autoriza</th>
                     <th class="hidden-phone">Fecha y hora de ingreso</th>
+                    <th class="hidden-phone">Acciones</th>
                     
                   </tr>
                 </thead>
@@ -220,7 +221,14 @@
                     <td><?php echo $mostrar['p_neto']." "."Kg" ?></td>
                     <td><?php echo $mostrar['autoriza'] ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
+                    <td>
+                     
+                      
                     
+                    
+                     <a href='../patio/<?php echo $mostrar['no_guia'] . "/".$mostrar['ruta']?>'  target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-file-text-o "></i></a>
+                     
+                   </td>
                   </tr>
                   <?php
                     }                 
