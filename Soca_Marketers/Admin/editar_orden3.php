@@ -294,19 +294,19 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Peso Tara</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_tara' class="form-control" value="<?php echo $p_tara;?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Peso Bruto</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_burto' class="form-control" value="<?php echo $p_bruto;?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Neto</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Peso Neto</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_neto' class="form-control" value="<?php echo $p_neto;?>">
                   </div>
@@ -323,12 +323,7 @@
                     <input type="text" name='hora_salida' class="form-control" value="<?php echo $hora_salida;?>">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. Lote</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='lote' class="form-control" value="<?php echo $lote;?>">
-                  </div>
-                </div>
+               
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">No. Sello</label>
                   <div class="col-sm-4">
@@ -409,7 +404,20 @@
                       </span>
                   </div>
                 </div>
-                 
+                <div class="form-group">
+                  <label class="control-label col-md-3">Evidencias en formato PDF</label>
+                  <div class="controls col-md-9">
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                      <span class="btn btn-theme02 btn-file">
+                        <span class="fileupload-new"><i class="fa fa-paperclip"></i> Seleccione Archivo PDF</span>
+                      <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                      <input type="file" class="default" name="archivo" id="archivo" />
+                      </span>
+                      <span class="fileupload-preview" style="margin-left:5px;"></span>
+                      <a href="advanced_form_components.html#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
+                    </div>
+                  </div>
+                </div>
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
                       <button class="btn btn-theme" type="submit">Guardar</button>

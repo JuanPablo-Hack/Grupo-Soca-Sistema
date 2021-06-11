@@ -21,13 +21,27 @@ $estado=1;
 // Enviando Fotos
 $imagen = addslashes(file_get_contents($_FILES['foto']['tmp_name']));
 
+//Mandando el archivo
+
+$archivo = $_FILES['archivo']['name'];
+
 
 if ($conexion ->connect_error) {
     die("Conexion Fallida: " . $conn ->connect_error);
 }else{
-   
+        $ruta_manifiestos = '../../salidas/';
+        $ruta_manifiestos_cliente = $ruta_manifiestos . $no_guia . "/";
+
+        if(!file_exists($ruta_manifiestos)){
+        mkdir($ruta_manifiestos, 0777, true);
+        }   
+        if(!file_exists($ruta_manifiestos_cliente)){
+        mkdir($ruta_manifiestos_cliente, 0777, true);
+        }
+
+        move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta_manifiestos_cliente . $_FILES['archivo']['name']);
          
-        $sql="INSERT INTO patio_acopio_salida(cliente,patio_destino,unidad,operador,no_guia,p_tara,p_bruto,p_neto,autoriza,hora_salida,no_lote,no_sello,m3,transportista_id,estado,foto) VALUES ('$nombre_cliente','$mina','$unidad','$operador','$no_guia','$p_tara','$p_burto','$p_neto','$autoriza','$hora','$lote','$sello','$m3','$transportista_id','$estado','$imagen');";
+        $sql="INSERT INTO patio_acopio_salida(cliente,patio_destino,unidad,operador,no_guia,p_tara,p_bruto,p_neto,autoriza,hora_salida,no_lote,no_sello,m3,transportista_id,estado,foto,ruta) VALUES ('$nombre_cliente','$mina','$unidad','$operador','$no_guia','$p_tara','$p_burto','$p_neto','$autoriza','$hora','$lote','$sello','$m3','$transportista_id','$estado','$imagen','$archivo');";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso_orden3.html");

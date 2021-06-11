@@ -22,14 +22,28 @@ $estado=$_POST['estado'];
 
 $imagen = addslashes(file_get_contents($_FILES['foto']['tmp_name']));
 
+//Mandando el archivo
+
+$archivo = $_FILES['archivo']['name'];
 
 
 if ($conexion ->connect_error) {
     die("Conexion Fallida: " . $conn ->connect_error);
 }else{
    
+        $ruta_manifiestos = '../../salidas/';
+        $ruta_manifiestos_cliente = $ruta_manifiestos . $no_guia . "/";
+
+        if(!file_exists($ruta_manifiestos)){
+        mkdir($ruta_manifiestos, 0777, true);
+        }
+        if(!file_exists($ruta_manifiestos_cliente)){
+        mkdir($ruta_manifiestos_cliente, 0777, true);
+        }
+
+        move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta_manifiestos_cliente . $_FILES['archivo']['name']); 
          
-        $sql="UPDATE patio_acopio_salida SET patio_destino='$mina',unidad='$unidad',operador='$operador',no_guia='$no_guia',p_tara='$p_tara',p_bruto='$p_burto',p_neto='$p_neto',autoriza='$autoriza',hora_salida='$hora',no_lote='$lote',no_sello='$sello',m3='$m3',transportista_id='$transportista_id',estado='$estado',foto='$imagen'  WHERE id='$id'";
+        $sql="UPDATE patio_acopio_salida SET patio_destino='$mina',unidad='$unidad',operador='$operador',no_guia='$no_guia',p_tara='$p_tara',p_bruto='$p_burto',p_neto='$p_neto',autoriza='$autoriza',hora_salida='$hora',no_lote='$lote',no_sello='$sello',m3='$m3',transportista_id='$transportista_id',estado='$estado',foto='$imagen',ruta='$archivo'  WHERE id='$id'";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");

@@ -183,7 +183,7 @@
                     <th class="hidden-phone">Operador</th>
                     <th class="hidden-phone">Metros Cúbicos</th>
                     <th class="hidden-phone">Autoriza</th>
-                    <th class="hidden-phone">Hora de Salida</th>
+                    <th class="hidden-phone">Fecha y Hora de Salida</th>
                     
                     <th class="hidden-phone">Acciones</th>
                   </tr>
@@ -222,15 +222,16 @@
                     ?></td>
                     <td><?php echo $mostrar['m3'] ?></td>
                     <td><?php echo $mostrar['autoriza'] ?></td>
-                    <td><?php echo $mostrar['hora_salida'] ?></td>
+                    <td><?php echo $mostrar['creado'] ?></td>
                    
                     <td>
                      
                       
                      
 
-                      <a href='./editar_orden3.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href='./editar_orden3.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
                       <a href='./eliminar_orden3.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      <a href='../salidas/<?php echo $mostrar['no_guia'] . "/".$mostrar['ruta']?>'  target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-file-text-o "></i></a>
                       
                     </td>
                   </tr>
