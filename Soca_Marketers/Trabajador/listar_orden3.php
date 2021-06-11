@@ -184,7 +184,7 @@
                     <th class="hidden-phone">Metros Cúbicos</th>
                     <th class="hidden-phone">Autoriza</th>
                     <th class="hidden-phone">Hora de Salida</th>
-                    <th class="hidden-phone">Fotos</th>
+                    
                     <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
@@ -223,7 +223,7 @@
                     <td><?php echo $mostrar['m3'] ?></td>
                     <td><?php echo $mostrar['autoriza'] ?></td>
                     <td><?php echo $mostrar['hora_salida'] ?></td>
-                    <td><img src="data:image/png;base64,<?php echo base64_encode($mostrar['foto']); ?>" width="250px" height="150px">
+                   
                     <td>
                      
                       
