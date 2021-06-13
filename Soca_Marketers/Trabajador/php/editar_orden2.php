@@ -11,9 +11,10 @@ $p_tara=$_POST['p_tara'];
 $p_burto=$_POST['p_burto'];
 $p_neto=$_POST['p_neto'];
 $autoriza=$_POST['autoriza'];
-$no_sello=$_POST['no_sello'];
+$no_guia=$_POST['no_guia'];
 $hora=$_POST['hora_salida'];
 $mineral=$_POST['mineral'];
+$origen=$_POST['origen'];
 $recibe=$_POST['recibe'];
 
 //Mandando el archivo
@@ -37,7 +38,7 @@ if ($conexion ->connect_error) {
 
         move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta_manifiestos_cliente . $_FILES['archivo']['name']); 
 
-        $sql="UPDATE patio_acopio SET mina_origen='$mina',unidad='$unidad',operador='$operador',no_guia='$no_guia',mineral='$mineral',p_tara='$p_tara',p_bruto='$p_burto',p_neto='$p_neto',autoriza='$autoriza',recibe='$recibe',hora_ingreso='$hora',ruta='$archivo'  WHERE id='$id'";
+        $sql="UPDATE patio_acopio SET mina_origen='$mina',unidad='$unidad',operador='$operador',no_guia='$no_guia',mineral='$mineral',origen='$origen',p_tara='$p_tara',p_bruto='$p_burto',p_neto='$p_neto',autoriza='$autoriza',recibe='$recibe',hora_ingreso='$hora',ruta='$archivo'  WHERE id='$id'";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");

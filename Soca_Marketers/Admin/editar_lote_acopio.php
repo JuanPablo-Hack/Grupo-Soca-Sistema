@@ -73,25 +73,25 @@
         *********************************************************************************************************************************************************** -->
     <!--header start-->
     <header class="header black-bg">
-      <div class="sidebar-toggle-box">
-        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-      </div>
-      <!--logo start-->
-      <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
-      <!--logo end-->
-     
-      <div class="top-menu">
-        <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
-        </ul>
-      </div>
-    </header>
-    <!--header end-->
-    <!-- **********************************************************************************************************************************************************
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
+            <!--logo end-->
+
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+        <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
-    <!--sidebar start-->
-    <aside>
+        <!--sidebar start-->
+        <aside>
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
@@ -100,7 +100,7 @@
                     </p>
                     <h5 class="centered">Admin</h5>
                     <li class="mt">
-                        <a class="active" href="index.html">
+                        <a class="active" href="index.php">
                             <i class="fa fa-dashboard"></i>
                             <span>Panel de Control</span>
                         </a>
@@ -151,26 +151,14 @@
                         </a>
                         <ul class="sub">
                             <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
-                            <li><a href="listar_orden2.php">Bitacora</a></li>
+                            <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
+                            <li><a href="listar_compra.php">Bitacora de Compra</a></li>
                             <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
                             <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-truck"></i>
-                            <span>Inventario</span>
-                        </a>
-                        <ul class="sub">
-
-                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
-                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
-
-
-
-                        </ul>
-                    </li>
+                    
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-car"></i>
@@ -218,7 +206,7 @@
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
-              <form action="php/editar_lote_acopio.php" class="form-horizontal style-form" method='POST'>
+              <form action="php/editar_lote_acopio.php" class="form-horizontal style-form" method='POST' enctype="multipart/form-data">
               <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Identificador</label>
                   <div class="col-sm-4">
@@ -329,7 +317,20 @@
                     <input type="text" name='observaciones' class="form-control" value='<?php echo $observaciones;?>' >
                   </div>
                 </div>
-                
+                <div class="form-group">
+                  <label class="control-label col-md-3">Analisis de Laboratorio</label>
+                  <div class="controls col-md-9">
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                      <span class="btn btn-theme02 btn-file">
+                        <span class="fileupload-new"><i class="fa fa-paperclip"></i> Seleccione Archivo PDF</span>
+                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                        <input type="file" class="default" name="archivo" id="archivo" />
+                      </span>
+                      <span class="fileupload-preview" style="margin-left:5px;"></span>
+                      <a href="advanced_form_components.html#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
+                    </div>
+                  </div>
+                </div>
                  
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">

@@ -77,34 +77,34 @@
         *********************************************************************************************************************************************************** -->
     <!--header start-->
     <header class="header black-bg">
-      <div class="sidebar-toggle-box">
-        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-      </div>
-      <!--logo start-->
-      <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
-      <!--logo end-->
-     
-      <div class="top-menu">
-        <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
-        </ul>
-      </div>
-    </header>
-    <!--header end-->
-    <!-- **********************************************************************************************************************************************************
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
+            <!--logo end-->
+
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+        <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
-    <!--sidebar start-->
-    <aside>
+        <!--sidebar start-->
+        <aside>
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered">
-                        <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
+                        <a href="index.php"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
                     <h5 class="centered">Supervisor</h5>
                     <li class="mt">
-                        <a class="active" href="index.html">
+                        <a class="active" href="index.php">
                             <i class="fa fa-dashboard"></i>
                             <span>Panel de Control</span>
                         </a>
@@ -161,20 +161,7 @@
 
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-truck"></i>
-                            <span>Inventario</span>
-                        </a>
-                        <ul class="sub">
 
-                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
-                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
-
-
-
-                        </ul>
-                    </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-car"></i>
@@ -290,25 +277,41 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tipo de minaral</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo de Mineral:</label>
                   <div class="col-sm-4">
-                    <input type="text" name='mineral' class="form-control" value="<?php echo $mineral;?>">
+                    <select class="form-control" name='mineral'>
+                      <option><?php echo $mineral;?></option>
+                      <option>Breña</option>
+                      <option>Triturado</option>
+
+                    </select>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Tara</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Origen:</label>
+                  <div class="col-sm-4">
+                    <select class="form-control" name='origen'>
+                      <option></option>
+                      <option value="1">Extracción</option>
+                      <option value="2">Compra</option>
+
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Peso Tara</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_tara' class="form-control" value="<?php echo $p_tara;?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Burto</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Peso Bruto</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_burto' class="form-control" value="<?php echo $p_bruto;?>">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">P. Neto</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Peso Neto</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_neto' class="form-control" value="<?php echo $p_neto;?>">
                   </div>
@@ -331,11 +334,10 @@
                     <input type="text" name='hora_salida' class="form-control" value="<?php echo $hora_salida;?>">
                   </div>
                 </div>
-                
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">No. Sello</label>
                   <div class="col-sm-4">
-                    <input type="text" name='no_sello' class="form-control" value="<?php echo $sello;?>">
+                    <input type="text" name='hora_salida' class="form-control" value="<?php echo $sello;?>">
                   </div>
                 </div>
                 <div class="form-group">

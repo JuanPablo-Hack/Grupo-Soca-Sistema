@@ -75,34 +75,34 @@
         *********************************************************************************************************************************************************** -->
     <!--header start-->
     <header class="header black-bg">
-      <div class="sidebar-toggle-box">
-        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-      </div>
-      <!--logo start-->
-      <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
-      <!--logo end-->
-     
-      <div class="top-menu">
-        <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
-        </ul>
-      </div>
-    </header>
-    <!--header end-->
-    <!-- **********************************************************************************************************************************************************
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
+            <!--logo end-->
+
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+        <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
-    <!--sidebar start-->
-    <aside>
+        <!--sidebar start-->
+        <aside>
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered">
                         <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
-                    <h5 class="centered">Supervisor</h5>
+                    <h5 class="centered">Admin</h5>
                     <li class="mt">
-                        <a class="active" href="index.html">
+                        <a class="active" href="index.php">
                             <i class="fa fa-dashboard"></i>
                             <span>Panel de Control</span>
                         </a>
@@ -129,8 +129,8 @@
                         <ul class="sub">
                             <li><a href="crear_lote.php">Crear Lote</a></li>
                             <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-                            <li><a href="#">Crear Muestreo de Lote</a></li>
-                            <li><a href="#">Bitacora de muestras de lotes</a></li>
+                            <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
                         </ul>
                     </li>
@@ -153,27 +153,43 @@
                         </a>
                         <ul class="sub">
                             <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
-                            <li><a href="listar_orden2.php">Bitacora</a></li>
+                            <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
+                            <li><a href="listar_compra.php">Bitacora de Compra</a></li>
                             <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
                             <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
                         </ul>
                     </li>
-
+                    
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-car"></i>
                             <span>Unidades</span>
                         </a>
                         <ul class="sub">
-
-                            <li><a href="alta_trans.php">Dar de operador externo</a></li>
+                            <li><a href="alta_unidad.html">Dar de alta</a></li>
+                            <li><a href="listar_unidades.php">Mis Unidades</a></li>
+                            <li><a href="alta_trans.html">Dar de alta transportista</a></li>
+                            <li><a href="listar_transportistas_empresas.php">Transportistas</a></li>
                             <li><a href="listar_transportistas.php">Operadores Externos</a></li>
 
 
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-group"></i>
+                            <span>Usuarios</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
+                            <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
 
+                            <li><a href="alta_usuarios.html">Crear Cliente</a></li>
+                            <li><a href="listar_clientes.php">Listar Clientes</a></li>
+
+                        </ul>
+                    </li>
 
 
                 </ul>

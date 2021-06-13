@@ -1,5 +1,17 @@
 <?php
  include 'php/conexion.php';
+ $sql="SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=2";
+ $result = mysqli_query($conexion,$sql);
+ if ($Row = mysqli_fetch_array($result))
+  {
+    
+    
+    $tara=$Row['tara'];
+    $bruto=$Row['bruto'];
+    $neto=$Row['neto'];
+    
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +58,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
+      <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
       <!--logo end-->
      
       <div class="top-menu">
@@ -65,9 +77,9 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered">
-                        <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
+                        <a href="index.php"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
-                    <h5 class="centered">Supervisor</h5>
+                    <h5 class="centered">Cliente</h5>
                     <li class="mt">
                         <a class="active" href="index.html">
                             <i class="fa fa-dashboard"></i>
@@ -80,9 +92,6 @@
                             <span>Prospección de Minas</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="alta_mina.html">Registrar Mina</a></li>
-                            <li><a href="listar_minas.php">Minas Registradas</a></li>
-                            <li><a href="alta_muestras.php">Registro de Muestra</a></li>
                             <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>
@@ -94,9 +103,9 @@
                             <span>Produccion en mina</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="crear_lote.php">Crear Lote</a></li>
+
                             <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-                            <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
+
                             <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
                         </ul>
@@ -108,7 +117,7 @@
                             <span>Salida de Patio de mina</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="crear_orden3.php">Crear Registro de Salida</a></li>
+
                             <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
 
                         </ul>
@@ -119,41 +128,14 @@
                             <span>Patio de trituracion</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
-                            <li><a href="listar_orden2.php">Bitacora</a></li>
-                            <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
+
+                            <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
+                            <li><a href="listar_orden2.php">Bitacora de Compra</a></li>
                             <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-truck"></i>
-                            <span>Inventario</span>
-                        </a>
-                        <ul class="sub">
-
-                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
-                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
-
-
-
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-car"></i>
-                            <span>Unidades</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_unidad.html">Dar de alta</a></li>
-                            <li><a href="listar_unidades.php">Mis Unidades</a></li>
-                            <li><a href="alta_trans.php">Alta de Operadores Externos</a></li>
-                            <li><a href="listar_transportistas.php">Operadores Externos</a></li>
-
-
-                        </ul>
-                    </li>
+                    
 
 
 
@@ -161,13 +143,14 @@
                 <!-- sidebar menu end-->
             </div>
         </aside>
+    <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora de Acumulado de Patio de Trituración</h3>
+        <h3><i class="fa fa-angle-right"></i> Bitacora de Compra</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -177,16 +160,20 @@
                   <tr>
                     
                     <th>Mina de Origen</th>
-                    <th>Total peso tara</th>
-                    <th class="hidden-phone">Total peso bruto</th>
-                    <th class="hidden-phone">Total peso neto</th>
                     
                     
+                    <th class="hidden-phone">Mineral</th>
+                    <th class="hidden-phone">Peso Bruto</th>
+                    <th class="hidden-phone">Peso Tara</th>
+                    <th class="hidden-phone">Peso Neto</th>
+                    <th class="hidden-phone">No. Ticket</th>
+                    <th class="hidden-phone">Fecha y hora de ingreso</th>
+                    <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT mina_origen, SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio GROUP BY mina_origen";
+                    $sql="SELECT * FROM patio_acopio WHERE origen=2";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
@@ -203,17 +190,36 @@
                       }
                       echo $nombre;
                     ?></td>
-                   
-                   
-                    <td><?php echo $mostrar['tara'] ?></td>
-                    <td><?php echo $mostrar['bruto'] ?></td>
-                    <td><?php echo $mostrar['neto'] ?></td>
                     
+                    <td><?php echo $mostrar['mineral'] ?></td>
+                    <td><?php echo $mostrar['p_bruto']." "."Kg" ?></td>
+                    <td><?php echo $mostrar['p_tara']." "."Kg" ?></td>
+                    <td><?php echo $mostrar['p_neto']." "."Kg" ?></td>
+                    <td><?php echo $mostrar['no_guia'] ?></td>
+                    <td><?php echo $mostrar['creado'] ?></td>
+                    <td>
+                     
+                      
+                    
+                      <a onclick="crearPDF(<?php echo $mostrar['id'] ?>)" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+                      <a href='./editar_orden2.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href='./eliminar_orden2.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      <a href='../patio/<?php echo $mostrar['no_guia'] . "/".$mostrar['ruta']?>'  target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-file-text-o "></i></a>
+                      
+                    </td>
                     
                   </tr>
                   <?php
                     }                 
                  ?>
+                 <tr>
+                   <td></td>
+                  
+                   <td>Total</td>
+                   <td><?php echo $tara." "."Kg" ?></td>
+                   <td><?php echo $bruto." "."Kg" ?></td>
+                   <td><?php echo $neto." "."Kg" ?></td>
+                 </tr>
                 </tbody>
               </table>
             </div>
@@ -260,6 +266,45 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
+  <script>
+    function addScript(url) {
+      var script = document.createElement('script');
+      script.type = 'application/javascript';
+      script.src = url;
+      document.head.appendChild(script);
+    }
+    addScript('https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js');
+
+    function crearPDF(id) {
+      var opt = {
+        margin: 1,
+        filename: 'patio.pdf',
+        image: {
+          type: 'jpeg',
+          quality: 0.98
+        },
+        html2canvas: {
+          scale: 3
+        },
+        jsPDF: {
+          unit: 'in',
+          format: 'a3',
+          orientation: 'portrait'
+        }
+      };
+
+      $.ajax({
+        type: 'POST',
+        data: "id=" + id,
+        url: 'php/patioPDF.php',
+        success: function(r) {
+          // console.log(r);
+          var worker = html2pdf().set(opt).from(r).toPdf().save();
+
+        }
+      });
+    }
+  </script>
  
 </body>
 

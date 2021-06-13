@@ -1,17 +1,15 @@
 <?php
- include 'php/conexion.php';
- $sql="SELECT SUM(peso_1) as breña, SUM(peso_2) as triturado, SUM(peso_3) as triturado_finos, SUM(peso_4) as ganga FROM lotes_acopio";
- $result = mysqli_query($conexion,$sql);
- if ($Row = mysqli_fetch_array($result))
-  {
-    
-    
-    $breña=$Row['breña'];
-    $triturado=$Row['triturado'];
-    $triturado_finos=$Row['triturado_finos'];
-    $ganga=$Row['ganga'];
-    
-  }
+include 'php/conexion.php';
+$sql = "SELECT SUM(peso_1) as breña, SUM(peso_2) as triturado, SUM(peso_3) as triturado_finos, SUM(peso_4) as ganga FROM lotes_acopio";
+$result = mysqli_query($conexion, $sql);
+if ($Row = mysqli_fetch_array($result)) {
+
+
+  $breña = $Row['breña'];
+  $triturado = $Row['triturado'];
+  $triturado_finos = $Row['triturado_finos'];
+  $ganga = $Row['ganga'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,9 +56,9 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
+      <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
       <!--logo end-->
-     
+
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
@@ -73,89 +71,76 @@
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
     <aside>
-            <div id="sidebar" class="nav-collapse ">
-                <!-- sidebar menu start-->
-                <ul class="sidebar-menu" id="nav-accordion">
-                    <p class="centered">
-                        <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
-                    </p>
-                    <h5 class="centered">Cliente</h5>
-                    <li class="mt">
-                        <a class="active" href="index.html">
-                            <i class="fa fa-dashboard"></i>
-                            <span>Panel de Control</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Prospección de Minas</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
-                        </ul>
-                    </li>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered">
+            <a href="index.php"><img src="img/smm.png" class="img-circle" width="80"></a>
+          </p>
+          <h5 class="centered">Cliente</h5>
+          <li class="mt">
+            <a class="active" href="index.html">
+              <i class="fa fa-dashboard"></i>
+              <span>Panel de Control</span>
+            </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Prospección de Minas</span>
+            </a>
+            <ul class="sub">
+              <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+            </ul>
+          </li>
 
 
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-calendar"></i>
-                            <span>Produccion en mina</span>
-                        </a>
-                        <ul class="sub">
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-calendar"></i>
+              <span>Produccion en mina</span>
+            </a>
+            <ul class="sub">
 
-                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
+              <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
 
-                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
+              <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
-                        </ul>
-                    </li>
+            </ul>
+          </li>
 
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Salida de Patio de mina</span>
-                        </a>
-                        <ul class="sub">
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Salida de Patio de mina</span>
+            </a>
+            <ul class="sub">
 
-                            <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
+              <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
 
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Patio de trituracion</span>
-                        </a>
-                        <ul class="sub">
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Patio de trituracion</span>
+            </a>
+            <ul class="sub">
 
-                            <li><a href="listar_orden2.php">Bitacora</a></li>
+              <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
+              <li><a href="listar_orden2.php">Bitacora de Compra</a></li>
+              <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
-                            <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
-
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-truck"></i>
-                            <span>Inventario</span>
-                        </a>
-                        <ul class="sub">
-
-                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
-                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
+            </ul>
+          </li>
 
 
 
-                        </ul>
-                    </li>
 
-
-
-                </ul>
-                <!-- sidebar menu end-->
-            </div>
-        </aside>
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
     <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
@@ -179,90 +164,94 @@
                     <th>Peso de 50 a 10 mm</th>
                     <th>Peso de 10 mm a finos</th>
                     <th>Peso de ganga</th>
-                   
+
                     <th class="hidden-phone">Calidad</th>
-                    
-                   
-                   
-                   
+
+                    <th class="hidden-phone">Acciones</th>
+
+
                   </tr>
                 </thead>
                 <tbody>
-                <?php
-                    $sql="SELECT * FROM lotes_acopio";
-                    $resultado = $conexion->query($sql);
-                    while ($mostrar=mysqli_fetch_array($resultado)) {  
-                  ?>
-                  <tr >
-                  
-                  <td><?php echo $mostrar['id'] ?></td>
-                  <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM lotes WHERE id='".$mostrar['no_lote']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['no_lote'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                  <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM minas WHERE id='".$mostrar['mina']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                   
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM materiales WHERE id='".$mostrar['material']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                   <td><?php echo $mostrar['peso_1']." "."Kg"?></td>
-                   <td><?php echo $mostrar['peso_2']." "."Kg"?></td>
-                   <td><?php echo $mostrar['peso_3']." "."Kg"?></td>
-                   <td><?php echo $mostrar['peso_4']." "."Kg"?></td>
-                    
-                  
-                   
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM calidad WHERE id='".$mostrar['calidad']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                    
-                  </tr>
                   <?php
-                    }                 
-                 ?>
-                 <tr>
-                   <td></td>
-                   <td></td>
-                   <td></td>
-                   <td>Total</td>
-                   <td><?php echo $breña." "."Kg" ?></td>
-                   <td><?php echo $triturado." "."Kg" ?></td>
-                   <td><?php echo $triturado_finos." "."Kg" ?></td>
-                   <td><?php echo $ganga." "."Kg" ?></td>
-                 </tr>
+                  $sql = "SELECT * FROM lotes_acopio";
+                  $resultado = $conexion->query($sql);
+                  while ($mostrar = mysqli_fetch_array($resultado)) {
+                  ?>
+                    <tr>
+
+                      <td><?php echo $mostrar['id'] ?></td>
+                      <td><?php
+
+
+                          $sql1 = "SELECT * FROM lotes WHERE id='" . $mostrar['no_lote'] . "'";
+                          $result1 = mysqli_query($conexion, $sql1);
+                          if ($Row = mysqli_fetch_array($result1)) {
+                            $nombre = $Row['no_lote'];
+                          }
+                          echo $nombre;
+                          ?></td>
+                      <td><?php
+
+
+                          $sql1 = "SELECT * FROM minas WHERE id='" . $mostrar['mina'] . "'";
+                          $result1 = mysqli_query($conexion, $sql1);
+                          if ($Row = mysqli_fetch_array($result1)) {
+                            $nombre = $Row['nombre'];
+                          }
+                          echo $nombre;
+                          ?></td>
+
+                      <td><?php
+
+
+                          $sql1 = "SELECT * FROM materiales WHERE id='" . $mostrar['material'] . "'";
+                          $result1 = mysqli_query($conexion, $sql1);
+                          if ($Row = mysqli_fetch_array($result1)) {
+                            $nombre = $Row['nombre'];
+                          }
+                          echo $nombre;
+                          ?></td>
+                      <td><?php echo $mostrar['peso_1'] . " " . "Kg" ?></td>
+                      <td><?php echo $mostrar['peso_2'] . " " . "Kg" ?></td>
+                      <td><?php echo $mostrar['peso_3'] . " " . "Kg" ?></td>
+                      <td><?php echo $mostrar['peso_4'] . " " . "Kg" ?></td>
+
+
+
+                      <td><?php
+
+
+                          $sql1 = "SELECT * FROM calidad WHERE id='" . $mostrar['calidad'] . "'";
+                          $result1 = mysqli_query($conexion, $sql1);
+                          if ($Row = mysqli_fetch_array($result1)) {
+                            $nombre = $Row['nombre'];
+                          }
+                          echo $nombre;
+                          ?></td>
+                      <td>
+
+
+
+
+                        <a href="../lotes_acopio/<?php echo $mostrar['no_lote'] . "/".$mostrar['ruta']?>" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
+
+                      </td>
+
+                    </tr>
+                  <?php
+                  }
+                  ?>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Total</td>
+                    <td><?php echo $breña . " " . "Kg" ?></td>
+                    <td><?php echo $triturado . " " . "Kg" ?></td>
+                    <td><?php echo $triturado_finos . " " . "Kg" ?></td>
+                    <td><?php echo $ganga . " " . "Kg" ?></td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -292,7 +281,7 @@
         </div>
         <a href="index.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
-          </a>
+        </a>
       </div>
     </footer>
     <!--footer end-->
@@ -309,7 +298,7 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
- 
+
 </body>
 
 </html>

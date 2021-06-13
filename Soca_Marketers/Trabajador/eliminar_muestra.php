@@ -50,7 +50,7 @@
         <br>
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
-            <a href="./index.html" class="btn btn-theme mt">Regresar a Inicio</a>
+          <a href="./index.php" class="btn btn-theme mt">Regresar a Inicio</a>
             
           </div>
         </div>

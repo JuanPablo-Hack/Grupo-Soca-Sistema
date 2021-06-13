@@ -1,3 +1,25 @@
+<?php
+include 'php/conexion.php';
+$sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=1";
+$result = mysqli_query($conexion, $sql);
+if ($Row = mysqli_fetch_array($result)) {
+
+
+    $tara = $Row['tara'];
+    $bruto = $Row['bruto'];
+    $neto = $Row['neto'];
+}
+$sql2 = "SELECT SUM(peso_1) as breña, SUM(peso_2) as triturado, SUM(peso_3) as triturado_finos, SUM(peso_4) as ganga FROM lotes_acopio";
+$result2 = mysqli_query($conexion, $sql2);
+if ($Row = mysqli_fetch_array($result2)) {
+
+
+    $breña = $Row['breña'];
+    $triturado = $Row['triturado'];
+    $triturado_finos = $Row['triturado_finos'];
+    $ganga = $Row['ganga'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +60,7 @@
                 <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
+            <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
             <!--logo end-->
 
             <div class="top-menu">
@@ -57,11 +79,11 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered">
-                        <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
+                        <a href="index.php"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
                     <h5 class="centered">Supervisor</h5>
                     <li class="mt">
-                        <a class="active" href="index.html">
+                        <a class="active" href="index.php">
                             <i class="fa fa-dashboard"></i>
                             <span>Panel de Control</span>
                         </a>
@@ -118,20 +140,7 @@
 
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-truck"></i>
-                            <span>Inventario</span>
-                        </a>
-                        <ul class="sub">
 
-                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
-                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
-
-
-
-                        </ul>
-                    </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-car"></i>
@@ -164,77 +173,68 @@
                     <div class="col-lg-9 main-chart">
                         <!--CUSTOM CHART START -->
                         <div class="border-head">
-                            <h3>Total de breña en patio de trituracion</h3>
+                            <h3>Producción en Patio de Trituración</h3>
                         </div>
                         <div class="custom-bar-chart">
                             <ul class="y-axis">
-                                <li><span>10.000</span></li>
-                                <li><span>8.000</span></li>
-                                <li><span>6.000</span></li>
-                                <li><span>4.000</span></li>
-                                <li><span>2.000</span></li>
+                                <li><span><?php echo $breña; ?></span></li>
+                                <li><span><?php echo $triturado; ?></span></li>
+                                <li><span><?php echo $triturado_finos; ?></span></li>
+                                <li><span><?php echo $ganga; ?></span></li>
                                 <li><span>0</span></li>
                             </ul>
                             <div class="bar">
-                                <div class="title">ENE</div>
-                                <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">85%</div>
+                                <div class="title">Peso de Breña</div>
+                                <div class="value tooltips" data-original-title="<?php echo $breña; ?>" data-toggle="tooltip" data-placement="top">99%</div>
+         
                             </div>
                             <div class="bar ">
-                                <div class="title">FEB</div>
-                                <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
+                                <div class="title">Peso de 50 a 10 mm</div>
+                                <div class="value tooltips" data-original-title="<?php echo $triturado; ?>" data-toggle="tooltip" data-placement="top">65%</div>
+     
                             </div>
                             <div class="bar ">
-                                <div class="title">MAR</div>
-                                <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">60%</div>
+                                <div class="title">Peso de 10 mm a finos</div>
+                                <div class="value tooltips" data-original-title="<?php echo $triturado_finos; ?>" data-toggle="tooltip" data-placement="top">95%</div>
                             </div>
                             <div class="bar ">
-                                <div class="title">ABR</div>
-                                <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">45%</div>
+                                <div class="title">Peso de ganga</div>
+                                <div class="value tooltips" data-original-title="<?php echo $ganga; ?>" data-toggle="tooltip" data-placement="top">99%</div>
+         
                             </div>
-                            <div class="bar">
-                                <div class="title">MAY</div>
-                                <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top">32%</div>
-                            </div>
-                            <div class="bar ">
-                                <div class="title">JUN</div>
-                                <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top">62%</div>
-                            </div>
-                            <div class="bar">
-                                <div class="title">JUL</div>
-                                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
-                            </div>
+
                         </div>
                         <!--custom chart end-->
                         <div class="row mt">
                             <!-- SERVER STATUS PANELS -->
                             <div class="col-md-6 col-sm-4 mb">
                                 <div class="border-head">
-                                    <h3>Total de mineral de 50 a 10 mm</h3>
+                                    <h3>Producción en Minas</h3>
                                 </div>
                                 <div class="custom-bar-chart">
                                     <ul class="y-axis">
-                                        <li><span>10.000</span></li>
-                                        <li><span>8.000</span></li>
-                                        <li><span>6.000</span></li>
-                                        <li><span>4.000</span></li>
+                                        <li><span><?php echo $breña; ?></span></li>
+                                        <li><span><?php echo $triturado; ?></span></li>
+                                        <li><span><?php echo $triturado_finos; ?></span></li>
+                                        <li><span><?php echo $ganga; ?></span></li>
                                         <li><span>2.000</span></li>
                                         <li><span>0</span></li>
                                     </ul>
                                     <div class="bar">
                                         <div class="title">ENE</div>
-                                        <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">85%</div>
+                                        <div class="value tooltips" data-original-title="<?php echo $breña; ?>" data-toggle="tooltip" data-placement="top">99%</div>
                                     </div>
                                     <div class="bar ">
                                         <div class="title">FEB</div>
-                                        <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
+                                        <div class="value tooltips" data-original-title="<?php echo $triturado; ?>" data-toggle="tooltip" data-placement="top">65%</div>
                                     </div>
                                     <div class="bar ">
                                         <div class="title">MAR</div>
-                                        <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">60%</div>
+                                        <div class="value tooltips" data-original-title="<?php echo $triturado_finos; ?>" data-toggle="tooltip" data-placement="top">95%</div>
                                     </div>
                                     <div class="bar ">
                                         <div class="title">ABR</div>
-                                        <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">45%</div>
+                                        <div class="value tooltips" data-original-title="<?php echo $ganga; ?>" data-toggle="tooltip" data-placement="top">99%</div>
                                     </div>
                                     <div class="bar">
                                         <div class="title">MAY</div>
@@ -254,45 +254,31 @@
                             <!-- /col-md-4-->
                             <div class="col-md-6 col-sm-4 mb">
                                 <div class="border-head">
-                                    <h3>Total de mineal de 10 mm a finos</h3>
+                                    <h3>Productos en elaboración</h3>
                                 </div>
                                 <div class="custom-bar-chart">
                                     <ul class="y-axis">
-                                        <li><span>10.000</span></li>
-                                        <li><span>8.000</span></li>
-                                        <li><span>6.000</span></li>
+                                        <li><span><?php echo $tara; ?></span></li>
+
+                                        <li><span><?php echo $bruto; ?></span></li>
+                                        <li><span><?php echo $neto; ?></span></li>
                                         <li><span>4.000</span></li>
                                         <li><span>2.000</span></li>
                                         <li><span>0</span></li>
                                     </ul>
                                     <div class="bar">
-                                        <div class="title">ENE</div>
-                                        <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">85%</div>
+                                        <div class="title">Peso Tara</div>
+                                        <div class="value tooltips" data-original-title="<?php echo $tara; ?>" data-toggle="tooltip" data-placement="top">65%</div>
                                     </div>
                                     <div class="bar ">
-                                        <div class="title">FEB</div>
-                                        <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
+                                        <div class="title">Peso Bruto</div>
+                                        <div class="value tooltips" data-original-title="<?php echo $bruto; ?>" data-toggle="tooltip" data-placement="top">95%</div>
                                     </div>
                                     <div class="bar ">
-                                        <div class="title">MAR</div>
-                                        <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">60%</div>
+                                        <div class="title">Peso Neto</div>
+                                        <div class="value tooltips" data-original-title="<?php echo $neto; ?>" data-toggle="tooltip" data-placement="top">75%</div>
                                     </div>
-                                    <div class="bar ">
-                                        <div class="title">ABR</div>
-                                        <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">45%</div>
-                                    </div>
-                                    <div class="bar">
-                                        <div class="title">MAY</div>
-                                        <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top">32%</div>
-                                    </div>
-                                    <div class="bar ">
-                                        <div class="title">JUN</div>
-                                        <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top">62%</div>
-                                    </div>
-                                    <div class="bar">
-                                        <div class="title">JUL</div>
-                                        <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
-                                    </div>
+
                                 </div>
                                 <!--  /darkblue panel -->
                             </div>
@@ -348,8 +334,8 @@
                             <div class="details">
                                 <p>
                                     <muted>Just Now</muted>
-                                    <br/>
-                                    <a href="#">Paul Rudd</a> purchased an item.<br/>
+                                    <br />
+                                    <a href="#">Paul Rudd</a> purchased an item.<br />
                                 </p>
                             </div>
                         </div>
@@ -361,8 +347,8 @@
                             <div class="details">
                                 <p>
                                     <muted>2 Minutes Ago</muted>
-                                    <br/>
-                                    <a href="#">James Brown</a> subscribed to your newsletter.<br/>
+                                    <br />
+                                    <a href="#">James Brown</a> subscribed to your newsletter.<br />
                                 </p>
                             </div>
                         </div>
@@ -374,8 +360,8 @@
                             <div class="details">
                                 <p>
                                     <muted>3 Hours Ago</muted>
-                                    <br/>
-                                    <a href="#">Diana Kennedy</a> purchased a year subscription.<br/>
+                                    <br />
+                                    <a href="#">Diana Kennedy</a> purchased a year subscription.<br />
                                 </p>
                             </div>
                         </div>
@@ -387,8 +373,8 @@
                             <div class="details">
                                 <p>
                                     <muted>7 Hours Ago</muted>
-                                    <br/>
-                                    <a href="#">Brando Page</a> purchased a year subscription.<br/>
+                                    <br />
+                                    <a href="#">Brando Page</a> purchased a year subscription.<br />
                                 </p>
                             </div>
                         </div>
@@ -401,7 +387,7 @@
                             </div>
                             <div class="details">
                                 <p>
-                                    <a href="#">DIVYA MANIAN</a><br/>
+                                    <a href="#">DIVYA MANIAN</a><br />
                                     <muted>Available</muted>
                                 </p>
                             </div>
@@ -413,7 +399,7 @@
                             </div>
                             <div class="details">
                                 <p>
-                                    <a href="#">DJ SHERMAN</a><br/>
+                                    <a href="#">DJ SHERMAN</a><br />
                                     <muted>I am Busy</muted>
                                 </p>
                             </div>
@@ -425,7 +411,7 @@
                             </div>
                             <div class="details">
                                 <p>
-                                    <a href="#">DAN ROGERS</a><br/>
+                                    <a href="#">DAN ROGERS</a><br />
                                     <muted>Available</muted>
                                 </p>
                             </div>
@@ -437,7 +423,7 @@
                             </div>
                             <div class="details">
                                 <p>
-                                    <a href="#">Zac Sniders</a><br/>
+                                    <a href="#">Zac Sniders</a><br />
                                     <muted>Available</muted>
                                 </p>
                             </div>

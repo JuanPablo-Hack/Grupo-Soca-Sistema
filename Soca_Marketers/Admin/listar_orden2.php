@@ -1,6 +1,6 @@
 <?php
  include 'php/conexion.php';
- $sql="SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio";
+ $sql="SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio where origen =1";
  $result = mysqli_query($conexion,$sql);
  if ($Row = mysqli_fetch_array($result))
   {
@@ -58,7 +58,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
+      <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
       <!--logo end-->
      
       <div class="top-menu">
@@ -77,11 +77,11 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered">
-                        <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
+                        <a href="#"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
                     <h5 class="centered">Admin</h5>
                     <li class="mt">
-                        <a class="active" href="index.html">
+                        <a class="active" href="index.php">
                             <i class="fa fa-dashboard"></i>
                             <span>Panel de Control</span>
                         </a>
@@ -132,26 +132,14 @@
                         </a>
                         <ul class="sub">
                             <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
-                            <li><a href="listar_orden2.php">Bitacora</a></li>
+                            <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
+                            <li><a href="listar_compra.php">Bitacora de Compra</a></li>
                             <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
                             <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-truck"></i>
-                            <span>Inventario</span>
-                        </a>
-                        <ul class="sub">
-
-                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
-                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
-
-
-
-                        </ul>
-                    </li>
+                    
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-car"></i>
@@ -200,24 +188,24 @@
           <div class="content-panel">
             <div class="adv-table">
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
-                <thead>
+              <thead>
                   <tr>
                     
                     <th>Mina de Origen</th>
-                    <th>Unidad</th>
+                    
                     
                     <th class="hidden-phone">Mineral</th>
                     <th class="hidden-phone">Peso Bruto</th>
                     <th class="hidden-phone">Peso Tara</th>
                     <th class="hidden-phone">Peso Neto</th>
-                    <th class="hidden-phone">Autoriza</th>
+                    <th class="hidden-phone">No. Ticket</th>
                     <th class="hidden-phone">Fecha y hora de ingreso</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT * FROM patio_acopio";
+                    $sql="SELECT * FROM patio_acopio WHERE origen=1";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
@@ -234,22 +222,12 @@
                       }
                       echo $nombre;
                     ?></td>
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM unidades WHERE id='".$mostrar['unidad']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['modelo'];  
-                      }
-                      echo $nombre;
-                    ?></td>
+                   
                     <td><?php echo $mostrar['mineral'] ?></td>
                     <td><?php echo $mostrar['p_bruto']." "."Kg" ?></td>
                     <td><?php echo $mostrar['p_tara']." "."Kg" ?></td>
                     <td><?php echo $mostrar['p_neto']." "."Kg" ?></td>
-                    <td><?php echo $mostrar['autoriza'] ?></td>
+                    <td><?php echo $mostrar['no_guia'] ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
                     <td>
                      

@@ -1,5 +1,17 @@
 <?php
  include 'php/conexion.php';
+ $sql="SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=2";
+ $result = mysqli_query($conexion,$sql);
+ if ($Row = mysqli_fetch_array($result))
+  {
+    
+    
+    $tara=$Row['tara'];
+    $bruto=$Row['bruto'];
+    $neto=$Row['neto'];
+    
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,25 +54,25 @@
         *********************************************************************************************************************************************************** -->
     <!--header start-->
     <header class="header black-bg">
-      <div class="sidebar-toggle-box">
-        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-      </div>
-      <!--logo start-->
-      <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
-      <!--logo end-->
-     
-      <div class="top-menu">
-        <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
-        </ul>
-      </div>
-    </header>
-    <!--header end-->
-    <!-- **********************************************************************************************************************************************************
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
+            <!--logo end-->
+
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+        <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
-    <!--sidebar start-->
-    <aside>
+        <!--sidebar start-->
+        <aside>
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
@@ -69,7 +81,7 @@
                     </p>
                     <h5 class="centered">Admin</h5>
                     <li class="mt">
-                        <a class="active" href="index.html">
+                        <a class="active" href="index.php">
                             <i class="fa fa-dashboard"></i>
                             <span>Panel de Control</span>
                         </a>
@@ -120,26 +132,14 @@
                         </a>
                         <ul class="sub">
                             <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
-                            <li><a href="listar_orden2.php">Bitacora</a></li>
+                            <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
+                            <li><a href="listar_compra.php">Bitacora de Compra</a></li>
                             <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
                             <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-truck"></i>
-                            <span>Inventario</span>
-                        </a>
-                        <ul class="sub">
-
-                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
-                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
-
-
-
-                        </ul>
-                    </li>
+                    
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-car"></i>
@@ -174,14 +174,15 @@
                 </ul>
                 <!-- sidebar menu end-->
             </div>
-        </aside>d-->
+        </aside>
+    <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora de Acumulado de Patio de Trituración</h3>
+        <h3><i class="fa fa-angle-right"></i> Bitacora de Compra</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -191,16 +192,20 @@
                   <tr>
                     
                     <th>Mina de Origen</th>
-                    <th>Total peso tara</th>
-                    <th class="hidden-phone">Total peso bruto</th>
-                    <th class="hidden-phone">Total peso neto</th>
                     
                     
+                    <th class="hidden-phone">Mineral</th>
+                    <th class="hidden-phone">Peso Bruto</th>
+                    <th class="hidden-phone">Peso Tara</th>
+                    <th class="hidden-phone">Peso Neto</th>
+                    <th class="hidden-phone">No. Ticket</th>
+                    <th class="hidden-phone">Fecha y hora de ingreso</th>
+                    <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT mina_origen, SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio GROUP BY mina_origen";
+                    $sql="SELECT * FROM patio_acopio WHERE origen=2";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
@@ -217,17 +222,36 @@
                       }
                       echo $nombre;
                     ?></td>
-                   
-                   
-                    <td><?php echo $mostrar['tara'] ?></td>
-                    <td><?php echo $mostrar['bruto'] ?></td>
-                    <td><?php echo $mostrar['neto'] ?></td>
                     
+                    <td><?php echo $mostrar['mineral'] ?></td>
+                    <td><?php echo $mostrar['p_bruto']." "."Kg" ?></td>
+                    <td><?php echo $mostrar['p_tara']." "."Kg" ?></td>
+                    <td><?php echo $mostrar['p_neto']." "."Kg" ?></td>
+                    <td><?php echo $mostrar['no_guia'] ?></td>
+                    <td><?php echo $mostrar['creado'] ?></td>
+                    <td>
+                     
+                      
+                    
+                      <a onclick="crearPDF(<?php echo $mostrar['id'] ?>)" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+                      <a href='./editar_orden2.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href='./eliminar_orden2.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      <a href='../patio/<?php echo $mostrar['no_guia'] . "/".$mostrar['ruta']?>'  target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-file-text-o "></i></a>
+                      
+                    </td>
                     
                   </tr>
                   <?php
                     }                 
                  ?>
+                 <tr>
+                   <td></td>
+                  
+                   <td>Total</td>
+                   <td><?php echo $tara." "."Kg" ?></td>
+                   <td><?php echo $bruto." "."Kg" ?></td>
+                   <td><?php echo $neto." "."Kg" ?></td>
+                 </tr>
                 </tbody>
               </table>
             </div>
@@ -274,6 +298,45 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
+  <script>
+    function addScript(url) {
+      var script = document.createElement('script');
+      script.type = 'application/javascript';
+      script.src = url;
+      document.head.appendChild(script);
+    }
+    addScript('https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js');
+
+    function crearPDF(id) {
+      var opt = {
+        margin: 1,
+        filename: 'patio.pdf',
+        image: {
+          type: 'jpeg',
+          quality: 0.98
+        },
+        html2canvas: {
+          scale: 3
+        },
+        jsPDF: {
+          unit: 'in',
+          format: 'a3',
+          orientation: 'portrait'
+        }
+      };
+
+      $.ajax({
+        type: 'POST',
+        data: "id=" + id,
+        url: 'php/patioPDF.php',
+        success: function(r) {
+          // console.log(r);
+          var worker = html2pdf().set(opt).from(r).toPdf().save();
+
+        }
+      });
+    }
+  </script>
  
 </body>
 

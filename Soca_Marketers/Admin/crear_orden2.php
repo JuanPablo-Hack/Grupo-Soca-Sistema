@@ -1,15 +1,15 @@
 <?php
-  include 'php/conexion.php';
-  $sql="SELECT * FROM trabajador";
-  $result = mysqli_query($conexion,$sql);
-  $sql2="SELECT * FROM unidades";
-  $result2 = mysqli_query($conexion,$sql2);
-  $sql3="SELECT * FROM minas";
-  $result3 = mysqli_query($conexion,$sql3);
-  $sql4="SELECT * FROM clientes";
-  $result4 = mysqli_query($conexion,$sql4);
-  $sql6="SELECT * FROM lotes";
-  $result6 = mysqli_query($conexion,$sql6);
+include 'php/conexion.php';
+$sql = "SELECT * FROM trabajador";
+$result = mysqli_query($conexion, $sql);
+$sql2 = "SELECT * FROM unidades";
+$result2 = mysqli_query($conexion, $sql2);
+$sql3 = "SELECT * FROM minas";
+$result3 = mysqli_query($conexion, $sql3);
+$sql4 = "SELECT * FROM clientes";
+$result4 = mysqli_query($conexion, $sql4);
+$sql6 = "SELECT * FROM lotes";
+$result6 = mysqli_query($conexion, $sql6);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,25 +54,25 @@
         *********************************************************************************************************************************************************** -->
     <!--header start-->
     <header class="header black-bg">
-      <div class="sidebar-toggle-box">
-        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-      </div>
-      <!--logo start-->
-      <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
-      <!--logo end-->
-     
-      <div class="top-menu">
-        <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
-        </ul>
-      </div>
-    </header>
-    <!--header end-->
-    <!-- **********************************************************************************************************************************************************
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
+            <!--logo end-->
+
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+        <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
-    <!--sidebar start-->
-    <aside>
+        <!--sidebar start-->
+        <aside>
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
@@ -81,7 +81,7 @@
                     </p>
                     <h5 class="centered">Admin</h5>
                     <li class="mt">
-                        <a class="active" href="index.html">
+                        <a class="active" href="index.php">
                             <i class="fa fa-dashboard"></i>
                             <span>Panel de Control</span>
                         </a>
@@ -132,26 +132,14 @@
                         </a>
                         <ul class="sub">
                             <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
-                            <li><a href="listar_orden2.php">Bitacora</a></li>
+                            <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
+                            <li><a href="listar_compra.php">Bitacora de Compra</a></li>
                             <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
                             <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-truck"></i>
-                            <span>Inventario</span>
-                        </a>
-                        <ul class="sub">
-
-                            <li><a href="listar_acomulado_mina.php">Acumulado en Mina</a></li>
-                            <li><a href="listar_acomulado.php">Acumulado en Patio</a></li>
-
-
-
-                        </ul>
-                    </li>
+                    
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-car"></i>
@@ -194,47 +182,63 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Crear Registro  de Patio de Trituración</h3>
+        <h3><i class="fa fa-angle-right"></i> Crear Registro de Patio de Trituración</h3>
         <div class="row mt">
           <!--  DATE PICKERS -->
           <div class="col-lg-12">
             <div class="form-panel">
               <form action="php/crear_orden2.php" class="form-horizontal style-form" method='POST' enctype="multipart/form-data">
-                
-              <div class="form-group">
+
+                <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Cliente</label>
                   <div class="col-sm-4">
-                  <select class="form-control" name='nombre_cliente'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result4)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
-              <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre de la mina</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='mina'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result3)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
+                    <select class="form-control" name='nombre_cliente'>
+                      <option value="0"></option>
+                      <?php
+                      while ($Row1 = mysqli_fetch_array($result4)) {
+                      ?>
+                        <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre']; ?></option>
+                      <?php
+                      }
+                      ?>
+                    </select>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tipo de mineral</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre de la mina</label>
                   <div class="col-sm-4">
-                    <input type="text" name='mineral' class="form-control">
+                    <select class="form-control" name='mina'>
+                      <option value="0"></option>
+                      <?php
+                      while ($Row1 = mysqli_fetch_array($result3)) {
+                      ?>
+                        <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre']; ?></option>
+                      <?php
+                      }
+                      ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Tipo de Mineral:</label>
+                  <div class="col-sm-4">
+                    <select class="form-control" name='mineral'>
+                      <option></option>
+                      <option>Breña</option>
+                      <option>Triturado</option>
+
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Origen:</label>
+                  <div class="col-sm-4">
+                    <select class="form-control" name='origen'>
+                      <option></option>
+                      <option value="1">Extracción</option>
+                      <option value="2">Compra</option>
+
+                    </select>
                   </div>
                 </div>
                 <div class="form-group">
@@ -242,43 +246,43 @@
                   <div class="col-sm-4">
                     <input type="text" name='no_guia' class="form-control">
                   </div>
-                </div> 
+                </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Unidad</label>
                   <div class="col-sm-4">
-                  <select class="form-control" name='unidad'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result2)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo'];?></option>
-                <?php
-                }
-                ?>
-                </select>
+                    <select class="form-control" name='unidad'>
+                      <option value="0"></option>
+                      <?php
+                      while ($Row1 = mysqli_fetch_array($result2)) {
+                      ?>
+                        <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['modelo']; ?></option>
+                      <?php
+                      }
+                      ?>
+                    </select>
                   </div>
                 </div>
-                
-               
-                
+
+
+
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Operador</label>
                   <div class="col-sm-4">
-                  <select class="form-control" name='operador'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
+                    <select class="form-control" name='operador'>
+                      <option value="0"></option>
+                      <?php
+                      while ($Row1 = mysqli_fetch_array($result)) {
+                      ?>
+                        <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre']; ?></option>
+                      <?php
+                      }
+                      ?>
+                    </select>
                   </div>
                 </div>
-               
-                
-                
+
+
+
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Peso Tara</label>
                   <div class="col-sm-4">
@@ -318,16 +322,16 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">No. Lote</label>
                   <div class="col-sm-4">
-                  <select class="form-control" name='lote'>
-                  
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result6)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['no_lote'];?></option>
-                <?php
-                }
-                ?>
-                </select>
+                    <select class="form-control" name='lote'>
+
+                      <?php
+                      while ($Row1 = mysqli_fetch_array($result6)) {
+                      ?>
+                        <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['no_lote']; ?></option>
+                      <?php
+                      }
+                      ?>
+                    </select>
                   </div>
                 </div>
                 <div class="form-group">
@@ -347,8 +351,8 @@
                       <div>
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> Selecciona las imagenes</span>
-                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                        <input type="file" class="default" name="foto" id="foto" />
+                          <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                          <input type="file" class="default" name="foto" id="foto" />
                         </span>
                         <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
                       </div>
@@ -356,7 +360,7 @@
                     <span class="label label-info">NOTE!</span>
                     <span>
                       Agrega las imagénes de evidencias de lo que esta sucediendo para generar el reporte
-                      </span>
+                    </span>
                   </div>
                 </div>
                 <div class="form-group">
@@ -365,40 +369,40 @@
                     <div class="fileupload fileupload-new" data-provides="fileupload">
                       <span class="btn btn-theme02 btn-file">
                         <span class="fileupload-new"><i class="fa fa-paperclip"></i> Seleccione Archivo PDF</span>
-                      <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                      <input type="file" class="default" name="archivo" id="archivo" />
+                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                        <input type="file" class="default" name="archivo" id="archivo" />
                       </span>
                       <span class="fileupload-preview" style="margin-left:5px;"></span>
                       <a href="advanced_form_components.html#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
                     </div>
                   </div>
                 </div>
-                
-                 
+
+
                 <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
-                      <button class="btn btn-theme" type="submit">Guardar</button>
-                      <button class="btn btn-theme04" type="button">Cancelar</button>
-                    </div>
+                  <div class="col-lg-offset-2 col-lg-10">
+                    <button class="btn btn-theme" type="submit">Guardar</button>
+                    <button class="btn btn-theme04" type="button">Cancelar</button>
                   </div>
-                
-               
+                </div>
+
+
               </form>
             </div>
-             
-          
-          <!-- col-lg-12-->
-        </div>
-            <!-- /form-panel -->
+
+
+            <!-- col-lg-12-->
           </div>
-          <!-- /col-lg-12 -->
+          <!-- /form-panel -->
+        </div>
+        <!-- /col-lg-12 -->
         </div>
         <!-- /row -->
         <!-- DATE TIME PICKERS -->
-       
-            <!-- /form-panel -->
-          </div>
-          <!-- /col-lg-12 -->
+
+        <!-- /form-panel -->
+        </div>
+        <!-- /col-lg-12 -->
         </div>
         <!-- row -->
       </section>
@@ -423,7 +427,7 @@
         </div>
         <a href="index.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
-          </a>
+        </a>
       </div>
     </footer>
     <!--footer end-->
