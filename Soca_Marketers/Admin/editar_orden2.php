@@ -315,17 +315,18 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Peso Tara</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='p_tara' class="form-control" value="<?php echo $p_tara;?>">
-                  </div>
-                </div>
-                <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Peso Bruto</label>
                   <div class="col-sm-4">
                     <input type="text" name='p_burto' class="form-control" value="<?php echo $p_bruto;?>">
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Peso Tara</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='p_tara' class="form-control" value="<?php echo $p_tara;?>">
+                  </div>
+                </div>
+                
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Peso Neto</label>
                   <div class="col-sm-4">
