@@ -1,17 +1,17 @@
 <?php
  include 'php/conexion.php';
- $sql="SELECT SUM(peso_1) as breña, SUM(peso_2) as triturado, SUM(peso_3) as triturado_finos, SUM(peso_4) as ganga FROM lotes_acopio";
+ $sql="SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=2";
  $result = mysqli_query($conexion,$sql);
  if ($Row = mysqli_fetch_array($result))
   {
     
     
-    $breña=$Row['breña'];
-    $triturado=$Row['triturado'];
-    $triturado_finos=$Row['triturado_finos'];
-    $ganga=$Row['ganga'];
+    $tara=$Row['tara'];
+    $bruto=$Row['bruto'];
+    $neto=$Row['neto'];
     
   }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -115,7 +115,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora de Lotes de Patio de trituracion</h3>
+        <h3><i class="fa fa-angle-right"></i> Bitacora de Compra</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -123,46 +123,31 @@
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>No. Lote</th>
-                    <th>Nombre de Mina</th>
-                    <th>Tipo de mineral</th>
-                    <th>Peso de breña</th>
-                    <th>Peso de 50 a 10 mm</th>
-                    <th>Peso de 10 mm a finos</th>
-                    <th>Peso de ganga</th>
-                   
-                    <th class="hidden-phone">Calidad</th>
                     
+                    <th>Mina de Origen</th>
+                    
+                    
+                    <th class="hidden-phone">Mineral</th>
+                    <th class="hidden-phone">Peso Bruto</th>
+                    <th class="hidden-phone">Peso Tara</th>
+                    <th class="hidden-phone">Peso Neto</th>
+                    <th class="hidden-phone">No. Ticket</th>
+                    <th class="hidden-phone">Fecha y hora de ingreso</th>
                     <th class="hidden-phone">Acciones</th>
-                   
-                   
                   </tr>
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT * FROM lotes_acopio";
+                    $sql="SELECT * FROM patio_acopio WHERE origen=2";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
                   <tr >
-                  
-                  <td><?php echo $mostrar['id'] ?></td>
+                    
                   <td><?php 
                     
                      
-                    $sql1="SELECT * FROM lotes WHERE id='".$mostrar['no_lote']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['no_lote'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                  <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM minas WHERE id='".$mostrar['mina']."'";
+                    $sql1="SELECT * FROM minas WHERE id='".$mostrar['mina_origen']."'";
                     $result1 = mysqli_query($conexion,$sql1);
                     if ($Row = mysqli_fetch_array($result1))
                       {
@@ -170,44 +155,23 @@
                       }
                       echo $nombre;
                     ?></td>
-                   
-                    <td><?php 
                     
-                     
-                    $sql1="SELECT * FROM materiales WHERE id='".$mostrar['material']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                   <td><?php echo $mostrar['peso_1']." "."Kg"?></td>
-                   <td><?php echo $mostrar['peso_2']." "."Kg"?></td>
-                   <td><?php echo $mostrar['peso_3']." "."Kg"?></td>
-                   <td><?php echo $mostrar['peso_4']." "."Kg"?></td>
-                    
-                  
-                   
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM calidad WHERE id='".$mostrar['calidad']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
-                     <td>
+                    <td><?php echo $mostrar['mineral'] ?></td>
+                    <td><?php echo $mostrar['p_bruto']." "."Kg" ?></td>
+                    <td><?php echo $mostrar['p_tara']." "."Kg" ?></td>
+                    <td><?php echo $mostrar['p_neto']." "."Kg" ?></td>
+                    <td><?php echo $mostrar['no_guia'] ?></td>
+                    <td><?php echo $mostrar['creado'] ?></td>
+                    <td>
                      
                       
                     
+                      <a onclick="crearPDF(<?php echo $mostrar['id'] ?>)" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+                      <a href='./editar_orden2.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href='./eliminar_orden2.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      <a href='../patio/<?php echo $mostrar['no_guia'] . "/".$mostrar['ruta']?>'  target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-file-text-o "></i></a>
                       
-                     
-                     
-                   </td>
+                    </td>
                     
                   </tr>
                   <?php
@@ -215,13 +179,11 @@
                  ?>
                  <tr>
                    <td></td>
-                   <td></td>
-                   <td></td>
+                  
                    <td>Total</td>
-                   <td><?php echo $breña." "."Kg" ?></td>
-                   <td><?php echo $triturado." "."Kg" ?></td>
-                   <td><?php echo $triturado_finos." "."Kg" ?></td>
-                   <td><?php echo $ganga." "."Kg" ?></td>
+                   <td><?php echo $tara." "."Kg" ?></td>
+                   <td><?php echo $bruto." "."Kg" ?></td>
+                   <td><?php echo $neto." "."Kg" ?></td>
                  </tr>
                 </tbody>
               </table>
@@ -269,6 +231,45 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
+  <script>
+    function addScript(url) {
+      var script = document.createElement('script');
+      script.type = 'application/javascript';
+      script.src = url;
+      document.head.appendChild(script);
+    }
+    addScript('https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js');
+
+    function crearPDF(id) {
+      var opt = {
+        margin: 1,
+        filename: 'patio.pdf',
+        image: {
+          type: 'jpeg',
+          quality: 0.98
+        },
+        html2canvas: {
+          scale: 3
+        },
+        jsPDF: {
+          unit: 'in',
+          format: 'a3',
+          orientation: 'portrait'
+        }
+      };
+
+      $.ajax({
+        type: 'POST',
+        data: "id=" + id,
+        url: 'php/patioPDF.php',
+        success: function(r) {
+          // console.log(r);
+          var worker = html2pdf().set(opt).from(r).toPdf().save();
+
+        }
+      });
+    }
+  </script>
  
 </body>
 
