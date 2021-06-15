@@ -71,76 +71,77 @@ if ($Row = mysqli_fetch_array($result)) {
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
     <aside>
-      <div id="sidebar" class="nav-collapse ">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered">
-            <a href="index.php"><img src="img/smm.png" class="img-circle" width="80"></a>
-          </p>
-          <h5 class="centered">Cliente</h5>
-          <li class="mt">
-            <a class="active" href="index.html">
-              <i class="fa fa-dashboard"></i>
-              <span>Panel de Control</span>
-            </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Prospección de Minas</span>
-            </a>
-            <ul class="sub">
-              <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
-            </ul>
-          </li>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered">
+                        <a href="index.php"><img src="img/smm.png" class="img-circle" width="80"></a>
+                    </p>
+                    <h5 class="centered">Cliente</h5>
+                    <li class="mt">
+                        <a class="active" href="index.html">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Panel de Control</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Prospección de Minas</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="listar_minas.php">Minas Registradas</a></li>
+                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+                        </ul>
+                    </li>
 
 
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-calendar"></i>
-              <span>Produccion en mina</span>
-            </a>
-            <ul class="sub">
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-calendar"></i>
+                            <span>Produccion en mina</span>
+                        </a>
+                        <ul class="sub">
 
-              <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
+                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
 
-              <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
+                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
-            </ul>
-          </li>
+                        </ul>
+                    </li>
 
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Salida de Patio de mina</span>
-            </a>
-            <ul class="sub">
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Salida de Patio de mina</span>
+                        </a>
+                        <ul class="sub">
 
-              <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
+                            <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
 
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Patio de trituracion</span>
-            </a>
-            <ul class="sub">
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Patio de trituracion</span>
+                        </a>
+                        <ul class="sub">
 
-              <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
-              <li><a href="listar_orden2.php">Bitacora de Compra</a></li>
-              <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
+                            <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
+                            <li><a href="listar_orden2.php">Bitacora de Compra</a></li>
+                            <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
-            </ul>
-          </li>
+                        </ul>
+                    </li>
+                    
 
 
 
-
-        </ul>
-        <!-- sidebar menu end-->
-      </div>
-    </aside>
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
     <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT

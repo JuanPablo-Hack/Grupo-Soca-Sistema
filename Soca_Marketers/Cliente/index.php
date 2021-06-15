@@ -94,6 +94,7 @@ if ($Row = mysqli_fetch_array($result2)) {
                             <span>Prospección de Minas</span>
                         </a>
                         <ul class="sub">
+                            <li><a href="listar_minas.php">Minas Registradas</a></li>
                             <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
                         </ul>
                     </li>

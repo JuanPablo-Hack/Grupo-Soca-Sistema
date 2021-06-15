@@ -42,25 +42,25 @@
         *********************************************************************************************************************************************************** -->
     <!--header start-->
     <header class="header black-bg">
-      <div class="sidebar-toggle-box">
-        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-      </div>
-      <!--logo start-->
-      <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
-      <!--logo end-->
-     
-      <div class="top-menu">
-        <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
-        </ul>
-      </div>
-    </header>
-    <!--header end-->
-    <!-- **********************************************************************************************************************************************************
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
+            <!--logo end-->
+
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+        <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
-    <!--sidebar start-->
-    <aside>
+        <!--sidebar start-->
+        <aside>
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
@@ -139,7 +139,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora de muestra de producción de mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Listado de Minas</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -147,49 +147,32 @@
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    <th>Folio</th>
-                    <th>Fecha de recepción de la muestra</th>
-                    <th>Material</th>
                     
-                    <th class="hidden-phone">Peso aproximado</th>
-                    <th class="hidden-phone">Fecha y hora del envío</th>
+                    <th>Nombre de Mina</th>
                     
-                   
-                    <th class="hidden-phone">Estado</th>
+                    <th class="hidden-phone">Coordenadas</th>
+                    <th class="hidden-phone">Nombre de Representante</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT * FROM prospecion_mina";
+                    $sql="SELECT * FROM minas";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
                   <tr >
-                  
-                    <td><?php echo $mostrar['folio'] ?></td>
-                    <td><?php echo $mostrar['creado'] ?></td>
-                    <td><?php echo $mostrar['material'] ?></td>
                     
-                    <td><?php echo $mostrar['peso'] ?></td>
-                    <td><?php echo $mostrar['fecha_envio'] ?></td>
-                    
-                  
-                    <td><?php
-                    
-                     
-                    $sql1="SELECT * FROM estados WHERE id='".$mostrar['estado']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
+                 
+                    <td><?php echo $mostrar['nombre'] ?></td>
+                    <td><?php echo $mostrar['coordenadas'] ?></td>
+                    <td><?php echo $mostrar['nombre_representante'] ?></td>
                     <td>
-                      
-                      <a href="../prospeccion/<?php echo $mostrar['folio'] . "/".$mostrar['ruta']?>" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
                      
+                      
+                      <a onclick="crearPDF(<?php echo $mostrar['id'] ?>)" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+                     
+                   
                       
                     </td>
                   </tr>
@@ -242,6 +225,45 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
+  <script>
+    function addScript(url) {
+      var script = document.createElement('script');
+      script.type = 'application/javascript';
+      script.src = url;
+      document.head.appendChild(script);
+    }
+    addScript('https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js');
+
+    function crearPDF(id) {
+      var opt = {
+        margin: 1,
+        filename: 'Registro_mina.pdf',
+        image: {
+          type: 'jpeg',
+          quality: 0.98
+        },
+        html2canvas: {
+          scale: 3
+        },
+        jsPDF: {
+          unit: 'in',
+          format: 'a3',
+          orientation: 'portrait'
+        }
+      };
+
+      $.ajax({
+        type: 'POST',
+        data: "id=" + id,
+        url: 'php/minasPDF.php',
+        success: function(r) {
+          // console.log(r);
+          var worker = html2pdf().set(opt).from(r).toPdf().save();
+
+        }
+      });
+    }
+  </script>
  
 </body>
 
