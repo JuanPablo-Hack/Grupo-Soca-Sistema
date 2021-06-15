@@ -133,7 +133,7 @@ if ($Row = mysqli_fetch_array($result2)) {
                         <ul class="sub">
 
                             <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
-                            <li><a href="listar_orden2.php">Bitacora de Compra</a></li>
+                            <li><a href="listar_compra.php">Bitacora de Compra</a></li>
                             <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
                         </ul>
