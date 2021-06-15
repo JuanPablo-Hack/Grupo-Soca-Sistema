@@ -77,7 +77,7 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered">
-                        <a href="#"><img src="img/smm.png" class="img-circle" width="80"></a>
+                        <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
                     <h5 class="centered">Admin</h5>
                     <li class="mt">
@@ -150,6 +150,7 @@
                             <li><a href="listar_unidades.php">Mis Unidades</a></li>
                             <li><a href="alta_trans.html">Dar de alta transportista</a></li>
                             <li><a href="listar_transportistas_empresas.php">Transportistas</a></li>
+                            <li><a href="alta_trans.php">Dar de alta operador externo</a></li>
                             <li><a href="listar_transportistas.php">Operadores Externos</a></li>
 
 

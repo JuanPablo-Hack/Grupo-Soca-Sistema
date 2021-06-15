@@ -1,3 +1,10 @@
+<?php
+  include 'php/conexion.php';
+  
+  $sql4="SELECT * FROM empresa_transportista";
+  $result4 = mysqli_query($conexion,$sql4);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -121,7 +128,7 @@
 
                         </ul>
                     </li>
-
+                    
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-car"></i>
@@ -177,33 +184,97 @@
 
                         <div class="form-panel">
                             <div class="form">
-                                <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/alta_transportista.php">
+                                <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/alta_trans.php">
                                     <h3>Datos de la empresa</h3>
                                     <hr>
+                                    <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Transportista</label>
+                                    <div class="col-sm-4">
+                                    <select class="form-control" name='nombre_trans'>
+                                    <option value="0"></option>
+                                    <?php 
+                                        while ($Row1 = mysqli_fetch_array($result4)) {			 
+                                    ?>
+                                    <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                    </select>
+                                    </div>
+                                    </div>
+                                    <h3>Datos del operador</h3>
+                                    <hr>
                                     <div class="form-group ">
-                                        <label for="firstname" class="control-label col-lg-2">Nombre de la empresa</label>
+                                        <label for="username" class="control-label col-lg-2">Nombre completo</label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" id="firstname" name="nombre_empresa" type="text" />
+                                            <input class="form-control " id="username" name="operador" type="text" />
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="lastname" class="control-label col-lg-2">RFC</label>
+                                        <label for="username" class="control-label col-lg-2">Cargo</label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" id="lastname" name="rfc" type="text" />
+                                            <input class="form-control " id="username" name="cargo" type="text" />
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="username" class="control-label col-lg-2">Dirección</label>
+                                        <label for="username" class="control-label col-lg-2">Licencia</label>
                                         <div class="col-lg-10">
-                                            <input class="form-control " id="username" name="dir_empresa" type="text" />
+                                            <input class="form-control " id="username" name="licencia" type="text" />
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="username" class="control-label col-lg-2">Telefono</label>
+                                        <label for="password" class="control-label col-lg-2">Telefono</label>
                                         <div class="col-lg-10">
-                                            <input class="form-control " id="username" name="tel_empresa" type="text" />
+                                            <input class="form-control " id="password" name="tel_operador" type="text" />
                                         </div>
                                     </div>
+                                    <h3>Datos de la unidad</h3>
+                                    <hr>
+                                    <div class="form-group ">
+                                        <label for="username" class="control-label col-lg-2">Modelo</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="username" name="modelo" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="username" class="control-label col-lg-2">Placas</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="username" name="placas" type="text" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2">Año</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="password" name="ano" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2">Capacidad</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="password" name="capcidad" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2">Color</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="password" name="color" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2">Seguro</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="password" name="seguro" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2">Descripción</label>
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="password" name="descripcion" type="text" />
+                                        </div>
+                                    </div>
+                                    
+
                                     <div class="form-group">
                                         <div class="col-lg-offset-2 col-lg-10">
                                             <button class="btn btn-theme" type="submit">Guardar</button>
