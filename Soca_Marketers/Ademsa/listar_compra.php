@@ -166,9 +166,7 @@
                      
                       
                     
-                      <a onclick="crearPDF(<?php echo $mostrar['id'] ?>)" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
-                      <a href='./editar_orden2.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                      <a href='./eliminar_orden2.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      
                       <a href='../patio/<?php echo $mostrar['no_guia'] . "/".$mostrar['ruta']?>'  target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-file-text-o "></i></a>
                       
                     </td>
