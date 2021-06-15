@@ -463,9 +463,9 @@ if ($Row = mysqli_fetch_array($result2)) {
         $(document).ready(function() {
             var unique_id = $.gritter.add({
                 // (string | mandatory) the heading of the notification
-                title: 'Bienvenido Administrador',
+                title: 'Bienvenido Cliente',
                 // (string | mandatory) the text inside the notification
-                text: 'Recuerda de revisar todos tus pendientes para la semana, éxito!.',
+                text: 'Le damos la bienvenida a nuestro sistema de control empresarial, para brindarle un mejor servicio!.',
                 // (string | optional) the image to display on the left
                 image: 'img/banner.png',
                 // (bool | optional) if you want it to fade out on its own or just sit there
