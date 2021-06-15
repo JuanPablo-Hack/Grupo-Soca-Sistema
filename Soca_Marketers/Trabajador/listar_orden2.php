@@ -241,10 +241,10 @@
                  ?>
                  <tr>
                    <td></td>
-                   <td></td>
+                  
                    <td>Total</td>
-                   <td><?php echo $tara." "."Kg" ?></td>
                    <td><?php echo $bruto." "."Kg" ?></td>
+                   <td><?php echo $tara." "."Kg" ?></td>
                    <td><?php echo $neto." "."Kg" ?></td>
                  </tr>
                 </tbody>
