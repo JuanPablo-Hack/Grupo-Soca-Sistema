@@ -168,7 +168,7 @@
                     <th>Mina Origen</th>
                     <th>Fecha y hora de recepción de la muestra</th>
                     <th>Material</th>
-                    <th>No. De muestra</th>
+                    <th>Folio</th>
                     <th class="hidden-phone">Peso aproximado</th>
                     <th class="hidden-phone">Fecha del envío</th>
                     
@@ -198,7 +198,7 @@
                     ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
                     <td><?php echo $mostrar['material'] ?></td>
-                    <td><?php echo $mostrar['no_muestras'] ?></td>
+                    <td><?php echo $mostrar['folio'] ?></td>
                     <td><?php echo $mostrar['peso'] ?></td>
                     <td><?php echo $mostrar['fecha_envio'] ?></td>
                     
