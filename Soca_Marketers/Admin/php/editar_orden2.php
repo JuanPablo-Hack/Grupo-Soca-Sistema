@@ -16,6 +16,7 @@ $hora=$_POST['hora_salida'];
 $mineral=$_POST['mineral'];
 $origen=$_POST['origen'];
 $recibe=$_POST['recibe'];
+$transportista_id=$_POST['transportista_id'];
 
 // Enviando Fotos
 $imagen = $_FILES['foto']['name'];
@@ -42,7 +43,7 @@ if ($conexion ->connect_error) {
         move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta_manifiestos_cliente . $_FILES['archivo']['name']);
         move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_manifiestos_cliente . $_FILES['foto']['name']);  
 
-        $sql="UPDATE patio_acopio SET mina_origen='$mina',unidad='$unidad',operador='$operador',no_guia='$no_guia',mineral='$mineral',origen='$origen',p_tara='$p_tara',p_bruto='$p_burto',p_neto='$p_neto',autoriza='$autoriza',recibe='$recibe',hora_ingreso='$hora',foto='$imagen',ruta='$archivo'  WHERE id='$id'";
+        $sql="UPDATE patio_acopio SET mina_origen='$mina',unidad='$unidad',operador='$operador',no_guia='$no_guia',mineral='$mineral',origen='$origen',p_tara='$p_tara',p_bruto='$p_burto',p_neto='$p_neto',autoriza='$autoriza',recibe='$recibe',hora_ingreso='$hora',transportista_id='$transportista_id',foto='$imagen',ruta='$archivo'  WHERE id='$id'";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");

@@ -32,6 +32,8 @@
   $result3 = mysqli_query($conexion,$sql3);
   $sql4="SELECT * FROM estados";
   $result4 = mysqli_query($conexion,$sql4);
+  $sql5="SELECT * FROM transportista";
+  $result5 = mysqli_query($conexion,$sql5);
   
 ?>
 <!DOCTYPE html>
@@ -355,6 +357,27 @@
                   <label class="col-sm-2 col-sm-2 control-label">No. Sello</label>
                   <div class="col-sm-4">
                     <input type="text" name='hora_salida' class="form-control" value="<?php echo $sello;?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. Sello</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='sello' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre del operador de transportista</label>
+                  <div class="col-sm-4">
+                  <select class="form-control" name='transportista_id'>
+                  <option value="0">Ninguna</option>
+                  <?php 
+                    while ($Row1 = mysqli_fetch_array($result5)) {			 
+                 ?>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['operador'];?></option>
+                <?php
+                }
+                ?>
+                </select>
                   </div>
                 </div>
                 <div class="form-group">
