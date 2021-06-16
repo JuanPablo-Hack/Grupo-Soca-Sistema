@@ -19,7 +19,7 @@ $transportista_id=$_POST['transportista_id'];
 $estado=1;
 
 // Enviando Fotos
-$imagen = addslashes(file_get_contents($_FILES['foto']['tmp_name']));
+$imagen = $_FILES['foto']['name'];
 
 //Mandando el archivo
 
@@ -40,6 +40,7 @@ if ($conexion ->connect_error) {
         }
 
         move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta_manifiestos_cliente . $_FILES['archivo']['name']);
+        move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_manifiestos_cliente . $_FILES['foto']['name']);
          
         $sql="INSERT INTO patio_acopio_salida(cliente,patio_destino,unidad,operador,no_guia,p_tara,p_bruto,p_neto,autoriza,hora_salida,no_lote,no_sello,m3,transportista_id,estado,foto,ruta) VALUES ('$nombre_cliente','$mina','$unidad','$operador','$no_guia','$p_tara','$p_burto','$p_neto','$autoriza','$hora','$lote','$sello','$m3','$transportista_id','$estado','$imagen','$archivo');";
         $resultado = $conexion->query($sql);

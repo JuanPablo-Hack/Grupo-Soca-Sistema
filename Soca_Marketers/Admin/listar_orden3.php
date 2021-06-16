@@ -1,5 +1,16 @@
 <?php
  include 'php/conexion.php';
+ $sql="SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio_salida";
+ $result = mysqli_query($conexion,$sql);
+ if ($Row = mysqli_fetch_array($result))
+  {
+    
+    
+    $tara=$Row['tara'];
+    $bruto=$Row['bruto'];
+    $neto=$Row['neto'];
+    
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -181,9 +192,13 @@
                   <tr>
                     
                     <th>Patio de Destino</th>
-                    <th>Unidad</th>
                    
-                    <th class="hidden-phone">Operador</th>
+                   
+                    <th class="hidden-phone">No. Guía</th>
+                   
+                    <th class="hidden-phone">Peso Bruto</th>
+                    <th class="hidden-phone">Peso Tara</th>
+                    <th class="hidden-phone">Peso Neto</th>
                     <th class="hidden-phone">Metros Cúbicos</th>
                     <th class="hidden-phone">Autoriza</th>
                     <th class="hidden-phone">Fecha y Hora de Salida</th>
@@ -200,29 +215,13 @@
                   <tr >
                     
                     <td><?php echo $mostrar['patio_destino'] ?></td>
-                    <td><?php 
                     
-                     
-                    $sql1="SELECT * FROM unidades WHERE id='".$mostrar['unidad']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['modelo'];  
-                      }
-                      echo $nombre;
-                    ?></td>
                    
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM trabajador WHERE id='".$mostrar['operador']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['nombre'];  
-                      }
-                      echo $nombre;
-                    ?></td>
+                    <td><?php echo $mostrar['no_guia'] ?></td>
+                   
+                    <td><?php echo $mostrar['p_bruto']." "."Kg" ?></td>
+                    <td><?php echo $mostrar['p_tara']." "."Kg" ?></td>
+                    <td><?php echo $mostrar['p_neto']." "."Kg" ?></td>
                     <td><?php echo $mostrar['m3'] ?></td>
                     <td><?php echo $mostrar['autoriza'] ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
@@ -231,7 +230,7 @@
                      
                       
                      
-
+                      <a href='../salidas/<?php echo $mostrar['no_guia'] . "/".$mostrar['foto']?>'  target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
                       <a href='./editar_orden3.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
                       <a href='./eliminar_orden3.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                       <a href='../salidas/<?php echo $mostrar['no_guia'] . "/".$mostrar['ruta']?>'  target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-file-text-o "></i></a>
@@ -241,6 +240,14 @@
                   <?php
                     }                 
                  ?>
+                 <tr>
+                   <td></td>
+                  
+                   <td>Total</td>
+                   <td><?php echo $bruto." "."Kg" ?></td>
+                   <td><?php echo $tara." "."Kg" ?></td>
+                   <td><?php echo $neto." "."Kg" ?></td>
+                 </tr>
                 </tbody>
               </table>
             </div>

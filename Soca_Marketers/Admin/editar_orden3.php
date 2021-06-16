@@ -371,7 +371,7 @@
                   </div>
                 </div>
                 <div class="form-group last">
-                  <label class="control-label col-md-3">Evidencias</label>
+                  <label class="control-label col-md-3">Evidencias del Camión</label>
                   <div class="col-md-9">
                     <div class="fileupload fileupload-new" data-provides="fileupload">
                       <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
@@ -382,29 +382,38 @@
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> Selecciona las imagenes</span>
                         <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                        <input type="file" name="foto" id="foto" />
+                        <input type="file" class="default" name="foto" id="foto" />
                         </span>
-                        <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Quitar</a>
+                        <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
                       </div>
                     </div>
-                    <span class="label label-info">NOTA!</span>
+                    <span class="label label-info">NOTE!</span>
                     <span>
                       Agrega las imagénes de evidencias de lo que esta sucediendo para generar el reporte
                       </span>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="control-label col-md-3">Evidencias en formato PDF</label>
-                  <div class="controls col-md-9">
+                <div class="form-group last">
+                  <label class="control-label col-md-3">Evidencias de la Pesada</label>
+                  <div class="col-md-9">
                     <div class="fileupload fileupload-new" data-provides="fileupload">
-                      <span class="btn btn-theme02 btn-file">
-                        <span class="fileupload-new"><i class="fa fa-paperclip"></i> Seleccione Archivo PDF</span>
-                      <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                      <input type="file" class="default" name="archivo" id="archivo" />
-                      </span>
-                      <span class="fileupload-preview" style="margin-left:5px;"></span>
-                      <a href="advanced_form_components.html#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
+                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
+                      </div>
+                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                      <div>
+                        <span class="btn btn-theme02 btn-file">
+                          <span class="fileupload-new"><i class="fa fa-paperclip"></i> Selecciona las imagenes</span>
+                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                        <input type="file" class="default" name="archivo" id="archivo" />
+                        </span>
+                        <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
+                      </div>
                     </div>
+                    <span class="label label-info">NOTE!</span>
+                    <span>
+                      Agrega las imagénes de evidencias de lo que esta sucediendo para generar el reporte
+                      </span>
                   </div>
                 </div>
                 <div class="form-group">

@@ -1,6 +1,6 @@
 <?php
  include 'php/conexion.php';
- $sql="SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio";
+ $sql="SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio where origen =1";
  $result = mysqli_query($conexion,$sql);
  if ($Row = mysqli_fetch_array($result))
   {
@@ -54,25 +54,25 @@
         *********************************************************************************************************************************************************** -->
     <!--header start-->
     <header class="header black-bg">
-            <div class="sidebar-toggle-box">
-                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-            </div>
-            <!--logo start-->
-            <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
-            <!--logo end-->
-
-            <div class="top-menu">
-                <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
-                </ul>
-            </div>
-        </header>
-        <!--header end-->
-        <!-- **********************************************************************************************************************************************************
+      <div class="sidebar-toggle-box">
+        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+      </div>
+      <!--logo start-->
+      <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
+      <!--logo end-->
+     
+      <div class="top-menu">
+        <ul class="nav pull-right top-menu">
+          <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+        </ul>
+      </div>
+    </header>
+    <!--header end-->
+    <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
-        <!--sidebar start-->
-        <aside>
+    <!--sidebar start-->
+    <aside>
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
@@ -132,7 +132,8 @@
                         </a>
                         <ul class="sub">
                             <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
-                            <li><a href="listar_orden2.php">Bitacora</a></li>
+                            <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
+                            <li><a href="listar_compra.php">Bitacora de Compra</a></li>
                             <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
                             <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
@@ -175,24 +176,24 @@
           <div class="content-panel">
             <div class="adv-table">
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
-                <thead>
+              <thead>
                   <tr>
                     
                     <th>Mina de Origen</th>
-                    <th>Unidad</th>
+                    
                     
                     <th class="hidden-phone">Mineral</th>
                     <th class="hidden-phone">Peso Bruto</th>
                     <th class="hidden-phone">Peso Tara</th>
                     <th class="hidden-phone">Peso Neto</th>
-                    <th class="hidden-phone">Autoriza</th>
+                    <th class="hidden-phone">No. Folio</th>
                     <th class="hidden-phone">Fecha y hora de ingreso</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT * FROM patio_acopio";
+                    $sql="SELECT * FROM patio_acopio WHERE origen=1";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
@@ -209,33 +210,23 @@
                       }
                       echo $nombre;
                     ?></td>
-                    <td><?php 
-                    
-                     
-                    $sql1="SELECT * FROM unidades WHERE id='".$mostrar['unidad']."'";
-                    $result1 = mysqli_query($conexion,$sql1);
-                    if ($Row = mysqli_fetch_array($result1))
-                      {
-                        $nombre= $Row['modelo'];  
-                      }
-                      echo $nombre;
-                    ?></td>
+                   
                     <td><?php echo $mostrar['mineral'] ?></td>
                     <td><?php echo $mostrar['p_bruto']." "."Kg" ?></td>
                     <td><?php echo $mostrar['p_tara']." "."Kg" ?></td>
                     <td><?php echo $mostrar['p_neto']." "."Kg" ?></td>
-                    <td><?php echo $mostrar['autoriza'] ?></td>
+                    <td><?php echo $mostrar['no_guia'] ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
                     <td>
                      
                       
-                    
-                    <a onclick="crearPDF(<?php echo $mostrar['id'] ?>)" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a> 
-                     <a href='./editar_orden2.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                     <a href='./eliminar_orden2.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
-                     <a href='../patio/<?php echo $mostrar['no_guia'] . "/".$mostrar['ruta']?>'  target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-file-text-o "></i></a>
-                     
-                   </td>
+                      <a href='../patio/<?php echo $mostrar['no_guia'] . "/".$mostrar['foto']?>'  target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
+                      <a onclick="crearPDF(<?php echo $mostrar['id'] ?>)" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+                      <a href='./editar_orden2.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      <a href='./eliminar_orden2.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      <a href='../patio/<?php echo $mostrar['no_guia'] . "/".$mostrar['ruta']?>'  target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-file-text-o "></i></a>
+                      
+                    </td>
                     
                   </tr>
                   <?php

@@ -168,6 +168,7 @@
                     
                       
                       <a href='../patio/<?php echo $mostrar['no_guia'] . "/".$mostrar['ruta']?>'  target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-file-text-o "></i></a>
+                      <a href='../patio/<?php echo $mostrar['no_guia'] . "/".$mostrar['foto']?>'  target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
                       
                     </td>
                     
