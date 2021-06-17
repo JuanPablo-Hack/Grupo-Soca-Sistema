@@ -10,6 +10,7 @@ $p_burto=$_POST['p_burto'];
 $p_neto=$_POST['p_neto'];
 $autoriza=$_POST['autoriza'];
 $no_guia=$_POST['no_guia'];
+$no_ticket=$_POST['no_ticket'];
 $mineral=$_POST['mineral'];
 $recibe=$_POST['recibe'];
 $hora=$_POST['hora_salida'];
@@ -47,7 +48,7 @@ if ($conexion ->connect_error) {
         move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta_manifiestos_cliente . $_FILES['archivo']['name']);
         move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_manifiestos_cliente . $_FILES['foto']['name']);     
 
-        $sql="INSERT INTO patio_acopio(cliente,mina_origen,unidad,operador,no_guia,mineral,origen,p_tara,p_bruto,p_neto,autoriza,recibe,hora_ingreso,no_lote,no_sello,transportista_id,estado,foto,ruta) VALUES ('$nombre_cliente','$mina','$unidad','$operador','$no_guia','$mineral','$origen','$p_tara','$p_burto','$p_neto','$autoriza','$recibe','$hora','$lote','$sello','$transportista_id','$estado','$imagen','$archivo');";
+        $sql="INSERT INTO patio_acopio(cliente,mina_origen,unidad,operador,no_guia,no_ticket,mineral,origen,p_tara,p_bruto,p_neto,autoriza,recibe,hora_ingreso,no_lote,no_sello,transportista_id,estado,foto,ruta) VALUES ('$nombre_cliente','$mina','$unidad','$operador','$no_guia','$no_ticket','$mineral','$origen','$p_tara','$p_burto','$p_neto','$autoriza','$recibe','$hora','$lote','$sello','$transportista_id','$estado','$imagen','$archivo');";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso_orden2.html");

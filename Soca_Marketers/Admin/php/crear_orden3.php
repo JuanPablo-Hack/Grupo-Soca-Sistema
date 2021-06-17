@@ -4,7 +4,7 @@ include 'conexion.php';
 
 $mina=$_POST['mina'];
 $unidad=$_POST['unidad'];
-$operador=$_POST['operador'];
+
 $p_tara=$_POST['p_tara'];
 $p_burto=$_POST['p_burto'];
 $p_neto=$_POST['p_neto'];
@@ -42,7 +42,7 @@ if ($conexion ->connect_error) {
         move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta_manifiestos_cliente . $_FILES['archivo']['name']);
         move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_manifiestos_cliente . $_FILES['foto']['name']);
          
-        $sql="INSERT INTO patio_acopio_salida(cliente,patio_destino,unidad,operador,no_guia,p_tara,p_bruto,p_neto,autoriza,hora_salida,no_lote,no_sello,m3,transportista_id,estado,foto,ruta) VALUES ('$nombre_cliente','$mina','$unidad','$operador','$no_guia','$p_tara','$p_burto','$p_neto','$autoriza','$hora','$lote','$sello','$m3','$transportista_id','$estado','$imagen','$archivo');";
+        $sql="INSERT INTO patio_acopio_salida(cliente,patio_destino,unidad,no_guia,p_tara,p_bruto,p_neto,autoriza,hora_salida,no_lote,no_sello,m3,transportista_id,estado,foto,ruta) VALUES ('$nombre_cliente','$mina','$unidad','$no_guia','$p_tara','$p_burto','$p_neto','$autoriza','$hora','$lote','$sello','$m3','$transportista_id','$estado','$imagen','$archivo');";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso_orden3.html");

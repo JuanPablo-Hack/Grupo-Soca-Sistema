@@ -295,6 +295,12 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">No. folio ticket</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='no_ticket' class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Tipo de Mineral:</label>
                   <div class="col-sm-4">
                     <select class="form-control" name='mineral'>

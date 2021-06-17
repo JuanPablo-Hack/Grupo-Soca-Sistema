@@ -163,7 +163,8 @@
                 </ul>
                 <!-- sidebar menu end-->
             </div>
-        </aside>->
+        </aside>
+    <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
@@ -186,7 +187,8 @@
                     <th class="hidden-phone">Peso Bruto</th>
                     <th class="hidden-phone">Peso Tara</th>
                     <th class="hidden-phone">Peso Neto</th>
-                    <th class="hidden-phone">No. Folio</th>
+                    <th class="hidden-phone">No. Guía</th>
+                    <th class="hidden-phone">No. Folio ticket</th>
                     <th class="hidden-phone">Fecha y hora de ingreso</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
@@ -216,6 +218,7 @@
                     <td><?php echo $mostrar['p_tara']." "."Kg" ?></td>
                     <td><?php echo $mostrar['p_neto']." "."Kg" ?></td>
                     <td><?php echo $mostrar['no_guia'] ?></td>
+                    <td><?php echo $mostrar['no_ticket'] ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
                     <td>
                      

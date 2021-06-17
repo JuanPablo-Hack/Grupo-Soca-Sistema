@@ -258,21 +258,7 @@
                 
                
                 
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Operador</label>
-                  <div class="col-sm-4">
-                  <select class="form-control" name='operador'>
-                  <option value="0"></option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                <?php
-                }
-                ?>
-                </select>
-                  </div>
-                </div>
+                
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Autoriza</label>
                   <div class="col-sm-4">
