@@ -26,6 +26,7 @@
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
+  <link rel="stylesheet" href="lib/sweetalert2/sweetalert2.min.css">
 
   <!-- =======================================================
     Template Name: Dashio
@@ -234,7 +235,7 @@
                       
                       <a href="../muestras/<?php echo $mostrar['folio'] . "/".$mostrar['ruta']?>" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
                       <a href='./editar_muestra.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                      <a href='./eliminar_muestra.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      <a onclick="deleteUser(<?php echo $mostrar['id'] ?>)" class="btn btn-danger btn-xs"> <i class="fa fa-trash-o "></i></a>
                       
                     </td>
                   </tr>
@@ -287,6 +288,67 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
+  <script src="lib/sweetalert2/sweetalert2.all.min.js"></script>
+  <!--script de sweetalert2-->
+  <script>
+    function deleteUser(id) {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+
+      swalWithBootstrapButtons.fire({
+        title: 'Estas seguro?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, eliminar',
+        cancelButtonText: 'No, cancelar!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          
+        
+        let data = new FormData();
+        data.append('id',id)
+        console.log(data)
+        fetch('php/eliminar_muestra.php',{
+          method: 'POST',
+          body: data
+        }).then((result) => result.text())
+        .then(result => {
+          if(result == 1){
+              swalWithBootstrapButtons.fire(
+              'Eliminado!',
+              'Su archivo ha sido eliminado.',
+              'success'
+            )
+            setTimeout (function (){
+              location.reload();
+            }, 3000);
+          }
+        }).catch(error => {
+          console.log(error);
+        })
+
+          
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Cancelado',
+            'Tu archivo ha sido salvado',
+            'error'
+          )
+        }
+      })
+
+    }
+  </script>
  
 </body>
 

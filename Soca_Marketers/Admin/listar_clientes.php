@@ -1,5 +1,5 @@
 <?php
- include 'php/conexion.php';
+include 'php/conexion.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +26,7 @@
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
+  <link rel="stylesheet" href="lib/sweetalert2/sweetalert2.min.css">
 
   <!-- =======================================================
     Template Name: Dashio
@@ -42,128 +43,128 @@
         *********************************************************************************************************************************************************** -->
     <!--header start-->
     <header class="header black-bg">
-            <div class="sidebar-toggle-box">
-                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-            </div>
-            <!--logo start-->
-            <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
-            <!--logo end-->
+      <div class="sidebar-toggle-box">
+        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+      </div>
+      <!--logo start-->
+      <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
+      <!--logo end-->
 
-            <div class="top-menu">
-                <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
-                </ul>
-            </div>
-        </header>
-        <!--header end-->
-        <!-- **********************************************************************************************************************************************************
+      <div class="top-menu">
+        <ul class="nav pull-right top-menu">
+          <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+        </ul>
+      </div>
+    </header>
+    <!--header end-->
+    <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
-        <!--sidebar start-->
-        <aside>
-            <div id="sidebar" class="nav-collapse ">
-                <!-- sidebar menu start-->
-                <ul class="sidebar-menu" id="nav-accordion">
-                    <p class="centered">
-                        <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
-                    </p>
-                    <h5 class="centered">Admin</h5>
-                    <li class="mt">
-                        <a class="active" href="index.php">
-                            <i class="fa fa-dashboard"></i>
-                            <span>Panel de Control</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Prospección de Minas</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_mina.html">Registrar Mina</a></li>
-                            <li><a href="listar_minas.php">Minas Registradas</a></li>
-                            <li><a href="alta_muestras.php">Registro de Muestra</a></li>
-                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
-                        </ul>
-                    </li>
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered">
+            <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
+          </p>
+          <h5 class="centered">Admin</h5>
+          <li class="mt">
+            <a class="active" href="index.php">
+              <i class="fa fa-dashboard"></i>
+              <span>Panel de Control</span>
+            </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Prospección de Minas</span>
+            </a>
+            <ul class="sub">
+              <li><a href="alta_mina.html">Registrar Mina</a></li>
+              <li><a href="listar_minas.php">Minas Registradas</a></li>
+              <li><a href="alta_muestras.php">Registro de Muestra</a></li>
+              <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+            </ul>
+          </li>
 
 
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-calendar"></i>
-                            <span>Produccion en mina</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="crear_lote.php">Crear Lote</a></li>
-                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-                            <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
-                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-calendar"></i>
+              <span>Produccion en mina</span>
+            </a>
+            <ul class="sub">
+              <li><a href="crear_lote.php">Crear Lote</a></li>
+              <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
+              <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
+              <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
-                        </ul>
-                    </li>
+            </ul>
+          </li>
 
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Salida de Patio de mina</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="crear_orden3.php">Crear Registro de Salida</a></li>
-                            <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Salida de Patio de mina</span>
+            </a>
+            <ul class="sub">
+              <li><a href="crear_orden3.php">Crear Registro de Salida</a></li>
+              <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
 
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Patio de trituracion</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
-                            <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
-                            <li><a href="listar_compra.php">Bitacora de Compra</a></li>
-                            <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
-                            <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Patio de trituracion</span>
+            </a>
+            <ul class="sub">
+              <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
+              <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
+              <li><a href="listar_compra.php">Bitacora de Compra</a></li>
+              <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
+              <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
-                        </ul>
-                    </li>
-                    
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-car"></i>
-                            <span>Unidades</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_unidad.html">Dar de alta</a></li>
-                            <li><a href="listar_unidades.php">Mis Unidades</a></li>
-                            <li><a href="alta_trans.html">Dar de alta transportista</a></li>
-                            <li><a href="listar_transportistas_empresas.php">Transportistas</a></li>
-                            <li><a href="alta_trans.php">Dar de alta operador externo</a></li>
-                            <li><a href="listar_transportistas.php">Operadores Externos</a></li>
+            </ul>
+          </li>
 
-
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-group"></i>
-                            <span>Usuarios</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
-                            <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-
-                            <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-                            <li><a href="listar_clientes.php">Listar Clientes</a></li>
-
-                        </ul>
-                    </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-car"></i>
+              <span>Unidades</span>
+            </a>
+            <ul class="sub">
+              <li><a href="alta_unidad.html">Dar de alta</a></li>
+              <li><a href="listar_unidades.php">Mis Unidades</a></li>
+              <li><a href="alta_trans.html">Dar de alta transportista</a></li>
+              <li><a href="listar_transportistas_empresas.php">Transportistas</a></li>
+              <li><a href="alta_trans.php">Dar de alta operador externo</a></li>
+              <li><a href="listar_transportistas.php">Operadores Externos</a></li>
 
 
-                </ul>
-                <!-- sidebar menu end-->
-            </div>
-        </aside>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-group"></i>
+              <span>Usuarios</span>
+            </a>
+            <ul class="sub">
+              <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
+              <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
+
+              <li><a href="alta_usuarios.html">Crear Cliente</a></li>
+              <li><a href="listar_clientes.php">Listar Clientes</a></li>
+
+            </ul>
+          </li>
+
+
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
     <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
@@ -171,7 +172,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-      <div class="row mt">
+        <div class="row mt">
           <div class="col-md-12">
             <div class="content-panel">
               <table class="table table-striped table-advance table-hover">
@@ -185,7 +186,7 @@
                     <th> Telefono</th>
                     <th> E-mail</th>
                     <th> Area</th>
-                   
+
                     <th> RFC</th>
                     <th> Direccion</th>
                     <th></th>
@@ -193,32 +194,33 @@
                 </thead>
                 <tbody>
                   <?php
-                    $sql="SELECT * FROM clientes";
-                    $resultado = $conexion->query($sql);
-                    while ($mostrar=mysqli_fetch_array($resultado)) {  
+                  $sql = "SELECT * FROM clientes";
+                  $resultado = $conexion->query($sql);
+                  while ($mostrar = mysqli_fetch_array($resultado)) {
                   ?>
-                  <tr>
-                    <td><?php echo $mostrar['id'] ?></td>
-                    <td><?php echo $mostrar['nombre'] ?></td>
-                    <td><?php echo $mostrar['nra'] ?></td>
-                    <td><?php echo $mostrar['telefono'] ?></td>
-                    <td><?php echo $mostrar['email'] ?></td>
-                    <td><?php echo $mostrar['area'] ?></td>
-                   
-                    <td><?php echo $mostrar['rfc'] ?></td>
-                    <td><?php echo $mostrar['dir'].",".$mostrar['cp'] ?></td>
-                    <td>
-                   
-                    <a href='./editar_usuarios.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
-                    <a href='./eliminar_cliente.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"> <i class="fa fa-trash-o "></i></a>
+                    <tr>
+                      <td><?php echo $mostrar['id'] ?></td>
+                      <td><?php echo $mostrar['nombre'] ?></td>
+                      <td><?php echo $mostrar['nra'] ?></td>
+                      <td><?php echo $mostrar['telefono'] ?></td>
+                      <td><?php echo $mostrar['email'] ?></td>
+                      <td><?php echo $mostrar['area'] ?></td>
 
-                    
-                    
-                    </td>
-                  </tr>
-                 <?php
-                    }                 
-                 ?>
+                      <td><?php echo $mostrar['rfc'] ?></td>
+                      <td><?php echo $mostrar['dir'] . "," . $mostrar['cp'] ?></td>
+                      <td>
+
+                        <a href='./editar_usuarios.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
+                        <!-- <button class="btn btn-danger btn-xs" onclick="deleteUser(1)"><i class="fa fa-trash-o "></i></button> -->
+                        <a onclick="deleteUser(<?php echo $mostrar['id'] ?>)" class="btn btn-danger btn-xs"> <i class="fa fa-trash-o "></i></a>
+
+
+
+                      </td>
+                    </tr>
+                  <?php
+                  }
+                  ?>
                 </tbody>
               </table>
             </div>
@@ -249,7 +251,7 @@
         </div>
         <a href="index.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
-          </a>
+        </a>
       </div>
     </footer>
     <!--footer end-->
@@ -265,6 +267,67 @@
   <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
+  <script src="lib/sweetalert2/sweetalert2.all.min.js"></script>
+  <!--script de sweetalert2-->
+  <script>
+    function deleteUser(id) {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+
+      swalWithBootstrapButtons.fire({
+        title: 'Estas seguro?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, eliminar',
+        cancelButtonText: 'No, cancelar!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          
+        
+        let data = new FormData();
+        data.append('id',id)
+        console.log(data)
+        fetch('php/eliminar_cliente.php',{
+          method: 'POST',
+          body: data
+        }).then((result) => result.text())
+        .then(result => {
+          if(result == 1){
+              swalWithBootstrapButtons.fire(
+              'Eliminado!',
+              'Su archivo ha sido eliminado.',
+              'success'
+            )
+            setTimeout (function (){
+              location.reload();
+            }, 3000);
+          }
+        }).catch(error => {
+          console.log(error);
+        })
+
+          
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Cancelado',
+            'Tu archivo ha sido salvado',
+            'error'
+          )
+        }
+      })
+
+    }
+  </script>
   <!--script for this page-->
   <script type="text/javascript">
     /* Formating function for row details */

@@ -26,6 +26,7 @@
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
+  <link rel="stylesheet" href="lib/sweetalert2/sweetalert2.min.css">
 
   <!-- =======================================================
     Template Name: Dashio
@@ -158,7 +159,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora de Lotes de produccion y acopio de mina</h3>
+        <h3><i class="fa fa-angle-right"></i> Bitacora de Lotes de produccion de mina</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -246,7 +247,7 @@
                     
                       <a onclick="crearPDF(<?php echo $mostrar['id'] ?>)" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
                       <a href='./editar_lote.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                      <a href='./eliminar_lote.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      <a onclick="deleteUser(<?php echo $mostrar['id'] ?>)" class="btn btn-danger btn-xs"> <i class="fa fa-trash-o "></i></a>
                       
                     </td>
                   </tr>
@@ -298,6 +299,67 @@
   <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
+  <script src="lib/sweetalert2/sweetalert2.all.min.js"></script>
+  <!--script de sweetalert2-->
+  <script>
+    function deleteUser(id) {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+
+      swalWithBootstrapButtons.fire({
+        title: 'Estas seguro?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, eliminar',
+        cancelButtonText: 'No, cancelar!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          
+        
+        let data = new FormData();
+        data.append('id',id)
+        console.log(data)
+        fetch('php/eliminar_lote.php',{
+          method: 'POST',
+          body: data
+        }).then((result) => result.text())
+        .then(result => {
+          if(result == 1){
+              swalWithBootstrapButtons.fire(
+              'Eliminado!',
+              'Su archivo ha sido eliminado.',
+              'success'
+            )
+            setTimeout (function (){
+              location.reload();
+            }, 3000);
+          }
+        }).catch(error => {
+          console.log(error);
+        })
+
+          
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Cancelado',
+            'Tu archivo ha sido salvado',
+            'error'
+          )
+        }
+      })
+
+    }
+  </script>
   <!--script for this page-->
   <script>
     function addScript(url) {
