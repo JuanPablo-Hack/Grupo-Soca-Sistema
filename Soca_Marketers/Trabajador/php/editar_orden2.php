@@ -6,7 +6,6 @@ $id=$_POST['identificador'];
 
 $mina=$_POST['mina'];
 $unidad=$_POST['unidad'];
-$operador=$_POST['operador'];
 $p_tara=$_POST['p_tara'];
 $p_burto=$_POST['p_burto'];
 $no_ticket=$_POST['no_ticket'];
@@ -44,7 +43,7 @@ if ($conexion ->connect_error) {
         move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta_manifiestos_cliente . $_FILES['archivo']['name']);
         move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_manifiestos_cliente . $_FILES['foto']['name']);  
 
-        $sql="UPDATE patio_acopio SET mina_origen='$mina',unidad='$unidad',operador='$operador',no_guia='$no_guia',no_ticket='$no_ticket',mineral='$mineral',origen='$origen',p_tara='$p_tara',p_bruto='$p_burto',p_neto='$p_neto',autoriza='$autoriza',recibe='$recibe',hora_ingreso='$hora',transportista_id='$transportista_id',foto='$imagen',ruta='$archivo'  WHERE id='$id'";
+        $sql="UPDATE patio_acopio SET mina_origen='$mina',unidad='$unidad',no_guia='$no_guia',no_ticket='$no_ticket',mineral='$mineral',origen='$origen',p_tara='$p_tara',p_bruto='$p_burto',p_neto='$p_neto',autoriza='$autoriza',recibe='$recibe',hora_ingreso='$hora',transportista_id='$transportista_id',foto='$imagen',ruta='$archivo'  WHERE id='$id'";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");
