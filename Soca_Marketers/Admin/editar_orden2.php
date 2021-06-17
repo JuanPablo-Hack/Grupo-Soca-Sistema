@@ -15,6 +15,7 @@
     $p_tara=$Row['p_tara'];
     $p_bruto=$Row['p_bruto'];
     $p_neto=$Row['p_neto'];
+    $origen=$Row['origen'];
     $autoriza=$Row['autoriza'];
     $hora_salida=$Row['hora_ingreso'];
     $mineral=$Row['mineral'];
@@ -295,7 +296,7 @@
                   <label class="col-sm-2 col-sm-2 control-label">Origen:</label>
                   <div class="col-sm-4">
                     <select class="form-control" name='origen'>
-                      <option></option>
+                      <option value="<?php echo $origen;?>"></option>
                       <option value="1">Extracción</option>
                       <option value="2">Compra</option>
 
@@ -345,12 +346,7 @@
                     <input type="text" name='hora_salida' class="form-control" value="<?php echo $sello;?>">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">No. Sello</label>
-                  <div class="col-sm-4">
-                    <input type="text" name='sello' class="form-control">
-                  </div>
-                </div>
+                
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Nombre del operador de transportista</label>
                   <div class="col-sm-4">

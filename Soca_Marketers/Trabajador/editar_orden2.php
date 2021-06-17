@@ -16,6 +16,7 @@
     $p_bruto=$Row['p_bruto'];
     $p_neto=$Row['p_neto'];
     $autoriza=$Row['autoriza'];
+    $origen=$Row['origen'];
     $hora_salida=$Row['hora_ingreso'];
     $mineral=$Row['mineral'];
     $recibe=$Row['recibe'];
@@ -282,7 +283,7 @@
                   <label class="col-sm-2 col-sm-2 control-label">Origen:</label>
                   <div class="col-sm-4">
                     <select class="form-control" name='origen'>
-                      <option></option>
+                      <option value="<?php echo $origen;?>"></option>
                       <option value="1">Extracción</option>
                       <option value="2">Compra</option>
 
