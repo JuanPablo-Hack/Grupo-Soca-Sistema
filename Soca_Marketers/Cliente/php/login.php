@@ -6,7 +6,6 @@ include './conexion.php';
 
 $user = $_POST['user'];
 $password = sha1($_POST['contra']);
-echo $password;
 
 if ($conexion ->connect_error) {
     die("Conexion Fallida: " . $conn ->connect_error);
@@ -19,6 +18,7 @@ if ($conexion ->connect_error) {
         if($hash==$password){
             //$_SESSION['email'] = $correo;	
 	        //Redirecciono al usuario a la página principal del sitio.
+            $_SESSION['user'] = $row['id'];
 	        header("HTTP/1.1 302 Moved Temporarily"); 
             header("Location: ../index.php");
         }else{

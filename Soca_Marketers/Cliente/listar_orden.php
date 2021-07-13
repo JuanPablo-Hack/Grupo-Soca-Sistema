@@ -1,5 +1,7 @@
 <?php
- include 'php/conexion.php';
+session_start();
+$id = $_SESSION['user'];
+include 'php/conexion.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +53,7 @@
      
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+          <li><a class="logout" href="./php/logout.php">Cerrar Sesión</a></li>
         </ul>
       </div>
     </header>
@@ -161,7 +163,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT * FROM produccion_mina";
+                    $sql="SELECT * FROM produccion_mina WHERE cliente='$id'";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>

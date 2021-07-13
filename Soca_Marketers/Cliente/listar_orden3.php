@@ -1,4 +1,7 @@
 <?php
+session_start();
+$id = $_SESSION['user'];
+
  include 'php/conexion.php';
  $sql="SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio_salida";
  $result = mysqli_query($conexion,$sql);
@@ -62,7 +65,7 @@
      
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+          <li><a class="logout" href="./php/logout.php">Cerrar Sesión</a></li>
         </ul>
       </div>
     </header>
@@ -174,7 +177,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT * FROM patio_acopio_salida";
+                    $sql="SELECT * FROM patio_acopio_salida WHERE cliente = '$id'";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>

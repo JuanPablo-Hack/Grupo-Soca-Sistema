@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include 'php/conexion.php';
 $sql = "SELECT SUM(peso_1) as breña, SUM(peso_2) as triturado, SUM(peso_3) as triturado_finos, SUM(peso_4) as ganga FROM lotes_acopio";
 $result = mysqli_query($conexion, $sql);
@@ -61,7 +63,7 @@ if ($Row = mysqli_fetch_array($result)) {
 
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+          <li><a class="logout" href="./php/logout.php">Cerrar Sesión</a></li>
         </ul>
       </div>
     </header>

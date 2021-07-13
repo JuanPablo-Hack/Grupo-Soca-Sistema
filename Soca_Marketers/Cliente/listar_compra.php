@@ -1,4 +1,8 @@
 <?php
+
+session_start();
+$id = $_SESSION['user'];
+
  include 'php/conexion.php';
  $sql="SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=2";
  $result = mysqli_query($conexion,$sql);
@@ -174,7 +178,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT * FROM patio_acopio WHERE origen=2";
+                    $sql="SELECT * FROM patio_acopio WHERE origen=2 AND cliente='$id'";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>

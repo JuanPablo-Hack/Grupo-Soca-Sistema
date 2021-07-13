@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 include 'php/conexion.php';
 $sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=1";
 $result = mysqli_query($conexion, $sql);
@@ -65,7 +68,7 @@ if ($Row = mysqli_fetch_array($result2)) {
      
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+          <li><a class="logout" href="./php/logout.php">Cerrar Sesión</a></li>
         </ul>
       </div>
     </header>
