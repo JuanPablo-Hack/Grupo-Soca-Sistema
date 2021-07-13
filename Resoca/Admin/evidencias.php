@@ -1,7 +1,7 @@
 <?php
   $id=$_GET['id'];
   include 'php/conexion.php';
-  $sql="SELECT * FROM evidencias WHERE id='".$id."'";
+  $sql="SELECT * FROM evidencias WHERE folio='".$id."'";
   $result = mysqli_query($conexion,$sql);
   if ($Row = mysqli_fetch_array($result))
   {
