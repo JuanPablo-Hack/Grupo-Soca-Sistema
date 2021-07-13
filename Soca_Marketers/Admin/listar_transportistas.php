@@ -1,5 +1,6 @@
 <?php
  include 'php/conexion.php';
+ $id_empresa=$_GET['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -139,8 +140,6 @@
                             <li><a href="listar_unidades.php">Mis Unidades</a></li>
                             <li><a href="alta_trans.html">Dar de alta transportista</a></li>
                             <li><a href="listar_transportistas_empresas.php">Transportistas</a></li>
-                            <li><a href="alta_trans.php">Dar de alta operador externo</a></li>
-                            <li><a href="listar_transportistas.php">Operadores Externos</a></li>
 
 
                         </ul>
@@ -193,7 +192,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT * FROM transportista";
+                    $sql="SELECT * FROM transportista WHERE id_trans='$id_empresa'";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>

@@ -1,5 +1,7 @@
 <?php
   include 'php/conexion.php';
+  $id =$_GET['id'];
+
   
   $sql4="SELECT * FROM empresa_transportista";
   $result4 = mysqli_query($conexion,$sql4);
@@ -185,21 +187,12 @@
                         <div class="form-panel">
                             <div class="form">
                                 <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="./php/alta_trans.php">
-                                    <h3>Datos de la empresa</h3>
-                                    <hr>
                                     <div class="form-group">
-                                    <label class="col-sm-2 col-sm-2 control-label">Transportista</label>
                                     <div class="col-sm-4">
-                                    <select class="form-control" name='nombre_trans'>
-                                    <option value="0"></option>
-                                    <?php 
-                                        while ($Row1 = mysqli_fetch_array($result4)) {			 
-                                    ?>
-                                    <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre'];?></option>
-                                    <?php
-                                    }
-                                    ?>
-                                    </select>
+
+                                        <div class="col-lg-10">
+                                            <input class="form-control " id="username" name="empresa_id" value="<?php echo $id?>" type="hidden" />
+                                        </div>
                                     </div>
                                     </div>
                                     <h3>Datos del operador</h3>
