@@ -320,14 +320,14 @@ $sql5="SELECT * FROM transportista";
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Nombre del operador de transportista</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Placas de la unidad de la transportista</label>
                   <div class="col-sm-4">
                   <select class="form-control" name='transportista_id'>
                   <option value="0">Ninguna</option>
                   <?php 
                     while ($Row1 = mysqli_fetch_array($result5)) {			 
                  ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['operador'];?></option>
+                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['placas'];?></option>
                 <?php
                 }
                 ?>
