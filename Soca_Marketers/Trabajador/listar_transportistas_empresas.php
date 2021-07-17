@@ -139,8 +139,6 @@
                             <li><a href="listar_unidades.php">Mis Unidades</a></li>
                             <li><a href="alta_trans.html">Dar de alta transportista</a></li>
                             <li><a href="listar_transportistas_empresas.php">Transportistas</a></li>
-                            <li><a href="alta_trans.php">Alta de Operadores Externos</a></li>
-                            <li><a href="listar_transportistas.php">Operadores Externos</a></li>
                             
 
                         </ul>
@@ -194,9 +192,13 @@
                      
                       
                     
-
+                      <a href='./alta_trans.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+                      
                       <a href='./editar_transportista.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                      
                       <a onclick="deleteUser(<?php echo $mostrar['id'] ?>)" class="btn btn-danger btn-xs"> <i class="fa fa-trash-o "></i></a>
+                      
+                      <a href='./listar_transportistas.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-primary btn-xs"><i class="fa fa-user"></i></a>
                       
                     </td>
                   </tr>

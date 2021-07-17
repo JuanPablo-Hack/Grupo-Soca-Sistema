@@ -2,10 +2,11 @@
 
 include 'conexion.php';
 
-$nombre_empresa=$_POST['nombre_trans'];
-$rfc=$_POST['rfc'];
-$dir_empresa=$_POST['dir_empresa'];
-$tel_empresa=$_POST['tel_empresa'];
+//Datos de la empresa 
+
+$id_trans=$_POST['empresa_id'];
+
+
 // Datos del operador
 $operador=$_POST['operador'];
 $cargo=$_POST['cargo'];
@@ -25,7 +26,7 @@ if ($conexion ->connect_error) {
 }else{
    
          
-        $sql="INSERT INTO transportista (id_trans, operador, cargo, licencia, tel_operador, modelo, placas, ano, capcidad, color, seguro, descripcion) VALUES ('$nombre_empresa','$operador', '$cargo', '$licencia', '$tel_operador', '$modelo', '$placas', '$ano', '$capcidad', '$color', '$seguro', '$descripcion')";
+        $sql="INSERT INTO transportista (id_trans, operador, cargo, licencia, tel_operador, modelo, placas, ano, capcidad, color, seguro, descripcion) VALUES ('$id_trans','$operador', '$cargo', '$licencia', '$tel_operador', '$modelo', '$placas', '$ano', '$capcidad', '$color', '$seguro', '$descripcion')";
         $resultado = $conexion->query($sql);
         if($resultado){
             header("Refresh:0; url=../registro_exitoso.html");

@@ -79,9 +79,9 @@ $sql5="SELECT * FROM transportista";
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered">
-                        <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
+                        <a href="index.php"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
-                    <h5 class="centered">Admin</h5>
+                    <h5 class="centered">Supervisor</h5>
                     <li class="mt">
                         <a class="active" href="index.php">
                             <i class="fa fa-dashboard"></i>
@@ -141,7 +141,7 @@ $sql5="SELECT * FROM transportista";
 
                         </ul>
                     </li>
-                    
+
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-car"></i>
@@ -152,26 +152,11 @@ $sql5="SELECT * FROM transportista";
                             <li><a href="listar_unidades.php">Mis Unidades</a></li>
                             <li><a href="alta_trans.html">Dar de alta transportista</a></li>
                             <li><a href="listar_transportistas_empresas.php">Transportistas</a></li>
-                            <li><a href="alta_trans.php">Dar de alta operador externo</a></li>
-                            <li><a href="listar_transportistas.php">Operadores Externos</a></li>
-
+                            
 
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-group"></i>
-                            <span>Usuarios</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
-                            <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
 
-                            <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-                            <li><a href="listar_clientes.php">Listar Clientes</a></li>
-
-                        </ul>
-                    </li>
 
 
                 </ul>
