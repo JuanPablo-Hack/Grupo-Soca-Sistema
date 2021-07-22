@@ -186,9 +186,9 @@ $id = $_SESSION['user'];
                     <td><?php echo $mostrar['patio_destino'] ?></td>
                     <td><?php echo $mostrar['no_guia'] ?></td>
                    
-                   <td><?php echo $mostrar['p_bruto']." "."Kg" ?></td>
-                   <td><?php echo $mostrar['p_tara']." "."Kg" ?></td>
-                   <td><?php echo $mostrar['p_neto']." "."Kg" ?></td>
+                    <td><?php echo number_format($mostrar['p_bruto'],0, '.',',')." "."Kg" ?></td>
+                    <td><?php echo number_format($mostrar['p_tara'],0, '.',',')." "."Kg" ?></td>
+                    <td><?php echo number_format($mostrar['p_neto'],0, '.',',')." "."Kg" ?></td>
                     <td><?php echo $mostrar['m3'] ?></td>
                     <td><?php echo $mostrar['autoriza'] ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
@@ -211,9 +211,9 @@ $id = $_SESSION['user'];
                    <td></td>
                   
                    <td>Total</td>
-                   <td><?php echo $bruto." "."Kg" ?></td>
-                   <td><?php echo $tara." "."Kg" ?></td>
-                   <td><?php echo $neto." "."Kg" ?></td>
+                   <td><?php echo number_format($bruto,0, '.',',')." "."Kg" ?></td>
+                   <td><?php echo number_format($tara,0, '.',',')." "."Kg" ?></td>
+                   <td><?php echo number_format($neto,0, '.',',')." "."Kg" ?></td>
                  </tr>
                 </tbody>
               </table>

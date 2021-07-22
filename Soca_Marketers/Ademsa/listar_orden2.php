@@ -79,7 +79,7 @@
                     <p class="centered">
                         <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
                     </p>
-                    <h5 class="centered">Admin</h5>
+                    <h5 class="centered">Ademsa</h5>
                     <li class="mt">
                         <a class="active" href="index.php">
                             <i class="fa fa-dashboard"></i>
@@ -157,9 +157,9 @@
                     ?></td>
                    
                     <td><?php echo $mostrar['mineral'] ?></td>
-                    <td><?php echo $mostrar['p_bruto']." "."Kg" ?></td>
-                    <td><?php echo $mostrar['p_tara']." "."Kg" ?></td>
-                    <td><?php echo $mostrar['p_neto']." "."Kg" ?></td>
+                    <td><?php echo number_format($mostrar['p_bruto'],0, '.',',')." "."Kg" ?></td>
+                    <td><?php echo number_format($mostrar['p_tara'],0, '.',',')." "."Kg" ?></td>
+                    <td><?php echo number_format($mostrar['p_neto'],0, '.',',')." "."Kg" ?></td>
                     <td><?php echo $mostrar['no_guia'] ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
                     <td>
@@ -179,9 +179,9 @@
                    <td></td>
                   
                    <td>Total</td>
-                   <td><?php echo $bruto." "."Kg" ?></td>
-                   <td><?php echo $tara." "."Kg" ?></td>
-                   <td><?php echo $neto." "."Kg" ?></td>
+                   <td><?php echo number_format($bruto,0, '.',',')." "."Kg" ?></td>
+                   <td><?php echo number_format($tara,0, '.',',')." "."Kg" ?></td>
+                   <td><?php echo number_format($neto,0, '.',',')." "."Kg" ?></td>
                  </tr>
                 </tbody>
               </table>
