@@ -10,8 +10,8 @@ $sql4 = "SELECT * FROM clientes";
 $result4 = mysqli_query($conexion, $sql4);
 $sql6 = "SELECT * FROM lotes";
 $result6 = mysqli_query($conexion, $sql6);
-$sql5="SELECT * FROM transportista";
-  $result5 = mysqli_query($conexion,$sql5);
+$sql5 = "SELECT * FROM transportista";
+$result5 = mysqli_query($conexion, $sql5);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,113 +56,113 @@ $sql5="SELECT * FROM transportista";
         *********************************************************************************************************************************************************** -->
     <!--header start-->
     <header class="header black-bg">
-            <div class="sidebar-toggle-box">
-                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-            </div>
-            <!--logo start-->
-            <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
-            <!--logo end-->
+      <div class="sidebar-toggle-box">
+        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+      </div>
+      <!--logo start-->
+      <a href="index.php" class="logo"><b>Grupo<span>SOCA</span></b></a>
+      <!--logo end-->
 
-            <div class="top-menu">
-                <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
-                </ul>
-            </div>
-        </header>
-        <!--header end-->
-        <!-- **********************************************************************************************************************************************************
+      <div class="top-menu">
+        <ul class="nav pull-right top-menu">
+          <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
+        </ul>
+      </div>
+    </header>
+    <!--header end-->
+    <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
-        <!--sidebar start-->
-        <aside>
-            <div id="sidebar" class="nav-collapse ">
-                <!-- sidebar menu start-->
-                <ul class="sidebar-menu" id="nav-accordion">
-                    <p class="centered">
-                        <a href="index.php"><img src="img/smm.png" class="img-circle" width="80"></a>
-                    </p>
-                    <h5 class="centered">Supervisor</h5>
-                    <li class="mt">
-                        <a class="active" href="index.php">
-                            <i class="fa fa-dashboard"></i>
-                            <span>Panel de Control</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Prospección de Minas</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_mina.html">Registrar Mina</a></li>
-                            <li><a href="listar_minas.php">Minas Registradas</a></li>
-                            <li><a href="alta_muestras.php">Registro de Muestra</a></li>
-                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
-                        </ul>
-                    </li>
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered">
+            <a href="index.php"><img src="img/smm.png" class="img-circle" width="80"></a>
+          </p>
+          <h5 class="centered">Supervisor</h5>
+          <li class="mt">
+            <a class="active" href="index.php">
+              <i class="fa fa-dashboard"></i>
+              <span>Panel de Control</span>
+            </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Prospección de Minas</span>
+            </a>
+            <ul class="sub">
+              <li><a href="alta_mina.html">Registrar Mina</a></li>
+              <li><a href="listar_minas.php">Minas Registradas</a></li>
+              <li><a href="alta_muestras.php">Registro de Muestra</a></li>
+              <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+            </ul>
+          </li>
 
 
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-calendar"></i>
-                            <span>Produccion en mina</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="crear_lote.php">Crear Lote</a></li>
-                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-                            <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
-                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-calendar"></i>
+              <span>Produccion en mina</span>
+            </a>
+            <ul class="sub">
+              <li><a href="crear_lote.php">Crear Lote</a></li>
+              <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
+              <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
+              <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
-                        </ul>
-                    </li>
+            </ul>
+          </li>
 
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Salida de Patio de mina</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="crear_orden3.php">Crear Registro de Salida</a></li>
-                            <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Salida de Patio de mina</span>
+            </a>
+            <ul class="sub">
+              <li><a href="crear_orden3.php">Crear Registro de Salida</a></li>
+              <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
 
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Patio de trituracion</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
-                            <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
-                            <li><a href="listar_compra.php">Bitacora de Compra</a></li>
-                            <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
-                            <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Patio de trituracion</span>
+            </a>
+            <ul class="sub">
+              <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
+              <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
+              <li><a href="listar_compra.php">Bitacora de Compra</a></li>
+              <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
+              <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
-                        </ul>
-                    </li>
+            </ul>
+          </li>
 
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-car"></i>
-                            <span>Unidades</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_unidad.html">Dar de alta</a></li>
-                            <li><a href="listar_unidades.php">Mis Unidades</a></li>
-                            <li><a href="alta_trans.html">Dar de alta transportista</a></li>
-                            <li><a href="listar_transportistas_empresas.php">Transportistas</a></li>
-                            
-
-                        </ul>
-                    </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-car"></i>
+              <span>Unidades</span>
+            </a>
+            <ul class="sub">
+              <li><a href="alta_unidad.html">Dar de alta</a></li>
+              <li><a href="listar_unidades.php">Mis Unidades</a></li>
+              <li><a href="alta_trans.html">Dar de alta transportista</a></li>
+              <li><a href="listar_transportistas_empresas.php">Transportistas</a></li>
 
 
+            </ul>
+          </li>
 
-                </ul>
-                <!-- sidebar menu end-->
-            </div>
-        </aside>
+
+
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
     <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
@@ -221,12 +221,19 @@ $sql5="SELECT * FROM transportista";
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Origen:</label>
                   <div class="col-sm-4">
-                    <select class="form-control" name='origen'>
+                    <select class="form-control" name='origen' id="carretera" onchange="myFunction()">
                       <option></option>
                       <option value="1">Extracción</option>
                       <option value="2">Compra</option>
 
                     </select>
+                  </div>
+                </div>
+
+                <div class="form-group" id="nombre_extractor" style="display: none;">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre del Extractor</label>
+                  <div class="col-sm-4">
+                    <input type="text" name='extractor' class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
@@ -259,7 +266,7 @@ $sql5="SELECT * FROM transportista";
 
 
 
-              
+
 
 
                 <div class="form-group">
@@ -273,7 +280,7 @@ $sql5="SELECT * FROM transportista";
                   <div class="col-sm-4">
                     <input type="text" name='p_tara' class="form-control">
                   </div>
-                </div> 
+                </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Peso Neto</label>
                   <div class="col-sm-4">
@@ -322,16 +329,16 @@ $sql5="SELECT * FROM transportista";
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Placas de la unidad de la transportista</label>
                   <div class="col-sm-4">
-                  <select class="form-control" name='transportista_id'>
-                  <option value="0">Ninguna</option>
-                  <?php 
-                    while ($Row1 = mysqli_fetch_array($result5)) {			 
-                 ?>
-                <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['placas'];?></option>
-                <?php
-                }
-                ?>
-                </select>
+                    <select class="form-control" name='transportista_id'>
+                      <option value="0">Ninguna</option>
+                      <?php
+                      while ($Row1 = mysqli_fetch_array($result5)) {
+                      ?>
+                        <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['placas']; ?></option>
+                      <?php
+                      }
+                      ?>
+                    </select>
                   </div>
                 </div>
                 <div class="form-group last">
@@ -345,8 +352,8 @@ $sql5="SELECT * FROM transportista";
                       <div>
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> Selecciona las imagenes</span>
-                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                        <input type="file" class="default" name="foto" id="foto" />
+                          <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                          <input type="file" class="default" name="foto" id="foto" />
                         </span>
                         <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
                       </div>
@@ -354,7 +361,7 @@ $sql5="SELECT * FROM transportista";
                     <span class="label label-info">NOTE!</span>
                     <span>
                       Agrega las imagénes de evidencias de lo que esta sucediendo para generar el reporte
-                      </span>
+                    </span>
                   </div>
                 </div>
                 <div class="form-group last">
@@ -368,8 +375,8 @@ $sql5="SELECT * FROM transportista";
                       <div>
                         <span class="btn btn-theme02 btn-file">
                           <span class="fileupload-new"><i class="fa fa-paperclip"></i> Selecciona las imagenes</span>
-                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                        <input type="file" class="default" name="archivo" id="archivo" />
+                          <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                          <input type="file" class="default" name="archivo" id="archivo" />
                         </span>
                         <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
                       </div>
@@ -377,7 +384,7 @@ $sql5="SELECT * FROM transportista";
                     <span class="label label-info">NOTE!</span>
                     <span>
                       Agrega las imagénes de evidencias de lo que esta sucediendo para generar el reporte
-                      </span>
+                    </span>
                   </div>
                 </div>
 
@@ -453,6 +460,7 @@ $sql5="SELECT * FROM transportista";
   <script type="text/javascript" src="lib/bootstrap-daterangepicker/moment.min.js"></script>
   <script type="text/javascript" src="lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
   <script src="lib/advanced-form-components.js"></script>
+  <script src="scripts/main.js"></script>
 
 </body>
 
