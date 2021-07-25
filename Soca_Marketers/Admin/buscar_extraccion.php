@@ -1,30 +1,18 @@
 <?php
 include 'php/conexion.php';
-if (empty($_GET['buscador'])) {
-  $sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=2";
-  $result = mysqli_query($conexion, $sql);
-  if ($Row = mysqli_fetch_array($result)) {
+$id_mina =$_GET['mina'];
+$sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=1 AND mina_origen=$id_mina";
+$result = mysqli_query($conexion, $sql);
+if ($Row = mysqli_fetch_array($result)) {
 
 
-    $tara = $Row['tara'];
-    $bruto = $Row['bruto'];
-    $neto = $Row['neto'];
-  }
-}else {
-  $buscador = $_GET['buscador'];
-  $sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=2 AND (no_guia=$buscador OR no_ticket=$buscador)";
-  $result = mysqli_query($conexion, $sql);
-  if ($Row = mysqli_fetch_array($result)) {
-
-
-    $tara = $Row['tara'];
-    $bruto = $Row['bruto'];
-    $neto = $Row['neto'];
-  }
+  $tara = $Row['tara'];
+  $bruto = $Row['bruto'];
+  $neto = $Row['neto'];
 }
-
 $sql3 = "SELECT * FROM minas";
 $result3 = mysqli_query($conexion, $sql3);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,17 +40,6 @@ $result3 = mysqli_query($conexion, $sql3);
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
   <link rel="stylesheet" href="lib/sweetalert2/sweetalert2.min.css">
-  <style>
-    #Buscador {
-      background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 0px 5px;
-      background-size: 24px;
-      width: 500px;
-      border: transparent;
-      border-bottom: solid 1px #ccc;
-      padding: 10px 10px 10px 30px;
-      outline: none;
-    }
-  </style>
 
   <!-- =======================================================
     Template Name: Dashio
@@ -207,25 +184,21 @@ $result3 = mysqli_query($conexion, $sql3);
     <section id="main-content">
       <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Bitacora de Compra</h3>
-
-
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
             <div class="adv-table">
-              <form action="" method="get">
-                <input type="text" placeholder="Busqueda No.Guía o No.Folio Ticket" id="Buscador" name="buscador" />
-
-              </form>
-              <hr>
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
                     <th>
                       <select class="form-control" name='mina' id="filtrar_mina">
+                        <option>-</option>
+                        <option value="0">Todas</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result3)) {
                         ?>
+                          
                           <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre']; ?></option>
                         <?php
                         }
@@ -244,13 +217,7 @@ $result3 = mysqli_query($conexion, $sql3);
                 </thead>
                 <tbody>
                   <?php
-                  if (empty($_GET['buscador'])) {
-                    $sql = "SELECT * FROM patio_acopio WHERE origen=2";
-                  } else {
-                    $buscador = $_GET['buscador'];
-                    $sql = "SELECT * FROM patio_acopio WHERE origen=2 AND (no_guia=$buscador OR no_ticket=$buscador)";
-                  }
-
+                  $sql = "SELECT * FROM patio_acopio WHERE origen=1 AND mina_origen=$id_mina";
                   $resultado = $conexion->query($sql);
                   while ($mostrar = mysqli_fetch_array($resultado)) {
                   ?>
@@ -449,12 +416,14 @@ $result3 = mysqli_query($conexion, $sql3);
       $('#filtrar_mina').change(function(e) {
         e.preventDefault();
         var sistema = geturl();
-        location.href = sistema + 'buscar_compra.php?mina=' + $(this).val();
-
+        if($(this).val() == 0 ){
+            location.href = sistema + 'listar_orden2.php';
+        }else{
+            location.href = sistema + 'buscar_extraccion.php?mina=' + $(this).val();
+        }
+        
+        
       });
-      $('#Buscador').change(function(e) {
-
-      })
 
     });
 
