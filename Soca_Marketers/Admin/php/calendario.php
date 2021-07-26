@@ -8,9 +8,9 @@
 
     public function __construct(){
         $this->host     = 'localhost';
-        $this->db       = 'smm';
-        $this->user     = 'root';
-        $this->password = '';
+        $this->db       = 'u298097659_smm';
+        $this->user     = 'u298097659_smm';
+        $this->password = 'GrupoSoca1511*';
         $this->charset  = 'utf8mb4';
     }
 
