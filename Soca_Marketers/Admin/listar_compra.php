@@ -10,7 +10,7 @@ if (empty($_GET['buscador'])) {
     $bruto = $Row['bruto'];
     $neto = $Row['neto'];
   }
-}else {
+} else {
   $buscador = $_GET['buscador'];
   $sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=2 AND (no_guia=$buscador OR no_ticket=$buscador)";
   $result = mysqli_query($conexion, $sql);
@@ -25,6 +25,8 @@ if (empty($_GET['buscador'])) {
 
 $sql3 = "SELECT * FROM minas";
 $result3 = mysqli_query($conexion, $sql3);
+$sql4 = "SELECT * FROM empresa_transportista";
+$result4 = mysqli_query($conexion, $sql4);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -238,6 +240,17 @@ $result3 = mysqli_query($conexion, $sql3);
                     <th class="hidden-phone">Peso Neto</th>
                     <th class="hidden-phone">No. Guía</th>
                     <th class="hidden-phone">No. Folio ticket</th>
+                    <th class="hidden-phone">
+                      <select class="form-control" name='transportista' id="filtrar_trans">
+                        <?php
+                        while ($Row1 = mysqli_fetch_array($result4)) {
+                        ?>
+                          <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre']; ?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </th>
                     <th class="hidden-phone">Fecha y hora de ingreso</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
@@ -273,6 +286,19 @@ $result3 = mysqli_query($conexion, $sql3);
                       <td><?php echo number_format($mostrar['p_neto'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo $mostrar['no_guia'] ?></td>
                       <td><?php echo $mostrar['no_ticket'] ?></td>
+                      <td><?php
+
+
+                          $sql1 = "SELECT * FROM empresa_transportista WHERE id='" . $mostrar['transportista_id'] . "'";
+                          if($mostrar['transportista_id'] == 0) {
+                            $nombre="-";
+                          }
+                          $result1 = mysqli_query($conexion, $sql1);
+                          if ($Row = mysqli_fetch_array($result1)) {
+                            $nombre = $Row['nombre'];
+                          }
+                          echo $nombre;
+                          ?></td>
                       <td><?php echo $mostrar['creado'] ?></td>
                       <td>
 
@@ -452,9 +478,12 @@ $result3 = mysqli_query($conexion, $sql3);
         location.href = sistema + 'buscar_compra.php?mina=' + $(this).val();
 
       });
-      $('#Buscador').change(function(e) {
+      $('#filtrar_trans').change(function(e) {
+        e.preventDefault();
+        var sistema = geturl();
+        location.href = sistema + 'buscar_trans.php?transportista=' + $(this).val();
 
-      })
+      });
 
     });
 

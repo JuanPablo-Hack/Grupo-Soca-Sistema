@@ -347,7 +347,7 @@ $result5 = mysqli_query($conexion, $sql5);
                       <?php
                       while ($Row1 = mysqli_fetch_array($result5)) {
                       ?>
-                        <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['placas']; ?></option>
+                        <option value=<?php echo $Row1['id_trans']; ?>><?php echo $Row1['placas']; ?></option>
                       <?php
                       }
                       ?>
