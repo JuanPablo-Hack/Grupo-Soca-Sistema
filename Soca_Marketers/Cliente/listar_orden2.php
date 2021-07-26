@@ -178,7 +178,7 @@ $id = $_SESSION['user'];
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT * FROM patio_acopio WHERE origen=1 AND cliente='$id'";
+                    $sql="SELECT * FROM patio_acopio WHERE origen=1";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>
