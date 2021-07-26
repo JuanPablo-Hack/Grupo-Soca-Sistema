@@ -127,12 +127,13 @@
                             <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
                             <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
                             <li><a href="listar_compra.php">Bitacora de Compra</a></li>
+                            <li><a href="calendar.html">Calendario de Registros</a></li>
                             <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
                             <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
                         </ul>
                     </li>
-                    
+
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-car"></i>
@@ -143,8 +144,6 @@
                             <li><a href="listar_unidades.php">Mis Unidades</a></li>
                             <li><a href="alta_trans.html">Dar de alta transportista</a></li>
                             <li><a href="listar_transportistas_empresas.php">Transportistas</a></li>
-                            <li><a href="alta_trans.php">Dar de alta operador externo</a></li>
-                            <li><a href="listar_transportistas.php">Operadores Externos</a></li>
 
 
                         </ul>

@@ -138,6 +138,7 @@ $result4 = mysqli_query($conexion, $sql4);
               <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
               <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
               <li><a href="listar_compra.php">Bitacora de Compra</a></li>
+              <li><a href="calendar.html">Calendario de Registros</a></li>
               <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
               <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
