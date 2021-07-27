@@ -1,7 +1,8 @@
 <?php
 include 'php/conexion.php';
+$id = $_GET['lote'];
 if (empty($_GET['buscador'])) {
-  $sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=2";
+  $sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=2 AND no_lote=$id";
   $result = mysqli_query($conexion, $sql);
   if ($Row = mysqli_fetch_array($result)) {
 
@@ -247,6 +248,8 @@ $result5 = mysqli_query($conexion, $sql5);
                     <th class="hidden-phone">No. Folio ticket</th>
                     <th>
                       <select class="form-control" name='lote' id="filtrar_lote">
+                        <option>-</option>
+                        <option value="0">Todas</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result5)) {
                         ?>
@@ -275,7 +278,7 @@ $result5 = mysqli_query($conexion, $sql5);
                 <tbody>
                   <?php
                   if (empty($_GET['buscador'])) {
-                    $sql = "SELECT * FROM patio_acopio WHERE origen=2";
+                    $sql = "SELECT * FROM patio_acopio WHERE origen=2 AND no_lote=$id";
                   } else {
                     $buscador = $_GET['buscador'];
                     $sql = "SELECT * FROM patio_acopio WHERE origen=2 AND extractor='$buscador' OR no_guia='$buscador' OR no_ticket='$buscador'";
@@ -516,7 +519,11 @@ $result5 = mysqli_query($conexion, $sql5);
       $('#filtrar_lote').change(function(e) {
         e.preventDefault();
         var sistema = geturl();
-        location.href = sistema + 'buscar_lote.php?lote=' + $(this).val();
+        if($(this).val() == 0 ){
+            location.href = sistema + 'listar_compra.php';
+        }else{
+            location.href = sistema + 'buscar_compra.php?mina=' + $(this).val();
+        }
 
       });
 
