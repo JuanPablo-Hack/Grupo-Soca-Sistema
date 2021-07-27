@@ -522,7 +522,7 @@ $result5 = mysqli_query($conexion, $sql5);
         if($(this).val() == 0 ){
             location.href = sistema + 'listar_compra.php';
         }else{
-            location.href = sistema + 'buscar_compra.php?mina=' + $(this).val();
+            location.href = sistema + 'buscar_lote.php?lote=' + $(this).val();
         }
 
       });
