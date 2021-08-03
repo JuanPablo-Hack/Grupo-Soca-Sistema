@@ -1,9 +1,9 @@
 <?php
 
 $nombreServidor = "localhost";
-$nombreUsuario = "root";
-$passwordBaseDeDatos = "";
-$nombreBaseDeDatos = "resoca";
+$nombreUsuario = "u298097659_rsp";
+$passwordBaseDeDatos = "GrupoSoca1511*";
+$nombreBaseDeDatos = "u298097659_rsp";
 
 
 
