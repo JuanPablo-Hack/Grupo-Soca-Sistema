@@ -496,7 +496,7 @@ $result5 = mysqli_query($conexion, $sql5);
         if($(this).val() == 0 ){
             location.href = sistema + 'listar_orden2.php';
         }else{
-            location.href = sistema + 'buscar_lote.php?lote=' + $(this).val();
+            location.href = sistema + 'buscar_lote_ext.php?lote=' + $(this).val();
         }
 
       });
