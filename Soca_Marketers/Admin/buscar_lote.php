@@ -220,16 +220,15 @@ $result5 = mysqli_query($conexion, $sql5);
           <!-- page start-->
           <div class="content-panel">
             <div class="adv-table">
-              <form action="" method="get">
-                <input type="text" placeholder="Busqueda No.Guía o No.Folio Ticket o Extractor" id="Buscador" name="buscador" />
 
-              </form>
               <hr>
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
                     <th>
-                      <select class="form-control" name='mina' id="filtrar_mina">
+                      <select class="form-control" name='mina' id="filtrar_mina">|
+                        <option>-</option>
+                        <option value="0">Todas</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result3)) {
                         ?>
@@ -262,6 +261,8 @@ $result5 = mysqli_query($conexion, $sql5);
                     <th class="hidden-phone">Extractor</th>
                     <th class="hidden-phone">
                       <select class="form-control" name='transportista' id="filtrar_trans">
+                        <option>-</option>
+                        <option value="0">Todas</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result4)) {
                         ?>
@@ -507,22 +508,30 @@ $result5 = mysqli_query($conexion, $sql5);
       $('#filtrar_mina').change(function(e) {
         e.preventDefault();
         var sistema = geturl();
-        location.href = sistema + 'buscar_compra.php?mina=' + $(this).val();
+        if ($(this).val() == 0) {
+          location.href = sistema + 'listar_compra.php';
+        } else {
+          location.href = sistema + 'buscar_compra.php?mina=' + $(this).val();
+        }
+
 
       });
       $('#filtrar_trans').change(function(e) {
         e.preventDefault();
         var sistema = geturl();
-        location.href = sistema + 'buscar_trans.php?transportista=' + $(this).val();
-
+        if ($(this).val() == 0) {
+          location.href = sistema + 'listar_compra.php';
+        } else {
+          location.href = sistema + 'buscar_trans.php?transportista=' + $(this).val();
+        }
       });
       $('#filtrar_lote').change(function(e) {
         e.preventDefault();
         var sistema = geturl();
-        if($(this).val() == 0 ){
-            location.href = sistema + 'listar_compra.php';
-        }else{
-            location.href = sistema + 'buscar_lote.php?lote=' + $(this).val();
+        if ($(this).val() == 0) {
+          location.href = sistema + 'listar_compra.php';
+        } else {
+          location.href = sistema + 'buscar_lote.php?lote=' + $(this).val();
         }
 
       });

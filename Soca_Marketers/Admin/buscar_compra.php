@@ -1,6 +1,6 @@
 <?php
 include 'php/conexion.php';
-$id_mina =$_GET['mina'];
+$id_mina = $_GET['mina'];
 $sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=2 AND mina_origen=$id_mina";
 $result = mysqli_query($conexion, $sql);
 if ($Row = mysqli_fetch_array($result)) {
@@ -12,6 +12,10 @@ if ($Row = mysqli_fetch_array($result)) {
 }
 $sql3 = "SELECT * FROM minas";
 $result3 = mysqli_query($conexion, $sql3);
+$sql4 = "SELECT * FROM empresa_transportista";
+$result4 = mysqli_query($conexion, $sql4);
+$sql5 = "SELECT * FROM lotes";
+$result5 = mysqli_query($conexion, $sql5);
 
 ?>
 <!DOCTYPE html>
@@ -75,108 +79,108 @@ $result3 = mysqli_query($conexion, $sql3);
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
     <aside>
-            <div id="sidebar" class="nav-collapse ">
-                <!-- sidebar menu start-->
-                <ul class="sidebar-menu" id="nav-accordion">
-                    <p class="centered">
-                        <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
-                    </p>
-                    <h5 class="centered">Admin</h5>
-                    <li class="mt">
-                        <a class="active" href="index.php">
-                            <i class="fa fa-dashboard"></i>
-                            <span>Panel de Control</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Prospección de Minas</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_mina.html">Registrar Mina</a></li>
-                            <li><a href="listar_minas.php">Minas Registradas</a></li>
-                            <li><a href="alta_muestras.php">Registro de Muestra</a></li>
-                            <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
-                        </ul>
-                    </li>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered">
+            <a href="profile.html"><img src="img/smm.png" class="img-circle" width="80"></a>
+          </p>
+          <h5 class="centered">Admin</h5>
+          <li class="mt">
+            <a class="active" href="index.php">
+              <i class="fa fa-dashboard"></i>
+              <span>Panel de Control</span>
+            </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Prospección de Minas</span>
+            </a>
+            <ul class="sub">
+              <li><a href="alta_mina.html">Registrar Mina</a></li>
+              <li><a href="listar_minas.php">Minas Registradas</a></li>
+              <li><a href="alta_muestras.php">Registro de Muestra</a></li>
+              <li><a href="listar_muestras.php">Bitacora de muestras</a></li>
+            </ul>
+          </li>
 
 
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-calendar"></i>
-                            <span>Produccion en mina</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="crear_lote.php">Crear Lote</a></li>
-                            <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
-                            <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
-                            <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-calendar"></i>
+              <span>Produccion en mina</span>
+            </a>
+            <ul class="sub">
+              <li><a href="crear_lote.php">Crear Lote</a></li>
+              <li><a href="listar_lotes.php">Bitacora de lotes</a></li>
+              <li><a href="prospeccion_mina.php">Crear Muestreo de Lote</a></li>
+              <li><a href="listar_prospeccionmina.php">Bitacora de muestras de lotes</a></li>
 
-                        </ul>
-                    </li>
+            </ul>
+          </li>
 
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Salida de Patio de mina</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="crear_orden3.php">Crear Registro de Salida</a></li>
-                            <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Salida de Patio de mina</span>
+            </a>
+            <ul class="sub">
+              <li><a href="crear_orden3.php">Crear Registro de Salida</a></li>
+              <li><a href="listar_orden3.php">Bitacora de Salidas</a></li>
 
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Patio de trituracion</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
-                            <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
-                            <li><a href="listar_compra.php">Bitacora de Compra</a></li>
-                            <li><a href="calendar.html">Calendario de Registros</a></li>
-                            <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
-                            <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Patio de trituracion</span>
+            </a>
+            <ul class="sub">
+              <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
+              <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
+              <li><a href="listar_compra.php">Bitacora de Compra</a></li>
+              <li><a href="calendar.html">Calendario de Registros</a></li>
+              <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
+              <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
-                        </ul>
-                    </li>
+            </ul>
+          </li>
 
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-car"></i>
-                            <span>Unidades</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_unidad.html">Dar de alta</a></li>
-                            <li><a href="listar_unidades.php">Mis Unidades</a></li>
-                            <li><a href="alta_trans.html">Dar de alta transportista</a></li>
-                            <li><a href="listar_transportistas_empresas.php">Transportistas</a></li>
-
-
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-group"></i>
-                            <span>Usuarios</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
-                            <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
-
-                            <li><a href="alta_usuarios.html">Crear Cliente</a></li>
-                            <li><a href="listar_clientes.php">Listar Clientes</a></li>
-
-                        </ul>
-                    </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-car"></i>
+              <span>Unidades</span>
+            </a>
+            <ul class="sub">
+              <li><a href="alta_unidad.html">Dar de alta</a></li>
+              <li><a href="listar_unidades.php">Mis Unidades</a></li>
+              <li><a href="alta_trans.html">Dar de alta transportista</a></li>
+              <li><a href="listar_transportistas_empresas.php">Transportistas</a></li>
 
 
-                </ul>
-                <!-- sidebar menu end-->
-            </div>
-        </aside>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-group"></i>
+              <span>Usuarios</span>
+            </a>
+            <ul class="sub">
+              <li><a href="alta_trabajador.html">Crear Trabajador</a></li>
+              <li><a href="listar_trabajador.php">Listar Trabajadores</a></li>
+
+              <li><a href="alta_usuarios.html">Crear Cliente</a></li>
+              <li><a href="listar_clientes.php">Listar Clientes</a></li>
+
+            </ul>
+          </li>
+
+
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
     <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
@@ -193,13 +197,12 @@ $result3 = mysqli_query($conexion, $sql3);
                 <thead>
                   <tr>
                     <th>
-                      <select class="form-control" name='mina' id="filtrar_mina">
+                      <select class="form-control" name='mina' id="filtrar_mina">|
                         <option>-</option>
                         <option value="0">Todas</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result3)) {
                         ?>
-                          
                           <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre']; ?></option>
                         <?php
                         }
@@ -207,11 +210,39 @@ $result3 = mysqli_query($conexion, $sql3);
                       </select>
                     </th>
                     <th class="hidden-phone">Mineral</th>
+
                     <th class="hidden-phone">Peso Bruto</th>
                     <th class="hidden-phone">Peso Tara</th>
                     <th class="hidden-phone">Peso Neto</th>
                     <th class="hidden-phone">No. Guía</th>
                     <th class="hidden-phone">No. Folio ticket</th>
+                    <th>
+                      <select class="form-control" name='lote' id="filtrar_lote">
+                        <option>-</option>
+                        <option value="0">Todas</option>
+                        <?php
+                        while ($Row1 = mysqli_fetch_array($result5)) {
+                        ?>
+                          <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['no_lote']; ?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </th>
+                    <th class="hidden-phone">Extractor</th>
+                    <th class="hidden-phone">
+                      <select class="form-control" name='transportista' id="filtrar_trans">
+                        <option>-</option>
+                        <option value="0">Todas</option>
+                        <?php
+                        while ($Row1 = mysqli_fetch_array($result4)) {
+                        ?>
+                          <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre']; ?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </th>
                     <th class="hidden-phone">Fecha y hora de ingreso</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
@@ -236,11 +267,36 @@ $result3 = mysqli_query($conexion, $sql3);
                           ?></td>
 
                       <td><?php echo $mostrar['mineral'] ?></td>
+
                       <td><?php echo number_format($mostrar['p_bruto'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo number_format($mostrar['p_tara'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo number_format($mostrar['p_neto'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo $mostrar['no_guia'] ?></td>
                       <td><?php echo $mostrar['no_ticket'] ?></td>
+                      <td><?php
+
+
+                          $sql1 = "SELECT * FROM lotes WHERE id='" . $mostrar['no_lote'] . "'";
+                          $result1 = mysqli_query($conexion, $sql1);
+                          if ($Row = mysqli_fetch_array($result1)) {
+                            $nombre = $Row['no_lote'];
+                          }
+                          echo $nombre;
+                          ?></td>
+                      <td><?php echo $mostrar['extractor'] ?></td>
+                      <td><?php
+
+
+                          $sql1 = "SELECT * FROM empresa_transportista WHERE id='" . $mostrar['transportista_id'] . "'";
+                          if ($mostrar['transportista_id'] == 0) {
+                            $nombre = "-";
+                          }
+                          $result1 = mysqli_query($conexion, $sql1);
+                          if ($Row = mysqli_fetch_array($result1)) {
+                            $nombre = $Row['nombre'];
+                          }
+                          echo $nombre;
+                          ?></td>
                       <td><?php echo $mostrar['creado'] ?></td>
                       <td>
 
@@ -417,13 +473,32 @@ $result3 = mysqli_query($conexion, $sql3);
       $('#filtrar_mina').change(function(e) {
         e.preventDefault();
         var sistema = geturl();
-        if($(this).val() == 0 ){
-            location.href = sistema + 'listar_compra.php';
-        }else{
-            location.href = sistema + 'buscar_compra.php?mina=' + $(this).val();
+        if ($(this).val() == 0) {
+          location.href = sistema + 'listar_compra.php';
+        } else {
+          location.href = sistema + 'buscar_compra.php?mina=' + $(this).val();
         }
-        
-        
+
+
+      });
+      $('#filtrar_trans').change(function(e) {
+        e.preventDefault();
+        var sistema = geturl();
+        if ($(this).val() == 0) {
+          location.href = sistema + 'listar_compra.php';
+        } else {
+          location.href = sistema + 'buscar_trans.php?transportista=' + $(this).val();
+        }
+      });
+      $('#filtrar_lote').change(function(e) {
+        e.preventDefault();
+        var sistema = geturl();
+        if ($(this).val() == 0) {
+          location.href = sistema + 'listar_compra.php';
+        } else {
+          location.href = sistema + 'buscar_lote.php?lote=' + $(this).val();
+        }
+
       });
 
     });

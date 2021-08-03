@@ -14,6 +14,8 @@ $sql3 = "SELECT * FROM minas";
 $result3 = mysqli_query($conexion, $sql3);
 $sql4 = "SELECT * FROM empresa_transportista";
 $result4 = mysqli_query($conexion, $sql4);
+$sql5 = "SELECT * FROM lotes";
+$result5 = mysqli_query($conexion, $sql5);
 
 ?>
 <!DOCTYPE html>
@@ -195,13 +197,12 @@ $result4 = mysqli_query($conexion, $sql4);
                 <thead>
                   <tr>
                     <th>
-                      <select class="form-control" name='mina' id="filtrar_mina">
+                      <select class="form-control" name='mina' id="filtrar_mina">|
                         <option>-</option>
                         <option value="0">Todas</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result3)) {
                         ?>
-
                           <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre']; ?></option>
                         <?php
                         }
@@ -209,11 +210,26 @@ $result4 = mysqli_query($conexion, $sql4);
                       </select>
                     </th>
                     <th class="hidden-phone">Mineral</th>
+
                     <th class="hidden-phone">Peso Bruto</th>
                     <th class="hidden-phone">Peso Tara</th>
                     <th class="hidden-phone">Peso Neto</th>
                     <th class="hidden-phone">No. Guía</th>
                     <th class="hidden-phone">No. Folio ticket</th>
+                    <th>
+                      <select class="form-control" name='lote' id="filtrar_lote">
+                        <option>-</option>
+                        <option value="0">Todas</option>
+                        <?php
+                        while ($Row1 = mysqli_fetch_array($result5)) {
+                        ?>
+                          <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['no_lote']; ?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </th>
+                    <th class="hidden-phone">Extractor</th>
                     <th class="hidden-phone">
                       <select class="form-control" name='transportista' id="filtrar_trans">
                         <option>-</option>
@@ -251,11 +267,23 @@ $result4 = mysqli_query($conexion, $sql4);
                           ?></td>
 
                       <td><?php echo $mostrar['mineral'] ?></td>
+
                       <td><?php echo number_format($mostrar['p_bruto'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo number_format($mostrar['p_tara'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo number_format($mostrar['p_neto'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo $mostrar['no_guia'] ?></td>
                       <td><?php echo $mostrar['no_ticket'] ?></td>
+                      <td><?php
+
+
+                          $sql1 = "SELECT * FROM lotes WHERE id='" . $mostrar['no_lote'] . "'";
+                          $result1 = mysqli_query($conexion, $sql1);
+                          if ($Row = mysqli_fetch_array($result1)) {
+                            $nombre = $Row['no_lote'];
+                          }
+                          echo $nombre;
+                          ?></td>
+                      <td><?php echo $mostrar['extractor'] ?></td>
                       <td><?php
 
 
@@ -450,6 +478,8 @@ $result4 = mysqli_query($conexion, $sql4);
         } else {
           location.href = sistema + 'buscar_compra.php?mina=' + $(this).val();
         }
+
+
       });
       $('#filtrar_trans').change(function(e) {
         e.preventDefault();
@@ -459,6 +489,16 @@ $result4 = mysqli_query($conexion, $sql4);
         } else {
           location.href = sistema + 'buscar_trans.php?transportista=' + $(this).val();
         }
+      });
+      $('#filtrar_lote').change(function(e) {
+        e.preventDefault();
+        var sistema = geturl();
+        if ($(this).val() == 0) {
+          location.href = sistema + 'listar_compra.php';
+        } else {
+          location.href = sistema + 'buscar_lote.php?lote=' + $(this).val();
+        }
+
       });
 
     });
