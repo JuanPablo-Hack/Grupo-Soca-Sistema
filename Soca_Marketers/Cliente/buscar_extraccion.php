@@ -1,28 +1,15 @@
 <?php
 include 'php/conexion.php';
-if (empty($_GET['buscador'])) {
-  $sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=2";
-  $result = mysqli_query($conexion, $sql);
-  if ($Row = mysqli_fetch_array($result)) {
+$id_mina = $_GET['mina'];
+$sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=1 AND mina_origen=$id_mina";
+$result = mysqli_query($conexion, $sql);
+if ($Row = mysqli_fetch_array($result)) {
 
 
-    $tara = $Row['tara'];
-    $bruto = $Row['bruto'];
-    $neto = $Row['neto'];
-  }
-} else {
-  $buscador = $_GET['buscador'];
-  $sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=2 AND extractor='$buscador' OR no_guia='$buscador' OR no_ticket='$buscador'";
-  $result = mysqli_query($conexion, $sql);
-  if ($Row = mysqli_fetch_array($result)) {
-
-
-    $tara = $Row['tara'];
-    $bruto = $Row['bruto'];
-    $neto = $Row['neto'];
-  }
+  $tara = $Row['tara'];
+  $bruto = $Row['bruto'];
+  $neto = $Row['neto'];
 }
-
 $sql3 = "SELECT * FROM minas";
 $result3 = mysqli_query($conexion, $sql3);
 $sql4 = "SELECT * FROM empresa_transportista";
@@ -57,17 +44,6 @@ $result5 = mysqli_query($conexion, $sql5);
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
   <link rel="stylesheet" href="lib/sweetalert2/sweetalert2.min.css">
-  <style>
-    #Buscador {
-      background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 0px 5px;
-      background-size: 24px;
-      width: 500px;
-      border: transparent;
-      border-bottom: solid 1px #ccc;
-      padding: 10px 10px 10px 30px;
-      outline: none;
-    }
-  </style>
 
   <!-- =======================================================
     Template Name: Dashio
@@ -182,23 +158,17 @@ $result5 = mysqli_query($conexion, $sql5);
     <section id="main-content">
       <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Bitacora de Compra</h3>
-
-
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
             <div class="adv-table">
-              <form action="" method="get">
-                <input type="text" placeholder="Busqueda No.Guía o No.Folio Ticket o Extractor" id="Buscador" name="buscador" />
-
-              </form>
-              <hr>
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
                     <th>
                       <select class="form-control" name='mina' id="filtrar_mina">
                         <option>-</option>
+                        <option value="0">Todas</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result3)) {
                         ?>
@@ -218,6 +188,7 @@ $result5 = mysqli_query($conexion, $sql5);
                     <th>
                       <select class="form-control" name='lote' id="filtrar_lote">
                         <option>-</option>
+                        <option value="0">Todas</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result5)) {
                         ?>
@@ -227,32 +198,15 @@ $result5 = mysqli_query($conexion, $sql5);
                         ?>
                       </select>
                     </th>
-                    <th class="hidden-phone">Extractor</th>
-                    <th class="hidden-phone">
-                      <select class="form-control" name='transportista' id="filtrar_trans">
-                        <option>-</option>
-                        <?php
-                        while ($Row1 = mysqli_fetch_array($result4)) {
-                        ?>
-                          <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre']; ?></option>
-                        <?php
-                        }
-                        ?>
-                      </select>
-                    </th>
+
+
                     <th class="hidden-phone">Fecha y hora de ingreso</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                  if (empty($_GET['buscador'])) {
-                    $sql = "SELECT * FROM patio_acopio WHERE origen=2";
-                  } else {
-                    $buscador = $_GET['buscador'];
-                    $sql = "SELECT * FROM patio_acopio WHERE origen=2 AND extractor='$buscador' OR no_guia='$buscador' OR no_ticket='$buscador'";
-                  }
-
+                  $sql = "SELECT * FROM patio_acopio WHERE origen=1 AND mina_origen=$id_mina";
                   $resultado = $conexion->query($sql);
                   while ($mostrar = mysqli_fetch_array($resultado)) {
                   ?>
@@ -270,7 +224,6 @@ $result5 = mysqli_query($conexion, $sql5);
                           ?></td>
 
                       <td><?php echo $mostrar['mineral'] ?></td>
-
                       <td><?php echo number_format($mostrar['p_bruto'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo number_format($mostrar['p_tara'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo number_format($mostrar['p_neto'], 0, '.', ',') . " " . "Kg" ?></td>
@@ -286,20 +239,6 @@ $result5 = mysqli_query($conexion, $sql5);
                           }
                           echo $nombre;
                           ?></td>
-                      <td><?php echo $mostrar['extractor'] ?></td>
-                      <td><?php
-
-
-                          $sql1 = "SELECT * FROM empresa_transportista WHERE id='" . $mostrar['transportista_id'] . "'";
-                          if ($mostrar['transportista_id'] == 0) {
-                            $nombre = "-";
-                          }
-                          $result1 = mysqli_query($conexion, $sql1);
-                          if ($Row = mysqli_fetch_array($result1)) {
-                            $nombre = $Row['nombre'];
-                          }
-                          echo $nombre;
-                          ?></td>
                       <td><?php echo $mostrar['creado'] ?></td>
                       <td>
 
@@ -307,7 +246,7 @@ $result5 = mysqli_query($conexion, $sql5);
                         <a href='../patio/<?php echo $mostrar['no_guia'] . "/" . $mostrar['foto'] ?>' target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
                         <a href='../patio/<?php echo $mostrar['no_guia'] . "/" . $mostrar['ruta'] ?>' target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-file-text-o "></i></a>
 
-                      </td> 
+                      </td>
 
                     </tr>
                   <?php
@@ -473,19 +412,21 @@ $result5 = mysqli_query($conexion, $sql5);
       $('#filtrar_mina').change(function(e) {
         e.preventDefault();
         var sistema = geturl();
-        location.href = sistema + 'buscar_compra.php?mina=' + $(this).val();
-
-      });
-      $('#filtrar_trans').change(function(e) {
-        e.preventDefault();
-        var sistema = geturl();
-        location.href = sistema + 'buscar_trans.php?transportista=' + $(this).val();
+        if ($(this).val() == 0) {
+          location.href = sistema + 'listar_orden2.php';
+        } else {
+          location.href = sistema + 'buscar_extraccion.php?mina=' + $(this).val();
+        }
 
       });
       $('#filtrar_lote').change(function(e) {
         e.preventDefault();
         var sistema = geturl();
-        location.href = sistema + 'buscar_lote.php?lote=' + $(this).val();
+        if ($(this).val() == 0) {
+          location.href = sistema + 'listar_orden2.php';
+        } else {
+          location.href = sistema + 'buscar_lote_ext.php?lote=' + $(this).val();
+        }
 
       });
 
