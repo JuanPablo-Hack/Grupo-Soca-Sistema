@@ -227,6 +227,8 @@ $result5 = mysqli_query($conexion, $sql5);
                   <tr>
                     <th>
                       <select class="form-control" name='mina' id="filtrar_mina">
+                      <option>-</option>
+                      <option value="0">Todas</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result3)) {
                         ?>
@@ -481,13 +483,11 @@ $result5 = mysqli_query($conexion, $sql5);
       $('#filtrar_mina').change(function(e) {
         e.preventDefault();
         var sistema = geturl();
-        location.href = sistema + 'buscar_compra.php?mina=' + $(this).val();
-
-      });
-      $('#filtrar_trans').change(function(e) {
-        e.preventDefault();
-        var sistema = geturl();
-        location.href = sistema + 'buscar_trans.php?transportista=' + $(this).val();
+        if($(this).val() == 0 ){
+            location.href = sistema + 'listar_orden2.php';
+        }else{
+            location.href = sistema + 'buscar_extraccion.php?lote=' + $(this).val();
+        }
 
       });
       $('#filtrar_lote').change(function(e) {

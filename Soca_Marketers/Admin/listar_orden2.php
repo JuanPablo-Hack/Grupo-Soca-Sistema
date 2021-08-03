@@ -226,6 +226,7 @@ $result5 = mysqli_query($conexion, $sql5);
 
                     <th>
                       <select class="form-control" name='mina' id="filtrar_mina">
+                        <option>-</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result3)) {
                         ?>
@@ -245,6 +246,7 @@ $result5 = mysqli_query($conexion, $sql5);
                     <th class="hidden-phone">No. Folio ticket</th>
                     <th>
                       <select class="form-control" name='lote' id="filtrar_lote">
+                        <option>-</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result5)) {
                         ?>
