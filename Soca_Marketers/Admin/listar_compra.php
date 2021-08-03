@@ -12,7 +12,7 @@ if (empty($_GET['buscador'])) {
   }
 } else {
   $buscador = $_GET['buscador'];
-  $sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=2 AND (no_guia=$buscador OR no_ticket=$buscador)";
+  $sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=2 AND extractor='$buscador' OR no_guia='$buscador' OR no_ticket='$buscador'";
   $result = mysqli_query($conexion, $sql);
   if ($Row = mysqli_fetch_array($result)) {
 
@@ -27,6 +27,9 @@ $sql3 = "SELECT * FROM minas";
 $result3 = mysqli_query($conexion, $sql3);
 $sql4 = "SELECT * FROM empresa_transportista";
 $result4 = mysqli_query($conexion, $sql4);
+$sql5 = "SELECT * FROM lotes";
+$result5 = mysqli_query($conexion, $sql5);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -161,6 +164,7 @@ $result4 = mysqli_query($conexion, $sql4);
               <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
               <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
               <li><a href="listar_compra.php">Bitacora de Compra</a></li>
+              <li><a href="calendar.html">Calendario de Registros</a></li>
               <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
               <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
@@ -216,7 +220,7 @@ $result4 = mysqli_query($conexion, $sql4);
           <div class="content-panel">
             <div class="adv-table">
               <form action="" method="get">
-                <input type="text" placeholder="Busqueda No.Guía o No.Folio Ticket" id="Buscador" name="buscador" />
+                <input type="text" placeholder="Busqueda No.Guía o No.Folio Ticket o Extractor" id="Buscador" name="buscador" />
 
               </form>
               <hr>
@@ -225,6 +229,7 @@ $result4 = mysqli_query($conexion, $sql4);
                   <tr>
                     <th>
                       <select class="form-control" name='mina' id="filtrar_mina">
+                      <option>-</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result3)) {
                         ?>
@@ -235,13 +240,28 @@ $result4 = mysqli_query($conexion, $sql4);
                       </select>
                     </th>
                     <th class="hidden-phone">Mineral</th>
+
                     <th class="hidden-phone">Peso Bruto</th>
                     <th class="hidden-phone">Peso Tara</th>
                     <th class="hidden-phone">Peso Neto</th>
                     <th class="hidden-phone">No. Guía</th>
                     <th class="hidden-phone">No. Folio ticket</th>
+                    <th>
+                      <select class="form-control" name='lote' id="filtrar_lote">
+                      <option>-</option>
+                        <?php
+                        while ($Row1 = mysqli_fetch_array($result5)) {
+                        ?>
+                          <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['no_lote']; ?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </th>
+                    <th class="hidden-phone">Extractor</th>
                     <th class="hidden-phone">
                       <select class="form-control" name='transportista' id="filtrar_trans">
+                      <option>-</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result4)) {
                         ?>
@@ -261,7 +281,7 @@ $result4 = mysqli_query($conexion, $sql4);
                     $sql = "SELECT * FROM patio_acopio WHERE origen=2";
                   } else {
                     $buscador = $_GET['buscador'];
-                    $sql = "SELECT * FROM patio_acopio WHERE origen=2 AND (no_guia=$buscador OR no_ticket=$buscador)";
+                    $sql = "SELECT * FROM patio_acopio WHERE origen=2 AND extractor='$buscador' OR no_guia='$buscador' OR no_ticket='$buscador'";
                   }
 
                   $resultado = $conexion->query($sql);
@@ -281,6 +301,7 @@ $result4 = mysqli_query($conexion, $sql4);
                           ?></td>
 
                       <td><?php echo $mostrar['mineral'] ?></td>
+
                       <td><?php echo number_format($mostrar['p_bruto'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo number_format($mostrar['p_tara'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo number_format($mostrar['p_neto'], 0, '.', ',') . " " . "Kg" ?></td>
@@ -289,9 +310,20 @@ $result4 = mysqli_query($conexion, $sql4);
                       <td><?php
 
 
+                          $sql1 = "SELECT * FROM lotes WHERE id='" . $mostrar['no_lote'] . "'";
+                          $result1 = mysqli_query($conexion, $sql1);
+                          if ($Row = mysqli_fetch_array($result1)) {
+                            $nombre = $Row['no_lote'];
+                          }
+                          echo $nombre;
+                          ?></td>
+                      <td><?php echo $mostrar['extractor'] ?></td>
+                      <td><?php
+
+
                           $sql1 = "SELECT * FROM empresa_transportista WHERE id='" . $mostrar['transportista_id'] . "'";
-                          if($mostrar['transportista_id'] == 0) {
-                            $nombre="-";
+                          if ($mostrar['transportista_id'] == 0) {
+                            $nombre = "-";
                           }
                           $result1 = mysqli_query($conexion, $sql1);
                           if ($Row = mysqli_fetch_array($result1)) {
@@ -482,6 +514,12 @@ $result4 = mysqli_query($conexion, $sql4);
         e.preventDefault();
         var sistema = geturl();
         location.href = sistema + 'buscar_trans.php?transportista=' + $(this).val();
+
+      });
+      $('#filtrar_lote').change(function(e) {
+        e.preventDefault();
+        var sistema = geturl();
+        location.href = sistema + 'buscar_lote.php?lote=' + $(this).val();
 
       });
 

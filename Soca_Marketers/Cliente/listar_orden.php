@@ -163,7 +163,7 @@ include 'php/conexion.php';
                 </thead>
                 <tbody>
                 <?php
-                    $sql="SELECT * FROM produccion_mina WHERE cliente='$id'";
+                    $sql="SELECT * FROM produccion_mina";
                     $resultado = $conexion->query($sql);
                     while ($mostrar=mysqli_fetch_array($resultado)) {  
                   ?>

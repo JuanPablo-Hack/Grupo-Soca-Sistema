@@ -1,6 +1,6 @@
 <?php
 include 'php/conexion.php';
-$id_mina =$_GET['mina'];
+$id_mina = $_GET['mina'];
 $sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=2 AND mina_origen=$id_mina";
 $result = mysqli_query($conexion, $sql);
 if ($Row = mysqli_fetch_array($result)) {
@@ -12,6 +12,10 @@ if ($Row = mysqli_fetch_array($result)) {
 }
 $sql3 = "SELECT * FROM minas";
 $result3 = mysqli_query($conexion, $sql3);
+$sql4 = "SELECT * FROM empresa_transportista";
+$result4 = mysqli_query($conexion, $sql4);
+$sql5 = "SELECT * FROM lotes";
+$result5 = mysqli_query($conexion, $sql5);
 
 ?>
 <!DOCTYPE html>
@@ -136,6 +140,7 @@ $result3 = mysqli_query($conexion, $sql3);
               <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
               <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
               <li><a href="listar_compra.php">Bitacora de Compra</a></li>
+              <li><a href="calendar.html">Calendario de Registros</a></li>
               <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
               <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
@@ -192,13 +197,12 @@ $result3 = mysqli_query($conexion, $sql3);
                 <thead>
                   <tr>
                     <th>
-                      <select class="form-control" name='mina' id="filtrar_mina">
+                      <select class="form-control" name='mina' id="filtrar_mina">|
                         <option>-</option>
                         <option value="0">Todas</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result3)) {
                         ?>
-                          
                           <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre']; ?></option>
                         <?php
                         }
@@ -206,11 +210,39 @@ $result3 = mysqli_query($conexion, $sql3);
                       </select>
                     </th>
                     <th class="hidden-phone">Mineral</th>
+
                     <th class="hidden-phone">Peso Bruto</th>
                     <th class="hidden-phone">Peso Tara</th>
                     <th class="hidden-phone">Peso Neto</th>
                     <th class="hidden-phone">No. Guía</th>
                     <th class="hidden-phone">No. Folio ticket</th>
+                    <th>
+                      <select class="form-control" name='lote' id="filtrar_lote">
+                        <option>-</option>
+                        <option value="0">Todas</option>
+                        <?php
+                        while ($Row1 = mysqli_fetch_array($result5)) {
+                        ?>
+                          <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['no_lote']; ?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </th>
+                    <th class="hidden-phone">Extractor</th>
+                    <th class="hidden-phone">
+                      <select class="form-control" name='transportista' id="filtrar_trans">
+                        <option>-</option>
+                        <option value="0">Todas</option>
+                        <?php
+                        while ($Row1 = mysqli_fetch_array($result4)) {
+                        ?>
+                          <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre']; ?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </th>
                     <th class="hidden-phone">Fecha y hora de ingreso</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
@@ -235,11 +267,36 @@ $result3 = mysqli_query($conexion, $sql3);
                           ?></td>
 
                       <td><?php echo $mostrar['mineral'] ?></td>
+
                       <td><?php echo number_format($mostrar['p_bruto'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo number_format($mostrar['p_tara'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo number_format($mostrar['p_neto'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo $mostrar['no_guia'] ?></td>
                       <td><?php echo $mostrar['no_ticket'] ?></td>
+                      <td><?php
+
+
+                          $sql1 = "SELECT * FROM lotes WHERE id='" . $mostrar['no_lote'] . "'";
+                          $result1 = mysqli_query($conexion, $sql1);
+                          if ($Row = mysqli_fetch_array($result1)) {
+                            $nombre = $Row['no_lote'];
+                          }
+                          echo $nombre;
+                          ?></td>
+                      <td><?php echo $mostrar['extractor'] ?></td>
+                      <td><?php
+
+
+                          $sql1 = "SELECT * FROM empresa_transportista WHERE id='" . $mostrar['transportista_id'] . "'";
+                          if ($mostrar['transportista_id'] == 0) {
+                            $nombre = "-";
+                          }
+                          $result1 = mysqli_query($conexion, $sql1);
+                          if ($Row = mysqli_fetch_array($result1)) {
+                            $nombre = $Row['nombre'];
+                          }
+                          echo $nombre;
+                          ?></td>
                       <td><?php echo $mostrar['creado'] ?></td>
                       <td>
 
@@ -416,13 +473,32 @@ $result3 = mysqli_query($conexion, $sql3);
       $('#filtrar_mina').change(function(e) {
         e.preventDefault();
         var sistema = geturl();
-        if($(this).val() == 0 ){
-            location.href = sistema + 'listar_compra.php';
-        }else{
-            location.href = sistema + 'buscar_compra.php?mina=' + $(this).val();
+        if ($(this).val() == 0) {
+          location.href = sistema + 'listar_compra.php';
+        } else {
+          location.href = sistema + 'buscar_compra.php?mina=' + $(this).val();
         }
-        
-        
+
+
+      });
+      $('#filtrar_trans').change(function(e) {
+        e.preventDefault();
+        var sistema = geturl();
+        if ($(this).val() == 0) {
+          location.href = sistema + 'listar_compra.php';
+        } else {
+          location.href = sistema + 'buscar_trans.php?transportista=' + $(this).val();
+        }
+      });
+      $('#filtrar_lote').change(function(e) {
+        e.preventDefault();
+        var sistema = geturl();
+        if ($(this).val() == 0) {
+          location.href = sistema + 'listar_compra.php';
+        } else {
+          location.href = sistema + 'buscar_lote.php?lote=' + $(this).val();
+        }
+
       });
 
     });

@@ -24,6 +24,10 @@ if (empty($_GET['buscador'])) {
 }
 $sql3 = "SELECT * FROM minas";
 $result3 = mysqli_query($conexion, $sql3);
+$sql4 = "SELECT * FROM empresa_transportista";
+$result4 = mysqli_query($conexion, $sql4);
+$sql5 = "SELECT * FROM lotes";
+$result5 = mysqli_query($conexion, $sql5);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -158,6 +162,7 @@ $result3 = mysqli_query($conexion, $sql3);
               <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
               <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
               <li><a href="listar_compra.php">Bitacora de Compra</a></li>
+              <li><a href="calendar.html">Calendario de Registros</a></li>
               <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
               <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
@@ -221,6 +226,7 @@ $result3 = mysqli_query($conexion, $sql3);
 
                     <th>
                       <select class="form-control" name='mina' id="filtrar_mina">
+                        <option>-</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result3)) {
                         ?>
@@ -238,6 +244,18 @@ $result3 = mysqli_query($conexion, $sql3);
                     <th class="hidden-phone">Peso Neto</th>
                     <th class="hidden-phone">No. Guía</th>
                     <th class="hidden-phone">No. Folio ticket</th>
+                    <th>
+                      <select class="form-control" name='lote' id="filtrar_lote">
+                        <option>-</option>
+                        <?php
+                        while ($Row1 = mysqli_fetch_array($result5)) {
+                        ?>
+                          <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['no_lote']; ?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </th>
                     <th class="hidden-phone">Fecha y hora de ingreso</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
@@ -272,6 +290,16 @@ $result3 = mysqli_query($conexion, $sql3);
                       <td><?php echo number_format($mostrar['p_neto'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo $mostrar['no_guia'] ?></td>
                       <td><?php echo $mostrar['no_ticket'] ?></td>
+                      <td><?php
+
+
+                          $sql1 = "SELECT * FROM lotes WHERE id='" . $mostrar['no_lote'] . "'";
+                          $result1 = mysqli_query($conexion, $sql1);
+                          if ($Row = mysqli_fetch_array($result1)) {
+                            $nombre = $Row['no_lote'];
+                          }
+                          echo $nombre;
+                          ?></td>
                       <td><?php echo $mostrar['creado'] ?></td>
                       <td>
 
@@ -451,7 +479,13 @@ $result3 = mysqli_query($conexion, $sql3);
         location.href = sistema + 'buscar_extraccion.php?mina=' + $(this).val();
 
       });
-     
+      $('#filtrar_lote').change(function(e) {
+        e.preventDefault();
+        var sistema = geturl();
+        location.href = sistema + 'buscar_lote_ext.php?lote=' + $(this).val();
+
+      });
+
 
     });
 

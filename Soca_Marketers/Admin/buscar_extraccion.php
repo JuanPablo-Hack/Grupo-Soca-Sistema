@@ -1,6 +1,6 @@
 <?php
 include 'php/conexion.php';
-$id_mina =$_GET['mina'];
+$id_mina = $_GET['mina'];
 $sql = "SELECT SUM(p_tara) as tara, SUM(p_bruto) as bruto, SUM(p_neto) as neto FROM patio_acopio WHERE origen=1 AND mina_origen=$id_mina";
 $result = mysqli_query($conexion, $sql);
 if ($Row = mysqli_fetch_array($result)) {
@@ -12,6 +12,10 @@ if ($Row = mysqli_fetch_array($result)) {
 }
 $sql3 = "SELECT * FROM minas";
 $result3 = mysqli_query($conexion, $sql3);
+$sql4 = "SELECT * FROM empresa_transportista";
+$result4 = mysqli_query($conexion, $sql4);
+$sql5 = "SELECT * FROM lotes";
+$result5 = mysqli_query($conexion, $sql5);
 
 ?>
 <!DOCTYPE html>
@@ -136,6 +140,7 @@ $result3 = mysqli_query($conexion, $sql3);
               <li><a href="crear_orden2.php">Registro Ingreso a Patio</a></li>
               <li><a href="listar_orden2.php">Bitacora de Extracción</a></li>
               <li><a href="listar_compra.php">Bitacora de Compra</a></li>
+              <li><a href="calendar.html">Calendario de Registros</a></li>
               <li><a href="crear_lote_acopio.php">Registro de Producción</a></li>
               <li><a href="listar_lotes_acopio.php">Bitacora de Producción</a></li>
 
@@ -189,16 +194,15 @@ $result3 = mysqli_query($conexion, $sql3);
           <div class="content-panel">
             <div class="adv-table">
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
-                <thead>
+              <thead>
                   <tr>
                     <th>
                       <select class="form-control" name='mina' id="filtrar_mina">
-                        <option>-</option>
-                        <option value="0">Todas</option>
+                      <option>-</option>
+                      <option value="0">Todas</option>
                         <?php
                         while ($Row1 = mysqli_fetch_array($result3)) {
                         ?>
-                          
                           <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['nombre']; ?></option>
                         <?php
                         }
@@ -206,11 +210,27 @@ $result3 = mysqli_query($conexion, $sql3);
                       </select>
                     </th>
                     <th class="hidden-phone">Mineral</th>
+
                     <th class="hidden-phone">Peso Bruto</th>
                     <th class="hidden-phone">Peso Tara</th>
                     <th class="hidden-phone">Peso Neto</th>
                     <th class="hidden-phone">No. Guía</th>
                     <th class="hidden-phone">No. Folio ticket</th>
+                    <th>
+                      <select class="form-control" name='lote' id="filtrar_lote">
+                        <option>-</option>
+                        <option value="0">Todas</option>
+                        <?php
+                        while ($Row1 = mysqli_fetch_array($result5)) {
+                        ?>
+                          <option value=<?php echo $Row1['id']; ?>><?php echo $Row1['no_lote']; ?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </th>
+                   
+                    
                     <th class="hidden-phone">Fecha y hora de ingreso</th>
                     <th class="hidden-phone">Acciones</th>
                   </tr>
@@ -240,6 +260,16 @@ $result3 = mysqli_query($conexion, $sql3);
                       <td><?php echo number_format($mostrar['p_neto'], 0, '.', ',') . " " . "Kg" ?></td>
                       <td><?php echo $mostrar['no_guia'] ?></td>
                       <td><?php echo $mostrar['no_ticket'] ?></td>
+                      <td><?php
+
+
+                          $sql1 = "SELECT * FROM lotes WHERE id='" . $mostrar['no_lote'] . "'";
+                          $result1 = mysqli_query($conexion, $sql1);
+                          if ($Row = mysqli_fetch_array($result1)) {
+                            $nombre = $Row['no_lote'];
+                          }
+                          echo $nombre;
+                          ?></td>
                       <td><?php echo $mostrar['creado'] ?></td>
                       <td>
 
@@ -421,8 +451,17 @@ $result3 = mysqli_query($conexion, $sql3);
         }else{
             location.href = sistema + 'buscar_extraccion.php?mina=' + $(this).val();
         }
-        
-        
+
+      });
+      $('#filtrar_lote').change(function(e) {
+        e.preventDefault();
+        var sistema = geturl();
+        if($(this).val() == 0 ){
+            location.href = sistema + 'listar_orden2.php';
+        }else{
+            location.href = sistema + 'buscar_lote_ext.php?lote=' + $(this).val();
+        }
+
       });
 
     });
