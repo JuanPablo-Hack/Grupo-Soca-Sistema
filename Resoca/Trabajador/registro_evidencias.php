@@ -1,12 +1,11 @@
 <?php
-  $id=$_GET['id'];
-  include 'php/conexion.php';
-  $sql="SELECT * FROM ordenes WHERE id='".$id."'";
-  $result = mysqli_query($conexion,$sql);
-  if ($Row = mysqli_fetch_array($result))
-  {
-    $folio= $Row['id'];
-  }
+$id = $_GET['id'];
+include 'php/conexion.php';
+$sql = "SELECT * FROM ordenes WHERE id='" . $id . "'";
+$result = mysqli_query($conexion, $sql);
+if ($Row = mysqli_fetch_array($result)) {
+  $folio = $Row['id'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +57,7 @@
       <!--logo start-->
       <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
       <!--logo end-->
-     
+
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li><a class="logout" href="login.html">Cerrar Sesión</a></li>
@@ -80,38 +79,38 @@
             <a class="active" href="index.html">
               <i class="fa fa-dashboard"></i>
               <span>Panel de Control</span>
-              </a>
+            </a>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-calendar"></i>
               <span>Ordenes de Servicios</span>
-              </a>
+            </a>
             <ul class="sub">
-              
+
               <li><a href="listar_orden.php">Bitacora</a></li>
               <li><a href="calendar.html">Calendario</a></li>
-              
+
             </ul>
           </li>
-          
+
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-car"></i>
               <span>Unidades</span>
-              </a>
+            </a>
             <ul class="sub">
-             
 
-              
+
+
               <li><a href="bitacora_combustible.php">Registrar combustible</a></li>
-              
+
               <li><a href="listar_combustible.php">Listar combustibles</a></li>
 
             </ul>
           </li>
-          
-         
+
+
         </ul>
         <!-- sidebar menu end-->
       </div>
@@ -130,21 +129,15 @@
             <div class="form-panel">
               <form action="php/evidencia.php" class="form-horizontal style-form" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Tiempo transcurrido</label>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control" name="tiempo" >
-                  </div>
-                </div>
-                <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Folio Relacionado</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="folio" value="<?php echo $folio;?>" readonly>
+                    <input type="text" class="form-control" name="folio" value="<?php echo $folio; ?>" readonly>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Cantidad de Residuo Recolectado</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" name="cantidad"  required>
+                    <input type="text" class="form-control" name="cantidad" required>
                   </div>
                 </div>
                 <div class="form-group ">
@@ -163,8 +156,8 @@
                       <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                       <div>
                         <span class="btn btn-theme02 btn-file">
-                        <span class="fileupload-new"><i class="fa fa-paperclip"></i> Seleccionar Imagen</span>
-                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                          <span class="fileupload-new"><i class="fa fa-paperclip"></i> Seleccionar Imagen</span>
+                          <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
                           <input type="file" class="form-control" id="image" name="image" multiple>
                         </span>
                         <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
@@ -172,8 +165,8 @@
                     </div>
                     <span class="label label-info">NOTA!</span>
                     <span>
-                     No se te olvide adjuntar todas las fotos de las evidencias del servicio.
-                      </span>
+                      No se te olvide adjuntar todas las fotos de las evidencias del servicio.
+                    </span>
                   </div>
                 </div>
                 <div class="form-group">
@@ -182,19 +175,19 @@
                     <a href="listar_combustible.php" class="btn btn-theme04" type="button">Cancelar</a>
                   </div>
                 </div>
-                </div>
-              </form>
             </div>
-            <!-- /form-panel -->
+            </form>
           </div>
-          <!-- /col-lg-12 -->
+          <!-- /form-panel -->
+        </div>
+        <!-- /col-lg-12 -->
         </div>
         <!-- /row -->
         <!-- DATE TIME PICKERS -->
-        
-            <!-- /form-panel -->
-          </div>
-          <!-- /col-lg-12 -->
+
+        <!-- /form-panel -->
+        </div>
+        <!-- /col-lg-12 -->
         </div>
         <!-- row -->
       </section>
@@ -219,7 +212,7 @@
         </div>
         <a href="index.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
-          </a>
+        </a>
       </div>
     </footer>
     <!--footer end-->

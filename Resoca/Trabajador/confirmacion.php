@@ -1,6 +1,13 @@
 <?php
+$id = $_GET['id'];
 include 'php/conexion.php';
+$sql = "SELECT * FROM ordenes WHERE id='" . $id . "'";
+$result = mysqli_query($conexion, $sql);
+if ($Row = mysqli_fetch_array($result)) {
+  $folio = $Row['id'];
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,22 +17,30 @@ include 'php/conexion.php';
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>GrupoSoca</title>
+  <title>Dashio - Bootstrap Admin Template</title>
 
   <!-- Favicons -->
-  <link href="img/favicon.ico" rel="icon">
-  <link href="img/apple-touch-icon.ico" rel="apple-touch-icon">
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link href="lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
-  <link href="lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
-  <link rel="stylesheet" href="lib/advanced-datatable/css/DT_bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-fileupload/bootstrap-fileupload.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datepicker/css/datepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-daterangepicker/daterangepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-timepicker/compiled/timepicker.css" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datertimepicker.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../lib/sweetalert2/sweetalert2.min.css" />
   <link href="css/style-responsive.css" rel="stylesheet">
+  <style>
+    #canvas {
+      border: 1px solid black;
+    }
+  </style>
 
   <!-- =======================================================
     Template Name: Dashio
@@ -113,53 +128,57 @@ include 'php/conexion.php';
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora Orden</h3>
-        <div class="row mb">
-          <!-- page start-->
-          <div class="content-panel">
-            <div class="adv-table">
-              <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
-                <thead>
-                  <tr>
-                    <th>Folio</th>
-                    <th>Nombre del cliente</th>
-                    <th class="hidden-phone">Fecha</th>
-                    <th class="hidden-phone">Tipo de Servicio</th>
-                    <th class="hidden-phone">Estado</th>
-                    <th class="hidden-phone">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  $sql = "SELECT * FROM ordenes WHERE estado='Activo'";
-                  $resultado = $conexion->query($sql);
-                  while ($mostrar = mysqli_fetch_array($resultado)) {
-                  ?>
-                    <tr>
-
-                      <td><?php echo $mostrar['id'] ?></td>
-                      <td><?php echo $mostrar['cliente'] ?></td>
-                      <td><?php echo $mostrar['fecha'] ?></td>
-                      <td><?php echo $mostrar['servicio'] ?></td>
-                      <td><?php echo $mostrar['estado'] ?></td>
-                      <td>
-                        <a onclick="crearPDF(<?php echo $mostrar['id']; ?>)" class="btn btn-primary btn-xs"><i class="fa fa-info-circle"></i></a>
-                        <a href="./confirmacion.php?id=<?php echo $mostrar['id']  ?>" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
-                        <a href="./registro_evidencias.php?id=<?php echo $mostrar['id']  ?>" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
-                        
-
-                      </td>
-                    </tr>
-                  <?php
-                  }
-                  ?>
-                </tbody>
-              </table>
+        <h3><i class="fa fa-angle-right"></i> Registro de Evidencias de Servicio</h3>
+        <div class="row mt">
+          <!--  DATE PICKERS -->
+          <div class="col-lg-12">
+            <div class="form-panel">
+              <form class="form-horizontal style-form" enctype="multipart/form-data" id="formConfirmar">
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Folio Relacionado</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="folio" value="<?php echo $folio; ?>" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Nombre de la persona que autoriza</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="nombre" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Cargo de la persona que autoriza</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="cargo" required>
+                  </div>
+                </div>
+                <div class="form-group last">
+                  <label class="control-label col-md-3">Firma de conformidad</label>
+                  <div class="col-md-9">
+                    <canvas id="canvas"></canvas>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-offset-2 col-lg-10">
+                    <button class="btn btn-theme">Confirmar</button>
+                    <button class="btn btn-theme04" id="btnLimpiar">Cancelar</button>
+                  </div>
+                </div>
             </div>
+            </form>
           </div>
-          <!-- page end-->
+          <!-- /form-panel -->
+        </div>
+        <!-- /col-lg-12 -->
         </div>
         <!-- /row -->
+        <!-- DATE TIME PICKERS -->
+
+        <!-- /form-panel -->
+        </div>
+        <!-- /col-lg-12 -->
+        </div>
+        <!-- row -->
       </section>
       <!-- /wrapper -->
     </section>
@@ -189,58 +208,24 @@ include 'php/conexion.php';
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="lib/jquery/jquery.min.js"></script>
-  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="lib/jquery.scrollTo.min.js"></script>
   <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
-  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.dataTables.js"></script>
-  <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
-  <!-- PDF -->
-
-  <script>
-    function addScript(url) {
-      var script = document.createElement('script');
-      script.type = 'application/javascript';
-      script.src = url;
-      document.head.appendChild(script);
-    }
-    addScript('https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js');
-
-    function crearPDF(id) {
-      var opt = {
-        margin: 1,
-        filename: 'Orden.pdf',
-        image: {
-          type: 'jpeg',
-          quality: 0.98
-        },
-        html2canvas: {
-          scale: 3
-        },
-        jsPDF: {
-          unit: 'in',
-          format: 'a3',
-          orientation: 'portrait'
-        }
-      };
-
-      $.ajax({
-        type: 'POST',
-        data: "id=" + id,
-        url: 'php/ordenesPDF.php',
-        success: function(r) {
-          // console.log(r);
-          var worker = html2pdf().set(opt).from(r).toPdf().save();
-
-        }
-      });
-    }
-  </script>
-
+  <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/date.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-daterangepicker/moment.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+  <script src="lib/advanced-form-components.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./lib/sweetalert2/sweetalert2.all.min.js"></script>
 </body>
 
 </html>
