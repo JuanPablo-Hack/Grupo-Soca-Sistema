@@ -135,6 +135,12 @@ if ($Row = mysqli_fetch_array($result)) {
                   </div>
                 </div>
                 <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Ticket</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="ticket" required>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Cantidad de Residuo Recolectado</label>
                   <div class="col-sm-4">
                     <input type="text" class="form-control" name="cantidad" required>

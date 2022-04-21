@@ -85,6 +85,7 @@
                             <li><a href="calendar.html">Calendario</a></li>
                             <li><a href="crear_servicio.html">Crear Servicio</a></li>
                             <li><a href="listar_servicios.php">Lista de Servicios</a></li>
+                            <li><a href="listar_evidencias.php">Lista de Evidencias</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
@@ -175,7 +176,7 @@
                 <thead>
                   <tr>
                     <th>Folio</th>
-                    <th>Tiempo</th>
+                    <th>Ticket</th>
                     <th class="hidden-phone">Cantidad</th>
                     <th class="hidden-phone">Comentarios</th>
                     <th class="hidden-phone">Hora de Registro y Día</th>
@@ -190,14 +191,13 @@
                   ?>
                   <tr >
                     <td><?php echo $mostrar['folio'] ?></td>
-                   
-                    <td><?php echo $mostrar['tiempo'] ?></td>
+                    <td><?php echo $mostrar['ticket'] ?></td>
                     <td><?php echo $mostrar['cantidad'] ?></td>
                     <td><?php echo $mostrar['comentarios'] ?></td>
                     <td><?php echo $mostrar['creado'] ?></td>
                    
                     <td>
-                    <a href='./evidencias.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
+                    <a href='../evidencias/<?php echo $mostrar['folio'] . "/".$mostrar['foto']?>' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
                     
                     <a href='./eliminar_acuse.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
 
