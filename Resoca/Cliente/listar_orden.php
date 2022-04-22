@@ -122,19 +122,14 @@ session_start();
               <span>Reporte General</span>
             </a>
           </li>
-         
+
         </ul>
         <!-- sidebar menu end-->
       </div>
     </aside>
-    <!--sidebar end-->
-    <!-- **********************************************************************************************************************************************************
-        MAIN CONTENT
-        *********************************************************************************************************************************************************** -->
-    <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Bitacora Orden</h3>
+        <h3><i class="fa fa-angle-right"></i> Bitacora de Ordenes</h3>
         <div class="row mb">
           <!-- page start-->
           <div class="content-panel">
@@ -142,13 +137,12 @@ session_start();
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-
                     <th>Folio</th>
-                    <th>Nombre del cliente</th>
+                    <th>Cliente</th>
                     <th class="hidden-phone">Fecha</th>
-                    <th class="hidden-phone">Tipo de Servicio</th>
+                    <th class="hidden-phone">Tipo Servicio</th>
                     <th class="hidden-phone">Estado</th>
-                    <th class="hidden-phone">Acciones</th>
+                    <th>Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -169,7 +163,7 @@ session_start();
                         <td>
                           <a onclick="crearPDF(<?php echo $mostrar['id']; ?>)" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
 
-                         
+
 
 
 
@@ -189,9 +183,6 @@ session_start();
       </section>
       <!-- /wrapper -->
     </section>
-    <!-- /MAIN CONTENT -->
-    <!--main content end-->
-    <!--footer start-->
     <footer class="site-footer">
       <div class="text-center">
         <p>
@@ -265,6 +256,19 @@ session_start();
         }
       });
     }
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var oTable = $("#hidden-table-info").dataTable({
+        aoColumnDefs: [{
+          bSortable: false,
+          aTargets: [0],
+        }, ],
+        aaSorting: [
+          [1, "asc"]
+        ],
+      });
+    });
   </script>
 
 </body>
