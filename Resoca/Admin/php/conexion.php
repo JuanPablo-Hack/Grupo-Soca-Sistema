@@ -8,6 +8,3 @@ $nombreBaseDeDatos = "u298097659_rsp";
 
 
 $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
-
-
-?>
