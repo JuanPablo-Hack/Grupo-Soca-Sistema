@@ -137,7 +137,7 @@ include 'php/conexion.php';
                   ?>
                     <tr>
 
-                      <td><?php echo $mostrar['id'] ?></td>
+                      <td><?php echo '97/22-' . $mostrar['id'] ?></td>
                       <td><?php echo $mostrar['cliente'] ?></td>
                       <td><?php echo $mostrar['fecha'] ?></td>
                       <td><?php echo $mostrar['servicio'] ?></td>
@@ -146,7 +146,7 @@ include 'php/conexion.php';
                         <a onclick="crearPDF(<?php echo $mostrar['id']; ?>)" class="btn btn-primary btn-xs"><i class="fa fa-info-circle"></i></a>
                         <a href="./confirmacion.php?id=<?php echo $mostrar['id']  ?>" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                         <a href="./registro_evidencias.php?id=<?php echo $mostrar['id']  ?>" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></a>
-                        
+
 
                       </td>
                     </tr>

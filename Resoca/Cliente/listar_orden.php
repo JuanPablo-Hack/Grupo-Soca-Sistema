@@ -155,7 +155,7 @@ session_start();
                   ?>
                       <tr>
 
-                        <td><?php echo $mostrar['id'] ?></td>
+                        <td><?php echo '97/22-' . $mostrar['id'] ?></td>
                         <td><?php
 
 
