@@ -1,9 +1,10 @@
 <?php
 
 $nombreServidor = "localhost";
-$nombreUsuario = "u298097659_rsp";
-$passwordBaseDeDatos = "GrupoSoca1511*";
-$nombreBaseDeDatos = "u298097659_rsp";
+$nombreUsuario = "u298097659_resoca";
+$passwordBaseDeDatos = "4so|8PVj>zR";
+$nombreBaseDeDatos = "u298097659_resoca";
+
 
 
 $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
