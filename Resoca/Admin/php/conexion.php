@@ -8,3 +8,4 @@ $nombreBaseDeDatos = "u298097659_resoca";
 
 
 $conexion = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
+?>
