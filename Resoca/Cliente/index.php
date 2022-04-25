@@ -7,132 +7,12 @@ session_start();
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="Dashboard">
-  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>GrupoSoca</title>
-
-  <!-- Favicons -->
-  <link href="img/favicon.ico" rel="icon">
-  <link href="img/apple-touch-icon.ico" rel="apple-touch-icon">
-
-  <!-- Bootstrap core CSS -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!--external css-->
-  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.css">
-  <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/style-responsive.css" rel="stylesheet">
-  <script src="lib/chart-master/Chart.js"></script>
-
-  <!-- =======================================================
-    Template Name: Dashio
-    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
-    Author: TemplateMag.com
-    License: https://templatemag.com/license/
-  ======================================================= -->
+  <?php include 'templates/head.php'; ?>
 </head>
 
 <body>
   <section id="container">
-    <!-- **********************************************************************************************************************************************************
-        TOP BAR CONTENT & NOTIFICATIONS
-        *********************************************************************************************************************************************************** -->
-    <!--header start-->
-    <header class="header black-bg">
-      <div class="sidebar-toggle-box">
-        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-      </div>
-      <!--logo start-->
-      <a href="index.html" class="logo"><b>Grupo<span>SOCA</span></b></a>
-      <!--logo end-->
-     
-      <div class="top-menu">
-        <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="php/logout.php">Cerrar Sesión</a></li>
-        </ul>
-      </div>
-    </header>
-    <!--header end-->
-    <!-- **********************************************************************************************************************************************************
-        MAIN SIDEBAR MENU
-        *********************************************************************************************************************************************************** -->
-    <!--sidebar start-->
-    <aside>
-      <div id="sidebar" class="nav-collapse ">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/banner.png" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Cliente</h5>
-          <li class="mt">
-            <a class="active" href="index.php">
-              <i class="fa fa-dashboard"></i>
-              <span>Panel de Control</span>
-            </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-calendar"></i>
-              <span>Ordenes de Servicios</span>
-            </a>
-            <ul class="sub">
-
-              <li><a href="listar_orden.php">Bitacora</a></li>
-
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Cortes</span>
-            </a>
-            <ul class="sub">
-              <li><a href="listar_reportes.php">Mis cortes</a></li>
-
-
-
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Manifiestos</span>
-            </a>
-            <ul class="sub">
-              <li><a href="listar_manifiesto.php">Mis manifiestos</a></li>
-
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Acuses</span>
-            </a>
-            <ul class="sub">
-              <li><a href="listar_acuses.php">Mis acuses</a></li>
-
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Reporte General</span>
-            </a>
-          </li>
-         
-        </ul>
-        <!-- sidebar menu end-->
-      </div>
-    </aside>
-    <!--sidebar end-->
-    <!-- **********************************************************************************************************************************************************
-        MAIN CONTENT
-        *********************************************************************************************************************************************************** -->
-    <!--main content start-->
+    <?php include 'templates/nav.php'; ?>
     <section id="main-content">
       <section class="wrapper">
         <div class="row">
@@ -202,7 +82,7 @@ session_start();
                   </script>
                   <div class="row">
                     <div class="col-sm-6 col-xs-6 goleft">
-                      <p>Serivicios<br/>Finalizados:</p>
+                      <p>Serivicios<br />Finalizados:</p>
                     </div>
                     <div class="col-sm-6 col-xs-6">
                       <h2>21%</h2>
@@ -243,11 +123,11 @@ session_start();
                 <!--  /darkblue panel -->
               </div>
               <!-- /col-md-4 -->
-              
+
               <!-- /col-md-4 -->
             </div>
             <!-- /row -->
-           
+
             <!-- /row -->
           </div>
           <!-- /col-lg-9 END SECTION MIDDLE -->
@@ -296,8 +176,8 @@ session_start();
               <div class="details">
                 <p>
                   <muted>Just Now</muted>
-                  <br/>
-                  <a href="#">Paul Rudd</a> purchased an item.<br/>
+                  <br />
+                  <a href="#">Paul Rudd</a> purchased an item.<br />
                 </p>
               </div>
             </div>
@@ -309,8 +189,8 @@ session_start();
               <div class="details">
                 <p>
                   <muted>2 Minutes Ago</muted>
-                  <br/>
-                  <a href="#">James Brown</a> subscribed to your newsletter.<br/>
+                  <br />
+                  <a href="#">James Brown</a> subscribed to your newsletter.<br />
                 </p>
               </div>
             </div>
@@ -322,8 +202,8 @@ session_start();
               <div class="details">
                 <p>
                   <muted>3 Hours Ago</muted>
-                  <br/>
-                  <a href="#">Diana Kennedy</a> purchased a year subscription.<br/>
+                  <br />
+                  <a href="#">Diana Kennedy</a> purchased a year subscription.<br />
                 </p>
               </div>
             </div>
@@ -335,8 +215,8 @@ session_start();
               <div class="details">
                 <p>
                   <muted>7 Hours Ago</muted>
-                  <br/>
-                  <a href="#">Brando Page</a> purchased a year subscription.<br/>
+                  <br />
+                  <a href="#">Brando Page</a> purchased a year subscription.<br />
                 </p>
               </div>
             </div>
@@ -349,7 +229,7 @@ session_start();
               </div>
               <div class="details">
                 <p>
-                  <a href="#">DIVYA MANIAN</a><br/>
+                  <a href="#">DIVYA MANIAN</a><br />
                   <muted>Available</muted>
                 </p>
               </div>
@@ -361,7 +241,7 @@ session_start();
               </div>
               <div class="details">
                 <p>
-                  <a href="#">DJ SHERMAN</a><br/>
+                  <a href="#">DJ SHERMAN</a><br />
                   <muted>I am Busy</muted>
                 </p>
               </div>
@@ -373,7 +253,7 @@ session_start();
               </div>
               <div class="details">
                 <p>
-                  <a href="#">DAN ROGERS</a><br/>
+                  <a href="#">DAN ROGERS</a><br />
                   <muted>Available</muted>
                 </p>
               </div>
@@ -385,13 +265,13 @@ session_start();
               </div>
               <div class="details">
                 <p>
-                  <a href="#">Zac Sniders</a><br/>
+                  <a href="#">Zac Sniders</a><br />
                   <muted>Available</muted>
                 </p>
               </div>
             </div>
             <!-- CALENDAR-->
-            
+
             <!-- / calendar -->
           </div>
           <!-- /col-lg-3 -->
@@ -399,27 +279,7 @@ session_start();
         <!-- /row -->
       </section>
     </section>
-    <!--main content end-->
-    <!--footer start-->
-    <footer class="site-footer">
-      <div class="text-center">
-        <p>
-          &copy; Copyrights <strong>GrupoSOCA</strong>. Todos los derechos reservados
-        </p>
-        <div class="credits">
-          <!--
-            You are NOT allowed to delete the credit link to TemplateMag with free version.
-            You can delete the credit link only if you bought the pro version.
-            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
-            Licensing information: https://templatemag.com/license/
-          -->
-          Creado y Diseñado por Jupiter.org
-        </div>
-        <a href="index.html#" class="go-top">
-          <i class="fa fa-angle-up"></i>
-          </a>
-      </div>
-    </footer>
+    <?php include 'templates/footer.php'; ?>
     <!--footer end-->
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
