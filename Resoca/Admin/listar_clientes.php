@@ -87,7 +87,7 @@ include 'php/conexion.php';
                       <td>
 
                         <a href='./editar_usuarios.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a href='./eliminar_cliente.php?id=<?php echo $mostrar['id']  ?>' class="btn btn-danger btn-xs"> <i class="fa fa-trash-o "></i></a>
+                        <a onclick="eliminarCliente(<?php echo $mostrar['id'] ?>)" class="btn btn-danger btn-xs"> <i class="fa fa-trash-o "></i></a>
 
 
 
@@ -120,6 +120,8 @@ include 'php/conexion.php';
   <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
+  <script src="js/controller.js"></script>
+  <script src="lib/sweetalert2/sweetalert2.all.min.js"></script>
   <!--script for this page-->
   <script type="text/javascript">
     /* Formating function for row details */

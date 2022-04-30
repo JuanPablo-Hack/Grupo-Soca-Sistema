@@ -1,8 +1,6 @@
 <?php
   $id=$_GET['id'];
-  include 'php/conexion.php';
-  $sql="DELETE FROM servicios WHERE id='".$id."'";
-  $result = mysqli_query($conexion,$sql);
+  
   
   
 ?>

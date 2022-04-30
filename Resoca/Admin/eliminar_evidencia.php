@@ -1,8 +1,5 @@
 <?php
 $id = $_GET['id'];
-include 'php/conexion.php';
-$sql = "DELETE FROM evidencias WHERE id='" . $id . "'";
-$result = mysqli_query($conexion, $sql);
 
 
 ?>
