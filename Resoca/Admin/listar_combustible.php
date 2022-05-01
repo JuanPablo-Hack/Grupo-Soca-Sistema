@@ -131,7 +131,7 @@ include 'php/conexion.php';
       </section>
 
     </section>
-    <?php include 'templates/footer.php;' ?>
+    <?php include 'templates/footer.php'; ?>
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="lib/jquery/jquery.min.js"></script>

@@ -51,13 +51,13 @@ include 'php/conexion.php';
                 </thead>
                 <tbody>
                   <?php
-                  $sql = "SELECT * FROM ordenes";
+                  $sql = "SELECT * FROM ordenes order by id ASC";
                   $resultado = $conexion->query($sql);
                   while ($mostrar = mysqli_fetch_array($resultado)) {
                   ?>
                     <tr>
 
-                      <td><?php echo '97/22-' . $mostrar['id'] ?></td>
+                      <td><?php echo 'FSO-22-' . $mostrar['id'] ?></td>
                       <td><?php
 
 
@@ -163,14 +163,17 @@ include 'php/conexion.php';
   </script>
   <script type="text/javascript">
     $(document).ready(function() {
-      var oTable = $("#hidden-table-info").dataTable({
-        aoColumnDefs: [{
-          bSortable: false,
-          aTargets: [0],
-        }, ],
-        aaSorting: [
-          [1, "asc"]
-        ],
+      /*
+       * Initialse DataTables, with no sorting on the 'details' column
+       */
+      var oTable = $('#hidden-table-info').dataTable({
+        "aoColumnDefs": [{
+          "bSortable": true,
+          "aTargets": [0]
+        }],
+        "aaSorting": [
+          [0, 'asc']
+        ]
       });
     });
   </script>
